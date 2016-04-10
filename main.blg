@@ -1,0 +1,52 @@
+This is BibTeX, Version 0.99d (TeX Live 2013/Debian)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: main.aux
+A level-1 auxiliary file: review.aux
+The style file: plain.bst
+Database file #1: ./Bibliography/bibliography.bib
+Warning--to sort, need author or key in Bullet
+Warning--empty journal in coelhoplanning
+Warning--empty year in coelhoplanning
+Warning--empty journal in SSS147762
+You've used 28 entries,
+            2118 wiz_defined-function locations,
+            667 strings with 9594 characters,
+and the built_in function-call counts, 10759 in all, are:
+= -- 1068
+> -- 463
+< -- 12
++ -- 184
+- -- 151
+* -- 672
+:= -- 1651
+add.period$ -- 93
+call.type$ -- 28
+change.case$ -- 155
+chr.to.int$ -- 0
+cite$ -- 32
+duplicate$ -- 471
+empty$ -- 907
+format.name$ -- 151
+if$ -- 2395
+int.to.chr$ -- 0
+int.to.str$ -- 28
+missing$ -- 28
+newline$ -- 140
+num.names$ -- 60
+pop$ -- 227
+preamble$ -- 1
+purify$ -- 129
+quote$ -- 0
+skip$ -- 354
+stack$ -- 0
+substring$ -- 647
+swap$ -- 158
+text.length$ -- 12
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 108
+warning$ -- 4
+while$ -- 96
+width$ -- 30
+write$ -- 304
+(There were 4 warnings)

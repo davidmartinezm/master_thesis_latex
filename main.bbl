@@ -1,0 +1,171 @@
+\begin{thebibliography}{10}
+
+\bibitem{Bullet}
+Bullet \href{http://wiki.ros.org/bullet }{\url{http://wiki.ros.org/bullet }},
+  2015.
+
+\bibitem{abdo2013learning}
+Nichola Abdo, Henrik Kretzschmar, Luciano Spinello, and Cyrill Stachniss.
+\newblock Learning manipulation actions from a few demonstrations.
+\newblock In {\em Robotics and Automation (ICRA), 2013 IEEE International
+  Conference on}, pages 1268--1275. IEEE, 2013.
+
+\bibitem{aSyMov}
+Stéphane Cambon, Fabien Gravot, and Rachid Alami.
+\newblock A robot task planner that merges symbolic and geometric reasoning.
+\newblock In Ramon~López de~Mántaras and Lorenza Saitta, editors, {\em ECAI},
+  pages 895--899. IOS Press, 2004.
+
+\bibitem{coelhoplanning}
+Rui Coelho and Alexandre Bernardino.
+\newblock Planning push and grasp actions: Experiments on the icub robot.
+
+\bibitem{Dang-semantic-grasping}
+Hao Dang and Peter~K. Allen.
+\newblock {Semantic grasping: Planning robotic grasps functionally suitable for
+  an object manipulation task}.
+\newblock In {\em 2012 IEEE/RSJ International Conference on Intelligent Robots
+  and Systems (IROS 2012)}, pages 1311--1317. IEEE, October 2012.
+
+\bibitem{dearden2013approach}
+Richard Dearden and Chris Burbridge.
+\newblock An approach for efficient planning of robotic manipulation tasks.
+\newblock In {\em ICAPS}. Citeseer, 2013.
+
+\bibitem{Dearden2014355}
+Richard Dearden and Chris Burbridge.
+\newblock Manipulation planning using learned symbolic state abstractions.
+\newblock {\em Robotics and Autonomous Systems}, 62(3):355 -- 365, 2014.
+\newblock Advances in Autonomous Robotics — Selected extended papers of the
+  joint 2012 \{TAROS\} Conference and the \{FIRA\} RoboWorld Congress, Bristol,
+  \{UK\}.
+
+\bibitem{Dogar_2010_6652}
+Mehmet Dogar and Siddhartha Srinivasa.
+\newblock Push-grasping with dexterous hands: Mechanics and a method.
+\newblock In {\em Proceedings of 2010 IEEE/RSJ International Conference on
+  Intelligent Robots and Systems (IROS 2010)}, October 2010.
+
+\bibitem{Dogar2011}
+Mehmet Dogar and Siddhartha Srinivasa.
+\newblock A framework for push-grasping in clutter.
+\newblock In Nick~Roy Hugh Durrant-Whyte and Pieter Abbeel, editors, {\em
+  Robotics: Science and Systems VII}. MIT Press, July 2011.
+
+\bibitem{ersen2014scene}
+Mustafa Ersen, Melodi~Deniz Ozturk, Mehmet Biberci, Sanem Sariel, and Hulya
+  Yalcin.
+\newblock Scene interpretation for lifelong robot learning.
+\newblock In {\em Proceedings of the 9th international workshop on cognitive
+  robotics (CogRob 2014) held in conjunction with ECAI-2014}, 2014.
+
+\bibitem{ersen2013extracting}
+Mustafa Ersen, Sanem~Sariel Talay, and Hulya Yalcin.
+\newblock Extracting spatial relations among objects for failure detection.
+\newblock In {\em KIK@ KI}, pages 13--20, 2013.
+
+\bibitem{he.lahijanian2015towards-manipulation-planning}
+Keliang He, Morteza Lahijanian, Lydia~E. Kavraki, and Moshe~Y. Vardi.
+\newblock Towards manipulation planning with temporal logic specifications.
+\newblock In {\em 2015 IEEE Intl. Conf. Robotics and Automation (ICRA)}, pages
+  346--352, Seattle, WA, May 2015. IEEE.
+
+\bibitem{conf/iros/HermansRB12}
+Tucker Hermans, James~M. Rehg, and Aaron~F. Bobick.
+\newblock Guided pushing for object singulation.
+\newblock In {\em IROS}, pages 4783--4790. IEEE, 2012.
+
+\bibitem{katz2011interactive}
+Dov Katz.
+\newblock {\em Interactive perception of articulated objects for autonomous
+  manipulation}.
+\newblock University of Massachusetts Amherst, 2011.
+
+\bibitem{Katz_2013_7407}
+Dov Katz, Moslem Kazemi, J.~Andrew~(Drew) Bagnell, and Anthony~(Tony) {Stentz
+  }.
+\newblock Clearing a pile of unknown objects using interactive perception.
+\newblock In {\em Proceedings of IEEE International Conference on Robotics and
+  Automation}, March 2013.
+
+\bibitem{katz2014perceiving}
+Dov Katz, Arun Venkatraman, Moslem Kazemi, J~Andrew Bagnell, and Anthony
+  Stentz.
+\newblock Perceiving, learning, and exploiting object affordances for
+  autonomous pile manipulation.
+\newblock {\em Autonomous Robots}, 37(4):369--382, 2014.
+
+\bibitem{OZCollide}
+Igor Kravtchenko.
+\newblock O{Z}{C}ollide \href{http://www.tsarevitch.org/ozcollide/
+  }{\url{http://www.tsarevitch.org/ozcollide/ }}, 2015.
+
+\bibitem{PlanningAlgorithms}
+Steven~M. LaValle.
+\newblock {\em {Planning Algorithms}}.
+\newblock Cambridge University Press, May 2006.
+
+\bibitem{lozano2014constraint}
+Tom{\'a}s Lozano-P{\'e}rez and Leslie~Pack Kaelbling.
+\newblock A constraint-based method for solving sequential manipulation
+  planning problems.
+\newblock In {\em Intelligent Robots and Systems (IROS 2014), 2014 IEEE/RSJ
+  International Conference on}, pages 3684--3691. IEEE, 2014.
+
+\bibitem{lynch1996stable}
+Kevin~M Lynch and Matthew~T Mason.
+\newblock Stable pushing: Mechanics, controllability, and planning.
+\newblock {\em The International Journal of Robotics Research}, 15(6):533--556,
+  1996.
+
+\bibitem{mericli2013achievable}
+Tekin~A Mericli, Manuela Veloso, and H~Levent Akin.
+\newblock Achievable push-manipulation for complex passive mobile objects using
+  past experience.
+\newblock In {\em Proceedings of the 2013 international conference on
+  Autonomous agents and multi-agent systems}, pages 71--78. International
+  Foundation for Autonomous Agents and Multiagent Systems, 2013.
+
+\bibitem{Msenlechner2009UsingPA}
+Lorenz M{\"o}senlechner and Michael Beetz.
+\newblock Using physics- and sensor-based simulation for high-fidelity temporal
+  projection of realistic robot behavior.
+\newblock In {\em AIPS}, 2009.
+
+\bibitem{SSS147762}
+Melodi Ozturk, Mustafa Ersen, Melis Kapotoglu, Cagatay Koc, Sanem Sariel-Talay,
+  and Hulya Yalcin.
+\newblock Scene interpretation for self-aware cognitive robots.
+\newblock 2014.
+
+\bibitem{pan2012fcl}
+Jia Pan, Sachin Chitta, and Dinesh Manocha.
+\newblock Fcl: A general purpose library for collision and proximity queries.
+\newblock In {\em Robotics and Automation (ICRA), 2012 IEEE International
+  Conference on}, pages 3859--3866. IEEE, 2012.
+
+\bibitem{Reiter87}
+R.~Reiter.
+\newblock A logic for default reasoning.
+\newblock In M.~L. Ginsberg, editor, {\em Readings in Nonmonotonic Reasoning},
+  pages 68--93. Kaufmann, Los Altos, CA, 1987.
+
+\bibitem{Visility-based-PRM}
+T.~Siméon, J.-P. Laumond, and C.~Nissoux.
+\newblock Visibility-based probabilistic roadmaps for motion planning.
+\newblock {\em Advanced Robotics}, 14(6):477--493, 2000.
+
+\bibitem{vahrenkamp2013robot}
+Nikolaus Vahrenkamp, Tamim Asfour, and Rudiger Dillmann.
+\newblock Robot placement based on reachability inversion.
+\newblock In {\em Robotics and Automation (ICRA), 2013 IEEE International
+  Conference on}, pages 1970--1975. IEEE, 2013.
+
+\bibitem{DBLP:conf/icra/YershovaL04}
+Anna Yershova and Steven~M. LaValle.
+\newblock Deterministic sampling methods for spheres and {SO(3)}.
+\newblock In {\em Proceedings of the 2004 {IEEE} International Conference on
+  Robotics and Automation, {ICRA} 2004, April 26 - May 1, 2004, New Orleans,
+  LA, {USA}}, pages 3974--3980, 2004.
+
+\end{thebibliography}

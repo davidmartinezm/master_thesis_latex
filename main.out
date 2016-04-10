@@ -1,0 +1,20 @@
+\BOOKMARK [1][-]{section.1}{Segmentation}{}% 1
+\BOOKMARK [1][-]{section.2}{Review Pushing}{}% 2
+\BOOKMARK [1][-]{section.3}{Review Grasping}{}% 3
+\BOOKMARK [1][-]{section.4}{Usefull things}{}% 4
+\BOOKMARK [1][-]{section.5}{Usefull Concepts}{}% 5
+\BOOKMARK [1][-]{section.6}{What we have}{}% 6
+\BOOKMARK [1][-]{section.7}{Planners}{}% 7
+\BOOKMARK [1][-]{section.8}{Materials}{}% 8
+\BOOKMARK [2][-]{subsection.8.1}{Collision Detection Libraries}{section.8}% 9
+\BOOKMARK [1][-]{section.9}{Problem Description}{}% 10
+\BOOKMARK [1][-]{section.10}{Planner Structure}{}% 11
+\BOOKMARK [2][-]{subsection.10.1}{PDDL}{section.10}% 12
+\BOOKMARK [1][-]{section.11}{Segmentation}{}% 13
+\BOOKMARK [1][-]{section.12}{Predicates}{}% 14
+\BOOKMARK [2][-]{subsection.12.1}{Block Predicates}{section.12}% 15
+\BOOKMARK [2][-]{subsection.12.2}{On Top Predicates}{section.12}% 16
+\BOOKMARK [2][-]{subsection.12.3}{Block Grasp Predicates}{section.12}% 17
+\BOOKMARK [1][-]{section.13}{Pushing Action}{}% 18
+\BOOKMARK [1][-]{section.14}{Grasping Action}{}% 19
+\BOOKMARK [1][-]{section.15}{Real Robot }{}% 20
