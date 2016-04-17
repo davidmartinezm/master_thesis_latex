@@ -1,15 +1,18 @@
-\documentclass[10pt,a4paper]{article}
+\documentclass[10pt,a4paper]{report}
 \usepackage[utf8]{inputenc}
 \usepackage[english]{babel}
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage{amssymb}
 \usepackage{graphicx}
+\usepackage{fancyhdr}
 \usepackage{hyperref}
+\usepackage{comment}
 \usepackage{csquotes} %quotes
 \usepackage{natbib}% for the bibliography
 \usepackage[colorinlistoftodos]{todonotes}
-
+\usepackage{xr}
+\externaldocument{2-StateOfTheArt/review}
 
 \author{Nicola Covallero}
 \title{Master Thesis}
@@ -17,8 +20,13 @@
 \begin{document}
 \maketitle
 \pagebreak
-\include{review}
-\citep{PlanningAlgorithms} 
+\tableofcontents
+\pagebreak
+\include{1-Introduction/Introduction}
+\include{2-StateOfTheArt/review}
+\include{3-TaskPlanner/planner}
+
+%%%%%% BIBLIOGRAPHY %%%%%%%%%%%%%%%%%%%%%
 \bibliographystyle{plain}
 \bibliography{./Bibliography/bibliography}
 

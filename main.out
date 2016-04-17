@@ -1,20 +1,25 @@
-\BOOKMARK [1][-]{section.1}{Segmentation}{}% 1
-\BOOKMARK [1][-]{section.2}{Review Pushing}{}% 2
-\BOOKMARK [1][-]{section.3}{Review Grasping}{}% 3
-\BOOKMARK [1][-]{section.4}{Usefull things}{}% 4
-\BOOKMARK [1][-]{section.5}{Usefull Concepts}{}% 5
-\BOOKMARK [1][-]{section.6}{What we have}{}% 6
-\BOOKMARK [1][-]{section.7}{Planners}{}% 7
-\BOOKMARK [1][-]{section.8}{Materials}{}% 8
-\BOOKMARK [2][-]{subsection.8.1}{Collision Detection Libraries}{section.8}% 9
-\BOOKMARK [1][-]{section.9}{Problem Description}{}% 10
-\BOOKMARK [1][-]{section.10}{Planner Structure}{}% 11
-\BOOKMARK [2][-]{subsection.10.1}{PDDL}{section.10}% 12
-\BOOKMARK [1][-]{section.11}{Segmentation}{}% 13
-\BOOKMARK [1][-]{section.12}{Predicates}{}% 14
-\BOOKMARK [2][-]{subsection.12.1}{Block Predicates}{section.12}% 15
-\BOOKMARK [2][-]{subsection.12.2}{On Top Predicates}{section.12}% 16
-\BOOKMARK [2][-]{subsection.12.3}{Block Grasp Predicates}{section.12}% 17
-\BOOKMARK [1][-]{section.13}{Pushing Action}{}% 18
-\BOOKMARK [1][-]{section.14}{Grasping Action}{}% 19
-\BOOKMARK [1][-]{section.15}{Real Robot }{}% 20
+\BOOKMARK [0][-]{chapter.1}{Introduction}{}% 1
+\BOOKMARK [1][-]{section.1.1}{Problem Approach}{chapter.1}% 2
+\BOOKMARK [0][-]{chapter.2}{State of the Art Manipulation Planning}{}% 3
+\BOOKMARK [1][-]{section.2.1}{Segmentation}{chapter.2}% 4
+\BOOKMARK [1][-]{section.2.2}{Review Pushing}{chapter.2}% 5
+\BOOKMARK [1][-]{section.2.3}{Review Grasping}{chapter.2}% 6
+\BOOKMARK [1][-]{section.2.4}{Usefull things}{chapter.2}% 7
+\BOOKMARK [1][-]{section.2.5}{Usefull Concepts}{chapter.2}% 8
+\BOOKMARK [1][-]{section.2.6}{What we have}{chapter.2}% 9
+\BOOKMARK [1][-]{section.2.7}{Planners}{chapter.2}% 10
+\BOOKMARK [1][-]{section.2.8}{Materials}{chapter.2}% 11
+\BOOKMARK [2][-]{subsection.2.8.1}{Collision Detection Libraries}{section.2.8}% 12
+\BOOKMARK [1][-]{section.2.9}{Problem Description}{chapter.2}% 13
+\BOOKMARK [1][-]{section.2.10}{Segmentation}{chapter.2}% 14
+\BOOKMARK [1][-]{section.2.11}{Predicates}{chapter.2}% 15
+\BOOKMARK [2][-]{subsection.2.11.1}{Block Predicates}{section.2.11}% 16
+\BOOKMARK [2][-]{subsection.2.11.2}{On Top Predicates}{section.2.11}% 17
+\BOOKMARK [2][-]{subsection.2.11.3}{Block Grasp Predicates}{section.2.11}% 18
+\BOOKMARK [1][-]{section.2.12}{Pushing Action}{chapter.2}% 19
+\BOOKMARK [1][-]{section.2.13}{Grasping Action}{chapter.2}% 20
+\BOOKMARK [1][-]{section.2.14}{Real Robot }{chapter.2}% 21
+\BOOKMARK [0][-]{chapter.3}{Task Planner}{}% 22
+\BOOKMARK [1][-]{section.3.1}{State of the Art}{chapter.3}% 23
+\BOOKMARK [1][-]{section.3.2}{Planner}{chapter.3}% 24
+\BOOKMARK [1][-]{section.3.3}{PDDL}{chapter.3}% 25

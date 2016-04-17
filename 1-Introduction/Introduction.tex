@@ -1,0 +1,10 @@
+\chapter{Introduction}
+\label{ch:introduction}
+
+\section{Problem Approach}
+In this section the approach to resolve the planning problem is described. For the table clearing task the main actions the robots has to use in order to interact with the objects are:
+\begin{itemize}
+\item Grasping
+\item Pushing
+\end{itemize}
+Grasping is the most important action since it lets to take an object from the pile of objects and drop it somewhere, for example in a bin, clearing in this way the table. There exist different works facing the same task by focusing only in grasping. The planning becomes useful considering the problem that two adjacent objects could not be grasped if they are so close such that the robot's gripper, when attempting to grasp an object is going to collide with the other object, making such an object ungraspable. From this consideration is necessary the pushing action, in order to separate adjacent objects which mutually exclude themselves to be grasped.  And in order to face the problem in elegant way a planning system is used, instead of a heuristic approach for the action decision making stage.

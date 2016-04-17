@@ -1,5 +1,23 @@
 \begin{thebibliography}{10}
 
+\bibitem{shopDescription}
+Description of the shop project
+  \href{https://www.cs.umd.edu/projects/shop/description.html
+  }{https://www.cs.umd.edu/projects/shop/description.html }.
+
+\bibitem{Gourmand}
+\href{http://aiweb.cs.washington.edu/ai/planning/gourmand.html }{Gourmand Home
+  Page}.
+
+\bibitem{PROST}
+\href{http://prost.informatik.uni-freiburg.de/}{PROST Home Page}.
+
+\bibitem{JSHOP2}
+\href{https://www.cs.umd.edu/projects/shop/}{SHOP Home Page}.
+
+\bibitem{FastDownwardPage}
+\href{http://www.fast-downward.org/}{Fast Downward Home Page}.
+
 \bibitem{Bullet}
 Bullet \href{http://wiki.ros.org/bullet }{\url{http://wiki.ros.org/bullet }},
   2015.
@@ -70,6 +88,11 @@ Keliang He, Morteza Lahijanian, Lydia~E. Kavraki, and Moshe~Y. Vardi.
 \newblock In {\em 2015 IEEE Intl. Conf. Robotics and Automation (ICRA)}, pages
   346--352, Seattle, WA, May 2015. IEEE.
 
+\bibitem{helmert2006fast}
+Malte Helmert.
+\newblock The fast downward planning system.
+\newblock {\em J. Artif. Intell. Res.(JAIR)}, 26:191--246, 2006.
+
 \bibitem{conf/iros/HermansRB12}
 Tucker Hermans, James~M. Rehg, and Aaron~F. Bobick.
 \newblock Guided pushing for object singulation.
@@ -105,6 +128,11 @@ Steven~M. LaValle.
 \newblock {\em {Planning Algorithms}}.
 \newblock Cambridge University Press, May 2006.
 
+\bibitem{little2007probabilistic}
+Iain Little, Sylvie Thiebaux, et~al.
+\newblock Probabilistic planning vs. replanning.
+\newblock In {\em ICAPS Workshop on IPC: Past, Present and Future}, 2007.
+
 \bibitem{lozano2014constraint}
 Tom{\'a}s Lozano-P{\'e}rez and Leslie~Pack Kaelbling.
 \newblock A constraint-based method for solving sequential manipulation
@@ -117,6 +145,11 @@ Kevin~M Lynch and Matthew~T Mason.
 \newblock Stable pushing: Mechanics, controllability, and planning.
 \newblock {\em The International Journal of Robotics Research}, 15(6):533--556,
   1996.
+
+\bibitem{marthi2007angelic}
+Bhaskara Marthi, Stuart~J Russell, and Jason Wolfe.
+\newblock Angelic semantics for high-level actions.
+\newblock In {\em ICAPS}, pages 232--239, 2007.
 
 \bibitem{mericli2013achievable}
 Tekin~A Mericli, Manuela Veloso, and H~Levent Akin.
@@ -149,6 +182,11 @@ R.~Reiter.
 \newblock A logic for default reasoning.
 \newblock In M.~L. Ginsberg, editor, {\em Readings in Nonmonotonic Reasoning},
   pages 68--93. Kaufmann, Los Altos, CA, 1987.
+
+\bibitem{artificialIntelligence}
+Stuart~J. Russell and Peter Norvig.
+\newblock {\em Artificial Intelligence: A Modern Approach}.
+\newblock Pearson Education, 2 edition, 2003.
 
 \bibitem{Visility-based-PRM}
 T.~Siméon, J.-P. Laumond, and C.~Nissoux.
