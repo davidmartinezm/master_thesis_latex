@@ -5,59 +5,64 @@ A level-1 auxiliary file: 1-Introduction/Introduction.aux
 A level-1 auxiliary file: 2-StateOfTheArt/review.aux
 A level-1 auxiliary file: 3-TaskPlanner/planner.aux
 A level-1 auxiliary file: 4-Algorithm/algorithm.aux
+A level-1 auxiliary file: 5-Implementation/implementation.aux
+A level-1 auxiliary file: 6-Experiments/experiments.aux
+A level-1 auxiliary file: 7-FurtherWork/further_work.aux
 The style file: plain.bst
 Database file #1: ./Bibliography/bibliography.bib
-Warning--to sort, need author or key in Bullet
 Warning--to sort, need author or key in shopDescription
 Warning--to sort, need author or key in JSHOP2
 Warning--to sort, need author or key in Gourmand
 Warning--to sort, need author or key in PROST
 Warning--to sort, need author or key in FastDownwardPage
 Warning--to sort, need author or key in pddl
+Warning--to sort, need author or key in Bullet
+Warning--to sort, need author or key in PCL_
 Warning--empty author in pddl
+Warning--empty journal in Benchmarking
 Warning--empty journal in coelhoplanning
 Warning--empty year in coelhoplanning
 Warning--empty journal in SSS147762
 Warning--empty year in LCCP
-You've used 40 entries,
+You've used 41 entries,
             2118 wiz_defined-function locations,
-            722 strings with 11309 characters,
-and the built_in function-call counts, 13664 in all, are:
-= -- 1331
-> -- 571
+            728 strings with 11662 characters,
+and the built_in function-call counts, 14099 in all, are:
+= -- 1364
+> -- 618
 < -- 13
-+ -- 231
-- -- 185
-* -- 835
-:= -- 2071
-add.period$ -- 118
-call.type$ -- 40
-change.case$ -- 208
++ -- 250
+- -- 203
+* -- 878
+:= -- 2145
+add.period$ -- 120
+call.type$ -- 41
+change.case$ -- 219
 chr.to.int$ -- 0
-cite$ -- 52
-duplicate$ -- 602
-empty$ -- 1209
-format.name$ -- 185
-if$ -- 3042
+cite$ -- 55
+duplicate$ -- 612
+empty$ -- 1227
+format.name$ -- 203
+if$ -- 3123
 int.to.chr$ -- 0
-int.to.str$ -- 40
-missing$ -- 35
-newline$ -- 189
+int.to.str$ -- 41
+missing$ -- 36
+newline$ -- 193
 num.names$ -- 72
-pop$ -- 322
+pop$ -- 335
 preamble$ -- 1
-purify$ -- 169
+purify$ -- 179
 quote$ -- 0
-skip$ -- 462
+skip$ -- 472
 stack$ -- 0
-substring$ -- 765
+substring$ -- 770
 swap$ -- 181
 text.length$ -- 13
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 154
-warning$ -- 12
+type$ -- 158
+warning$ -- 14
 while$ -- 113
-width$ -- 42
-write$ -- 401
-(There were 12 warnings)
+width$ -- 43
+write$ -- 407
+(There were 14 warnings)

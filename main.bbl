@@ -18,6 +18,10 @@ Description of the shop project
 \bibitem{FastDownwardPage}
 \href{http://www.fast-downward.org/}{Fast Downward Home Page}.
 
+\bibitem{PCL_}
+\href{http://www.openperception.org/}{http://www.openperception.org/} - open
+  perception.
+
 \bibitem{pddl}
 {PDDL - The Planning Domain Definition Language}.
 \newblock Technical report, CVC TR-98-003/DCS TR-1165, Yale Center for
@@ -32,6 +36,14 @@ Nichola Abdo, Henrik Kretzschmar, Luciano Spinello, and Cyrill Stachniss.
 \newblock Learning manipulation actions from a few demonstrations.
 \newblock In {\em Robotics and Automation (ICRA), 2013 IEEE International
   Conference on}, pages 1268--1275. IEEE, 2013.
+
+\bibitem{Benchmarking}
+Francesco Amigoni, Andrea Bonarini, Giulio Fontana, Matteo Matteucci, Viola
+  Schiaffonati, Aamir Ahmad, Iman Awaad, Jakob Berghofer, Rainer Bischoff,
+  et~al.
+\newblock General evaluation criteria, modules and metrics for benchmarking
+  through competitions.
+\newblock 2014.
 
 \bibitem{aSyMov}
 Stéphane Cambon, Fabien Gravot, and Rachid Alami.
@@ -122,11 +134,6 @@ Dov Katz, Arun Venkatraman, Moslem Kazemi, J~Andrew Bagnell, and Anthony
 \newblock Perceiving, learning, and exploiting object affordances for
   autonomous pile manipulation.
 \newblock {\em Autonomous Robots}, 37(4):369--382, 2014.
-
-\bibitem{OZCollide}
-Igor Kravtchenko.
-\newblock O{Z}{C}ollide \href{http://www.tsarevitch.org/ozcollide/
-  }{\url{http://www.tsarevitch.org/ozcollide/ }}, 2015.
 
 \bibitem{PlanningAlgorithms}
 Steven~M. LaValle.

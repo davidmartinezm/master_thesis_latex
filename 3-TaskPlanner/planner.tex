@@ -116,67 +116,73 @@ To include such an information the predicates \textbf{block\_dir1}, \textbf{bloc
 \paragraph{Effects of the action}
 The effect of the action has to change the current predicates of the problem in order to update coherently the state. For the \textit{grasping} action whenever an object is grasped, since we are working in a deterministic scenario, the object is supposed to be grasped successfully and drop in the bin. If such an object was on top of other ones or it was impeding some objects to be pushed in some direction those predicates have to be update coherently. Moreover to considered that the object is no more in the scene the predicate \textbf{grasped} is added. In particular \texttt{(grasped o1)} means that the object labelled as \texttt{o1} has been grasped and dropped into the bin, and therefore there is nothing more to do with it. The \textit{pushing} action, still thinking in a deterministic scenario, is supposed to be done in a manner that the object will be moved far enough from the others in such a way that it can be considered isolated. Considering it is isolated from the others, if it was blocking some object to be pushed in a certain direction now it will not impedes no more, and the same if an object impeded the current one, so the \texttt{block\_dir}$_i$ predicates are update, and the \texttt{block\_grasp} as well.  
 
+\textbf{INCLUDE BACKTRACKING}
+\textbf{INCLUDE SIMPLE EXAMPLE}
+
 \paragraph{PDDL}
 For clarity purposes, the PDDL syntax of the described action is here reported. 
-For the \textit{grasping} action its PDDL syntax is the following:
-\begin{verbatim}
-	(:action grasp
-	  :parameters (?o - obj)
-	  :precondition (and
-	  			    		(not (exists (?x - obj)(on ?x ?o)))
-			  			    (not (exists (?x - obj)(block_grasp ?x ?o)))
-			  			    )
-	  :effect (and
-	  				(grasped ?o)
+For the \textit{grasping} action its PDDL syntax is shown in listing \ref{graspPDDL}.
 
-	  				(forall (?x - obj)
-	  					(when (on ?o ?x) (not (on ?o ?x)))
-	  				)
+\lstset{language=pddl}
+\begin{lstlisting}[caption={PDDL syntax of the grasping action},label=graspPDDL]
+(:action grasp
+    :parameters (?o - obj)
+    :precondition (and
+                  ; grasp it if there are no objects on its top
+                  (not (exists (?x - obj)(on ?x ?o)))
+                  ; grasp it if there is no object that blocks it
+                  ; to be grasped
+                  (not (exists (?x - obj)(block_grasp ?x ?o))))
+    :effect (and
+            ; the object "o" is grasped
+            (grasped ?o)
+            ; if the object was on top of other ones now it is
+            ; no more on top of them
+            (forall (?x - obj)
+              (when (on ?o ?x) (not (on ?o ?x))))
+              ; the grasped objects no more blocks other objects 
+            ; to be pushed or grasped
+            (forall (?x - obj)
+              (when (block_grasp ?o ?x) (not (block_grasp ?o ?x))))
+            (forall (?x - obj)
+              (and
+              (when (block_dir1 ?o ?x) (not (block_dir1 ?o ?x)))
+              (when (block_dir2 ?o ?x) (not (block_dir2 ?o ?x)))
+              (when (block_dir3 ?o ?x) (not (block_dir3 ?o ?x)))
+              (when (block_dir4 ?o ?x) (not (block_dir4 ?o ?x)))))))
+\end{lstlisting}
 
-	  				(forall (?x - obj)
-	  					(when (block_grasp ?o ?x) (not (block_grasp ?o ?x)))
-	  				)
+For the \textit{pushing} action its PDDL syntax is shown in listing \ref{pushPDDL}.
 
-	  				(forall (?x - obj)
-	  					(and
-	  					(when (block_dir1 ?o ?x) (not (block_dir1 ?o ?x)))
-					    (when (block_dir2 ?o ?x) (not (block_dir2 ?o ?x)))
-					    (when (block_dir3 ?o ?x) (not (block_dir3 ?o ?x)))
-					    (when (block_dir4 ?o ?x) (not (block_dir4 ?o ?x)))
-	  					)
-	  				)
-	  			)
-	)
-\end{verbatim}
-In the following the PDDL syntax for the pushing action along the direction 1 is reported:
-\begin{verbatim}
+\lstset{language=pddl}
+\begin{lstlisting}[caption={PDDL syntax of the pushing action along direction 1},label=pushPDDL]
 (:action push_dir1
-		:parameters (?o - obj)
-		:precondition 	(and	
-				 			(not (and
-				 			(exists (?x - obj)(block_dir1 ?x ?o))
-				 			))
-				 			(not (exists (?x - obj)(on ?x ?o)))
-				 			(not (exists (?x - obj)(on ?o ?x)))
-) 
-		:effect  (forall (?x - obj)
-				    	(and
-				    	(when (block_dir1 ?o ?x) (not (block_dir1 ?o ?x)))
-					    (when (block_dir2 ?o ?x) (not (block_dir2 ?o ?x)))
-					    (when (block_dir3 ?o ?x) (not (block_dir3 ?o ?x)))
-					    (when (block_dir4 ?o ?x) (not (block_dir4 ?o ?x)))
-
-					    (when (block_dir1 ?x ?o) (not (block_dir1 ?x ?o)))
-					    (when (block_dir2 ?x ?o) (not (block_dir2 ?x ?o)))
-					    (when (block_dir3 ?x ?o) (not (block_dir3 ?x ?o)))
-					    (when (block_dir4 ?x ?o) (not (block_dir4 ?x ?o)))
-
- 	  					(when (block_grasp ?o ?x) (not (block_grasp ?o ?x)))
-					    )
-				    )	    
-	)
-
-\end{verbatim}
+    :parameters (?o - obj)
+    :precondition (and
+                  ; push in direction 1 only if there are no
+                  ; objects that block it along that direction
+                  (not (exists (?x - obj)(block_dir1 ?x ?o)))
+                  ; push it if it has no objects on top of it
+                  ; and if it not on top of other ones
+                  (not (exists (?x - obj)(on ?x ?o)))
+                  (not (exists (?x - obj)(on ?o ?x))))
+    :effect  (forall (?x - obj)
+               (and
+               ; once pushed the object is no more blocked in any direction
+               ; and it no more blocks other objects to be moved
+               (when (block_dir1 ?o ?x) (not (block_dir1 ?o ?x)))
+               (when (block_dir2 ?o ?x) (not (block_dir2 ?o ?x)))
+               (when (block_dir3 ?o ?x) (not (block_dir3 ?o ?x)))
+               (when (block_dir4 ?o ?x) (not (block_dir4 ?o ?x)))
+               (when (block_dir1 ?x ?o) (not (block_dir1 ?x ?o)))
+               (when (block_dir2 ?x ?o) (not (block_dir2 ?x ?o)))
+               (when (block_dir3 ?x ?o) (not (block_dir3 ?x ?o)))
+               (when (block_dir4 ?x ?o) (not (block_dir4 ?x ?o)))
+               ; once pushed it can be grasped and it no more
+               ; blocks other objects to be grasped
+               (when (block_grasp ?x ?o) (not (block_grasp ?x ?o)))
+               (when (block_grasp ?o ?x) (not (block_grasp ?o ?x))))))
+\end{lstlisting}
 
 \mbox{}
 
@@ -190,6 +196,8 @@ The way of computing the predicates will be discussed in detail in the next sect
 
 
 \section{Limitations}
-The planner here presented has some clear limitations, these are related to the lack of the probability and mainly to the lack of the geometric information. 
-How before said, the pushing action is supposed to push the object far enough from the others ones, this will be true only if the pushing will be performed up to infinite, and this is not the case. The pushing is peformed taking into account the geometry of the manipoulated object, without taking care about the surrounding objects geometry and poses. This problem is though to be resolved by replanning, that is, if an object has been pushed but not enough, the planner will return a sequence where the first action is again to push such an object. This is actually what the planner does, but since for the most of cases, pushing along directions $1$ and $2$ is feasible, for the planner both directions are feasible to resolve the problem. So what happens is that the planner could first return as solution to push a certain object along direction 1, and then, when replanning, to push the object along direction 2. What is here commented is a infinite loop. This happen because the planner has no information between consecutive frames, that is, it consider the problem as a separated one of before. 
+The planner here presented has some clear limitations, these are related to the lack of the probability and mainly to the lack of geometric information. 
+How previously said, the pushing action is supposed to push the object far enough from the others ones, this will be true only if the pushing will be performed up to infinite, and this is not the case. The pushing is performed taking into account the geometry of the manipulated object, without taking care about the surrounding objects geometry and poses. This problem is though to be resolved by replanning, that is, if an object has been pushed but not enough, the planner will return a sequence where the first action is again to push that object. This is actually what the planner does, but since for the most of cases, pushing along directions $1$ and $2$ is feasible, for the planner both directions are feasible to resolve the problem. So what happens is that the planner could first return as solution to push a certain object along direction 1, and then, when replanning, to push the object along direction 2. What is here commented is a infinite loop. This happen because the planner has no information between consecutive frames, that is, it consider the problem as a separated one from the previous frame. 
 This fact is a very undesirable one and there are several scenarios that can present a behaviour like that one. The promising part is the combination of the grasping and pushing actions. It has been observed that the majority of times, although for complex scenarios, the solution is mainly based on a proper sequence of grasping action, while the pushing action is an auxiliary action which is rarely used. Taking this into account, and the presented limitation, is very likely that once an object has been pushed, ones of the objects which cannot be grasped before can now be grasped, avoiding such undesired infinite loop.  
+
+

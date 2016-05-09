@@ -9,29 +9,28 @@
 \contentsline {section}{\numberline {2.3}Review Grasping}{6}{section.2.3}
 \contentsline {section}{\numberline {2.4}Usefull things}{6}{section.2.4}
 \contentsline {section}{\numberline {2.5}Usefull Concepts}{6}{section.2.5}
-\contentsline {section}{\numberline {2.6}What we have}{6}{section.2.6}
-\contentsline {section}{\numberline {2.7}Planners}{7}{section.2.7}
-\contentsline {section}{\numberline {2.8}Materials}{7}{section.2.8}
-\contentsline {subsection}{\numberline {2.8.1}Collision Detection Libraries}{7}{subsection.2.8.1}
-\contentsline {section}{\numberline {2.9}Problem Description}{7}{section.2.9}
-\contentsline {section}{\numberline {2.10}Real Robot }{7}{section.2.10}
-\contentsline {chapter}{\numberline {3}Task Planner}{8}{chapter.3}
-\contentsline {section}{\numberline {3.1}State of the Art}{8}{section.3.1}
-\contentsline {section}{\numberline {3.2}Planner}{9}{section.3.2}
-\contentsline {section}{\numberline {3.3}Symbolic Predicates}{11}{section.3.3}
-\contentsline {paragraph}{Grasping Action}{11}{section*.8}
-\contentsline {paragraph}{Pushing Action}{12}{section*.9}
-\contentsline {paragraph}{Effects of the action}{12}{section*.10}
-\contentsline {paragraph}{PDDL}{12}{section*.11}
-\contentsline {section}{\numberline {3.4}Limitations}{14}{section.3.4}
-\contentsline {chapter}{\numberline {4}Algorithm}{15}{chapter.4}
-\contentsline {section}{\numberline {4.1}Object Localization}{15}{section.4.1}
-\contentsline {subsection}{\numberline {4.1.1}Tabletop Object Detection}{15}{subsection.4.1.1}
-\contentsline {subsection}{\numberline {4.1.2}Object Segmentation}{16}{subsection.4.1.2}
-\contentsline {subsubsection}{Supervoxel}{16}{section*.13}
-\contentsline {subsubsection}{Local Convex Connected Patches Segmentation}{17}{section*.14}
-\contentsline {section}{\numberline {4.2}Predicates Computations}{17}{section.4.2}
-\contentsline {subsection}{\numberline {4.2.1}Tools}{18}{subsection.4.2.1}
-\contentsline {subsection}{\numberline {4.2.2}Predicate: \texttt {block\_grasp}}{18}{subsection.4.2.2}
-\contentsline {subsection}{\numberline {4.2.3}Predicate: \texttt {on}}{18}{subsection.4.2.3}
-\contentsline {subsection}{\numberline {4.2.4}Predicate: \texttt {block\_dir$_i$}}{18}{subsection.4.2.4}
+\contentsline {section}{\numberline {2.6}Problem Description}{6}{section.2.6}
+\contentsline {section}{\numberline {2.7}Real Robot }{6}{section.2.7}
+\contentsline {chapter}{\numberline {3}Task Planner}{7}{chapter.3}
+\contentsline {section}{\numberline {3.1}State of the Art}{7}{section.3.1}
+\contentsline {section}{\numberline {3.2}Planner}{8}{section.3.2}
+\contentsline {section}{\numberline {3.3}Symbolic Predicates}{10}{section.3.3}
+\contentsline {paragraph}{Grasping Action}{10}{section*.8}
+\contentsline {paragraph}{Pushing Action}{11}{section*.9}
+\contentsline {paragraph}{Effects of the action}{11}{section*.10}
+\contentsline {paragraph}{PDDL}{11}{section*.11}
+\contentsline {section}{\numberline {3.4}Limitations}{13}{section.3.4}
+\contentsline {chapter}{\numberline {4}Algorithm}{14}{chapter.4}
+\contentsline {section}{\numberline {4.1}Object Localization}{14}{section.4.1}
+\contentsline {subsection}{\numberline {4.1.1}Tabletop Object Detection}{14}{subsection.4.1.1}
+\contentsline {subsection}{\numberline {4.1.2}Object Segmentation}{15}{subsection.4.1.2}
+\contentsline {subsubsection}{Supervoxel}{15}{section*.13}
+\contentsline {subsubsection}{Local Convex Connected Patches Segmentation}{16}{section*.14}
+\contentsline {section}{\numberline {4.2}Predicates Computations}{16}{section.4.2}
+\contentsline {subsection}{\numberline {4.2.1}Tools}{17}{subsection.4.2.1}
+\contentsline {subsection}{\numberline {4.2.2}Predicate: \texttt {block\_grasp}}{17}{subsection.4.2.2}
+\contentsline {subsection}{\numberline {4.2.3}Predicate: \texttt {on}}{17}{subsection.4.2.3}
+\contentsline {subsection}{\numberline {4.2.4}Predicate: \texttt {block\_dir$_i$}}{17}{subsection.4.2.4}
+\contentsline {chapter}{\numberline {5}Implementation}{18}{chapter.5}
+\contentsline {chapter}{\numberline {6}Experiments}{19}{chapter.6}
+\contentsline {chapter}{\numberline {7}Further Work}{22}{chapter.7}

@@ -114,7 +114,7 @@ Before going in detail on their computation some general concepts are first pres
 \item table projection - convex hulls
 \end{itemize}
 To understand if an object imped a certain action, such as the pushing along a direction, we have to check if along the desired trajectory the pushed object will collide with a certain one. The collision detection is therefore a crucial step for the predicates computation. For the collision checking the Flexible Collision Library (FCL) \citep{pan2012fcl} has been used. This library allows to define the collision problem in a simpler manner than other more famous collision libraries such as \textit{Bullet} \citep{Bullet}, and it can work with different objects shapes such as box, spheres, cone, convex, mesh and octree. 
-The main library used in this work is the Point Cloud Library (PCL) \citep{PCL}, which allows some methods to create an object shape from a point cloud. The mesh shape has been thought to use since it can be easily obtained by using the \textit{convex hull} algorithm. 
+The main library used in this work is the Point Cloud Library (PCL) \citep{PCL_}, which allows some methods to create an object shape from a point cloud. The mesh shape has been thought to use since it can be easily obtained by using the \textit{convex hull} algorithm. 
 
 Explain convex hull.
 
@@ -122,6 +122,8 @@ The PCL convex hull algorithm returns the convex hull as a triangular mesh, whic
 
 The pose of the Kinect camera is above the table pointing forward it. In such a pose the Kinect is only able to see mainly the top side of the objects, and not their sides. 
 --- discussed the convex hull relating into to the neccesity for the collision detection.
+
+\textbf{Somewhere talk about the limitation of the segmentation that is we assume it to be perfect because if not the planner will return likely an infeasible plan}
 
 \subsection{Predicate: \texttt{block\_grasp}}
 \subsection{Predicate: \texttt{on}}

@@ -138,6 +138,7 @@ Temporal filtering to reduce the noise of the kinect	 \citep{SSS147762}.
 as having complete knowledge about the world, that is, the numbers and the attributes
 of all objects are known apriori. 
 
+\iffalse
 \section{What we have}
 \begin{itemize}
 \item A naive pushing approach able to understand which object blocks the pushing action of another one.
@@ -158,18 +159,8 @@ Strategy to resolve that:
 \end{itemize} 
 The most of state of the art dealing with problems similar to this one manage the grasping action as unfeasible for the part of object that obstacle the arm, not the gripper, since they are usually dealing with uncluttered scenarios, where the objects are all separated among themselves. The idea here is to relax the grasping checking in order to speed up the translation process into symbolic level. Then to perform real grasping a reliable algorithm is used in order to get a good grasping, and checked for collision. If it is not possible the grasping we can deduce that the robot is not able to find grasp it, and take off from the goal such object and all the objects. Considering the case that such an object is on top of another one also the bottom object cannot be included in the goal, so it should be not included into the planner's goal.
 \end{itemize}
+\fi
 
-\section{Planners}
-
-\section{Materials}
-\subsection{Collision Detection Libraries}
-There exists several collision detection libraries, usally done for videogames such as: OZCollide \citep{OZCollide}, Bullet (available also for ROS framework)\citep{Bullet}, Flexible Collision Library \citep{pan2012fcl}. OZCollide has a poor documentation, try bullet or FCL.
-
-\begin{itemize}
-\item Classical planners
-\item Hierachical Planners
-\item Probabilistic Planners
-\end{itemize}
 
 \section{Problem Description}
 \section{Real Robot }
