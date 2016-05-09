@@ -11,15 +11,18 @@
 \BOOKMARK [1][-]{section.2.8}{Materials}{chapter.2}% 11
 \BOOKMARK [2][-]{subsection.2.8.1}{Collision Detection Libraries}{section.2.8}% 12
 \BOOKMARK [1][-]{section.2.9}{Problem Description}{chapter.2}% 13
-\BOOKMARK [1][-]{section.2.10}{Segmentation}{chapter.2}% 14
-\BOOKMARK [1][-]{section.2.11}{Predicates}{chapter.2}% 15
-\BOOKMARK [2][-]{subsection.2.11.1}{Block Predicates}{section.2.11}% 16
-\BOOKMARK [2][-]{subsection.2.11.2}{On Top Predicates}{section.2.11}% 17
-\BOOKMARK [2][-]{subsection.2.11.3}{Block Grasp Predicates}{section.2.11}% 18
-\BOOKMARK [1][-]{section.2.12}{Pushing Action}{chapter.2}% 19
-\BOOKMARK [1][-]{section.2.13}{Grasping Action}{chapter.2}% 20
-\BOOKMARK [1][-]{section.2.14}{Real Robot }{chapter.2}% 21
-\BOOKMARK [0][-]{chapter.3}{Task Planner}{}% 22
-\BOOKMARK [1][-]{section.3.1}{State of the Art}{chapter.3}% 23
-\BOOKMARK [1][-]{section.3.2}{Planner}{chapter.3}% 24
-\BOOKMARK [1][-]{section.3.3}{PDDL}{chapter.3}% 25
+\BOOKMARK [1][-]{section.2.10}{Real Robot }{chapter.2}% 14
+\BOOKMARK [0][-]{chapter.3}{Task Planner}{}% 15
+\BOOKMARK [1][-]{section.3.1}{State of the Art}{chapter.3}% 16
+\BOOKMARK [1][-]{section.3.2}{Planner}{chapter.3}% 17
+\BOOKMARK [1][-]{section.3.3}{Symbolic Predicates}{chapter.3}% 18
+\BOOKMARK [1][-]{section.3.4}{Limitations}{chapter.3}% 19
+\BOOKMARK [0][-]{chapter.4}{Algorithm}{}% 20
+\BOOKMARK [1][-]{section.4.1}{Object Localization}{chapter.4}% 21
+\BOOKMARK [2][-]{subsection.4.1.1}{Tabletop Object Detection}{section.4.1}% 22
+\BOOKMARK [2][-]{subsection.4.1.2}{Object Segmentation}{section.4.1}% 23
+\BOOKMARK [1][-]{section.4.2}{Predicates Computations}{chapter.4}% 24
+\BOOKMARK [2][-]{subsection.4.2.1}{Tools}{section.4.2}% 25
+\BOOKMARK [2][-]{subsection.4.2.2}{Predicate: block\137grasp}{section.4.2}% 26
+\BOOKMARK [2][-]{subsection.4.2.3}{Predicate: on}{section.4.2}% 27
+\BOOKMARK [2][-]{subsection.4.2.4}{Predicate: block\137diri}{section.4.2}% 28

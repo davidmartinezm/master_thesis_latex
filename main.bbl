@@ -18,6 +18,11 @@ Description of the shop project
 \bibitem{FastDownwardPage}
 \href{http://www.fast-downward.org/}{Fast Downward Home Page}.
 
+\bibitem{pddl}
+{PDDL - The Planning Domain Definition Language}.
+\newblock Technical report, CVC TR-98-003/DCS TR-1165, Yale Center for
+  Computational Vision and Control, 1998.
+
 \bibitem{Bullet}
 Bullet \href{http://wiki.ros.org/bullet }{\url{http://wiki.ros.org/bullet }},
   2015.
@@ -177,6 +182,13 @@ Jia Pan, Sachin Chitta, and Dinesh Manocha.
 \newblock In {\em Robotics and Automation (ICRA), 2012 IEEE International
   Conference on}, pages 3859--3866. IEEE, 2012.
 
+\bibitem{Papon13CVPR}
+Jeremie Papon, Alexey Abramov, Markus Schoeler, and Florentin
+  W\"{o}rg\"{o}tter.
+\newblock Voxel cloud connectivity segmentation - supervoxels for point clouds.
+\newblock In {\em Computer Vision and Pattern Recognition (CVPR), 2013 IEEE
+  Conference on}, Portland, Oregon, June 22-27 2013.
+
 \bibitem{Reiter87}
 R.~Reiter.
 \newblock A logic for default reasoning.
@@ -192,6 +204,12 @@ Stuart~J. Russell and Peter Norvig.
 T.~Siméon, J.-P. Laumond, and C.~Nissoux.
 \newblock Visibility-based probabilistic roadmaps for motion planning.
 \newblock {\em Advanced Robotics}, 14(6):477--493, 2000.
+
+\bibitem{LCCP}
+S.~C. Stein, M.~Schoeler, J.~Papon, and F.~Woergoetter.
+\newblock Object partitioning using local convexity.
+\newblock In {\em IEEE Conference on Computer Vision and Pattern Recognition
+  (CVPR) 2014}.
 
 \bibitem{vahrenkamp2013robot}
 Nikolaus Vahrenkamp, Tamim Asfour, and Rudiger Dillmann.

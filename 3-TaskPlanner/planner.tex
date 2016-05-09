@@ -81,5 +81,115 @@ Taking into account such considerations, in order to face simply such a difficul
 Between a classic planner and an heuristic one there is not much difference for the aim of this work.
 The planner chosen to develop the work is the \textbf{Fast Downward} planner \cite{helmert2006fast}\cite{FastDownwardPage}, a very well know classic one. The advantage of this planner is its wide documentation with respect other planners, which makes it easier to use and it also has a wide community. 
 
+\section{Symbolic Predicates}
+One the planner has been chosen, a task planning problem has to be formulated accordingly to the capabilities of such a planner. The \textit{Fast Downward} planner needs the problem to be formulated in the common format of PDDL (\textit{Problem Domain Description Language}) \citep{pddl}.In this section the symbolic predicates that have been considered in order to resolve the problem are described.
 
-\section{PDDL}
+The task this thesis is going to resolve is a common task done by humans who thinks in order to find a feasible sequence of actions. Such a sequence is normally composed of actions that avoid the collision between the manipulated object and the other ones, whenever possible. To do this we, as human, think on what is going to happen if we manipulate an object in a certain way, and what objects can be manipulated at the current instant and what objects need to be moved in order to interact with a certain one.  
+
+The design of the problem has been inspired on such a reasoning way. The reasoning part is entrusted to the planner, which needs a coherent problem description through symbolic predicates. How described in the introduction, the system will be able to perform two types of actions: \textbf{pushing} and \textbf{grasping}.
+Grasping action is a necessary action in order to grasp an object and drop it in a bin, while the pushing action is an auxiliary action which has the aim to move an object in order to collocate it in a pose that do not obstacle the solution of the plan. In fact it happens that an object cannot be grasped because there is an adjacent one that impedes such an action.  
+
+The symbolic predicates are designed accordingly to the available actions trying to answer the following questions:
+\begin{itemize}
+\item When cannot an object be grasped? 
+\item When can a object be pushed? In which direction? 
+\end{itemize}
+
+\paragraph{Grasping Action}
+An object cannot be grasped always but only if the grasping action is not imped by other objects, to do this the following things have to be checked:
+\begin{itemize}
+\item no objects have to stand on top of it
+\item there are no adjacent objects that imped the grasping action
+\end{itemize}
+We don't want to grasp an object which has another one on top of it for one main reason: during the grasping action such object will fall corrupting the scene and such behaviour is undesired, in fact an human will never grab an object at the bottom of another one without first grabbing the one on the top. To include such an information in the problem description the predicate \textbf{on} is created, in particular it is defined as \texttt{(on o1 o2)} meaning that object labelled as \texttt{o1} stands on top of \texttt{o2}.
+
+Once we are sure the current object has not objects on top of it we have to check if it can be grasped, that is, given a grasping pose we have to check if that pose is feasible or if it is imped by other objects. To include such an information in the problem description the predicate \textbf{block\_grasp} is created. In particular it is defined as \texttt{(block\_grasp o1 o2)} meaning that object labelled as \texttt{o1} impedes object \texttt{o2} to be grasped.
+
+\paragraph{Pushing Action}
+In certain situation when the grasping is not possible because an object impedes another one to be grasped one of both has to be moved. Firstly, being observant of the philosophy to avoid manipulation that can damage the objects, we considered that only the objects that stands on the table can be pushed, that is an object on top of another one will be no pushed. And, how discussed for the grasping action, also an object that has on top of itself another one will be no pushed.
+Second the possible directions along with an object can be moved have to be decided. Such directions are taken accordingly to the shape of the object, in particular to its principal directions. Moreover the pushing direction is considered to be parallel to the table plane, as a normal human would be. Therefore the principal direction is projected onto the table plane, and also the orthogonal direction to the principal one is considered, having in total 4 possible ways to push an object, 2 ways per direction. To the best of my knowledge there are no studies about how pushing an object on a proper way, or direction, in order to make it follow a desired trajectory. 
+
+Having the direction each object can be pushed along with, the next step is to understand if the object can be pushed along those directions. An object cannot be pushed in a certain direction if there is another one that blocks the current object. For each direction the object is therefore translated in the pushing direction and checked for collision with other objects. In this way it is possible to get what is the object which impedes the considered one to be moved along the considered direction. 
+
+To include such an information the predicates \textbf{block\_dir1}, \textbf{block\_dir2}, \textbf{block\_dir3} and \textbf{block\_dir4} are created. In particular, they are defined as \texttt{(block\_dir}$_i$\texttt{ o1 o2)} meaning that the object labelled as \texttt{o1} is impeding object \texttt{o2} to be moved along direction \texttt{dir}$_i$.
+
+\paragraph{Effects of the action}
+The effect of the action has to change the current predicates of the problem in order to update coherently the state. For the \textit{grasping} action whenever an object is grasped, since we are working in a deterministic scenario, the object is supposed to be grasped successfully and drop in the bin. If such an object was on top of other ones or it was impeding some objects to be pushed in some direction those predicates have to be update coherently. Moreover to considered that the object is no more in the scene the predicate \textbf{grasped} is added. In particular \texttt{(grasped o1)} means that the object labelled as \texttt{o1} has been grasped and dropped into the bin, and therefore there is nothing more to do with it. The \textit{pushing} action, still thinking in a deterministic scenario, is supposed to be done in a manner that the object will be moved far enough from the others in such a way that it can be considered isolated. Considering it is isolated from the others, if it was blocking some object to be pushed in a certain direction now it will not impedes no more, and the same if an object impeded the current one, so the \texttt{block\_dir}$_i$ predicates are update, and the \texttt{block\_grasp} as well.  
+
+\paragraph{PDDL}
+For clarity purposes, the PDDL syntax of the described action is here reported. 
+For the \textit{grasping} action its PDDL syntax is the following:
+\begin{verbatim}
+	(:action grasp
+	  :parameters (?o - obj)
+	  :precondition (and
+	  			    		(not (exists (?x - obj)(on ?x ?o)))
+			  			    (not (exists (?x - obj)(block_grasp ?x ?o)))
+			  			    )
+	  :effect (and
+	  				(grasped ?o)
+
+	  				(forall (?x - obj)
+	  					(when (on ?o ?x) (not (on ?o ?x)))
+	  				)
+
+	  				(forall (?x - obj)
+	  					(when (block_grasp ?o ?x) (not (block_grasp ?o ?x)))
+	  				)
+
+	  				(forall (?x - obj)
+	  					(and
+	  					(when (block_dir1 ?o ?x) (not (block_dir1 ?o ?x)))
+					    (when (block_dir2 ?o ?x) (not (block_dir2 ?o ?x)))
+					    (when (block_dir3 ?o ?x) (not (block_dir3 ?o ?x)))
+					    (when (block_dir4 ?o ?x) (not (block_dir4 ?o ?x)))
+	  					)
+	  				)
+	  			)
+	)
+\end{verbatim}
+In the following the PDDL syntax for the pushing action along the direction 1 is reported:
+\begin{verbatim}
+(:action push_dir1
+		:parameters (?o - obj)
+		:precondition 	(and	
+				 			(not (and
+				 			(exists (?x - obj)(block_dir1 ?x ?o))
+				 			))
+				 			(not (exists (?x - obj)(on ?x ?o)))
+				 			(not (exists (?x - obj)(on ?o ?x)))
+) 
+		:effect  (forall (?x - obj)
+				    	(and
+				    	(when (block_dir1 ?o ?x) (not (block_dir1 ?o ?x)))
+					    (when (block_dir2 ?o ?x) (not (block_dir2 ?o ?x)))
+					    (when (block_dir3 ?o ?x) (not (block_dir3 ?o ?x)))
+					    (when (block_dir4 ?o ?x) (not (block_dir4 ?o ?x)))
+
+					    (when (block_dir1 ?x ?o) (not (block_dir1 ?x ?o)))
+					    (when (block_dir2 ?x ?o) (not (block_dir2 ?x ?o)))
+					    (when (block_dir3 ?x ?o) (not (block_dir3 ?x ?o)))
+					    (when (block_dir4 ?x ?o) (not (block_dir4 ?x ?o)))
+
+ 	  					(when (block_grasp ?o ?x) (not (block_grasp ?o ?x)))
+					    )
+				    )	    
+	)
+
+\end{verbatim}
+
+\mbox{}
+
+
+With such predicates the planner has all the basic information about the location of the objects on the scene. The symbolic predicates try to simplify the problem translating the geometric properties of the objects in symbolic ones. It is important to point out again that the system is deterministic, meaning that all the actions are supposed to give the resultant state with a probability of $1$. Clearly the more uncertainty is related to the pushing action, the direction selection, based on the principal axis, does not taken into account reliably the geometry of the object. The trajectory will be unlikely the desired one but a similar one. In the case the result of the action is not the expected one the replanning strategy will resolve the uncertainty problem. In this manner we are forced to considered that some interactions between objects are allowed but tried to be avoid as much as possible. 
+
+\mbox{}
+
+The way of computing the predicates will be discussed in detail in the next sections.
+
+
+
+\section{Limitations}
+The planner here presented has some clear limitations, these are related to the lack of the probability and mainly to the lack of the geometric information. 
+How before said, the pushing action is supposed to push the object far enough from the others ones, this will be true only if the pushing will be performed up to infinite, and this is not the case. The pushing is peformed taking into account the geometry of the manipoulated object, without taking care about the surrounding objects geometry and poses. This problem is though to be resolved by replanning, that is, if an object has been pushed but not enough, the planner will return a sequence where the first action is again to push such an object. This is actually what the planner does, but since for the most of cases, pushing along directions $1$ and $2$ is feasible, for the planner both directions are feasible to resolve the problem. So what happens is that the planner could first return as solution to push a certain object along direction 1, and then, when replanning, to push the object along direction 2. What is here commented is a infinite loop. This happen because the planner has no information between consecutive frames, that is, it consider the problem as a separated one of before. 
+This fact is a very undesirable one and there are several scenarios that can present a behaviour like that one. The promising part is the combination of the grasping and pushing actions. It has been observed that the majority of times, although for complex scenarios, the solution is mainly based on a proper sequence of grasping action, while the pushing action is an auxiliary action which is rarely used. Taking this into account, and the presented limitation, is very likely that once an object has been pushed, ones of the objects which cannot be grasped before can now be grasped, avoiding such undesired infinite loop.  
