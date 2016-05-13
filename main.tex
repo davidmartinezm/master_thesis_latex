@@ -4,7 +4,9 @@
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage{amssymb}
-\usepackage{graphicx}
+\usepackage{graphicx,wrapfig,lipsum}
+% the wrapfig can easily put images at a side of the text
+
 \usepackage{fancyhdr}
 \usepackage{hyperref}
 \usepackage{subcaption}
@@ -14,8 +16,11 @@
 \usepackage[colorinlistoftodos]{todonotes}
 \usepackage{xr}
 \usepackage{listings}
+\usepackage{stackengine} % to write text below the images without number
+\usepackage{color}
 
-%\externaldocument{2-StateOfTheArt/review}
+
+
 
 \author{Nicola Covallero}
 \title{Master Thesis}
@@ -32,6 +37,8 @@
 \include{5-Implementation/implementation}
 \include{6-Experiments/experiments}
 \include{7-FurtherWork/further_work}
+
+
 
 %%%%%% BIBLIOGRAPHY %%%%%%%%%%%%%%%%%%%%%
 \bibliographystyle{plain}
