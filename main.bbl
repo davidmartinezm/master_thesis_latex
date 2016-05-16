@@ -45,6 +45,12 @@ Francesco Amigoni, Andrea Bonarini, Giulio Fontana, Matteo Matteucci, Viola
   through competitions.
 \newblock 2014.
 
+\bibitem{Bidot2015}
+Julien Bidot, Lars Karlsson, Fabien Lagriffoul, and Alessandro Saffiotti.
+\newblock Geometric backtracking for combined task and motion planning in
+  robotic systems.
+\newblock {\em Artificial Intelligence}, pages~--, 2015.
+
 \bibitem{aSyMov}
 Stéphane Cambon, Fabien Gravot, and Rachid Alami.
 \newblock A robot task planner that merges symbolic and geometric reasoning.

@@ -1,0 +1,143 @@
+\ProvidesPackage{pkgAndStyle}
+
+\usepackage{graphicx}
+\usepackage{mathtools}
+\usepackage{amssymb}
+\usepackage{titlesec}
+\usepackage{hyperref}
+\usepackage{varioref}
+\usepackage{tocbibind}
+\usepackage{listings}
+\usepackage{mathrsfs}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage[a4paper, total={5.5in, 9.5in}, footnotesep=2\baselineskip]{geometry}
+\usepackage[font=small,labelfont=bf,skip=2pt]{caption}
+\usepackage[toc,page]{appendix}
+
+
+\usepackage{enumitem}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{float}
+\usepackage{placeins}
+\usepackage{color}
+
+
+\usepackage{graphics}
+\usepackage{eurosym}
+\usepackage[utf8]{inputenc}
+\usepackage{mdframed}
+
+\DeclareUnicodeCharacter{20AC}{\euro}
+
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{mygray}{rgb}{0.5,0.5,0.5}
+\definecolor{mymauve}{rgb}{0.58,0,0.82}
+
+
+\lstset{ %
+  backgroundcolor=\color{white},   % choose the background color; you must add \usepackage{color} or \usepackage{xcolor}
+  basicstyle=\footnotesize,        % the size of the fonts that are used for the code
+  breakatwhitespace=false,         % sets if automatic breaks should only happen at whitespace
+  breaklines=true,                 % sets automatic line breaking
+  captionpos=b,                    % sets the caption-position to bottom
+  commentstyle=\color{mygreen},    % comment style
+  deletekeywords={...},            % if you want to delete keywords from the given language
+  escapeinside={\%*}{*)},          % if you want to add LaTeX within your code
+  extendedchars=true,              % lets you use non-ASCII characters; for 8-bits encodings only, does not work with UTF-8
+  frame=single,	                   % adds a frame around the code
+  keepspaces=true,                 % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
+  keywordstyle=\color{blue},       % keyword style
+  language=Octave,                 % the language of the code
+  otherkeywords={*,...},           % if you want to add more keywords to the set
+  numbers=left,                    % where to put the line-numbers; possible values are (none, left, right)
+  numbersep=5pt,                   % how far the line-numbers are from the code
+  numberstyle=\tiny\color{mygray}, % the style that is used for the line-numbers
+  rulecolor=\color{black},         % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. comments (green here))
+  showspaces=false,                % show spaces everywhere adding particular underscores; it overrides 'showstringspaces'
+  showstringspaces=false,          % underline spaces within strings only
+  showtabs=false,                  % show tabs within strings adding particular underscores
+  stepnumber=2,                    % the step between two line-numbers. If it's 1, each line will be numbered
+  stringstyle=\color{mymauve},     % string literal style
+  tabsize=2,	                   % sets default tabsize to 2 spaces
+  %title=\lstname                   % show the filename of files included with \lstinputlisting; also try caption instead of title
+}
+
+%\renewcommand{\lstlistingname}{Code snippet}
+%\renewcommand{\lstlistlistingname}{Code snippets}
+
+\renewcommand{\bibname}{References}
+
+\newcommand{\biblio} {
+  %\cleardoublepage
+  \bibliographystyle{apalike}
+  {\footnotesize \bibliography{biblio}{}}
+}
+
+\newcommand{\return}[1]{\State \textbf{return} #1}
+\newcommand{\iunit}{\mathbf{i}}
+\newcommand{\junit}{\mathbf{j}}
+\newcommand{\kunit}{\mathbf{k}}
+\newcommand{\Xmode}{\bar{X}}
+\newcommand{\X}{\mathbf{X}}
+\newcommand{\Xhat}{\hat{X}}
+\newcommand{\mysum}[2]{\displaystyle\sum_{#1}^{#2}}
+\renewcommand{\H}[1]{\mathrm{H}\left(#1\right)}
+\renewcommand{\Pr}[1]{\mathrm{Pr}\left(#1\right)}
+\newcommand{\ttt}[1]{\texttt{#1}}
+\newmdenv[
+  topline=false,
+  bottomline=false,
+  rightline=false,
+  linewidth=1.1,
+  leftmargin=1cm,
+  nobreak=true
+]{operator}
+
+
+\newcommand{\Pre}{\textbf{Pre:\ }}
+\newcommand{\Post}{\textbf{Effect:\ }}
+\newcommand{\Cost}{\textbf{Cost:\ }}
+
+\newcommand{\erf}[1]{\mathrm{erf}\left(#1\right)}
+\newcommand{\g}[1]{\mathrm{g}\left(#1\right)}
+\newcommand{\ginv}[1]{\mathrm{g}^{-1}\left(#1\right)}
+\newcommand{\erfinv}[1]{\mathrm{erf}^{-1}\left(#1\right)}
+\renewcommand{\exp}[1]{\mathrm{exp}\left(#1\right)}
+
+\newcommand{\hspb}{\hspace{20pt}}
+\newcommand{\hspm}{\hspace{15pt}}
+\newcommand{\hsps}{\hspace{10pt}}
+
+\newcommand{\settitlespacing}{
+  \titlespacing*{\chapter}{0pt}{20pt}{15pt}
+  \titlespacing*{\section}{0pt}{20pt}{15pt}
+  \titlespacing*{\subsection}{0pt}{20pt}{15pt}
+  \titlespacing*{\subsubsection}{0pt}{20pt}{10pt}
+}
+
+\titleformat{\chapter}[hang]{\Huge\bfseries}{\thechapter.\hspb}{0pt}{\Huge\bfseries}
+\titleformat{\section}[hang]{\Large\bfseries}{\thesection.\hspm}{0pt}{\Large\bfseries}
+\titleformat{\subsection}[hang]{\large\bfseries}{\thesubsection.\hsps}{0pt}{\large\bfseries}
+\titleformat{\subsubsection}[hang]{\normalsize\bfseries}{\thesubsection.\hsps}{0pt}{\normalsize\bfseries}
+
+\newcommand{\wbspkg} {
+  \begin{table}[h!]
+  \centering
+  \begin{tabular}{|c||m{25em}|}
+    \hline
+    \textbf{Task}               &   \taskname         \\ \hline
+    \textbf{Major constituent}  &   \majorconstituent \\ \hline
+    \textbf{Description}        &   \description      \\ \hline
+    \textbf{Predecessor}        &   \predecessor      \\ \hline
+    \textbf{Planned start date} &   \startdate        \\ \hline
+    \textbf{Planned end date}   &   \enddate          \\ \hline
+    \textbf{Deliverable(s)}     &   \deliverable      \\ \hline
+    \textbf{Resources}          &   \resources        \\ \hline
+    \textbf{Internal tasks}     &   \internaltasks    \\ \hline
+  \end{tabular}
+  \caption{\normalsize \nextcaption}
+  \label{tab:\nextlabel}
+  \end{table}
+}

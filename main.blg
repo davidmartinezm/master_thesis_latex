@@ -24,45 +24,45 @@ Warning--empty journal in coelhoplanning
 Warning--empty year in coelhoplanning
 Warning--empty journal in SSS147762
 Warning--empty year in LCCP
-You've used 41 entries,
+You've used 42 entries,
             2118 wiz_defined-function locations,
-            728 strings with 11662 characters,
-and the built_in function-call counts, 14099 in all, are:
-= -- 1364
-> -- 618
-< -- 13
-+ -- 250
-- -- 203
-* -- 878
-:= -- 2145
-add.period$ -- 120
-call.type$ -- 41
-change.case$ -- 219
+            733 strings with 11859 characters,
+and the built_in function-call counts, 14461 in all, are:
+= -- 1397
+> -- 641
+< -- 14
++ -- 259
+- -- 211
+* -- 903
+:= -- 2208
+add.period$ -- 123
+call.type$ -- 42
+change.case$ -- 226
 chr.to.int$ -- 0
-cite$ -- 55
-duplicate$ -- 612
-empty$ -- 1227
-format.name$ -- 203
-if$ -- 3123
+cite$ -- 56
+duplicate$ -- 626
+empty$ -- 1250
+format.name$ -- 211
+if$ -- 3200
 int.to.chr$ -- 0
-int.to.str$ -- 41
-missing$ -- 36
-newline$ -- 193
-num.names$ -- 72
-pop$ -- 335
+int.to.str$ -- 42
+missing$ -- 37
+newline$ -- 198
+num.names$ -- 74
+pop$ -- 342
 preamble$ -- 1
-purify$ -- 179
+purify$ -- 185
 quote$ -- 0
-skip$ -- 472
+skip$ -- 482
 stack$ -- 0
-substring$ -- 770
-swap$ -- 181
-text.length$ -- 13
+substring$ -- 779
+swap$ -- 185
+text.length$ -- 14
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 158
+type$ -- 162
 warning$ -- 14
-while$ -- 113
-width$ -- 43
-write$ -- 407
+while$ -- 117
+width$ -- 44
+write$ -- 418
 (There were 14 warnings)

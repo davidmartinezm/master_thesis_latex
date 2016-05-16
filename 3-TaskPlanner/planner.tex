@@ -116,7 +116,46 @@ To include such an information the predicates \textbf{block\_dir1}, \textbf{bloc
 \paragraph{Effects of the action}
 The effect of the action has to change the current predicates of the problem in order to update coherently the state. For the \textit{grasping} action whenever an object is grasped, since we are working in a deterministic scenario, the object is supposed to be grasped successfully and drop in the bin. If such an object was on top of other ones or it was impeding some objects to be pushed in some direction those predicates have to be update coherently. Moreover to considered that the object is no more in the scene the predicate \textbf{grasped} is added. In particular \texttt{(grasped o1)} means that the object labelled as \texttt{o1} has been grasped and dropped into the bin, and therefore there is nothing more to do with it. The \textit{pushing} action, still thinking in a deterministic scenario, is supposed to be done in a manner that the object will be moved far enough from the others in such a way that it can be considered isolated. Considering it is isolated from the others, if it was blocking some object to be pushed in a certain direction now it will not impedes no more, and the same if an object impeded the current one, so the \texttt{block\_dir}$_i$ predicates are update, and the \texttt{block\_grasp} as well.  
 
-\textbf{INCLUDE BACKTRACKING}
+	
+\paragraph{Geometric constraints}
+The propose planner until now does not include any geometric information, such as whether the robot can actually perform a certain action. It may happens that the object is outside the working space of the robot and this makes it hard to interact with. In such a case the robot will have a plan but it is impossible its execution, this make the plan unfeasible. 
+
+This aspect has to be taken into account and it can be done using a common technique in task planning such as \textbf{backtracking} \citep{Bidot2015}. The backtracking technique is about compensating the gap between planning with abstract actions and some physical and geometric constraints such as kinematics. Backtracking is based on updating the initial state used to get the current plan considering the geometric and kinematics constraints, and replan again with the updated initial state, and obtaining in this way a different plan that could be feasible. The obtained plan will still be evaluated and backtracked until a feasible plan is obtained or there exists no plan. The pseudo algorithm is shown in Algorithm \ref{alg:backtracking}.
+
+\begin{algorithm}
+\caption{Planning procedure}\label{alg:backtracking}
+\begin{algorithmic}
+\Procedure{GetPlan}{$state_{init}$,$goal$}
+\Comment{Initial state and goal}
+\Repeat
+  \State $plan =$ \textsc{GetFastDownwardPlan}($state_{init}$,$goal$)
+  \If{\textsc{isPlanEmpty}()} 
+  		\Return NULL 
+  \EndIf
+  \State $action, object =$ \textsc{GetFirstAction}($plan$)
+  \Comment{Action to execute and object of interest}
+  \State $success =$ \textsc{HasIKSolution}($action, object$) 
+  \If{$\neg success$}
+    \State $state_{init} =$ \textsc{UpdateInitialState}($action, object$) \Comment{Update $state_{init}$ adding a predicate that avoid to execute $action$ on $object$}
+  \EndIf
+\Until{$success$}
+\Return $plan$ \Comment{Return a geometric feasible plan or no plan at all}
+\EndProcedure
+\end{algorithmic}
+\end{algorithm}  
+
+This technique is a very common technique for planners that plans symbolically and have no informations about geometric constraints. This is considerable limitation of symbolic planning but makes it very fast to execute.
+
+Let's consider to include the geometric information, such as path planning or inverse kinematics, into the geometric planner. The inverse kinematics by itself is an expensive operation, overall considering the high degree of freedom of the WAM arm. The most of the times the objects are considered to lie inside the working space of the robot. Computing the inverse of Kinematics for each possible action for each object would be very expensive, and by experimental result the majority of the times the inverse kinematics is feasible and the majority of the plans are feasible. Moreover, due to the probability of the next states the planner has to replan at each frame, and computing the predicates means computing the inverse kinematics as well. All this would make the planner process extremely time consuming when it is not needed. 
+  
+To consider the geometric unfeasibility of an action a predicate for each action is added: \ttt{ik\_unfeasible\_dir1 ?o}, \ttt{ik\_unfeasible\_dir2 ?o}, \ttt{ik\_unfeasible\_dir3 ?o}, \ttt{ik\_unfeasible\_dir4 ?o} and \ttt{ik\_unfeasible\_grasp ?o}. The backtracking procedure will try to execute the action by first computing a solution for the inverse kinematic for the path to execute, the pushing action will be a sequence of points in the Cartesian space and the grasping action will be composed of a pre-grasping pose and a grasping pose, and then if that action on a particular object is not possible to execute one of those predicates is added. 
+
+It is possible that an object cannot be grasped on a certain pose but it can be move in a new pose in which it can be grasped. Therefore the pushing actions also will include the effect that the object of interest will have a solution in the inverse kinematic for the new pose. This is usually a rare case but it may happen. Of course, since the planner has no geometric information, it does not know in which pushing direction the object can be reach a position where it can be grasped, therefore this will be a totally random choice up to the planner. In the case the object is in a pose where it cannot be neither grasped or pushed because of the inverse kinematic, first the planner will return as a solution to grasp it, then the it will replan and the solution will be to push it in one direction and grasp it, and so until no action can be executed and there exist no solution for the plan. In the best case, the planner will chose to push the object in direction in which the next pose will be more likely a graspable one. 
+
+It may happen that the object outside the working space of the robot block the execution of the task because if the planner insists to return as first action an action with that object, then it will find that with that object is not possible to interact with and therefore there exist no solution on the planner procedure. In our experiments we observed that actually the planners tends to leave the "problematic" object as the last one. This behaviour is due to the manner it chooses the actions, when there exists more feasible plans it chooses one of them (both optimal), this makes that "problematic" object could or not block the execution of all the task. How previously said, it was observed that the objects that are difficult to manipulate for the lack of solutions in the inverse kinematics are usually abandon and there are the last ones to be manipulated. (CHECK THIS AFFIRMATION)
+
+
+
 \textbf{INCLUDE SIMPLE EXAMPLE}
 
 \paragraph{PDDL}
