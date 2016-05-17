@@ -118,7 +118,9 @@ The effect of the action has to change the current predicates of the problem in 
 
 	
 \paragraph{Geometric constraints}
-The propose planner until now does not include any geometric information, such as whether the robot can actually perform a certain action. It may happens that the object is outside the working space of the robot and this makes it hard to interact with. In such a case the robot will have a plan but it is impossible its execution, this make the plan unfeasible. 
+The proposed planner until now does not include any geometric information, such as whether the robot can actually perform a certain action. It may happens that the object is outside the working space of the robot and this makes it hard to interact with. In such a case the robot will have a plan but it is impossible its execution, this make the plan unfeasible. 
+
+\todo[inline]{Add concept of hybrid planning}
 
 This aspect has to be taken into account and it can be done using a common technique in task planning such as \textbf{backtracking} \citep{Bidot2015}. The backtracking technique is about compensating the gap between planning with abstract actions and some physical and geometric constraints such as kinematics. Backtracking is based on updating the initial state used to get the current plan considering the geometric and kinematics constraints, and replan again with the updated initial state, and obtaining in this way a different plan that could be feasible. The obtained plan will still be evaluated and backtracked until a feasible plan is obtained or there exists no plan. The pseudo algorithm is shown in Algorithm \ref{alg:backtracking}.
 
@@ -150,13 +152,26 @@ Let's consider to include the geometric information, such as path planning or in
   
 To consider the geometric unfeasibility of an action a predicate for each action is added: \ttt{ik\_unfeasible\_dir1 ?o}, \ttt{ik\_unfeasible\_dir2 ?o}, \ttt{ik\_unfeasible\_dir3 ?o}, \ttt{ik\_unfeasible\_dir4 ?o} and \ttt{ik\_unfeasible\_grasp ?o}. The backtracking procedure will try to execute the action by first computing a solution for the inverse kinematic for the path to execute, the pushing action will be a sequence of points in the Cartesian space and the grasping action will be composed of a pre-grasping pose and a grasping pose, and then if that action on a particular object is not possible to execute one of those predicates is added. 
 
-It is possible that an object cannot be grasped on a certain pose but it can be move in a new pose in which it can be grasped. Therefore the pushing actions also will include the effect that the object of interest will have a solution in the inverse kinematic for the new pose. This is usually a rare case but it may happen. Of course, since the planner has no geometric information, it does not know in which pushing direction the object can be reach a position where it can be grasped, therefore this will be a totally random choice up to the planner. In the case the object is in a pose where it cannot be neither grasped or pushed because of the inverse kinematic, first the planner will return as a solution to grasp it, then the it will replan and the solution will be to push it in one direction and grasp it, and so until no action can be executed and there exist no solution for the plan. In the best case, the planner will chose to push the object in direction in which the next pose will be more likely a graspable one. 
-
-It may happen that the object outside the working space of the robot block the execution of the task because if the planner insists to return as first action an action with that object, then it will find that with that object is not possible to interact with and therefore there exist no solution on the planner procedure. In our experiments we observed that actually the planners tends to leave the "problematic" object as the last one. This behaviour is due to the manner it chooses the actions, when there exists more feasible plans it chooses one of them (both optimal), this makes that "problematic" object could or not block the execution of all the task. How previously said, it was observed that the objects that are difficult to manipulate for the lack of solutions in the inverse kinematics are usually abandon and there are the last ones to be manipulated. (CHECK THIS AFFIRMATION)
+It is possible that an object cannot be grasped on a certain pose but it can be move in a new pose in which it can be grasped. Therefore the pushing actions also will include the effect that the object of interest will have a solution in the inverse kinematic for the new pose. This is usually a rare case but it may happen. Of course, since the planner has no geometric information, it does not know in which pushing direction the object can be reach a position where it can be grasped, therefore this will be a totally random choice up to the planner. In the case the object is in a pose where it cannot be neither grasped or pushed because of the inverse kinematic, first the planner will return as a solution to grasp it, then it will replan and the solution will be to push it in one direction and grasp it, and so until no action can be executed and there exist no solution for the plan. In the best case, the planner will chose to push the object in direction in which the next pose will be more likely a graspable one. 
 
 
+\todo[]{Include this in the experiments?}
+\begin{figure}[h]
+\centering
+\includegraphics[width=5cm]{Img/backtracking/image4.png}
+\caption{Unfeasible plan due to geometric constraints. In this case the planner returns as action to execute grasping or pushing away the white cup (highlighted by a red circle) but it is out the configuration space of the robot and there exist no plan for that problem. This problem is the one depicted in Figure \ref{fig:example_scene}, where the other objects has been grasped as consequence of the plan solution.} \label{fig:backtracking1}
+\end{figure}
 
-\textbf{INCLUDE SIMPLE EXAMPLE}
+A situation in which the backtracking is useful is shown in Figure \ref{fig:backtracking1}. Accordingly to our strategy, the robot cannot be grasp the black or red box because the gripper would collide, and the same for the pushing action. It has to interact with the white cup in order to make space to move the other objects and grasp all of them. The planner first returns the following plan: \texttt{grasp o2}, \texttt{push\_dir1 o0}, \texttt{grasp o1}, \texttt{grasp o0}. It will try to solve the inverse kinematic for the \texttt{grasp o2} action, but it found no solutions. Therefore the predicate \ttt{ik\_unfeasible\_grasp o2} is added and the planner replans. The new plan is: \texttt{push\_dir1 o2}, \texttt{grasp o2}, \texttt{push\_dir1 o0}, \texttt{grasp o1}, \texttt{grasp o0}. In this case it will try to get a solution for the inverse kinematic for the pushing action but it finds no solution, so the predicate \ttt{ik\_unfeasible\_dir1 o2} is added. And so on until the planner find that all the possible actions for a feasible plan have no solutions for the inverse kinematic. In this way the planner includes the ability to understand also why there exist no plan for a certain problem. 
+
+\todo[inline]{Add the case in which the robot cannot grasp an object but it can push in a pose easier to grasp?}
+
+\todo[inline]{Add pipeline Scheme}
+
+
+It may happen that the object outside the working space of the robot blocks the execution of the task because if the planner insists to return as first action an action with that object, then it will find that is not possible to interact with it and therefore there exist no solution on the planner procedure. 
+To overcome this, problem, and make the problematic objects left as the last one to interact with if possible, the actions are enhanced with another effect, that is all the objects that have one of the unfeasible inverse kinematic predicates set to true, are set to false. In this way, if is possible, the only the first action consider the geometric constraints, while the next ones have no information about the geometric constraints. 
+\todo[]{ADD EFFECT}
 
 \paragraph{PDDL}
 For clarity purposes, the PDDL syntax of the described action is here reported. 
@@ -188,7 +203,13 @@ For the \textit{grasping} action its PDDL syntax is shown in listing \ref{graspP
               (when (block_dir1 ?o ?x) (not (block_dir1 ?o ?x)))
               (when (block_dir2 ?o ?x) (not (block_dir2 ?o ?x)))
               (when (block_dir3 ?o ?x) (not (block_dir3 ?o ?x)))
-              (when (block_dir4 ?o ?x) (not (block_dir4 ?o ?x)))))))
+              (when (block_dir4 ?o ?x) (not (block_dir4 ?o ?x))))
+              ; remove all geometric constraints 
+              (when (ik_unfeasible_dir1 ?x)(not (ik_unfeasible_dir1 ?x)))
+              (when (ik_unfeasible_dir2 ?x)(not (ik_unfeasible_dir2 ?x)))
+              (when (ik_unfeasible_dir3 ?x)(not (ik_unfeasible_dir3 ?x)))
+              (when (ik_unfeasible_dir4 ?x)(not (ik_unfeasible_dir4 ?x)))
+              (when (ik_unfeasible_grasp ?x)(not (ik_unfeasible_grasp ?x))))))
 \end{lstlisting}
 
 For the \textit{pushing} action its PDDL syntax is shown in listing \ref{pushPDDL}.
@@ -220,7 +241,13 @@ For the \textit{pushing} action its PDDL syntax is shown in listing \ref{pushPDD
                ; once pushed it can be grasped and it no more
                ; blocks other objects to be grasped
                (when (block_grasp ?x ?o) (not (block_grasp ?x ?o)))
-               (when (block_grasp ?o ?x) (not (block_grasp ?o ?x))))))
+               (when (block_grasp ?o ?x) (not (block_grasp ?o ?x))))
+               ; remove all geometric constraints 
+               (when (ik_unfeasible_dir1 ?x)(not (ik_unfeasible_dir1 ?x)))
+               (when (ik_unfeasible_dir2 ?x)(not (ik_unfeasible_dir2 ?x)))
+               (when (ik_unfeasible_dir3 ?x)(not (ik_unfeasible_dir3 ?x)))
+               (when (ik_unfeasible_dir4 ?x)(not (ik_unfeasible_dir4 ?x)))
+               (when (ik_unfeasible_grasp ?x)(not (ik_unfeasible_grasp ?x)))))
 \end{lstlisting}
 
 \mbox{}
@@ -230,13 +257,7 @@ With such predicates the planner has all the basic information about the locatio
 
 \mbox{}
 
-The way of computing the predicates will be discussed in detail in the next sections.
+The way of computing the predicates will be discussed in detail in the next chapter.
 
-
-
-\section{Limitations}
-The planner here presented has some clear limitations, these are related to the lack of the probability and mainly to the lack of geometric information. 
-How previously said, the pushing action is supposed to push the object far enough from the others ones, this will be true only if the pushing will be performed up to infinite, and this is not the case. The pushing is performed taking into account the geometry of the manipulated object, without taking care about the surrounding objects geometry and poses. This problem is though to be resolved by replanning, that is, if an object has been pushed but not enough, the planner will return a sequence where the first action is again to push that object. This is actually what the planner does, but since for the most of cases, pushing along directions $1$ and $2$ is feasible, for the planner both directions are feasible to resolve the problem. So what happens is that the planner could first return as solution to push a certain object along direction 1, and then, when replanning, to push the object along direction 2. What is here commented is a infinite loop. This happen because the planner has no information between consecutive frames, that is, it consider the problem as a separated one from the previous frame. 
-This fact is a very undesirable one and there are several scenarios that can present a behaviour like that one. The promising part is the combination of the grasping and pushing actions. It has been observed that the majority of times, although for complex scenarios, the solution is mainly based on a proper sequence of grasping action, while the pushing action is an auxiliary action which is rarely used. Taking this into account, and the presented limitation, is very likely that once an object has been pushed, ones of the objects which cannot be grasped before can now be grasped, avoiding such undesired infinite loop.  
 
 

@@ -1,3 +1,6 @@
 \chapter{Implementation}
 \label{ch:implementation}
 Talk about ROS and real robot. 
+
+For the collision checking the Flexible Collision Library (FCL) \citep{pan2012fcl} has been used. This library allows to define the collision problem in a simpler manner than other more famous collision libraries such as \textit{Bullet} \citep{Bullet}, and it can work with different objects shapes such as box, spheres, cone, convex, mesh and octree. 
+The main library used in this work is the Point Cloud Library (PCL) \citep{PCL_}, which allows some methods to create an object shape from a point cloud.

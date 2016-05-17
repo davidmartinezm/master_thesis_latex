@@ -31,6 +31,11 @@ Description of the shop project
 Bullet \href{http://wiki.ros.org/bullet }{\url{http://wiki.ros.org/bullet }},
   2015.
 
+\bibitem{Bidot2015}
+Geometric backtracking for combined task and motion planning in robotic
+  systems.
+\newblock {\em Artificial Intelligence}, 2015.
+
 \bibitem{abdo2013learning}
 Nichola Abdo, Henrik Kretzschmar, Luciano Spinello, and Cyrill Stachniss.
 \newblock Learning manipulation actions from a few demonstrations.
@@ -44,12 +49,6 @@ Francesco Amigoni, Andrea Bonarini, Giulio Fontana, Matteo Matteucci, Viola
 \newblock General evaluation criteria, modules and metrics for benchmarking
   through competitions.
 \newblock 2014.
-
-\bibitem{Bidot2015}
-Julien Bidot, Lars Karlsson, Fabien Lagriffoul, and Alessandro Saffiotti.
-\newblock Geometric backtracking for combined task and motion planning in
-  robotic systems.
-\newblock {\em Artificial Intelligence}, pages~--, 2015.
 
 \bibitem{aSyMov}
 Stéphane Cambon, Fabien Gravot, and Rachid Alami.
@@ -120,6 +119,11 @@ Malte Helmert.
 Tucker Hermans, James~M. Rehg, and Aaron~F. Bobick.
 \newblock Guided pushing for object singulation.
 \newblock In {\em IROS}, pages 4783--4790. IEEE, 2012.
+
+\bibitem{PCA}
+Ian Jolliffe.
+\newblock {\em Principal component analysis}.
+\newblock Wiley Online Library, 2002.
 
 \bibitem{katz2011interactive}
 Dov Katz.

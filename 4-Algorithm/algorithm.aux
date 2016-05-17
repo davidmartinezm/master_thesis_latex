@@ -7,63 +7,72 @@
 \newlabel{ch:algorithm}{{4}{18}{Algorithm}{chapter.4}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {4.1}Object Localization}{18}{section.4.1}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.1.1}Tabletop Object Detection}{18}{subsection.4.1.1}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.1.2}Object Segmentation}{18}{subsection.4.1.2}}
-\newlabel{sec:obj_seg}{{4.1.2}{18}{Object Segmentation}{subsection.4.1.2}{}}
 \citation{Papon13CVPR}
 \citation{LCCP}
+\newlabel{img:obj_pointcloud}{{4.1a}{19}{Input Point Cloud\relax }{figure.caption.24}{}}
+\newlabel{sub@img:obj_pointcloud}{{a}{19}{Input Point Cloud\relax }{figure.caption.24}{}}
+\newlabel{img:obj_ransac}{{4.1b}{19}{RANSAC plane estimation\relax }{figure.caption.24}{}}
+\newlabel{sub@img:obj_ransac}{{b}{19}{RANSAC plane estimation\relax }{figure.caption.24}{}}
+\newlabel{img:obj_plane}{{4.1c}{19}{Table plane\relax }{figure.caption.24}{}}
+\newlabel{sub@img:obj_plane}{{c}{19}{Table plane\relax }{figure.caption.24}{}}
+\newlabel{img:obj_conex_hull}{{4.1d}{19}{Convex Hull\relax }{figure.caption.24}{}}
+\newlabel{sub@img:obj_conex_hull}{{d}{19}{Convex Hull\relax }{figure.caption.24}{}}
+\newlabel{img:obj_convex_hull_full}{{4.1e}{19}{Convex hull in the point cloud\relax }{figure.caption.24}{}}
+\newlabel{sub@img:obj_convex_hull_full}{{e}{19}{Convex hull in the point cloud\relax }{figure.caption.24}{}}
+\newlabel{img:obj_tabletop_objects_results}{{4.1f}{19}{Tabletop objects\relax }{figure.caption.24}{}}
+\newlabel{sub@img:obj_tabletop_objects_results}{{f}{19}{Tabletop objects\relax }{figure.caption.24}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.1}{\ignorespaces \textbf  {Object Segmentation:} Given the point cloud (\subref  {img:obj_pointcloud}), the estimated table's plane is obtained (\subref  {img:obj_ransac} and \subref  {img:obj_plane}), its convex hull is extracted (\subref  {img:obj_conex_hull} and \subref  {img:obj_convex_hull_full}), and the tabletop objects are obtained by a polygonal prism projection (\subref  {img:obj_tabletop_objects_results}).\relax }}{19}{figure.caption.24}}
+\newlabel{img:obj_tabletop_objects}{{4.1}{19}{\textbf {Object Segmentation:} Given the point cloud (\subref {img:obj_pointcloud}), the estimated table's plane is obtained (\subref {img:obj_ransac} and \subref {img:obj_plane}), its convex hull is extracted (\subref {img:obj_conex_hull} and \subref {img:obj_convex_hull_full}), and the tabletop objects are obtained by a polygonal prism projection (\subref {img:obj_tabletop_objects_results}).\relax }{figure.caption.24}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1.2}Object Segmentation}{19}{subsection.4.1.2}}
+\newlabel{sec:obj_seg}{{4.1.2}{19}{Object Segmentation}{subsection.4.1.2}{}}
+\@writefile{toc}{\contentsline {subsubsection}{Supervoxel}{19}{subsubsection*.25}}
 \citation{LCCP}
 \citation{LCCP}
-\newlabel{img:obj_pointcloud}{{4.1a}{19}{Input Point Cloud\relax }{figure.caption.18}{}}
-\newlabel{sub@img:obj_pointcloud}{{a}{19}{Input Point Cloud\relax }{figure.caption.18}{}}
-\newlabel{img:obj_ransac}{{4.1b}{19}{RANSAC plane estimation\relax }{figure.caption.18}{}}
-\newlabel{sub@img:obj_ransac}{{b}{19}{RANSAC plane estimation\relax }{figure.caption.18}{}}
-\newlabel{img:obj_plane}{{4.1c}{19}{Table plane\relax }{figure.caption.18}{}}
-\newlabel{sub@img:obj_plane}{{c}{19}{Table plane\relax }{figure.caption.18}{}}
-\newlabel{img:obj_conex_hull}{{4.1d}{19}{Convex Hull\relax }{figure.caption.18}{}}
-\newlabel{sub@img:obj_conex_hull}{{d}{19}{Convex Hull\relax }{figure.caption.18}{}}
-\newlabel{img:obj_convex_hull_full}{{4.1e}{19}{Convex hull in the point cloud\relax }{figure.caption.18}{}}
-\newlabel{sub@img:obj_convex_hull_full}{{e}{19}{Convex hull in the point cloud\relax }{figure.caption.18}{}}
-\newlabel{img:obj_tabletop_objects_results}{{4.1f}{19}{Tabletop objects\relax }{figure.caption.18}{}}
-\newlabel{sub@img:obj_tabletop_objects_results}{{f}{19}{Tabletop objects\relax }{figure.caption.18}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.1}{\ignorespaces \textbf  {Object Segmentation:} Given the point cloud (\subref  {img:obj_pointcloud}), the estimated table's plane is obtained (\subref  {img:obj_ransac} and \subref  {img:obj_plane}), its convex hull is extracted (\subref  {img:obj_conex_hull} and \subref  {img:obj_convex_hull_full}), and the tabletop objects are obtained by a polygonal prism projection (\subref  {img:obj_tabletop_objects_results}).\relax }}{19}{figure.caption.18}}
-\newlabel{img:obj_tabletop_objects}{{4.1}{19}{\textbf {Object Segmentation:} Given the point cloud (\subref {img:obj_pointcloud}), the estimated table's plane is obtained (\subref {img:obj_ransac} and \subref {img:obj_plane}), its convex hull is extracted (\subref {img:obj_conex_hull} and \subref {img:obj_convex_hull_full}), and the tabletop objects are obtained by a polygonal prism projection (\subref {img:obj_tabletop_objects_results}).\relax }{figure.caption.18}{}}
-\@writefile{toc}{\contentsline {subsubsection}{Supervoxel}{19}{subsubsection*.19}}
-\@writefile{toc}{\contentsline {subsubsection}{Local Convex Connected Patches Segmentation}{19}{subsubsection*.20}}
-\newlabel{sec:LCCP}{{4.1.2}{19}{Local Convex Connected Patches Segmentation}{subsubsection*.20}{}}
-\citation{pan2012fcl}
-\citation{Bullet}
-\citation{PCL_}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.2}{\ignorespaces \texttt  {LCCP} algorithm's structure. Reproduced from \citep  {LCCP}\relax }}{20}{figure.caption.21}}
-\newlabel{img:LCCP_structure}{{4.2}{20}{\texttt {LCCP} algorithm's structure. Reproduced from \citep {LCCP}\relax }{figure.caption.21}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {4.2}Predicates Computations}{20}{section.4.2}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.1}Tools}{20}{subsection.4.2.1}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.2}Predicate: \texttt  {block\_grasp}}{21}{subsection.4.2.2}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.3}Predicate: \texttt  {on}}{21}{subsection.4.2.3}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.4}Predicate: \texttt  {block\_dir$_i$}}{21}{subsection.4.2.4}}
+\@writefile{toc}{\contentsline {subsubsection}{Local Convex Connected Patches Segmentation}{20}{subsubsection*.26}}
+\newlabel{sec:LCCP}{{4.1.2}{20}{Local Convex Connected Patches Segmentation}{subsubsection*.26}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.2}{\ignorespaces \texttt  {LCCP} algorithm's structure. Reproduced from \citep  {LCCP}\relax }}{20}{figure.caption.27}}
+\newlabel{img:LCCP_structure}{{4.2}{20}{\texttt {LCCP} algorithm's structure. Reproduced from \citep {LCCP}\relax }{figure.caption.27}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.3}{\ignorespaces Example of segmentation results.\relax }}{20}{figure.caption.28}}
+\newlabel{fig:seg_results}{{4.3}{20}{Example of segmentation results.\relax }{figure.caption.28}{}}
+\citation{PCA}
+\@writefile{toc}{\contentsline {section}{\numberline {4.2}Predicates Computations}{21}{section.4.2}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.1}Background}{21}{subsection.4.2.1}}
+\@writefile{toc}{\contentsline {paragraph}{Principal Components}{21}{paragraph*.29}}
+\newlabel{fig:pca1}{{4.4a}{21}{\relax }{figure.caption.30}{}}
+\newlabel{sub@fig:pca1}{{a}{21}{\relax }{figure.caption.30}{}}
+\newlabel{fig:pca2}{{4.4b}{21}{\relax }{figure.caption.30}{}}
+\newlabel{sub@fig:pca2}{{b}{21}{\relax }{figure.caption.30}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.4}{\ignorespaces \textbf  {Principal Components Analysis -} In Figure \ref  {fig:pca1} PCA for a standard 2D set of observations. In Figure \ref  {fig:pca2} results of the PCA for a rectangular segmented object. The \leavevmode {\color  {green}green}, \leavevmode {\color  {red}red} lines refers to different ways of the first principal components, while \leavevmode {\color  {blue}blue} and \leavevmode {\color  {cyan}cyan} lines refers to different ways of the second principal directions. The third one is not depicted but is orthogonal to the first two principal components.\relax }}{21}{figure.caption.30}}
+\@writefile{toc}{\contentsline {paragraph}{Project onto a plane}{22}{paragraph*.31}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.2}Pushing}{22}{subsection.4.2.2}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.3}Grasping}{23}{subsection.4.2.3}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.4}Predicate: \texttt  {block\_grasp}}{23}{subsection.4.2.4}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.5}Predicate: \texttt  {on}}{23}{subsection.4.2.5}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.6}Predicate: \texttt  {block\_dir$_i$}}{23}{subsection.4.2.6}}
 \@setckpt{4-Algorithm/algorithm}{
-\setcounter{page}{22}
-\setcounter{equation}{0}
-\setcounter{enumi}{3}
+\setcounter{page}{24}
+\setcounter{equation}{1}
+\setcounter{enumi}{2}
 \setcounter{enumii}{0}
 \setcounter{enumiii}{0}
 \setcounter{enumiv}{0}
-\setcounter{footnote}{0}
+\setcounter{footnote}{2}
 \setcounter{mpfootnote}{0}
 \setcounter{part}{0}
 \setcounter{chapter}{4}
 \setcounter{section}{2}
-\setcounter{subsection}{4}
+\setcounter{subsection}{6}
 \setcounter{subsubsection}{0}
 \setcounter{paragraph}{0}
 \setcounter{subparagraph}{0}
-\setcounter{figure}{2}
+\setcounter{figure}{4}
 \setcounter{table}{0}
 \setcounter{parentequation}{0}
-\setcounter{Item}{8}
-\setcounter{Hfootnote}{0}
-\setcounter{bookmark@seq@number}{26}
+\setcounter{Item}{10}
+\setcounter{Hfootnote}{2}
+\setcounter{bookmark@seq@number}{27}
 \setcounter{vrcnt}{0}
-\setcounter{lstnumber}{27}
+\setcounter{lstnumber}{33}
 \setcounter{float@type}{16}
 \setcounter{algorithm}{1}
 \setcounter{ALG@line}{12}
@@ -83,10 +92,10 @@
 \setcounter{mdf@env@ii}{0}
 \setcounter{mdf@zref@counter}{0}
 \setcounter{lips@count}{0}
-\setcounter{subfigure}{0}
+\setcounter{subfigure}{2}
 \setcounter{subtable}{0}
 \setcounter{NAT@ctr}{0}
-\setcounter{@todonotes@numberoftodonotes}{4}
+\setcounter{@todonotes@numberoftodonotes}{9}
 \setcounter{@stackindex}{0}
 \setcounter{ROWcellindex@}{0}
 \setcounter{section@level}{0}

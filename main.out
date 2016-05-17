@@ -14,17 +14,21 @@
 \BOOKMARK [1][-]{section.3.1}{State of the Art}{chapter.3}% 14
 \BOOKMARK [1][-]{section.3.2}{Planner}{chapter.3}% 15
 \BOOKMARK [1][-]{section.3.3}{Symbolic Predicates}{chapter.3}% 16
-\BOOKMARK [1][-]{section.3.4}{Limitations}{chapter.3}% 17
-\BOOKMARK [0][-]{chapter.4}{Algorithm}{}% 18
-\BOOKMARK [1][-]{section.4.1}{Object Localization}{chapter.4}% 19
-\BOOKMARK [2][-]{subsection.4.1.1}{Tabletop Object Detection}{section.4.1}% 20
-\BOOKMARK [2][-]{subsection.4.1.2}{Object Segmentation}{section.4.1}% 21
-\BOOKMARK [1][-]{section.4.2}{Predicates Computations}{chapter.4}% 22
-\BOOKMARK [2][-]{subsection.4.2.1}{Tools}{section.4.2}% 23
-\BOOKMARK [2][-]{subsection.4.2.2}{Predicate: block\137grasp}{section.4.2}% 24
-\BOOKMARK [2][-]{subsection.4.2.3}{Predicate: on}{section.4.2}% 25
-\BOOKMARK [2][-]{subsection.4.2.4}{Predicate: block\137diri}{section.4.2}% 26
-\BOOKMARK [0][-]{chapter.5}{Implementation}{}% 27
-\BOOKMARK [0][-]{chapter.6}{Experiments}{}% 28
-\BOOKMARK [0][-]{chapter.7}{Further Work}{}% 29
-\BOOKMARK [0][-]{chapter*.23}{Bibliography}{}% 30
+\BOOKMARK [0][-]{chapter.4}{Algorithm}{}% 17
+\BOOKMARK [1][-]{section.4.1}{Object Localization}{chapter.4}% 18
+\BOOKMARK [2][-]{subsection.4.1.1}{Tabletop Object Detection}{section.4.1}% 19
+\BOOKMARK [2][-]{subsection.4.1.2}{Object Segmentation}{section.4.1}% 20
+\BOOKMARK [1][-]{section.4.2}{Predicates Computations}{chapter.4}% 21
+\BOOKMARK [2][-]{subsection.4.2.1}{Background}{section.4.2}% 22
+\BOOKMARK [2][-]{subsection.4.2.2}{Pushing}{section.4.2}% 23
+\BOOKMARK [2][-]{subsection.4.2.3}{Grasping}{section.4.2}% 24
+\BOOKMARK [2][-]{subsection.4.2.4}{Predicate: block\137grasp}{section.4.2}% 25
+\BOOKMARK [2][-]{subsection.4.2.5}{Predicate: on}{section.4.2}% 26
+\BOOKMARK [2][-]{subsection.4.2.6}{Predicate: block\137diri}{section.4.2}% 27
+\BOOKMARK [0][-]{chapter.5}{Implementation}{}% 28
+\BOOKMARK [0][-]{chapter.6}{Experiments}{}% 29
+\BOOKMARK [0][-]{chapter.7}{Conclusions}{}% 30
+\BOOKMARK [1][-]{section.7.1}{Conclusions}{chapter.7}% 31
+\BOOKMARK [1][-]{section.7.2}{Limitations}{chapter.7}% 32
+\BOOKMARK [1][-]{section.7.3}{Future Work}{chapter.7}% 33
+\BOOKMARK [0][-]{chapter*.33}{Bibliography}{}% 34

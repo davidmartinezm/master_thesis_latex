@@ -51,7 +51,7 @@ The strategy for the tabletop object detection phase is composed of 3 different 
 \label{img:obj_tabletop_objects}
 \end{figure}
 
-The steps of this tabletop object detection algorithm are described in Figure \ref{img:obj_tabletop_objects}   for the point cloud in Figure \ref{img:obj_pointcloud}.
+The steps of this tabletop object detection algorithm are described in Figure \ref{img:obj_tabletop_objects}   for the point cloud\footnote{Point cloud taken from the Object Segmentation Database (OSD) \href{http://users.acin.tuwien.ac.at/arichtsfeld/?site=4}{http://users.acin.tuwien.ac.at/arichtsfeld/?site=4}} in Figure \ref{img:obj_pointcloud}.
 
 \subsection{Object Segmentation}
 \label{sec:obj_seg}
@@ -96,25 +96,81 @@ It clusters all the adjacent convex supervoxels (patches) using two criterion:
 \end{itemize}
 Then, due to the smoothed normals that could appear in some edges of the objects (point G Figure \ref{img:LCCP_structure}), the algorithm merges the clusters that are composed of few supervoxels to the biggest adjacent cluster. 
 
-By tuning properly the parameters of the segmentation algorithm the objects can be correctly segmented obtaining for one of them a point cloud. 
+By tuning properly the parameters of the segmentation algorithm the objects can be correctly segmented obtaining for one of them a point cloud. Two examples of the segmentation algorithm for a cluttered scene are depicted in Figure \ref{fig:seg_results}.
 
-\mbox{\textbf{ADD EXAMPLE IMAGES}}
+\begin{figure}[h]
+\centering
+\begin{subfigure}[t]{0.2\textwidth}
+\centering
+\includegraphics[width=\textwidth]{Img/ObjectSegmentation/seg1_rgb.png}
+\end{subfigure}
+\begin{subfigure}[t]{0.2\textwidth}
+\centering
+\includegraphics[width=\textwidth]{Img/ObjectSegmentation/seg1.png}
+\end{subfigure}
+\hspace{1.5cm}
+\begin{subfigure}[t]{0.2\textwidth}
+\centering
+\includegraphics[width=\textwidth]{Img/ObjectSegmentation/seg2_rgb.png}
+\end{subfigure}
+\begin{subfigure}[t]{0.2\textwidth}
+\centering
+\includegraphics[width=\textwidth]{Img/ObjectSegmentation/seg2.png}
+\end{subfigure}
+\caption{Example of segmentation results.}\label{fig:seg_results}
+\end{figure}
+
 
 \section{Predicates Computations}
-Once the objects are segmented, we will have one point cloud per object, next we have to translate the scenario composition into symbolic predicates. 
+In Chapter \ref{ch:task_planner}  the predicates used are described, in this section their computation is presented in detail. 
 
-In Chapter \ref{ch:task_planner}  the predicates that are used are described, in this section their computation is presented. 
+Once the objects have been segmented, we have one point cloud per object, next we have to retrieve the symbolic predicates from the objects configuration. 
 
-Before going in detail on their computation some general concepts are first presented. 
+Before going in detail on their computation some general concepts useful to understand the algorithm are first presented. 
 
-\subsection{Tools}
-\begin{itemize}
-\item collison detection
-\item pca
-\item table projection - convex hulls
-\end{itemize}
-To understand if an object imped a certain action, such as the pushing along a direction, we have to check if along the desired trajectory the pushed object will collide with a certain one. The collision detection is therefore a crucial step for the predicates computation. For the collision checking the Flexible Collision Library (FCL) \citep{pan2012fcl} has been used. This library allows to define the collision problem in a simpler manner than other more famous collision libraries such as \textit{Bullet} \citep{Bullet}, and it can work with different objects shapes such as box, spheres, cone, convex, mesh and octree. 
-The main library used in this work is the Point Cloud Library (PCL) \citep{PCL_}, which allows some methods to create an object shape from a point cloud. The mesh shape has been thought to use since it can be easily obtained by using the \textit{convex hull} algorithm. 
+\subsection{Background}
+%\begin{itemize}
+%\item collison detection
+%\item pca
+%\item table projection - convex hulls
+%\item rotation matrices
+%\end{itemize}
+\paragraph{Principal Components}
+The first concept to know is the concept of principal directions. The principal direction of an object is its principal axis which is defined as any of three mutually perpendicular axes about which the moment of inertia of a body is maximum. For instance, for a rectangular object its principal direction is the axis aligned with its longest dimension. 
+
+To obtain the principal axis the principal component analysis (PCA) \citep{PCA} technique is used. This technique is a common statistical procedure that uses orthogonal transformation to convert a set of  observations of possibly correlated variables into a set of values of linearly uncorrelated variables, which are called principal components. The transformation is defined in a manner that the first component has the largest variance, the second has the second largest variance and so on. The principal components are orthogonal because they are the eigenvectors of the covariance matrix, which is symmetric. An example of the principal components for a 2D data set is depicted in Figure \ref{fig:pca1}\footnote{Image taken from \href{https://en.wikipedia.org/wiki/Principal_component_analysis}{https://en.wikipedia.org/wiki/Principal\_component\_analysis}}. The principal components are computed through the covariance matrix of the set of observation, and its eigenvectors $\bar{\lambda_v}$ represent the principal components while its eigenvalues $\lambda$ represent the variance of the data set along the principal component $\bar{\lambda_v}$. 
+
+\begin{figure}[h]
+\centering
+\begin{subfigure}[t]{0.45\textwidth}
+\includegraphics[width=\textwidth]{Img/pca/pca.png}
+\caption{}\label{fig:pca1}
+\end{subfigure}
+\begin{subfigure}[t]{0.45\textwidth}
+\includegraphics[width=\textwidth]{Img/pca/pca2.png}
+\caption{}\label{fig:pca2}
+\end{subfigure}
+\caption{\textbf{Principal Components Analysis -} In Figure \ref{fig:pca1} PCA for a standard 2D set of observations. In Figure \ref{fig:pca2} results of the PCA for a rectangular segmented object. The \textcolor{green}{green}, \textcolor{red}{red} lines refers to different ways of the first principal components, while \textcolor{blue}{blue} and \textcolor{cyan}{cyan} lines refers to different ways of the second principal directions. The third one is not depicted but is orthogonal to the first two principal components.}
+\end{figure}
+
+A generic point cloud can be seen as a set of observations and the PCA can be directly applied in to the object's point cloud to retrieve its principal components, or how called in this work principal directions. In Figure \ref{fig:pca2} the principal directions of a generic object are illustrated. 
+
+\paragraph{Project onto a plane}
+We will see later that several things need the concept of the projections of a point into a plane. Considering a point $p={x_p,y_p,z_p}$ and a plane $P$ defined by the following equation
+\begin{equation}
+a x + by + cz + d = 0
+\end{equation}
+the projection $p_P$ of point $p$ onto the plane $P$ is given by the following set of operations:
+\begin{enumerate}
+\item
+\item
+\end{enumerate}
+
+
+
+To understand if an object imped a certain action, such as the pushing along a direction, we have to check if along the desired trajectory the pushed object will collide with a certain one. The collision detection is therefore a crucial step for the predicates computation. There exist different techniques to assert if two objects are colliding, all of them need a representation of the object, which could be for example a basic shape or a more complex as an octree. 
+
+The mesh shape has been thought to use since it can be easily obtained by using the \textit{convex hull} algorithm. 
 
 Explain convex hull.
 
@@ -124,6 +180,20 @@ The pose of the Kinect camera is above the table pointing forward it. In such a 
 --- discussed the convex hull relating into to the neccesity for the collision detection.
 
 \textbf{Somewhere talk about the limitation of the segmentation that is we assume it to be perfect because if not the planner will return likely an infeasible plan}
+
+\subsection{Pushing}
+
+Note that we can obtain with this method is:
+\begin{itemize}
+\item pushing direction for simple objects: we can push the rectangular object of Figure \ref{fig:pca2} along one of the ways of the first two principal directions, 
+\item assign a reference frame to the object: by using the three principal components we can obtain a new reference frame $F_{o_i}$ for each object.
+\end{itemize}
+
+The computed principal components are orthogonal between themselves but the way of eigenvector $\bar{\lambda}$ is chosen by the PCA algorithm. In our case we are interested having a coherent description of the pushing directions as indicated in Figure \ref{fig:pca2}, and for that aim $\bar{\lambda_2}$ has to be always the same way with respect to the first principal component $\bar{\lambda_1}$. 
+
+The reference frame --- AABB
+
+\subsection{Grasping}
 
 \subsection{Predicate: \texttt{block\_grasp}}
 \subsection{Predicate: \texttt{on}}
