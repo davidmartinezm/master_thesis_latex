@@ -1,46 +1,51 @@
 \select@language {english}
 \contentsline {chapter}{Contents}{1}{chapter*.1}
-\contentsline {chapter}{\numberline {1}Introduction}{2}{chapter.1}
-\contentsline {section}{\numberline {1.1}Problem Approach}{2}{section.1.1}
-\contentsline {section}{\numberline {1.2}Set Up}{3}{section.1.2}
-\contentsline {chapter}{\numberline {2}State of the Art Manipulation Planning}{6}{chapter.2}
-\contentsline {paragraph}{Learning in Task Planning}{7}{paragraph*.8}
-\contentsline {paragraph}{Interpreting the scene}{8}{paragraph*.9}
-\contentsline {section}{\numberline {2.1}Segmentation}{8}{section.2.1}
-\contentsline {section}{\numberline {2.2}Review Pushing}{8}{section.2.2}
-\contentsline {section}{\numberline {2.3}Review Grasping}{8}{section.2.3}
-\contentsline {section}{\numberline {2.4}Usefull things}{8}{section.2.4}
-\contentsline {section}{\numberline {2.5}Usefull Concepts}{9}{section.2.5}
-\contentsline {section}{\numberline {2.6}Problem Description}{9}{section.2.6}
-\contentsline {section}{\numberline {2.7}Real Robot }{9}{section.2.7}
-\contentsline {chapter}{\numberline {3}Task Planner}{10}{chapter.3}
-\contentsline {section}{\numberline {3.1}State of the Art}{10}{section.3.1}
-\contentsline {section}{\numberline {3.2}Planner}{11}{section.3.2}
-\contentsline {section}{\numberline {3.3}Symbolic Predicates}{12}{section.3.3}
-\contentsline {paragraph}{Grasping Action}{13}{paragraph*.13}
-\contentsline {paragraph}{Pushing Action}{13}{paragraph*.14}
-\contentsline {paragraph}{Effects of the action}{13}{paragraph*.15}
-\contentsline {paragraph}{Geometric constraints}{14}{paragraph*.16}
-\contentsline {paragraph}{PDDL}{16}{paragraph*.23}
-\contentsline {chapter}{\numberline {4}Algorithm}{18}{chapter.4}
-\contentsline {section}{\numberline {4.1}Object Localization}{18}{section.4.1}
-\contentsline {subsection}{\numberline {4.1.1}Tabletop Object Detection}{18}{subsection.4.1.1}
-\contentsline {subsection}{\numberline {4.1.2}Object Segmentation}{19}{subsection.4.1.2}
-\contentsline {subsubsection}{Supervoxel}{19}{subsubsection*.25}
-\contentsline {subsubsection}{Local Convex Connected Patches Segmentation}{20}{subsubsection*.26}
-\contentsline {section}{\numberline {4.2}Predicates Computations}{21}{section.4.2}
-\contentsline {subsection}{\numberline {4.2.1}Background}{21}{subsection.4.2.1}
-\contentsline {paragraph}{Principal Components}{21}{paragraph*.29}
-\contentsline {paragraph}{Project onto a plane}{22}{paragraph*.31}
-\contentsline {subsection}{\numberline {4.2.2}Pushing}{22}{subsection.4.2.2}
-\contentsline {subsection}{\numberline {4.2.3}Grasping}{23}{subsection.4.2.3}
-\contentsline {subsection}{\numberline {4.2.4}Predicate: \texttt {block\_grasp}}{23}{subsection.4.2.4}
-\contentsline {subsection}{\numberline {4.2.5}Predicate: \texttt {on}}{23}{subsection.4.2.5}
-\contentsline {subsection}{\numberline {4.2.6}Predicate: \texttt {block\_dir$_i$}}{23}{subsection.4.2.6}
-\contentsline {chapter}{\numberline {5}Implementation}{24}{chapter.5}
-\contentsline {chapter}{\numberline {6}Experiments}{25}{chapter.6}
-\contentsline {chapter}{\numberline {7}Conclusions}{28}{chapter.7}
-\contentsline {section}{\numberline {7.1}Conclusions}{28}{section.7.1}
-\contentsline {section}{\numberline {7.2}Limitations}{28}{section.7.2}
-\contentsline {section}{\numberline {7.3}Future Work}{28}{section.7.3}
-\contentsline {chapter}{Bibliography}{29}{chapter*.33}
+\contentsline {chapter}{\numberline {1}Introduction}{3}{chapter.1}
+\contentsline {section}{\numberline {1.1}Problem Approach}{3}{section.1.1}
+\contentsline {section}{\numberline {1.2}Set Up}{4}{section.1.2}
+\contentsline {chapter}{\numberline {2}State of the Art Manipulation Planning}{7}{chapter.2}
+\contentsline {paragraph}{Learning in Task Planning}{8}{paragraph*.8}
+\contentsline {paragraph}{Interpreting the scene}{9}{paragraph*.9}
+\contentsline {section}{\numberline {2.1}Segmentation}{9}{section.2.1}
+\contentsline {section}{\numberline {2.2}Review Pushing}{9}{section.2.2}
+\contentsline {section}{\numberline {2.3}Review Grasping}{9}{section.2.3}
+\contentsline {section}{\numberline {2.4}Usefull things}{9}{section.2.4}
+\contentsline {section}{\numberline {2.5}Usefull Concepts}{10}{section.2.5}
+\contentsline {section}{\numberline {2.6}Problem Description}{10}{section.2.6}
+\contentsline {section}{\numberline {2.7}Real Robot }{10}{section.2.7}
+\contentsline {chapter}{\numberline {3}Task Planner}{11}{chapter.3}
+\contentsline {section}{\numberline {3.1}State of the Art}{11}{section.3.1}
+\contentsline {section}{\numberline {3.2}Planner}{12}{section.3.2}
+\contentsline {section}{\numberline {3.3}Symbolic Predicates}{13}{section.3.3}
+\contentsline {paragraph}{Grasping Action}{14}{paragraph*.13}
+\contentsline {paragraph}{Pushing Action}{14}{paragraph*.14}
+\contentsline {paragraph}{Effects of the action}{14}{paragraph*.15}
+\contentsline {paragraph}{Geometric constraints}{15}{paragraph*.16}
+\contentsline {paragraph}{PDDL}{17}{paragraph*.23}
+\contentsline {chapter}{\numberline {4}Algorithm}{19}{chapter.4}
+\contentsline {section}{\numberline {4.1}Object Localization}{19}{section.4.1}
+\contentsline {subsection}{\numberline {4.1.1}Tabletop Object Detection}{19}{subsection.4.1.1}
+\contentsline {subsection}{\numberline {4.1.2}Object Segmentation}{20}{subsection.4.1.2}
+\contentsline {subsubsection}{Supervoxel}{20}{subsubsection*.25}
+\contentsline {subsubsection}{Local Convex Connected Patches Segmentation}{21}{subsubsection*.26}
+\contentsline {section}{\numberline {4.2}Background}{22}{section.4.2}
+\contentsline {paragraph}{Principal Components}{22}{paragraph*.30}
+\contentsline {paragraph}{Projection onto a plane}{22}{paragraph*.32}
+\contentsline {paragraph}{Rotation Matrices}{23}{paragraph*.33}
+\contentsline {paragraph}{Convex Hull}{24}{paragraph*.34}
+\contentsline {paragraph}{Collision Detection}{24}{paragraph*.36}
+\contentsline {paragraph}{Objects Modelling}{25}{paragraph*.37}
+\contentsline {section}{\numberline {4.3}Actions}{25}{section.4.3}
+\contentsline {subsection}{\numberline {4.3.1}Pushing}{25}{subsection.4.3.1}
+\contentsline {subsection}{\numberline {4.3.2}Grasping}{26}{subsection.4.3.2}
+\contentsline {section}{\numberline {4.4}Predicates Computations}{26}{section.4.4}
+\contentsline {subsection}{\numberline {4.4.1}Predicate: \texttt {block\_grasp}}{26}{subsection.4.4.1}
+\contentsline {subsection}{\numberline {4.4.2}Predicate: \texttt {on}}{26}{subsection.4.4.2}
+\contentsline {subsection}{\numberline {4.4.3}Predicate: \texttt {block\_dir$_i$}}{26}{subsection.4.4.3}
+\contentsline {chapter}{\numberline {5}Implementation}{27}{chapter.5}
+\contentsline {chapter}{\numberline {6}Experiments}{28}{chapter.6}
+\contentsline {chapter}{\numberline {7}Conclusions}{31}{chapter.7}
+\contentsline {section}{\numberline {7.1}Conclusions}{31}{section.7.1}
+\contentsline {section}{\numberline {7.2}Limitations}{31}{section.7.2}
+\contentsline {section}{\numberline {7.3}Future Work}{31}{section.7.3}
+\contentsline {chapter}{Bibliography}{32}{chapter*.40}

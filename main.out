@@ -18,17 +18,18 @@
 \BOOKMARK [1][-]{section.4.1}{Object Localization}{chapter.4}% 18
 \BOOKMARK [2][-]{subsection.4.1.1}{Tabletop Object Detection}{section.4.1}% 19
 \BOOKMARK [2][-]{subsection.4.1.2}{Object Segmentation}{section.4.1}% 20
-\BOOKMARK [1][-]{section.4.2}{Predicates Computations}{chapter.4}% 21
-\BOOKMARK [2][-]{subsection.4.2.1}{Background}{section.4.2}% 22
-\BOOKMARK [2][-]{subsection.4.2.2}{Pushing}{section.4.2}% 23
-\BOOKMARK [2][-]{subsection.4.2.3}{Grasping}{section.4.2}% 24
-\BOOKMARK [2][-]{subsection.4.2.4}{Predicate: block\137grasp}{section.4.2}% 25
-\BOOKMARK [2][-]{subsection.4.2.5}{Predicate: on}{section.4.2}% 26
-\BOOKMARK [2][-]{subsection.4.2.6}{Predicate: block\137diri}{section.4.2}% 27
-\BOOKMARK [0][-]{chapter.5}{Implementation}{}% 28
-\BOOKMARK [0][-]{chapter.6}{Experiments}{}% 29
-\BOOKMARK [0][-]{chapter.7}{Conclusions}{}% 30
-\BOOKMARK [1][-]{section.7.1}{Conclusions}{chapter.7}% 31
-\BOOKMARK [1][-]{section.7.2}{Limitations}{chapter.7}% 32
-\BOOKMARK [1][-]{section.7.3}{Future Work}{chapter.7}% 33
-\BOOKMARK [0][-]{chapter*.33}{Bibliography}{}% 34
+\BOOKMARK [1][-]{section.4.2}{Background}{chapter.4}% 21
+\BOOKMARK [1][-]{section.4.3}{Actions}{chapter.4}% 22
+\BOOKMARK [2][-]{subsection.4.3.1}{Pushing}{section.4.3}% 23
+\BOOKMARK [2][-]{subsection.4.3.2}{Grasping}{section.4.3}% 24
+\BOOKMARK [1][-]{section.4.4}{Predicates Computations}{chapter.4}% 25
+\BOOKMARK [2][-]{subsection.4.4.1}{Predicate: block\137grasp}{section.4.4}% 26
+\BOOKMARK [2][-]{subsection.4.4.2}{Predicate: on}{section.4.4}% 27
+\BOOKMARK [2][-]{subsection.4.4.3}{Predicate: block\137diri}{section.4.4}% 28
+\BOOKMARK [0][-]{chapter.5}{Implementation}{}% 29
+\BOOKMARK [0][-]{chapter.6}{Experiments}{}% 30
+\BOOKMARK [0][-]{chapter.7}{Conclusions}{}% 31
+\BOOKMARK [1][-]{section.7.1}{Conclusions}{chapter.7}% 32
+\BOOKMARK [1][-]{section.7.2}{Limitations}{chapter.7}% 33
+\BOOKMARK [1][-]{section.7.3}{Future Work}{chapter.7}% 34
+\BOOKMARK [0][-]{chapter*.40}{Bibliography}{}% 35
