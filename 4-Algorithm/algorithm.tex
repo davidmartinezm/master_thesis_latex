@@ -237,7 +237,7 @@ The mesh shape has been thought to use since it can be directly obtained from a 
 
 Given two objects A and B and their configurations $\bf{q_A}$ and $\bf{q_B}$, the discrete collision query returns a boolean value about whether two objects collide or not. Two objects collide if
 \[
-A(\bf{q_A}) \in B(\bf{q_B}) \neq 0
+A(\bf{q_A}) \cap B(\bf{q_B}) \neq 0
 \]
 
 The collision detection will be used to understand if in a given pose $\bf{q}$ the object $A$ will collide with the other objects in the scene.
@@ -260,7 +260,7 @@ The triangle mesh needed for the collision checking can be directly retrieved by
 \caption{Convex hulls and collision detection using the segmented objects retrieved by the \ttt{LCCP} segmentation algorithm. The gray surface represents the plane's 2D convex hull. In Figure \ref{fig:cv_top} it is possible appreciating that we miss the information about the hidden part of the object. In Figure \ref{fig:cv_top_collision} a collision detection example is depicted. The convex hull is translated along a direction and no collision is detected with any possible translation since the two convex hull will not intersect.}
 \end{figure}
 
-From the Kinect's point cloud only the table plane is known, so all the information we have are:
+From the Kinect's point cloud also the table plane is known, so all the information we have are:
 \begin{itemize}
 \item Table plane
 \item segmented objects (mainly the top surfaces)
