@@ -37,40 +37,70 @@
 \citation{PCA}
 \@writefile{lof}{\contentsline {figure}{\numberline {4.4}{\ignorespaces Box with a green stripe.\relax }}{22}{figure.caption.29}}
 \newlabel{fig:seg_color}{{4.4}{22}{Box with a green stripe.\relax }{figure.caption.29}{}}
+\@writefile{tdo}{\contentsline {todo}{\color@box {}{orange}{\leavevmode {\color  {orange}o}}\ Talk about filtering}{22}{section*.30}}
 \@writefile{toc}{\contentsline {section}{\numberline {4.2}Background}{22}{section.4.2}}
-\@writefile{toc}{\contentsline {paragraph}{Principal Components}{22}{paragraph*.30}}
-\@writefile{toc}{\contentsline {paragraph}{Projection onto a plane}{22}{paragraph*.32}}
-\newlabel{fig:pca1}{{4.5a}{23}{\relax }{figure.caption.31}{}}
-\newlabel{sub@fig:pca1}{{a}{23}{\relax }{figure.caption.31}{}}
-\newlabel{fig:pca2}{{4.5b}{23}{\relax }{figure.caption.31}{}}
-\newlabel{sub@fig:pca2}{{b}{23}{\relax }{figure.caption.31}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.5}{\ignorespaces \textbf  {Principal Components Analysis -} In Figure \ref  {fig:pca1} PCA for a standard 2D set of observations. In Figure \ref  {fig:pca2} results of the PCA for a rectangular segmented object. The \leavevmode {\color  {green}green}, \leavevmode {\color  {red}red} lines refers to different ways of the first principal components, while \leavevmode {\color  {blue}blue} and \leavevmode {\color  {cyan}cyan} lines refers to different ways of the second principal directions. The third one would be orthogonal to the first two principal components.\relax }}{23}{figure.caption.31}}
-\@writefile{toc}{\contentsline {paragraph}{Rotation Matrices}{23}{paragraph*.33}}
-\@writefile{toc}{\contentsline {paragraph}{Convex Hull}{24}{paragraph*.34}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.6}{\ignorespaces Convex hull example\relax }}{24}{figure.caption.35}}
-\newlabel{fig:convexhull_example}{{4.6}{24}{Convex hull example\relax }{figure.caption.35}{}}
-\@writefile{toc}{\contentsline {paragraph}{Collision Detection}{24}{paragraph*.36}}
-\@writefile{toc}{\contentsline {paragraph}{Objects Modelling}{25}{paragraph*.37}}
-\newlabel{fig:cv_top}{{4.7a}{25}{\relax }{figure.caption.38}{}}
-\newlabel{sub@fig:cv_top}{{a}{25}{\relax }{figure.caption.38}{}}
-\newlabel{fig:cv_top_collision}{{4.7b}{25}{\relax }{figure.caption.38}{}}
-\newlabel{sub@fig:cv_top_collision}{{b}{25}{\relax }{figure.caption.38}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.7}{\ignorespaces Convex hulls and collision detection using the segmented objects retrieved by the \texttt  {LCCP} segmentation algorithm. The gray surface represents the plane's 2D convex hull. In Figure \ref  {fig:cv_top} it is possible appreciating that we miss the information about the hidden part of the object. In Figure \ref  {fig:cv_top_collision} a collision detection example is depicted. The convex hull is translated along a direction and no collision is detected with any possible translation since the two convex hull will not intersect.\relax }}{25}{figure.caption.38}}
-\@writefile{toc}{\contentsline {section}{\numberline {4.3}Actions}{25}{section.4.3}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.3.1}Pushing}{25}{subsection.4.3.1}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.3.2}Grasping}{26}{subsection.4.3.2}}
-\@writefile{toc}{\contentsline {section}{\numberline {4.4}Predicates Computations}{26}{section.4.4}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.4.1}Predicate: \texttt  {block\_grasp}}{26}{subsection.4.4.1}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.4.2}Predicate: \texttt  {on}}{26}{subsection.4.4.2}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.4.3}Predicate: \texttt  {block\_dir$_i$}}{26}{subsection.4.4.3}}
+\newlabel{sec:background_alg}{{4.2}{22}{Background}{section.4.2}{}}
+\@writefile{toc}{\contentsline {paragraph}{Principal Components}{22}{paragraph*.31}}
+\@writefile{toc}{\contentsline {paragraph}{Projection onto a plane}{22}{paragraph*.33}}
+\newlabel{fig:pca1}{{4.5a}{23}{\relax }{figure.caption.32}{}}
+\newlabel{sub@fig:pca1}{{a}{23}{\relax }{figure.caption.32}{}}
+\newlabel{fig:pca2}{{4.5b}{23}{\relax }{figure.caption.32}{}}
+\newlabel{sub@fig:pca2}{{b}{23}{\relax }{figure.caption.32}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.5}{\ignorespaces \textbf  {Principal Components Analysis -} In Figure \ref  {fig:pca1} PCA for a standard 2D set of observations. In Figure \ref  {fig:pca2} results of the PCA for a rectangular segmented object. The \leavevmode {\color  {green}green}, \leavevmode {\color  {red}red} lines refers to different ways of the first principal components, while \leavevmode {\color  {blue}blue} and \leavevmode {\color  {cyan}cyan} lines refers to different ways of the second principal directions. The third one would be orthogonal to the first two principal components.\relax }}{23}{figure.caption.32}}
+\@writefile{toc}{\contentsline {paragraph}{Rotation Matrices}{23}{paragraph*.34}}
+\@writefile{toc}{\contentsline {paragraph}{Axis Aligned Bounding Box (AABB)}{24}{paragraph*.35}}
+\@writefile{toc}{\contentsline {paragraph}{Convex Hull}{24}{paragraph*.36}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.6}{\ignorespaces Convex hull example\relax }}{24}{figure.caption.37}}
+\newlabel{fig:convexhull_example}{{4.6}{24}{Convex hull example\relax }{figure.caption.37}{}}
+\@writefile{toc}{\contentsline {paragraph}{Collision Detection}{24}{paragraph*.38}}
+\@writefile{toc}{\contentsline {paragraph}{Objects Modelling}{25}{paragraph*.39}}
+\newlabel{fig:rgb_top_surfaces_example}{{4.7a}{25}{\relax }{figure.caption.40}{}}
+\newlabel{sub@fig:rgb_top_surfaces_example}{{a}{25}{\relax }{figure.caption.40}{}}
+\newlabel{fig:cv_top}{{4.7b}{25}{\relax }{figure.caption.40}{}}
+\newlabel{sub@fig:cv_top}{{b}{25}{\relax }{figure.caption.40}{}}
+\newlabel{fig:cv_top_collision}{{4.7c}{25}{\relax }{figure.caption.40}{}}
+\newlabel{sub@fig:cv_top_collision}{{c}{25}{\relax }{figure.caption.40}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.7}{\ignorespaces Convex hulls and collision detection using the segmented objects retrieved by the \texttt  {LCCP} segmentation algorithm. The gray surface represents the plane's 2D convex hull. In Figure \ref  {fig:cv_top} it is possible appreciating that we miss the information about the hidden part of the object. In Figure \ref  {fig:cv_top_collision} a collision detection example is depicted. The convex hull is translated along a direction and no collision is detected with any possible translation since the two convex hull will not intersect.\relax }}{25}{figure.caption.40}}
+\newlabel{fig:projection}{{4.8a}{26}{Surfaces projection\relax }{figure.caption.41}{}}
+\newlabel{sub@fig:projection}{{a}{26}{Surfaces projection\relax }{figure.caption.41}{}}
+\newlabel{fig:full_convexhull_}{{4.8b}{26}{Resulting convex hull\relax }{figure.caption.41}{}}
+\newlabel{sub@fig:full_convexhull_}{{b}{26}{Resulting convex hull\relax }{figure.caption.41}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.8}{\ignorespaces Convex hull of the objects using their projections onto the table plane.\relax }}{26}{figure.caption.41}}
+\newlabel{fig:full_convexhull}{{4.8}{26}{Convex hull of the objects using their projections onto the table plane.\relax }{figure.caption.41}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.3}Actions}{26}{section.4.3}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3.1}Pushing}{26}{subsection.4.3.1}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.9}{\ignorespaces Example of pushing directions.\relax }}{26}{figure.caption.42}}
+\newlabel{fig:directions}{{4.9}{26}{Example of pushing directions.\relax }{figure.caption.42}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.10}{\ignorespaces Gripper's profile view and robot's end effector.\relax }}{27}{figure.caption.43}}
+\newlabel{fig:gripper_side}{{4.10}{27}{Gripper's profile view and robot's end effector.\relax }{figure.caption.43}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.11}{\ignorespaces Profile view of a desired pose for pushing an object.\relax }}{27}{figure.caption.44}}
+\newlabel{fig:pushing_pose}{{4.11}{27}{Profile view of a desired pose for pushing an object.\relax }{figure.caption.44}{}}
+\newlabel{fig:pushing_way1}{{4.12a}{28}{\relax }{figure.caption.45}{}}
+\newlabel{sub@fig:pushing_way1}{{a}{28}{\relax }{figure.caption.45}{}}
+\newlabel{fig:pushing_way2}{{4.12b}{28}{\relax }{figure.caption.45}{}}
+\newlabel{sub@fig:pushing_way2}{{b}{28}{\relax }{figure.caption.45}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.12}{\ignorespaces \textbf  {Possible pushing poses for push an object along its principal axis} - In Figure \ref  {fig:pushing_way1} the closing direction of the gripper is orthogonal the pushing direction, and for the case depicted in the figure the gripper will likely push also the black juice box. In Figure \ref  {fig:pushing_way2} the closing direction of the gripper is parallel to the pushing direction.\relax }}{28}{figure.caption.45}}
+\newlabel{fig:pushing_way}{{4.12}{28}{\textbf {Possible pushing poses for push an object along its principal axis} - In Figure \ref {fig:pushing_way1} the closing direction of the gripper is orthogonal the pushing direction, and for the case depicted in the figure the gripper will likely push also the black juice box. In Figure \ref {fig:pushing_way2} the closing direction of the gripper is parallel to the pushing direction.\relax }{figure.caption.45}{}}
+\newlabel{eq:transform}{{4.2}{28}{Pushing}{equation.4.3.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3.2}Grasping}{29}{subsection.4.3.2}}
+\@writefile{tdo}{\contentsline {todo}{\color@box {}{orange}{\leavevmode {\color  {orange}o}}\ Add exactly how the gripper position is computed}{29}{section*.46}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.4}Predicates Computations}{29}{section.4.4}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4.1}Predicate: \texttt  {block\_grasp}}{29}{subsection.4.4.1}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.13}{\ignorespaces Visualization of the computation of \texttt  {block\_grasp} predicate for object \texttt  {o0}. The opened gripped model is transformed to the grasping pose for object \texttt  {o0} and it is tested if the gripper mesh model collides with the other objects, in this it collides with \texttt  {o1}. \relax }}{30}{figure.caption.47}}
+\newlabel{fig:block_grasp}{{4.13}{30}{Visualization of the computation of \texttt {block\_grasp} predicate for object \ttt {o0}. The opened gripped model is transformed to the grasping pose for object \ttt {o0} and it is tested if the gripper mesh model collides with the other objects, in this it collides with \ttt {o1}. \relax }{figure.caption.47}{}}
+\@writefile{loa}{\contentsline {algorithm}{\numberline {2}{\ignorespaces Computation of \texttt  {block\_grasp} predicate\relax }}{30}{algorithm.2}}
+\newlabel{alg:block_grasp}{{2}{30}{Computation of \texttt {block\_grasp} predicate\relax }{algorithm.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4.2}Predicate: \texttt  {on}}{30}{subsection.4.4.2}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4.3}Predicate: \texttt  {block\_dir$_i$}}{31}{subsection.4.4.3}}
+\@writefile{tdo}{\contentsline {todo}{\color@box {}{orange}{\leavevmode {\color  {orange}o}}\ Photos to take: - Robot pushing (vertical and parallel mode)}{31}{section*.48}}
 \@setckpt{4-Algorithm/algorithm}{
-\setcounter{page}{27}
-\setcounter{equation}{1}
-\setcounter{enumi}{5}
+\setcounter{page}{32}
+\setcounter{equation}{2}
+\setcounter{enumi}{6}
 \setcounter{enumii}{0}
 \setcounter{enumiii}{0}
 \setcounter{enumiv}{0}
-\setcounter{footnote}{2}
+\setcounter{footnote}{3}
 \setcounter{mpfootnote}{0}
 \setcounter{part}{0}
 \setcounter{chapter}{4}
@@ -79,18 +109,18 @@
 \setcounter{subsubsection}{0}
 \setcounter{paragraph}{0}
 \setcounter{subparagraph}{0}
-\setcounter{figure}{7}
+\setcounter{figure}{13}
 \setcounter{table}{0}
 \setcounter{parentequation}{0}
-\setcounter{Item}{13}
-\setcounter{Hfootnote}{2}
+\setcounter{Item}{19}
+\setcounter{Hfootnote}{3}
 \setcounter{bookmark@seq@number}{28}
 \setcounter{vrcnt}{0}
 \setcounter{lstnumber}{33}
 \setcounter{float@type}{16}
-\setcounter{algorithm}{1}
-\setcounter{ALG@line}{12}
-\setcounter{ALG@rem}{12}
+\setcounter{algorithm}{2}
+\setcounter{ALG@line}{14}
+\setcounter{ALG@rem}{14}
 \setcounter{ALG@nested}{0}
 \setcounter{ALG@Lnr}{2}
 \setcounter{ALG@blocknr}{10}
@@ -106,10 +136,10 @@
 \setcounter{mdf@env@ii}{0}
 \setcounter{mdf@zref@counter}{0}
 \setcounter{lips@count}{0}
-\setcounter{subfigure}{2}
+\setcounter{subfigure}{0}
 \setcounter{subtable}{0}
 \setcounter{NAT@ctr}{0}
-\setcounter{@todonotes@numberoftodonotes}{9}
+\setcounter{@todonotes@numberoftodonotes}{12}
 \setcounter{@stackindex}{0}
 \setcounter{ROWcellindex@}{0}
 \setcounter{section@level}{0}

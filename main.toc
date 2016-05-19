@@ -29,23 +29,24 @@
 \contentsline {subsubsection}{Supervoxel}{20}{subsubsection*.25}
 \contentsline {subsubsection}{Local Convex Connected Patches Segmentation}{21}{subsubsection*.26}
 \contentsline {section}{\numberline {4.2}Background}{22}{section.4.2}
-\contentsline {paragraph}{Principal Components}{22}{paragraph*.30}
-\contentsline {paragraph}{Projection onto a plane}{22}{paragraph*.32}
-\contentsline {paragraph}{Rotation Matrices}{23}{paragraph*.33}
-\contentsline {paragraph}{Convex Hull}{24}{paragraph*.34}
-\contentsline {paragraph}{Collision Detection}{24}{paragraph*.36}
-\contentsline {paragraph}{Objects Modelling}{25}{paragraph*.37}
-\contentsline {section}{\numberline {4.3}Actions}{25}{section.4.3}
-\contentsline {subsection}{\numberline {4.3.1}Pushing}{25}{subsection.4.3.1}
-\contentsline {subsection}{\numberline {4.3.2}Grasping}{26}{subsection.4.3.2}
-\contentsline {section}{\numberline {4.4}Predicates Computations}{26}{section.4.4}
-\contentsline {subsection}{\numberline {4.4.1}Predicate: \texttt {block\_grasp}}{26}{subsection.4.4.1}
-\contentsline {subsection}{\numberline {4.4.2}Predicate: \texttt {on}}{26}{subsection.4.4.2}
-\contentsline {subsection}{\numberline {4.4.3}Predicate: \texttt {block\_dir$_i$}}{26}{subsection.4.4.3}
-\contentsline {chapter}{\numberline {5}Implementation}{27}{chapter.5}
-\contentsline {chapter}{\numberline {6}Experiments}{28}{chapter.6}
-\contentsline {chapter}{\numberline {7}Conclusions}{31}{chapter.7}
-\contentsline {section}{\numberline {7.1}Conclusions}{31}{section.7.1}
-\contentsline {section}{\numberline {7.2}Limitations}{31}{section.7.2}
-\contentsline {section}{\numberline {7.3}Future Work}{31}{section.7.3}
-\contentsline {chapter}{Bibliography}{32}{chapter*.40}
+\contentsline {paragraph}{Principal Components}{22}{paragraph*.31}
+\contentsline {paragraph}{Projection onto a plane}{22}{paragraph*.33}
+\contentsline {paragraph}{Rotation Matrices}{23}{paragraph*.34}
+\contentsline {paragraph}{Axis Aligned Bounding Box (AABB)}{24}{paragraph*.35}
+\contentsline {paragraph}{Convex Hull}{24}{paragraph*.36}
+\contentsline {paragraph}{Collision Detection}{24}{paragraph*.38}
+\contentsline {paragraph}{Objects Modelling}{25}{paragraph*.39}
+\contentsline {section}{\numberline {4.3}Actions}{26}{section.4.3}
+\contentsline {subsection}{\numberline {4.3.1}Pushing}{26}{subsection.4.3.1}
+\contentsline {subsection}{\numberline {4.3.2}Grasping}{29}{subsection.4.3.2}
+\contentsline {section}{\numberline {4.4}Predicates Computations}{29}{section.4.4}
+\contentsline {subsection}{\numberline {4.4.1}Predicate: \texttt {block\_grasp}}{29}{subsection.4.4.1}
+\contentsline {subsection}{\numberline {4.4.2}Predicate: \texttt {on}}{30}{subsection.4.4.2}
+\contentsline {subsection}{\numberline {4.4.3}Predicate: \texttt {block\_dir$_i$}}{31}{subsection.4.4.3}
+\contentsline {chapter}{\numberline {5}Implementation}{32}{chapter.5}
+\contentsline {chapter}{\numberline {6}Experiments}{33}{chapter.6}
+\contentsline {chapter}{\numberline {7}Conclusions}{36}{chapter.7}
+\contentsline {section}{\numberline {7.1}Conclusions}{36}{section.7.1}
+\contentsline {section}{\numberline {7.2}Limitations}{36}{section.7.2}
+\contentsline {section}{\numberline {7.3}Future Work}{36}{section.7.3}
+\contentsline {chapter}{Bibliography}{37}{chapter*.50}
