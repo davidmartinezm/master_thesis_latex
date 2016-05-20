@@ -255,9 +255,28 @@ For the \textit{pushing} action its PDDL syntax is shown in listing \ref{pushPDD
 
 With such predicates the planner has all the basic information about the location of the objects on the scene. The symbolic predicates try to simplify the problem translating the geometric properties of the objects in symbolic ones. It is important to point out again that the system is deterministic, meaning that all the actions are supposed to give the resultant state with a probability of $1$. Clearly the more uncertainty is related to the pushing action, the direction selection, based on the principal axis, does not taken into account reliably the geometry of the object. The trajectory will be unlikely the desired one but a similar one. In the case the result of the action is not the expected one the replanning strategy will resolve the uncertainty problem. In this manner we are forced to considered that some interactions between objects are allowed but tried to be avoid as much as possible. 
 
+In order to provide a graphical scheme to the reader the planner pipeline is depicted in Figure \ref{fig:pipeline}. It can be appreciated the two fold strategy of the algorithm, the first stage (Figure \ref{fig:pipeline1}) is devoted to get the predicates from the Kinect sensor and the second one to evaluate the feasibility of the returned planned through backtracking and to execute the plan(Figure \ref{fig:pipeline2}).
+
+\begin{figure}[t]
+\centering
+\begin{subfigure}[t]{\textwidth}
+\centering
+\includegraphics[width=\textwidth]{Img/planning/Pipeline1.png}
+\caption{Perception Pipeline}\label{fig:pipeline1}
+\end{subfigure}
+\begin{subfigure}[t]{\textwidth}
+\centering
+\includegraphics[width=0.9\textwidth]{Img/planning/Pipeline2.png}
+\caption{Planning Pipeline}\label{fig:pipeline2}
+\end{subfigure}
+\caption{Planner pipeline}\label{fig:pipeline}
+\end{figure}
+
+Notice that the \ttt{grasped} predicate is just a predicate used only by the planner in order to know when the object has reached the goal or not, it does not need to be updated by the task planner. 
+
 \mbox{}
 
-The way of computing the predicates will be discussed in detail in the next chapter.
+How the predicates are computed will be discussed in detail in the next chapter.
 
 
 

@@ -16,55 +16,54 @@ Warning--to sort, need author or key in Gourmand
 Warning--to sort, need author or key in PROST
 Warning--to sort, need author or key in FastDownwardPage
 Warning--to sort, need author or key in pddl
-Warning--to sort, need author or key in Bidot2015
 Warning--to sort, need author or key in Bullet
 Warning--to sort, need author or key in PCL_
 Warning--empty author in pddl
-Warning--empty author in Bidot2015
 Warning--empty journal in Benchmarking
 Warning--empty journal in coelhoplanning
 Warning--empty year in coelhoplanning
+Warning--empty booktitle in haf
+Warning--can't use both volume and number fields in haf
 Warning--empty journal in SSS147762
-Warning--empty year in LCCP
-You've used 43 entries,
+You've used 44 entries,
             2118 wiz_defined-function locations,
-            738 strings with 11852 characters,
-and the built_in function-call counts, 14478 in all, are:
-= -- 1399
-> -- 626
-< -- 13
-+ -- 254
-- -- 205
-* -- 897
-:= -- 2205
-add.period$ -- 125
-call.type$ -- 43
-change.case$ -- 225
+            741 strings with 11748 characters,
+and the built_in function-call counts, 14862 in all, are:
+= -- 1427
+> -- 671
+< -- 15
++ -- 271
+- -- 221
+* -- 920
+:= -- 2289
+add.period$ -- 129
+call.type$ -- 44
+change.case$ -- 236
 chr.to.int$ -- 0
 cite$ -- 59
-duplicate$ -- 634
-empty$ -- 1267
-format.name$ -- 205
-if$ -- 3205
+duplicate$ -- 645
+empty$ -- 1280
+format.name$ -- 221
+if$ -- 3275
 int.to.chr$ -- 0
-int.to.str$ -- 43
+int.to.str$ -- 44
 missing$ -- 39
-newline$ -- 202
-num.names$ -- 74
-pop$ -- 347
+newline$ -- 208
+num.names$ -- 78
+pop$ -- 360
 preamble$ -- 1
-purify$ -- 184
+purify$ -- 194
 quote$ -- 0
-skip$ -- 485
+skip$ -- 490
 stack$ -- 0
-substring$ -- 780
-swap$ -- 183
-text.length$ -- 13
+substring$ -- 760
+swap$ -- 186
+text.length$ -- 15
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 164
-warning$ -- 16
-while$ -- 115
-width$ -- 45
-write$ -- 425
-(There were 16 warnings)
+type$ -- 168
+warning$ -- 15
+while$ -- 117
+width$ -- 46
+write$ -- 438
+(There were 15 warnings)

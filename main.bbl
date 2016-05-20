@@ -31,11 +31,6 @@ Description of the shop project
 Bullet \href{http://wiki.ros.org/bullet }{\url{http://wiki.ros.org/bullet }},
   2015.
 
-\bibitem{Bidot2015}
-Geometric backtracking for combined task and motion planning in robotic
-  systems.
-\newblock {\em Artificial Intelligence}, 2015.
-
 \bibitem{abdo2013learning}
 Nichola Abdo, Henrik Kretzschmar, Luciano Spinello, and Cyrill Stachniss.
 \newblock Learning manipulation actions from a few demonstrations.
@@ -50,6 +45,18 @@ Francesco Amigoni, Andrea Bonarini, Giulio Fontana, Matteo Matteucci, Viola
   through competitions.
 \newblock 2014.
 
+\bibitem{Bidot2015}
+Julien Bidot, Lars Karlsson, Fabien Lagriffoul, and Alessandro Saffiotti.
+\newblock Geometric backtracking for combined task and motion planning in
+  robotic systems.
+\newblock {\em Artificial Intelligence}, 2015.
+
+\bibitem{brook2011collaborative}
+Peter Brook, Matei Ciocarlie, and Kaijen Hsiao.
+\newblock Collaborative grasp planning with multiple object representations.
+\newblock In {\em Robotics and Automation (ICRA), 2011 IEEE International
+  Conference on}, pages 2851--2858. IEEE, 2011.
+
 \bibitem{aSyMov}
 Stéphane Cambon, Fabien Gravot, and Rachid Alami.
 \newblock A robot task planner that merges symbolic and geometric reasoning.
@@ -60,12 +67,11 @@ Stéphane Cambon, Fabien Gravot, and Rachid Alami.
 Rui Coelho and Alexandre Bernardino.
 \newblock Planning push and grasp actions: Experiments on the icub robot.
 
-\bibitem{Dang-semantic-grasping}
-Hao Dang and Peter~K. Allen.
-\newblock {Semantic grasping: Planning robotic grasps functionally suitable for
-  an object manipulation task}.
-\newblock In {\em 2012 IEEE/RSJ International Conference on Intelligent Robots
-  and Systems (IROS 2012)}, pages 1311--1317. IEEE, October 2012.
+\bibitem{covallero}
+N.~Covallero and G.~Alenyà.
+\newblock Grasping novel objects.
+\newblock Technical Report IRI-TR-16-01, Institut de Robòtica i Informàtica
+  Industrial, CSIC-UPC, 2016.
 
 \bibitem{dearden2013approach}
 Richard Dearden and Chris Burbridge.
@@ -103,6 +109,11 @@ Mustafa Ersen, Melodi~Deniz Ozturk, Mehmet Biberci, Sanem Sariel, and Hulya
 Mustafa Ersen, Sanem~Sariel Talay, and Hulya Yalcin.
 \newblock Extracting spatial relations among objects for failure detection.
 \newblock In {\em KIK@ KI}, pages 13--20, 2013.
+
+\bibitem{haf}
+David Fischinger, Astrid Weiss, and Markus Vincze.
+\newblock Learning grasps with topographic features.
+\newblock volume~34, pages 1167--1194, 2015.
 
 \bibitem{he.lahijanian2015towards-manipulation-planning}
 Keliang He, Morteza Lahijanian, Lydia~E. Kavraki, and Moshe~Y. Vardi.
@@ -162,12 +173,6 @@ Tom{\'a}s Lozano-P{\'e}rez and Leslie~Pack Kaelbling.
 \newblock In {\em Intelligent Robots and Systems (IROS 2014), 2014 IEEE/RSJ
   International Conference on}, pages 3684--3691. IEEE, 2014.
 
-\bibitem{lynch1996stable}
-Kevin~M Lynch and Matthew~T Mason.
-\newblock Stable pushing: Mechanics, controllability, and planning.
-\newblock {\em The International Journal of Robotics Research}, 15(6):533--556,
-  1996.
-
 \bibitem{marthi2007angelic}
 Bhaskara Marthi, Stuart~J Russell, and Jason Wolfe.
 \newblock Angelic semantics for high-level actions.
@@ -226,19 +231,18 @@ T.~Siméon, J.-P. Laumond, and C.~Nissoux.
 S.~C. Stein, M.~Schoeler, J.~Papon, and F.~Woergoetter.
 \newblock Object partitioning using local convexity.
 \newblock In {\em IEEE Conference on Computer Vision and Pattern Recognition
-  (CVPR) 2014}.
+  (CVPR)}, 2014.
+
+\bibitem{AGILE}
+Andreas ten Pas and Robert Platt.
+\newblock Using geometry to detect grasp poses in 3d point clouds.
+\newblock In {\em International Symposium on Robotics Research (ISRR)},
+  September 2015.
 
 \bibitem{vahrenkamp2013robot}
 Nikolaus Vahrenkamp, Tamim Asfour, and Rudiger Dillmann.
 \newblock Robot placement based on reachability inversion.
 \newblock In {\em Robotics and Automation (ICRA), 2013 IEEE International
   Conference on}, pages 1970--1975. IEEE, 2013.
-
-\bibitem{DBLP:conf/icra/YershovaL04}
-Anna Yershova and Steven~M. LaValle.
-\newblock Deterministic sampling methods for spheres and {SO(3)}.
-\newblock In {\em Proceedings of the 2004 {IEEE} International Conference on
-  Robotics and Automation, {ICRA} 2004, April 26 - May 1, 2004, New Orleans,
-  LA, {USA}}, pages 3974--3980, 2004.
 
 \end{thebibliography}

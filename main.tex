@@ -23,6 +23,9 @@
 \usepackage{listings}
 \usepackage{stackengine} % to write text below the images without number
 \usepackage{color}
+\usepackage{mathtools}
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil} %for the ceil operator
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
 
 
 
@@ -35,6 +38,10 @@
 \pagebreak
 \tableofcontents
 \pagebreak
+
+\chapter{Abstract}
+
+
 \include{1-Introduction/Introduction}
 \include{2-StateOfTheArt/review}
 \include{3-TaskPlanner/planner}

@@ -262,12 +262,12 @@ The triangle mesh needed for the collision checking can be directly retrieved by
 \end{subfigure}
 \begin{subfigure}[t]{0.3\textwidth}
 \centering
-\includegraphics[width=0.9\textwidth]{Img/convexhull/cv_top.png}
+\includegraphics[width=0.9\textwidth]{Img/convexhull/cv_top2.png}
 \caption{}\label{fig:cv_top}
 \end{subfigure}
 \begin{subfigure}[t]{0.3\textwidth}
 \centering
-\includegraphics[width=0.9\textwidth]{Img/convexhull/cv_top_collision.png}
+\includegraphics[width=0.9\textwidth]{Img/convexhull/cv_top_collision2.png}
 \caption{}\label{fig:cv_top_collision}
 \end{subfigure}
 \caption{Convex hulls and collision detection using the segmented objects retrieved by the \ttt{LCCP} segmentation algorithm. The gray surface represents the plane's 2D convex hull. In Figure \ref{fig:cv_top} it is possible appreciating that we miss the information about the hidden part of the object. In Figure \ref{fig:cv_top_collision} a collision detection example is depicted. The convex hull is translated along a direction and no collision is detected with any possible translation since the two convex hull will not intersect.}
@@ -285,7 +285,7 @@ If an human would be in the same pose of the Kinect, looking at the table, it wi
 \end{subfigure}
 \begin{subfigure}[t]{0.45\textwidth}
 \centering
-\includegraphics[width=0.9\textwidth]{Img/convexhull/full_convexhull.png}
+\includegraphics[width=0.9\textwidth]{Img/convexhull/full_convexhull2.png}
 \caption{Resulting convex hull}\label{fig:full_convexhull_}
 \end{subfigure}
 \caption{Convex hull of the objects using their projections onto the table plane.}\label{fig:full_convexhull}
@@ -298,23 +298,32 @@ If an human would be in the same pose of the Kinect, looking at the table, it wi
 
 
 
-\section{Actions}
+\section{Actions Execution}
 In this section the way the actions are executed is discussed, since the predicates computation depends on the way we decided to execute the actions.  
 
 
 \subsection{Pushing}
+\label{subsec:pushing}
 
-Pushing is a difficult action to execute when the goal is to move one object from one pose to another one. At the best of my knowledge  there are still no methods in state of the art that faced this problem. The majority of pushing action in object manipulation have the aim to interact with the objects in order to move them and validate the segmentation, without taking care about the final position of the objects. Grasping , although is a difficult task, has already an advanced state of the art regarding finding grasping pose also for complex objects. Somehow grasping is easier because it does not consider the whole object geometry but it is focused on looking for local futures that can be interesting for grasping the object (i.e. antipodal points). When we push an object all the object geometry has to be taken into account in order to find a suitable pushing direction. Moreover, humans push objects with a certain initial direction chosen accordingly the object geometry and then adapt the pushing direction accordingly to the error with respect the desired one. This would imply the implementation of a controller which is out the scope of this thesis. 
+Pushing is a difficult action to execute when the goal is to move one object from one pose to another one. At the best of my knowledge  there are still no methods in state of the art that faced this problem. The majority of pushing actions in object manipulation have the aim to interact with the objects in order to move them and validate the segmentation \citep{katz2014perceiving} \citep{katz2011interactive} \citep{Katz_2013_7407} , without taking care about the final position of the objects. Hermans er al. \citep{conf/iros/HermansRB12} presented a novel algorithm for object singulation through pushing actions, here the pushing actions have the aim to separate objects in cluttered scenes but they are not interested in singulate tidily the objects but just to find a feasible interaction to singulate them. This means that the pushing action could move several objects and the pushing direction is not chosen accordingly the object to push but accordingly to the plane that separate the objects. This results in a pushing action without any guarantee that the pushed objects follows the desired path. Grasping , although is a difficult task, has already an advanced state of the art regarding finding grasping pose also for complex objects. Somehow grasping is easier because it does not consider the whole object geometry but it is focused on looking for local futures that can be interesting for grasping the object (i.e. antipodal points). When we push an object all the object geometry has to be taken into account in order to find a suitable pushing direction. Moreover, humans push objects with a certain initial direction chosen accordingly the object geometry and then adapt the pushing direction accordingly to the error with respect the desired one. This would imply the implementation of a controller which is out the scope of this thesis. 
 
 We are considering to work with objects with simple shapes, such as parallelepipeds. 
 A human would push such object mainly accordingly its principal axis and the one orthogonal to its (i.e. the first 2 principal components of Figure \ref{fig:pca2}), but he/she also could push it along the diagonal thanks to the several amount of freedom of the hands. 
 Inspired by this consideration, we decided to consider as possible directions to push an object  its first two principal components, the third is orthogonal to the object and it is not of interest for pushing. In particular, there are two senses for each direction, so in total we have 4 possible pushing directions per object, as depicted in Figure \ref{fig:directions}.
 
-\begin{wrapfigure}{r}{3.5cm}
+\begin{figure}
 \centering
-\caption{Example of pushing directions.}\label{fig:directions}
+\begin{subfigure}[t]{6cm}
 \includegraphics[width=5.5cm]{Img/pushing/directions.png}
-\end{wrapfigure}
+\caption{Pushing directions computed using the segmented surface seen by the Kinect.}\label{fig:directions1}
+\end{subfigure}
+\begin{subfigure}[t]{6cm}
+\includegraphics[width=5.5cm]{Img/pushing/directions2.png}
+\caption{Pushing directions associated to the object's convex hull.}
+\label{fig:directions2}
+\end{subfigure}
+\caption{Example of pushing directions.}\label{fig:directions}
+\end{figure}
 
 Another things to take into account is that the principal directions are not parallel to the table plane. The Kinect could see some sides of the objects, and these sides will affect the direction of the principal components. An object which stands on top of a table will be obviously pushed along a direction parallel to the table. As previously described in Section \ref{sec:background_alg} a point can be projected on to the table plane, but a point and a vector (the principal components are vectors) have the same representation, and therefore we can apply exactly the same equations to obtain the projections of the principal components onto the table plane. So the pushing directions considered are not the one obtained by the PCA but their projections. 
 
@@ -322,8 +331,8 @@ Another things to take into account is that the principal directions are not par
 Next, having some pushing directions along with the robot will push the objects, the pose of the end effector (i.e. the gripper) to push the object has to be decided. The pose has been chosen accordingly to the shape of the end effector.
 \begin{wrapfigure}{r}{3.5cm}
 \centering
-\caption{Gripper's profile view and robot's end effector.}\label{fig:gripper_side}
 \includegraphics[width=3.5cm]{Img/set_up/gripper_side2.png}
+\caption{Gripper's profile view and robot's end effector.}\label{fig:gripper_side}
 \end{wrapfigure}
 In Figure \ref{fig:gripper_side}
 is possible observing the profile of the gripper mounted to the last link of the robot, highlighted by the blue color. Such last link has a circular shape and the gripper's deep is less then the last link. It is undesirable pushing an object with a circular, or spherical, shape for the end effector because there is more probability to make the object no follow the desired path. The gripper has no a circular shape and it is all symmetric, this make it suitable to push an object with a certain stability, i.e. make the object follow the desired path, during the action. As final consideration, we don't want that the last link of the robot touch the objective object since we want a pushing action accurate as most as possible. 
@@ -332,7 +341,7 @@ Knowing also the height of the objects retrieved by its AABB, it is possible hav
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=8cm]{Img/pushing/pushing1.png}
+\includegraphics[width=7cm]{Img/pushing/pushing1.png}
 \caption{Profile view of a desired pose for pushing an object.}\label{fig:pushing_pose}
 \end{figure}
 
@@ -343,12 +352,12 @@ Due to the limited opening width of the gripper (8 centimetres) the object the r
 \centering
 \begin{subfigure}[t]{0.45\textwidth}
 \centering
-\includegraphics[width=4cm]{Img/pushing/pushing333.png}
+\includegraphics[width=3cm]{Img/pushing/pushing333.png}
 \caption{}\label{fig:pushing_way1}
 \end{subfigure}
 \begin{subfigure}[t]{0.45\textwidth}
 \centering
-\includegraphics[width=4cm]{Img/pushing/pushing222.png}
+\includegraphics[width=3cm]{Img/pushing/pushing222.png}
 \caption{}\label{fig:pushing_way2}
 \end{subfigure}
 \caption{\textbf{Possible pushing poses for push an object along its principal axis} - In Figure \ref{fig:pushing_way1} the closing direction of the gripper is orthogonal the pushing direction, and for the case depicted in the figure the gripper will likely push also the black juice box. In Figure \ref{fig:pushing_way2} the closing direction of the gripper is parallel to the pushing direction.}\label{fig:pushing_way}
@@ -372,7 +381,7 @@ c_x \\ c_y \\ c_z
 \end{equation}
 where $dir1_X$ refers to the x coordinate of the vector that defines the direction 1, $n$ is the table normal and $c$ is the desired tool central point. Eq. \ref{eq:transform} refers for a pushing along direction 1, where the gripper's closing direction has to be parallel to the pushing direction. The rotation matrix $R_{dir3}$ for pushing along direction 3 would be the same of $R_{dir1}$. 
 
-As previously said, the planner consider to push the objects at infinity, in reality the robot has to push the objects for a finite length. Since the planner has no geometric information, the pushing length is chosen accordingly the dimension of the AABB relative to the pushing direction. For instance, if the robot is going to push the object $1$ along direction 1 the length $l$ of the pushing action is $l=k \cdot AABB_1.length$, where $k$ is a gain factor (1 in our experiments). This is a big limitation since the robot will push an object accordingly to the manipulated objects, not to surrounding ones. 
+As previously said, the planner consider to push the objects at infinity, in reality the robot has to push the objects for a finite length. Since the planner has no geometric information, the pushing length is chosen accordingly the dimension of the AABB relative to the pushing direction. For instance, if the robot is going to push the object $1$ along direction 1 the length $l$ of the pushing action is $l=k \cdot AABB_1.length$, where $k$ is a gain factor (1 in our experiments) called \textit{pushing step}. This is a big limitation since the robot will push an object accordingly to the manipulated objects, not to surrounding ones. 
 
 The first pose is the pushing pose while the last pose is the pushing pose translated along the pushing direction by the length of the push. To retrieve the path the we consider the total length and we discretize it by $n$ points having in this way $n+2$ poses (2 because of the pushing pose and the final pose). For each pose the inverse kinematic is done. In this way we obtain a discrete path. 
 
@@ -391,7 +400,10 @@ In this way the pushing trajectory is defined by a total of $n+4$ poses.
 
 \subsection{Grasping}
 
-There exist an advanced state of the art regarding grasping. Despite this all the techniques of grasping are very computationally expensive. Many of them rely on the identification of the shape of the objects and then a set of pre-built grasping poses is returned. Other techniques rely on the identification of local features which can state if a grasping pose is feasible or not. All these methods works very well but are quite time consuming. In this thesis we consider a very simple approach to grasp the object, which is suitable only with the kind objects we are going to interact with, despite this the planner present by this thesis can be directly integrated (with just few modifications) with several grasping algorithm. 
+%\todo[inline]{Review of grasping techniques}
+%\textbf{ROS object\_manipulator}\\
+
+There exist an advanced state of the art regarding grasping. Despite this all the techniques of grasping are very computationally expensive. Many of them rely on the identification of the shape of the objects and then a set of pre-built grasping poses is returned and they can be very robust as the method proposed by Brook et al. \citep{brook2011collaborative}. Other techniques rely on the identification of local features which can state if a grasping pose is feasible or not. Two very goods grasping planning algorithms, which deal with novel objects, published past year are AGILE \citep{AGILE} and HAF \citep{haf}, despite this how shown in \citep{covallero} they are not so robust and they are computationally expensive and not suitable for this thesis. In order to have a faster planning algorithm we considered a very simple approach to grasp the objects, which is suitable only with the kind objects we are going to interact with. Despite this the planner present by this thesis can be directly integrated (with just few modifications) with several grasping algorithms. 
 
 The idea is to grasp the object in manner that the gripper's closing direction is orthogonal the principal axis of the object. The approaching direction of the gripper is given by the third principal component of the object. Then the gripper also is centred accordingly the centroid of the object. 
 In this manner a single grasping pose is obtained for each object. 
@@ -420,20 +432,20 @@ The \ttt{block\_grasp o1 o2} predicate refers the fact that object \ttt{o1} impe
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=8cm]{Img/grasping/block_grasp.png}
+\includegraphics[width=7cm]{Img/grasping/block_grasp.png}
 \caption{Visualization of the computation of \texttt{block\_grasp} predicate for object \ttt{o0}. The opened gripped model is transformed to the grasping pose for object \ttt{o0} and it is tested if the gripper mesh model collides with the other objects, in this it collides with \ttt{o1}. }\label{fig:block_grasp}
 \end{figure}
 
 \begin{algorithm}
-\caption{Computation of \texttt{block\_grasp} predicate}\label{alg:block_grasp}
+\caption{Computation of \texttt{block\_grasp} predicate. $O$ is the set of objects (convex hull retrieved with the projection onto the table plane) and $G_{poses}$ is the set of grasping poses of all the objects.}\label{alg:block_grasp}
 \begin{algorithmic}
-\Procedure{ComputeBlockGraspPredicates}{$objectsHulls$,$graspingPoses$}
+\Function{ComputeBlockGraspPredicates}{$O$,$G_{poses}$}
   \texttt{block\_grasp\_predicates} = \textsc{NULL}
-\ForAll{$A = objects$}
-  \State $gripperMesh =$ \textsc{trasnformGripperModel}($graspingPoses(A)$)
-\ForAll{$B = objects$}
+\ForAll{$A = objects \in O$}
+  \State $openGripperMesh \gets$ \textsc{trasnformGripperModel}($G_{poses}(A)$)
+\ForAll{$B = objects \in O$}
   \If{$A \neq B$} 
-	\State $collision =$ \textsc{isThereCollision($gripperMesh$,$B$)}
+	\State $collision \gets$ \textsc{isThereCollision($openGripperMesh$,$B$)}
 	\If{collision}
 		\State \texttt{block\_grasp\_predicates} = \textsc{AddPredicate}(\texttt{block\_grasp B A})
 	\EndIf
@@ -441,17 +453,156 @@ The \ttt{block\_grasp o1 o2} predicate refers the fact that object \ttt{o1} impe
 \EndFor
 \EndFor \\
 \Return  \texttt{block\_grasp\_predicates}
-\EndProcedure
+\EndFunction
 \end{algorithmic}
 \end{algorithm}   
  
 Notice that this method implies to check for collision between the gripper and objects that might be very far from the interested object, i.e. there is no need to compute the collision detection.  Despite this, how explained in Section \ref{sec:background_alg} the most collision detection algorithm first check if the AABB of the objects intersect. This is a computationally cheap operation, and only if their AABB intersect the computationally expensive algorithm are used to check for collision. This makes the Algorithm \ref{alg:block_grasp} efficient and computationally not expensive. It has been observed that, in average, to compute this predicate the time is about $8$ milliseconds. This for two main reason, the objects are far between each other and their AABB do not intersect, or in case they intersect the gripper mesh model is relatively simple compared to the convex hull of an object, this makes the collision detection algorithm faster because it has to check for the intersection of less triangles. 
  
 \subsection{Predicate: \texttt{on}}
-The \ttt{on o1 o2} means that objects \ttt{o1} is on top of object \ttt{o2}. With the convex hull of the objects is easy to understand if two objects are one on top of the other on by checking for collision, but in this way we do not know what objects is above and what is below. To do this their surface projections onto the table plane are used. Add reference
+The \ttt{(on o0 o1)} predicate means that object \ttt{o0} is on top of object \ttt{o1}. With the convex hull of the objects is easy to understand if two objects are one on top of the other on by checking for collision, but in this way we do not know who is above and who is below. To do this their surface projections onto the table plane are used. 
+The research group of Artificial Intelligence and Robotics Laboratory of
+Istanbul Technical University, published some interesting researches suitable to the aim of this thesis. In \citep{ersen2014scene} \citep{SSS147762} \citep{ersen2013extracting} the authors proposed some approaches to enhance
+ 3D recognition and segmentation results to create and maintain a consistent world model involving attributes of the objects and spatial relations among them. Their researched focused on modelling the world for manipulation planning tasks. They do not consider scene like the one of this thesis but simpler ones such as  a pile of cubes above each other. What can be directly used from their work is the computation of the \ttt{on} predicate. The \textit{on} relation for a pair of objects is determined by checking whether their projections on the table plane overlap. This predicate was not a relevant part of their work and they did not provide to much information about its computation. Therefore our implementation for the \ttt{on} predicate is based on their idea with some modifications. 
+ 
+Our idea is based on the fact that an object which stands on top of another one occludes some parts of the object below. While the one below does no occlude any part of the top object. 
+Let's consider the scene in Figure \ref{fig:on_predicate_original}, the object \ttt{o0} occludes some parts of object \ttt{o1}. The projections ${\sc P_{0}}$ and ${\sc P_{1}}$ onto the table plane of \ttt{o0} and \ttt{o1} are respectively the red and green ones in Figure \ref{fig:on_1}. This means that the convex hull ${\sc C_{P_{1}}}$ of the projection \ttt{o1} intersect with the projection ${\sc P_{0}}$ of \ttt{o0}, while the projection ${\sc P_{1}}$ of \ttt{o1} does not interesct with the convex hull ${\sc C_{P_{0}}}$ of the projection of \ttt{o0} (Figures \ref{fig:on_2} and \ref{fig:on_3}). 
+
+
+\begin{figure}[h]
+\centering
+\begin{subfigure}[t]{0.45\textwidth}
+\centering
+\includegraphics[width=5cm]{Img/on/on1.jpg}
+\caption{Scene}\label{fig:on_predicate_original}
+\end{subfigure}
+\begin{subfigure}[t]{0.45\textwidth}
+\centering
+\includegraphics[width=5cm]{Img/on/on2.png}
+\caption{$P_0 \quad \& \quad P_1$}\label{fig:on_1}
+\end{subfigure}
+\begin{subfigure}[t]{0.45\textwidth}
+\centering
+\includegraphics[width=5cm]{Img/on/on4.png}
+\caption{${\sc C_{P_{1}}} \quad \& \quad {\sc P_{0}}$}\label{fig:on_2}
+\end{subfigure}
+\begin{subfigure}[t]{0.45\textwidth}
+\centering
+\includegraphics[width=5cm]{Img/on/on3.png}
+\caption{${\sc C_{P_{0}}} \quad \& \quad {\sc P_{1}}$}\label{fig:on_3}
+\end{subfigure}
+\caption{Visualization of the computation of the \ttt{on} predicate. Figure \ref{fig:on_1} show the real image, Figure \ref{fig:on_1} shows the projections of the objects onto the table plan while Figures \ref{fig:on_2} and \ref{fig:on_3} represent the two step strategy to compute the \ttt{on} predicate.}\label{fig:on_predicate}
+\end{figure}
+
+Although this method works fine to compute the \ttt{on} predicate it has the limitation that its scope is only for objects for a rectangular shaper. An object that has a form of L has a convex hull that includes big free areas where an object could lie. 
+
+It is important to take into account also that actually the edges of the occluded parts of the below object, once projected, could be at the same position, of some projected edges of the top object. This could be dangerous for the computation of this predicate. Therefore a threshold is added. Focusing the attention on Figure \ref{fig:on_2} it can be appreciated that the intersection ${\sc C_{P_{0}}} \cap {\sc P_{1}}$ has several points, while in case the two edges relative to the occluded and occluding part have similar coordinates, the intersection ${\sc C_{P_{1}}} \cap {\sc P_{0}}$ would have just few points. Therefore the \ttt{(on o0 o1)} predicate is update accordingly to the following mathematical formula:
+\begin{equation}
+\ttt{(on o0 o1)} =
+\begin{cases}
+{\sc True}, \qquad length({\sc C_{P_{0}}} \cap {\sc P_{1}}) > th_0 \;\; \wedge \;\; length({\sc C_{P_{1}}} \cap {\sc P_{0}}) < th_1 \\
+{\sc False}, \qquad otherwise
+\end{cases}
+\label{eq:on}
+\end{equation}
+where $length(A)$ means the number of elements in the set $A$.
+The values of the thresholds $th_0$ and $th_1$ are determined empirically and they are $th_0=th_1=100$.
+
+The formula \ref{eq:on} is then evaluated for every possible combinations of objects, that is $n(n-1)$ times, where $n$ is the number of objects. Despite this, its computation is very fast. For the example in Figure \ref{fig:on_predicate} its was evaluated just 2 times since there are only 2 objects and it took $3$ milliseconds, that is $\approx 1.5 \frac{ms}{pair \; of \; object}$. For instance, for a complex scene with 10 objects the total time devoted to compute this predicate would be $10 \cdot 9 \cdot 1.5 \approx 135 ms$ (the $\approx$ symbol is due to the fact that the computation time depends on the number of points of the objects and the complexity of their convex hulls).
+
+
 
 \subsection{Predicate: \texttt{block\_dir$_i$}}
-How the object is trasnformed along the pushing direction and accordingly to the desired length($k \cdot AABB(length)$).
+The \ttt{(block\_dir$_i$ o1 o0)} predicate, if true, means that object \ttt{o1} impedes object \ttt{o0} to be moved along its $i$-th direction. 
+
+Object \ttt{o1} can impedes object \ttt{o0} to be moved along a certain direction if a collision will appear between the two objects. In order to do that, having a certain pushing length $l_i$ for the $i$-th direction of object \ttt{o0}, its ocnvex hull $C_0$ is translated along the considered direction until reach its final position which is $p_f=p_i + l \cdot dir_i$, where $p_f$ and $p_i$ are respectively the centroid at the final and initial pose. Object \ttt{o0} is going to do a path from its initial and final pose so the collision should be checked along its path. 
+To do that we could use a continuous collision detection algorithm or a discrete one. The continuous method suppose that given an object, its initial, its final pose and the other objects in the environment it will detect a collision if a collision occurs from the initial to the final pose. This algorithm has the advantage to be accurate but we should repeat it separately for each object sine we are not interested to see if there is a collision, but we are interested in knowing what is the object it is going to collide with. We decided therefore to use the discrete strategy, that is we consider several poses between the initial one and the final one, including the final one, and for each check if it collides with the other objects. 
+
+
+
+\begin{figure}[h]
+\centering
+\begin{subfigure}[t]{5cm}
+\centering
+\includegraphics[width=5cm]{Img/block_dir/original_labels2.png}
+\caption{Top view of the convex hull of the segmented objects.}\label{fig:block_dir_original}
+\end{subfigure}
+\begin{subfigure}[t]{5cm}
+\centering
+\includegraphics[width=5cm]{Img/block_dir/pushing11.png}
+\caption{Evaluating the \ttt{(block\_dir1 * o5)} predicate}\label{fig:block_dir_push1}
+\end{subfigure}
+\begin{subfigure}[t]{5cm}
+\centering
+\includegraphics[width=5cm]{Img/block_dir/pushing22.png}
+\caption{Evaluating the \ttt{(block\_dir1 * o7)} predicate}\label{fig:block_dir_original}
+\end{subfigure}
+\begin{subfigure}[t]{5cm}
+\centering
+\includegraphics[width=5cm]{Img/block_dir/pushing33.png}
+\caption{Evaluating the \ttt{(block\_dir3 * o7)} predicate}\label{fig:block_dir_original}
+\end{subfigure}
+\begin{subfigure}[t]{5cm}
+\centering
+\includegraphics[width=5cm]{Img/block_dir/pushing44.png}
+\caption{Evaluating the \ttt{(block\_dir2 * o3)} predicate}\label{fig:block_dir_original}
+\end{subfigure}
+\begin{subfigure}[t]{5cm}
+\centering
+\includegraphics[width=5cm]{Img/block_dir/pushing55.png}
+\caption{Evaluating the \ttt{(block\_dir1 * o0)} predicate}\label{fig:block_dir_original}
+\end{subfigure}
+\caption{Visualization of the computation of \ttt{block\_dir$_i$} predicates. Evualuating the \ttt{(block\_dir1 * o0)} means that the algorithm is evaluating for all the objects, except \ttt{o0}, if they collide with \ttt{o0} when pushed along direction 1.}\label{fig:block_dir}
+\end{figure}
+
+Considering the kind of objects we are going to interact with, the discrete path  is computed by translating the object along the pushing direction by a length equal to the AABB dimension associated to that direction, until reaching the final pose. Note that no collision detection is done for the object at its initial pose, therefore the total number of poses considered for the pushing path are $n_{poses} = \ceil*{\frac{k \cdot AABB_{dimension}}{AABB_{dimension}}} = \ceil*{k}$, where $k$ is the pushing step defined in Section \ref{subsec:pushing}.
+
+To push an object along a certain direction the robot needs to put its end effector at the opposite side of the object. Therefore object \ttt{o1} can impedes object {o0} to be moved along a certain direction also in the case the end effector cannot be put in the pushing pose because it would collide with \ttt{o1}. This computation is simply done by transforming the closed gripper mesh model to the pushing pose relative the desired pushing direction of the object to push and check for collision with the other objects, as similarly done for the computation of the \ttt{block\_grasp} predicate.
+
+In Figure \ref{fig:block_dir} is shown graphically the procedure to compute the predicate. 
+
+
+Note that also the gripper during the pushing action will move, so ideally the collision checking should be done exactly how done for the object. We decided to neglect this and check only for the initial pose in order to relax the planner and not to make it too much conservative. This means that during the pushing action the robot might actually move more than one object. Despite this relaxing strategy the algorithm showed to work perfectly and case in which the gripper moved more than one object were really rare, at least we the objects we used in our experiments. 
+
+\begin{algorithm}[h]
+\caption{Computation of \texttt{block\_dir} predicates. $O$ is the set of objects (convex hull retrieved with the projection onto the table plane), $P_d$ is the set of the pushing directions of all the objects, $P_{poses}$ is the set of the initial pushing pose of all the object and $P_{path}$ is the set of all the pushing poses realtive to each direction and each object.}\label{alg:block_dir}
+\begin{algorithmic}
+\Function{ComputeBlockDirPredicates}{$O$,$P_d$,$P_{poses}$,$P_{path}$}\\
+\texttt{block\_dir\_predicates} $\gets$ \textsc{NULL}
+\ForAll{$A = object \in O$}
+\ForAll{$d = directions \in P_d(A)$}
+\ForAll{$p = poses \in P_{path}(A,d)$}
+\ForAll{$B = object \in O$}
+  \State $A_T \gets$ {\sc transformObject($A,p$)}
+  \If{$A \neq B$} 
+	\State $collision \gets$ \textsc{isThereCollision($A_T$,$B$)}
+	\If{collision}
+		\State \texttt{block\_dir\_predicates} $\gets$ \textsc{AddPredicate}(\texttt{block\_dir B A})
+	\EndIf
+  \EndIf
+  \EndFor 
+  \EndFor
+
+  \State $closedGripperMesh \gets$ \textsc{trasnformClosedGripperModel}($P_{poses}(A,d)$)
+\ForAll{$B = object \in O$}
+\If{$A \neq B$} 
+	\State $collision \gets$ \textsc{isThereCollision($closedGripperMesh$,$B$)}
+	\If{collision}
+		\State \texttt{block\_dir\_predicates} $\gets$ \textsc{AddPredicate}(\texttt{block\_dir B A})
+	\EndIf
+  \EndIf
+  \EndFor
+\EndFor 
+\EndFor \\
+\Return  \texttt{block\_dir\_predicates}
+\EndFunction
+\end{algorithmic}
+\end{algorithm}  
+
+The computation of this predicate can be appreciated in detail in Algorithm \ref{alg:block_dir}. From that pseudo code can be noted that the complexity of this function to compute the predicate approximatively is $\mathcal{O}(n \cdot n_{directions} \cdot n_{poses}\cdot (n-1) + (n-1)\cdot n_{directions} )$. 
+
+The computation of this algorithm is the most computational expensive of all the planner since it involves many collision detection phases. In fact the time required to compute this predicate for the example in Figure \ref{fig:block_dir} (considering to push the objects $1.5$ times the AABB dimension relative to the pushing direction) was $\approx 1.115 seconds$, were $\approx 0.869s$ were dedicated to check if the objects will collide when move while $\approx 0.239s$ were dedicated if the gripper collides with some objects.  
+
 
 
 \todo[inline]{Photos to take: 
