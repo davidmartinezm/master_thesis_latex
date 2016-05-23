@@ -1,7 +1,7 @@
 \chapter{Algorithm}
 \label{ch:algorithm}
 
-In this chapter the algorithm is discussed, presenting how the objects are recognized, and how the symbolic predicates are obtained. 
+In this chapter the algorithm is discussed, presenting how the objects are recognized and how the symbolic predicates are obtained. 
 
 \section{Object Localization} 
 For the planner, to know how to move the object, is fundamental knowing the objects on the scenario, therefore they need to be detected. More correctly, they need to be segmented since the algorithm is dealing with unknown objects, it is not going to recognize an objects as a particular one, but it segments the objects. 
@@ -127,7 +127,7 @@ Note that the algorithm works mainly considering geometric properties, and not t
 \caption{Box with a green stripe.}\label{fig:seg_color}
 \includegraphics[width=3.5cm]{Img/ObjectSegmentation/color_seg_problem.png}
 \end{wrapfigure}
-A color based segmentation could segment a draw, or a small part of the object, as a different object, but this, accordingly to the strategy we are going to use (see next sections), would lead to an unfeasible problem. 
+A color based segmentation could segment a draw on an object, or a small part of the object, as a different object, but this, accordingly to the strategy we are going to use (see next sections), would lead to an unfeasible problem. 
 For instance, in Figure \ref{fig:seg_color} is shown a box with a green stripe on its top surface, a segmentation algorithm based also on colors could lead to segment the green stripe as another object, and the result is that it is impossible to grasp the green stripe without collide with the box. Vice versa, any interaction with the box is impossible without having a collision with the green stripe. This is the main reason the segmentation we used is based only on geometric features (The \ttt{LCCP} algorithm has the option to include color importance but we neglected it). 
 
 \todo[inline]{Talk about filtering}
@@ -399,7 +399,7 @@ In this way the pushing trajectory is defined by a total of $n+4$ poses.
 %The computed principal components are orthogonal between themselves but the way of eigenvector $\bar{\lambda}$ is chosen by the PCA algorithm. In our case we are interested having a coherent description of the pushing directions as indicated in Figure \ref{fig:pca2}, and for that aim $\bar{\lambda_2}$ has to be always the same way with respect to the first principal component $\bar{\lambda_1}$. 
 
 \subsection{Grasping}
-
+\label{sec:grasping}
 %\todo[inline]{Review of grasping techniques}
 %\textbf{ROS object\_manipulator}\\
 
@@ -432,7 +432,7 @@ The \ttt{block\_grasp o1 o2} predicate refers the fact that object \ttt{o1} impe
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=7cm]{Img/grasping/block_grasp.png}
+\includegraphics[width=6.5cm]{Img/grasping/block_grasp.png}
 \caption{Visualization of the computation of \texttt{block\_grasp} predicate for object \ttt{o0}. The opened gripped model is transformed to the grasping pose for object \ttt{o0} and it is tested if the gripper mesh model collides with the other objects, in this it collides with \ttt{o1}. }\label{fig:block_grasp}
 \end{figure}
 
@@ -552,7 +552,7 @@ To do that we could use a continuous collision detection algorithm or a discrete
 \includegraphics[width=5cm]{Img/block_dir/pushing55.png}
 \caption{Evaluating the \ttt{(block\_dir1 * o0)} predicate}\label{fig:block_dir_original}
 \end{subfigure}
-\caption{Visualization of the computation of \ttt{block\_dir$_i$} predicates. Evualuating the \ttt{(block\_dir1 * o0)} means that the algorithm is evaluating for all the objects, except \ttt{o0}, if they collide with \ttt{o0} when pushed along direction 1.}\label{fig:block_dir}
+\caption{Visualization of the computation of \ttt{block\_dir$_i$} predicates. "Evualuating the \ttt{(block\_dir1 * o0)}" means that the algorithm is evaluating for all the objects, except \ttt{o0}, if they collide with \ttt{o0} when pushed along direction 1.}\label{fig:block_dir}
 \end{figure}
 
 Considering the kind of objects we are going to interact with, the discrete path  is computed by translating the object along the pushing direction by a length equal to the AABB dimension associated to that direction, until reaching the final pose. Note that no collision detection is done for the object at its initial pose, therefore the total number of poses considered for the pushing path are $n_{poses} = \ceil*{\frac{k \cdot AABB_{dimension}}{AABB_{dimension}}} = \ceil*{k}$, where $k$ is the pushing step defined in Section \ref{subsec:pushing}.
@@ -562,7 +562,7 @@ To push an object along a certain direction the robot needs to put its end effec
 In Figure \ref{fig:block_dir} is shown graphically the procedure to compute the predicate. 
 
 
-Note that also the gripper during the pushing action will move, so ideally the collision checking should be done exactly how done for the object. We decided to neglect this and check only for the initial pose in order to relax the planner and not to make it too much conservative. This means that during the pushing action the robot might actually move more than one object. Despite this relaxing strategy the algorithm showed to work perfectly and case in which the gripper moved more than one object were really rare, at least we the objects we used in our experiments. 
+Note that also the gripper during the pushing action will move, so ideally the collision checking should be done exactly how done for the object. We decided to neglect this and check only for the initial pose in order to relax the planner and not to make it too much conservative. This means that during the pushing action the robot might actually move more than one object. Despite this relaxing strategy the algorithm showed to work perfectly and cases in which the gripper moved more than one object were really rare, at least with the objects we used in our experiments. 
 
 \begin{algorithm}[h]
 \caption{Computation of \texttt{block\_dir} predicates. $O$ is the set of objects (convex hull retrieved with the projection onto the table plane), $P_d$ is the set of the pushing directions of all the objects, $P_{poses}$ is the set of the initial pushing pose of all the object and $P_{path}$ is the set of all the pushing poses realtive to each direction and each object.}\label{alg:block_dir}
@@ -601,9 +601,5 @@ Note that also the gripper during the pushing action will move, so ideally the c
 
 The computation of this predicate can be appreciated in detail in Algorithm \ref{alg:block_dir}. From that pseudo code can be noted that the complexity of this function to compute the predicate approximatively is $\mathcal{O}(n \cdot n_{directions} \cdot n_{poses}\cdot (n-1) + (n-1)\cdot n_{directions} )$. 
 
-The computation of this algorithm is the most computational expensive of all the planner since it involves many collision detection phases. In fact the time required to compute this predicate for the example in Figure \ref{fig:block_dir} (considering to push the objects $1.5$ times the AABB dimension relative to the pushing direction) was $\approx 1.115 seconds$, were $\approx 0.869s$ were dedicated to check if the objects will collide when move while $\approx 0.239s$ were dedicated if the gripper collides with some objects.  
+The computation of this algorithm is the most computational expensive of all the planner since it involves many collision detection phases. In fact the time required to compute this predicate for the example in Figure \ref{fig:block_dir} (considering to push the objects $1.5$ times the AABB dimension relative to the pushing direction) was $\approx 1.115 seconds$, were $\approx 0.869s$ were dedicated to check if the objects will collide when move, while $\approx 0.239s$ were dedicated if the gripper collides with some objects.  
 
-
-
-\todo[inline]{Photos to take: 
-- Robot pushing (vertical and parallel mode)}

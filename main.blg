@@ -1,6 +1,7 @@
 This is BibTeX, Version 0.99d (TeX Live 2013/Debian)
 Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: main.aux
+A level-1 auxiliary file: title.aux
 A level-1 auxiliary file: 1-Introduction/Introduction.aux
 A level-1 auxiliary file: 2-StateOfTheArt/review.aux
 A level-1 auxiliary file: 3-TaskPlanner/planner.aux
@@ -25,45 +26,45 @@ Warning--empty year in coelhoplanning
 Warning--empty booktitle in haf
 Warning--can't use both volume and number fields in haf
 Warning--empty journal in SSS147762
-You've used 44 entries,
+You've used 41 entries,
             2118 wiz_defined-function locations,
-            741 strings with 11748 characters,
-and the built_in function-call counts, 14862 in all, are:
-= -- 1427
-> -- 671
-< -- 15
-+ -- 271
-- -- 221
-* -- 920
-:= -- 2289
-add.period$ -- 129
-call.type$ -- 44
-change.case$ -- 236
+            723 strings with 11056 characters,
+and the built_in function-call counts, 13518 in all, are:
+= -- 1274
+> -- 664
+< -- 11
++ -- 267
+- -- 222
+* -- 863
+:= -- 2123
+add.period$ -- 116
+call.type$ -- 41
+change.case$ -- 228
 chr.to.int$ -- 0
-cite$ -- 59
-duplicate$ -- 645
-empty$ -- 1280
-format.name$ -- 221
-if$ -- 3275
+cite$ -- 56
+duplicate$ -- 561
+empty$ -- 1133
+format.name$ -- 222
+if$ -- 2928
 int.to.chr$ -- 0
-int.to.str$ -- 44
-missing$ -- 39
-newline$ -- 208
-num.names$ -- 78
-pop$ -- 360
+int.to.str$ -- 41
+missing$ -- 36
+newline$ -- 193
+num.names$ -- 70
+pop$ -- 334
 preamble$ -- 1
-purify$ -- 194
+purify$ -- 189
 quote$ -- 0
-skip$ -- 490
+skip$ -- 427
 stack$ -- 0
-substring$ -- 760
-swap$ -- 186
-text.length$ -- 15
+substring$ -- 646
+swap$ -- 146
+text.length$ -- 11
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 168
+type$ -- 156
 warning$ -- 15
-while$ -- 117
-width$ -- 46
-write$ -- 438
+while$ -- 101
+width$ -- 43
+write$ -- 400
 (There were 15 warnings)

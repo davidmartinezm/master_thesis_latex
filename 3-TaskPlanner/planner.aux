@@ -8,46 +8,43 @@
 \citation{shopDescription}
 \citation{JSHOP2}
 \citation{little2007probabilistic}
-\@writefile{toc}{\contentsline {chapter}{\numberline {4}Task Planner}{10}{chapter.4}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {3}Task planner}{9}{chapter.3}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\newlabel{ch:task_planner}{{4}{10}{Task Planner}{chapter.4}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {4.1}State of the Art}{10}{section.4.1}}
+\newlabel{ch:task_planner}{{3}{9}{Task planner}{chapter.3}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {3.1}Task Planners Review}{9}{section.3.1}}
 \citation{Gourmand}
 \citation{PROST}
+\citation{martinez2015planning}
 \citation{little2007probabilistic}
-\@writefile{toc}{\contentsline {section}{\numberline {4.2}Planner}{11}{section.4.2}}
+\@writefile{toc}{\contentsline {section}{\numberline {3.2}Planner}{10}{section.3.2}}
 \citation{helmert2006fast}
 \citation{FastDownwardPage}
 \citation{pddl}
-\@writefile{toc}{\contentsline {section}{\numberline {4.3}Symbolic Predicates}{12}{section.4.3}}
-\@writefile{toc}{\contentsline {paragraph}{Grasping Action}{13}{paragraph*.10}}
-\@writefile{toc}{\contentsline {paragraph}{Pushing Action}{13}{paragraph*.11}}
-\@writefile{toc}{\contentsline {paragraph}{Effects of the action}{13}{paragraph*.12}}
+\@writefile{toc}{\contentsline {section}{\numberline {3.3}Symbolic Predicates}{11}{section.3.3}}
+\@writefile{toc}{\contentsline {paragraph}{Grasping Action}{12}{paragraph*.7}}
+\@writefile{toc}{\contentsline {paragraph}{Pushing Action}{12}{paragraph*.8}}
 \citation{Bidot2015}
-\@writefile{toc}{\contentsline {paragraph}{Geometric constraints}{14}{paragraph*.13}}
-\@writefile{tdo}{\contentsline {todo}{\color@box {}{orange}{\leavevmode {\color  {orange}o}}\ Add concept of hybrid planning}{14}{section*.14}}
-\@writefile{loa}{\contentsline {algorithm}{\numberline {1}{\ignorespaces Planning procedure\relax }}{14}{algorithm.1}}
-\newlabel{alg:backtracking}{{1}{14}{Planning procedure\relax }{algorithm.1}{}}
-\@writefile{tdo}{\contentsline {todo}{\color@box {}{orange}{\leavevmode {\color  {orange}o}}\ Include this in the experiments?}{15}{section*.15}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.1}{\ignorespaces Unfeasible plan due to geometric constraints. In this case the planner returns as action to execute grasping or pushing away the white cup (highlighted by a red circle) but it is out the configuration space of the robot and there exist no plan for that problem. This problem is the one depicted in Figure \ref  {fig:example_scene}, where the other objects has been grasped as consequence of the plan solution.\relax }}{15}{figure.caption.16}}
-\newlabel{fig:backtracking1}{{4.1}{15}{Unfeasible plan due to geometric constraints. In this case the planner returns as action to execute grasping or pushing away the white cup (highlighted by a red circle) but it is out the configuration space of the robot and there exist no plan for that problem. This problem is the one depicted in Figure \ref {fig:example_scene}, where the other objects has been grasped as consequence of the plan solution.\relax }{figure.caption.16}{}}
-\@writefile{tdo}{\contentsline {todo}{\color@box {}{orange}{\leavevmode {\color  {orange}o}}\ Add the case in which the robot cannot grasp an object but it can push in a pose easier to grasp?}{16}{section*.17}}
-\@writefile{tdo}{\contentsline {todo}{\color@box {}{orange}{\leavevmode {\color  {orange}o}}\ Add pipeline Scheme}{16}{section*.18}}
-\@writefile{tdo}{\contentsline {todo}{\color@box {}{orange}{\leavevmode {\color  {orange}o}}\ ADD EFFECT}{16}{section*.19}}
-\@writefile{toc}{\contentsline {paragraph}{PDDL}{16}{paragraph*.20}}
-\newlabel{graspPDDL}{{4.1}{16}{PDDL syntax of the grasping action}{lstlisting.4.1}{}}
-\@writefile{lol}{\contentsline {lstlisting}{\numberline {4.1}PDDL syntax of the grasping action}{16}{lstlisting.4.1}}
-\newlabel{pushPDDL}{{4.2}{16}{PDDL syntax of the pushing action along direction 1}{lstlisting.4.2}{}}
-\@writefile{lol}{\contentsline {lstlisting}{\numberline {4.2}PDDL syntax of the pushing action along direction 1}{16}{lstlisting.4.2}}
-\newlabel{fig:pipeline1}{{4.2a}{18}{Perception Pipeline\relax }{figure.caption.21}{}}
-\newlabel{sub@fig:pipeline1}{{a}{18}{Perception Pipeline\relax }{figure.caption.21}{}}
-\newlabel{fig:pipeline2}{{4.2b}{18}{Planning Pipeline\relax }{figure.caption.21}{}}
-\newlabel{sub@fig:pipeline2}{{b}{18}{Planning Pipeline\relax }{figure.caption.21}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.2}{\ignorespaces Planner pipeline\relax }}{18}{figure.caption.21}}
-\newlabel{fig:pipeline}{{4.2}{18}{Planner pipeline\relax }{figure.caption.21}{}}
+\@writefile{toc}{\contentsline {paragraph}{Effects of the actions}{13}{paragraph*.9}}
+\@writefile{toc}{\contentsline {paragraph}{Geometric constraints}{13}{paragraph*.10}}
+\@writefile{loa}{\contentsline {algorithm}{\numberline {1}{\ignorespaces Planning procedure with backtracking. The input parameters are the initial state and the goal state. Given a plan, an action is defined by the kind of action and the object of interest ($action, object$). The procedure will return a feasible plan or not plan at all.\relax }}{13}{algorithm.1}}
+\newlabel{alg:backtracking}{{1}{13}{Planning procedure with backtracking. The input parameters are the initial state and the goal state. Given a plan, an action is defined by the kind of action and the object of interest ($action, object$). The procedure will return a feasible plan or not plan at all.\relax }{algorithm.1}{}}
+\@writefile{tdo}{\contentsline {todo}{\color@box {}{orange}{\leavevmode {\color  {orange}o}}\ Include this in the experiments?}{14}{section*.11}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.1}{\ignorespaces Unfeasible plan due to geometric constraints. In this case the planner returns as action to execute grasping or pushing away the white cup (highlighted by a red circle) but it is out the configuration space of the robot and there exist no plan for that problem. This problem is the one depicted in Figure \ref  {fig:example_scene}, where the other objects has been grasped as consequence of the plan execution.\relax }}{14}{figure.caption.12}}
+\newlabel{fig:backtracking1}{{3.1}{14}{Unfeasible plan due to geometric constraints. In this case the planner returns as action to execute grasping or pushing away the white cup (highlighted by a red circle) but it is out the configuration space of the robot and there exist no plan for that problem. This problem is the one depicted in Figure \ref {fig:example_scene}, where the other objects has been grasped as consequence of the plan execution.\relax }{figure.caption.12}{}}
+\@writefile{toc}{\contentsline {paragraph}{PDDL}{15}{paragraph*.13}}
+\newlabel{graspPDDL}{{3.1}{15}{PDDL syntax of the grasping action}{lstlisting.3.1}{}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {3.1}PDDL syntax of the grasping action}{15}{lstlisting.3.1}}
+\newlabel{pushPDDL}{{3.2}{16}{PDDL syntax of the pushing action along direction 1}{lstlisting.3.2}{}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {3.2}PDDL syntax of the pushing action along direction 1}{16}{lstlisting.3.2}}
+\newlabel{fig:pipeline1}{{3.2a}{17}{Perception Pipeline\relax }{figure.caption.14}{}}
+\newlabel{sub@fig:pipeline1}{{a}{17}{Perception Pipeline\relax }{figure.caption.14}{}}
+\newlabel{fig:pipeline2}{{3.2b}{17}{Planning Pipeline\relax }{figure.caption.14}{}}
+\newlabel{sub@fig:pipeline2}{{b}{17}{Planning Pipeline\relax }{figure.caption.14}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.2}{\ignorespaces Planner pipeline\relax }}{17}{figure.caption.14}}
+\newlabel{fig:pipeline}{{3.2}{17}{Planner pipeline\relax }{figure.caption.14}{}}
 \@setckpt{3-TaskPlanner/planner}{
-\setcounter{page}{19}
+\setcounter{page}{18}
 \setcounter{equation}{0}
 \setcounter{enumi}{3}
 \setcounter{enumii}{0}
@@ -56,7 +53,7 @@
 \setcounter{footnote}{0}
 \setcounter{mpfootnote}{0}
 \setcounter{part}{0}
-\setcounter{chapter}{4}
+\setcounter{chapter}{3}
 \setcounter{section}{3}
 \setcounter{subsection}{0}
 \setcounter{subsubsection}{0}
@@ -66,8 +63,8 @@
 \setcounter{table}{0}
 \setcounter{parentequation}{0}
 \setcounter{Item}{3}
-\setcounter{Hfootnote}{0}
-\setcounter{bookmark@seq@number}{12}
+\setcounter{Hfootnote}{2}
+\setcounter{bookmark@seq@number}{9}
 \setcounter{vrcnt}{0}
 \setcounter{lstnumber}{33}
 \setcounter{float@type}{16}
@@ -92,7 +89,7 @@
 \setcounter{subfigure}{2}
 \setcounter{subtable}{0}
 \setcounter{NAT@ctr}{0}
-\setcounter{@todonotes@numberoftodonotes}{6}
+\setcounter{@todonotes@numberoftodonotes}{1}
 \setcounter{@stackindex}{0}
 \setcounter{ROWcellindex@}{0}
 \setcounter{section@level}{0}

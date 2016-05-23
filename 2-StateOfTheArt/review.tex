@@ -1,35 +1,33 @@
-\chapter{State of the Art Manipulation Planning}
+\chapter{State of the art in manipulation planning}
 \label{ch:state_of_the_art}
-\todo[inline]{cite David's works}
-\textbf{still to add reference to the ones in the pushing.odt file}
 
 Many manipulation planning approaches (see \citep{PlanningAlgorithms} for an overview) assume that the task can be treated as a geometric problem, with the goal to place the objects in their desired positions. Planning is essentially done with a mixture of symbolic and geometric states, this
 requires a set of symbolic predicates that correspond to geometric
-relationships. 
-%Such a symbolic predicates are hard to obtain and they could obtain by simulating the examples programs they learn the mapping from geometric states to symbolic states. Then a kernel density estimate is learnt from the training data of each predicate.
-In particular to the best of my knowledge, all the planners for cluttered scene are based on a mixture of symbolic and geometric predicates, or based only on geometric ones. 
+relationships. Cause generating geometric paths is very time consuming, these hybrid planners could be too slow to be used in real applications.  
 
-Dogar and Srinivasa \cite{Dogar2011} proposed a framework for planning in clustter scenes using a library of actions inspired by human strategies. They designed a new planner that decides which
+%Such a symbolic predicates are hard to obtain and they could obtain by simulating the examples programs they learn the mapping from geometric states to symbolic states. Then a kernel density estimate is learnt from the training data of each predicate.
+%In particular to the best of my knowledge, all the planners for cluttered scene are based on a mixture of symbolic and geometric predicates, or based only on geometric ones. 
+
+
+An interesting planner which mixes symbolic and geometric predicates is
+aSyMov \citep{aSyMov}. It is probably the most well known planner which deal with tasks to move objects considering how their location will then affect the possible robot's paths. To do that they combine a symbolic planner with a probabilistic roadmap \citep{Visility-based-PRM} for geometric planning. 
+
+Dogar and Srinivasa \cite{Dogar2011} proposed a framework for planning in cluttered scenes using a library of actions inspired by human strategies. They designed a new planner that decides which
 objects to move, the order to move them, where to move them, and it chooses the manipulation actions
 to use on these objects, and accounts for the uncertainty
 in the environment all through this process. 
-The planner first attempts to grasp the goal object, than if it is not possible it identifies what is the object that obstacles  the action, then such an object is added to a list of the objects that have to be moved. They moved an object in whatever position such that makes the goal feasible. Despite this, such a planning strategy can be used only in the design of a new planner, which is something we want to avoid.
+The planner first attempts to grasp the goal object, than if it is not possible it identifies what is the object that obstacles  the action, then such an object is added to a list of the objects that have to be moved. They moved an object in whatever position such that makes the goal feasible. 
+Their work is the most similar to our, although they did not proved it with cluttered scene like ours, and it is still based on a hybrid planner. 
+%Despite this, such a planning strategy can be used only in the design of a new planner, which is something we want to avoid.
 
-To grasp they used the Push-grasping action \cite{Dogar_2010_6652} , which is a robust way of grasping objects
-under uncertainty. It is a straight motion of the hand
-parallel to the pushing surface along a certain direction,
-followed by closing the fingers.
-For the pushing directions they used a resolution of $\pi/18$ rad (i.e. 36
-different directions) and  use a predefined set of 9 hand
-aperture values.
-However their cluttered scenes is intended to be a scene with separated and well known objects. 
+%To grasp they used the Push-grasping action \cite{Dogar_2010_6652} , which is a robust way of grasping objects under uncertainty. It is a straight motion of the hand parallel to the pushing surface along a certain direction, followed by closing the fingers. For the pushing directions they used a resolution of $\pi/18$ rad (i.e. 36 different directions) and  use a predefined set of 9 hand aperture values. However their cluttered scenes is intended to be a scene with separated and well known objects. 
 
 %In \cite{DBLP:conf/iros/SautGCSS10} they  don't use a manipulation planner, but just reduce the problem to motion planning and grasp planning.
 
 % In \cite{DBLP:conf/iros/HaradaTNYOYK12} the authors propose an object placement planner for a grasped object during pick-and-place tasks. The proposed planner automatically determines the pose of an object stably placed near a user assigned point on an environment surface.
 
-In \citep{he.lahijanian2015towards-manipulation-planning} %(good place to stoole references :P in the introduction section)
-the authors proposed to apply a linear temporal logic (LTL) planner to a manipulation planning task in cluttered scenes, but it suffers from poor runtime and the LTL specification is complex. Moreover to the scope of this work the temporal specification is not needed since it is indirectly encoded in the clutter scene composition. 
+%In \citep{he.lahijanian2015towards-manipulation-planning} %(good place to stoole references :P in the introduction section) 
+%the authors proposed to apply a linear temporal logic (LTL) planner to a manipulation planning task in cluttered scenes, but it suffers from poor runtime and the LTL specification is complex. Moreover to the scope of this work the temporal specification is not needed since it is indirectly encoded in the clutter scene composition. 
 
 %\begin{displayquote}
 %from the ABSTRACT:
@@ -41,8 +39,6 @@ the authors proposed to apply a linear temporal logic (LTL) planner to a manipul
 %We could create a classifier to classify the  the grasping %predicates. 
 %\end{displayquote}
 
-An interesting planner which mixes symbolic and geometric predicates is
-aSyMov \citep{aSyMov}. It is probably the most well known planner which a task to move objects considering how their location will then affect the possible robot's paths. To do that they combine a symbolic planner with a probabilistic roadmap \citep{Visility-based-PRM} for geometric planning. 
 
 A recent alternative proposed by Mösenlechner and Beetz \citep{Msenlechner2009UsingPA}
 is to specify goals symbolically but evaluate the plan geometrically.
@@ -50,13 +46,10 @@ The idea is to use a high-fidelity physics simulation to predict
 the effects of actions and a hand-built mapping from geometric
 to symbolic states. Planning is conducted by a forward search,
 and the effects of actions determined by simulating them, and
-then using the mapping to update the symbolic state. This could be look promising to the scope of this thesis but still implies the design of a new planner. 
+then using the mapping to update the symbolic state. This method looks promising but the main problem concerning the time still remain, since the simulation is also time-consuming. 
 
-In \citep{lozano2014constraint}, Lonzano-Peréz et al. They use a simple task-level planner, in which operators are described with two types of preconditions: symbolic and geometric. They proposed a strategy for integrated
-task and motion planning based on performing a symbolic
-search for a sequence of high-level operations, such as pick,
-move and place, while postponing geometric decisions, based on the CSP (Constraint Satisfaction Problem) technique.
-\textbf{Their technique allow working directly with state of the art planners.}
+%In \citep{lozano2014constraint}, Lonzano-Peréz et al. they use a simple task-level planner, in which operators are described with two types of preconditions: symbolic and geometric. They proposed a strategy for integrated task and motion planning based on performing a symbolic search for a sequence of high-level operations, such as pick, move and place, while postponing geometric decisions, based on the CSP (Constraint Satisfaction Problem) technique.
+
 
 %Most methods ultimately involve a search at the task level in an abstract space, in which determining whether an operation is legal depends on the solution of a high-dimensional geometric motion-planning problem. Such approaches are particularly difficult to manage when a geometric decision made early in the high-level plan affects the feasibility of the rest of the plan in a way that is not revealed until later in the search. %An alternative approach is for the task-level planner to delay the binding of any geometric choices until it has constructed a plan "skeleton" that consists of unparameterized robot operations.  Note that in these constraint-based approaches, the geometric planner is in the inner loop of a symbolic planner, and must quickly decide whether a set of constraints is satisfiable.
 
@@ -75,14 +68,12 @@ move and place, while postponing geometric decisions, based on the CSP (Constrai
 %In \citep{diankov2008manipulation} the authors presented a novel motion planning algorithm for performing constrained tasks. They addressed the problem of computing manipulation planning tasks such as grasping considering constraints of the object manipulated, so for example to open a door the robot have to consider the kinematic of itself and the one of the door. 
 
 
-In \citep{coelhoplanning} the authors address a problem similar to the one of this thesis. Pushing presents itself as a more intricate problem than grasping, a for grasping, after the object has been grabbed, it becomes a matter of solving a geometric problem. However, pushing an object carries uncertainty to the resulting state of the object. It is, nonetheless, important to be able to incorporate these two actions in the planning.
-For pushing they used a similar strategy to \citep{mericli2013achievable}.  The planning algorithm also incorporates grasping, which, together with push actions, can perform a vaster array of tasks. It uses the concept of \textbf{reachability} \citep{vahrenkamp2013robot} for each kind of action to quickly exclude impossible poses of the gripper of the planning stage, creating a reliable plan suitable for real-time operation. The authors model the planning problem through MDP (Markov Decision Process), discretezing the world in grid cells and assigning to each one a push and grasp vector definied by the reachability concept. Moreover each object is also classified through a simple primitive shape in order to have a proper map of pushing and grasping for each kind of considered object.
+In \citep{coelhoplanning} the authors address a problem similar to the one of this thesis. The authors coupled together pushing and grasping actions for a table clearing task being able to perform a vaster array of tasks.
+%For pushing they used a similar strategy to \citep{mericli2013achievable}.
+They use the concept of \textbf{reachability} \citep{vahrenkamp2013robot} for each kind of action to quickly exclude impossible poses of the gripper of the planning stage, creating a reliable plan suitable for real-time operation. The authors model the planning problem through MDP (Markov Decision Process), discrediting the world in grid cells and assigning to each one a push and grasp vector defined by the reachability concept. Moreover each object is also classified through a simple primitive shape in order to have a proper map of pushing and grasping for each kind of considered object. With this approach they are going forward to a planner which reasons at a symbolic level but the presence of the reachibility concept make this planner resolve the inverse kinematic for each possible action, and it is time consuming.  We took the idea of reachbility of an action and evaluate it only for the action the robot is going to execute, if it is not possible to execute it we backtrack specifying that action on that object is not feasible and a new plan is obtained. Moreover our approach skip the modelling of a model probability by considering to replan after each action execution. This makes our approach faster. 
 
 %The world environment is composed of a table, objects placed on it and a gripper. The table surface is discretized in a fixed-sized grid. Each 3D cell is 3cm high. The width and length of the cells is established according to the dimensions of the table, so that all the table is covered by this discretization. Each cell is assigned with a pushability and a graspability vector. These two vectors translate the ability of the gripper to reach that cell in each one of the defined discrete orientations and then perform either a push or a grasp. Each cell is assigned with a pushability and a graspability vector. These two vectors translate the ability of the gripper to reach that cell in each one of the defined discrete orientations and then perform either a push or a grasp. To initialize the pushability and graspability vectors, the Inverse Kinematics at each cell is computed, with each one of the possible gripper’s orientation (72 values are defined). Then, for the pushability affordance, only if there is a path between the current pose and one on a fixed distance away along the direction of the tip, while maintaining the orientation of the gripper, will the corresponding entry in the pushability vector be set to true. Similarly, the graspability affordance on a certain pose is determined by computing a path from the current pose to one located a small distance up. If such a path exists, the graspability on that pose is set to true. For the objects they classify the objects accordingly to simple primivites shape. Their classification is done accordingly to the dimension of bounding boxes.	They assigned a reference frame for each object. It is not well specified which are the classes of objects considered.	They model the problem as a Markov Decision Problem. Having classified the object and consireding a finite set of possible discrete pose of the gripper with respect to the object it is easy performing the grasping. The nice thing of the MDP is that they model the pushing action, they have classified the object and for each discrete orientation considered they tried to perform the pushing action and learning in this way the transition model. Similarly for the grasping action. They use a RRT planner for the pushing action, given the initial and final object’s poses, the RRT algorithm explores the configuration space in order the get a path between these two poses. Modelled the transition model in this way they intrinsically know what is the best pushing direction, it is the planner that choose that.	
-
-The majority of the state of the art for task planning in cluttered scene is focused on designing a new planner, why in this thesis state of the art planners ready to use want to be used. 
-
-\paragraph{Learning in Task Planning}
+%The majority of the state of the art for task planning in cluttered scene is focused on designing a new planner, why in this thesis state of the art planners ready to use want to be used. 
 %(If you want to talk more about this look the Related Work in \citep{abdo2013learning})
 Machine learning techniques also have been applied to task planning. To plan complex manipulation tasks,
 robots need to reason on a high level. Symbolic planning, however, requires knowledge about the preconditions and effects
@@ -91,25 +82,30 @@ In \citep{abdo2013learning} the authors proposed a practical
 approach to learn manipulation skills, including preconditions
 and effects, based on teacher demonstrations.
 It is difficult to solve most real world manipulation tasks by reasoning purely in terms of low-level motions due to the high-dimensionality of the problems. Instead, robots should reason on a symbolic level and appropriately chain the learned actions to solve new tasks.  Such a planning step, however, requires knowledge of the important preconditions and effects of the actions.
-With few demonstration the authors proposed a method to teach the robot the precondition and effects of individual actions. Their method furthermore enables the robot to combine the learned actions by means of planning to solve new tasks that are more complicated than the learned individual actions. 
-They focused their work on a class of manipulation actions where the preconditions and goals depend on spatial or geometrical constraints between the involved objects. They describe a scene as a collection of features and during the action demonstration the algorithm looks for the features that have a small change to identify the ones that can be predicates or effects of the considered action. They use an heuristic metric to define the variation of the features.
-The problem of this approach is that it moves the problem of identifying the right predicates to describe the problem in identifying right features that let a correct learning of the predicates. \textbf{We could consider this as further work}. 
+With few demonstration the authors proposed a method to teach the robot the preconditions and effects of individual actions. Their method furthermore enables the robot to combine the learned actions by means of planning to solve new tasks that are more complicated than the learned individual actions. 
+They focused their work on a class of manipulation actions where the preconditions and goals depend on spatial or geometrical constraints between the involved objects. They describe a scene as a collection of features and during the action demonstration the algorithm looks for the features that have a small change to identify the ones that can be predicates or effects of the considered action. 
+Although this work looks promising the problem of this approach is that it moves the problem of identifying the right predicates to describe the problem in identifying right features that let a correct learning of the predicates. %\textbf{We could consider this as further work}. 
 %Some examples of features they used are the relative position and orientation between each pair of object, their colors and dimensions.\textbf{Using that features look promising and their algorithm does not look difficult to implement.}
 
-In \citep{Dearden2014355} \citep{dearden2013approach}	 the authors propose an approach for planning robotic manipulation tasks which uses a learned mapping between geometric states and logical predicates. The planner first plans symbolically, then applies the mapping to generate geometric positions that are then sent to a path planner. They try to fit a probability distribution function to the geometric states to map them to a symbolic state. This work sounds promising but the cluttered scene this thesis is going to treat is quite complex to be treated with such a method. 
+In \citep{Dearden2014355} Dearden and Burbridge proposed an approach for planning robotic manipulation tasks which uses a learned mapping between geometric states and logical predicates. The planner first plans symbolically, then applies the mapping to generate geometric positions that are then sent to a path planner. They try to fit a probability distribution function to the geometric states to map them to a symbolic state. This work sounds promising but the cluttered scene this thesis is going to treat is quite complex to be treated with such a method. Moreover the same authors applied that technique in one of their work \citep{dearden2013approach} for a simple task which involves putting some cups (singulated between themselves) onto a tray. Although this approach does not involve any hand built mapping function and the results are goods, their approach is very time consuming for real applications. The hand built function still have a good benefit in terms of computational cost, although they need to be adapted to the problem. Despite this also learning the predicate needs to be adapted to the particular problem. 
 
 
-\paragraph{Interpreting the scene}
-Focusing on symbolic planning, the research group of Artificial Intelligence and Robotics Laboratory of
-Istanbul Technical University, published some interesting researches suitable to the aim of this thesis. In \citep{ersen2014scene} \citep{SSS147762} \citep{ersen2013extracting} the authors propose a system which combines 3D recognition and segmentation results to create and maintain a consistent world model involving attributes of the objects and spatial relations among them. Unknown objects are modelled by using the segmentation output to determine their sizes and considering similarities with existing models to determine their shapes and colors. Then, these models are also stored as templates to be used for recognition along with the extracted attributes. 
-They focused on the extraction of size, shape and color attributes as well as the following unary and binary spatial relations: on, on ground/on table, clear and near for object manipulation scenarios. These predicates are generated and updated over time to maintain a consistent world model.
-\textbf{For the aim of this thesis this paper is of particular interest because let to compute nicely some useful symbolic predicates}
-The \textit{on} relation for a pair of objects is determined by checking whether their projections on the table plane overlap. For each pair of objects the \textit{near} relation is determined by comparing the distance between the centers of these objects in each dimension with the sum of the corresponding sizes in that dimension. 
+%\paragraph{Interpreting the scene}
+%Focusing on symbolic planning, the research group of Artificial Intelligence and Robotics Laboratory of
+%Istanbul Technical University, published some interesting researches suitable to the aim of this thesis. In \citep{ersen2014scene} \citep{SSS147762} \citep{ersen2013extracting} the authors propose a system which combines 3D recognition and segmentation results to create and maintain a consistent world model involving attributes of the objects and spatial relations among them. Unknown objects are modelled by using the segmentation output to determine their sizes and considering similarities with existing models to determine their shapes and colors. Then, these models are also stored as templates to be used for recognition along with the extracted attributes. 
+%They focused on the extraction of size, shape and color attributes as well as the following unary and binary spatial relations: on, on ground/on table, clear and near for object manipulation scenarios. These predicates are generated and updated over time to maintain a consistent world model. 
+
+\mbox{} 
+
+Compared to the state of the art this thesis proposes a planner which plans completely at a symbolic level, efficiently and low time consuming. The fast computation of the plan is able to make this planner suitable for replanning overcoming in this way the lack of probability and geometric information in the planner. Moreover it couples the grasping and pushing action, and at the best of my knowledge, no others symbolic planners which couple these two actions were previously proposed. In particular no other works have been found that face the table clearing of cluttered objects such as the ones in Figure \ref{fig:example_scene}. It will be shown that the lack of geometric constraints includes some limitations to the planner but still the planner is very efficient.  
+
+
+%The \textit{on} relation for a pair of objects is determined by checking whether their projections on the table plane overlap. For each pair of objects the \textit{near} relation is determined by comparing the distance between the centers of these objects in each dimension with the sum of the corresponding sizes in that dimension. 
 
 %About the \textit{on ground} predicate if the distance between the bottom surface of an object and the ground/table is observed to be within a certain threshold and no other objects can be detected under this object, it is determined to be on the ground or table. Surfaces are determined by plane 
 %segmentation. \textbf{We can detect them like this: 1) bounding box 2) we compute the center of bounding box, if the distance from the center of it and the table plane is similar to its z dimension (along the table) up to a threhsold we can know if it is on the table or not - we can use it to speed up the calculation of \textit{on} predicate considering that only the objects that are not on the table can be on top on other ones.}
 
-
+\iffalse
 \section{Usefull things}
 Temporal filtering to reduce the noise of the kinect	 \citep{SSS147762}.
 
@@ -117,6 +113,8 @@ Temporal filtering to reduce the noise of the kinect	 \citep{SSS147762}.
  \textbf{Closed world} assumption \citep{Reiter87} can be defined
 as having complete knowledge about the world, that is, the numbers and the attributes
 of all objects are known apriori. 
+\fi
+
 
 \iffalse
 \section{What we have}

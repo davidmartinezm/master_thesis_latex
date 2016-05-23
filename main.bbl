@@ -67,6 +67,13 @@ Stéphane Cambon, Fabien Gravot, and Rachid Alami.
 Rui Coelho and Alexandre Bernardino.
 \newblock Planning push and grasp actions: Experiments on the icub robot.
 
+\bibitem{APC}
+Nikolaus Correll, Kostas~E. Bekris, Dmitry Berenson, Oliver Brock, Albert
+  Causo, Kris Hauser, Kei Okada, Alberto Rodriguez, Joseph~M. Romano, and
+  Peter~R. Wurman.
+\newblock Lessons from the amazon picking challenge.
+\newblock {\em CoRR}, abs/1601.05484, 2016.
+
 \bibitem{covallero}
 N.~Covallero and G.~Alenyà.
 \newblock Grasping novel objects.
@@ -85,12 +92,6 @@ Richard Dearden and Chris Burbridge.
 \newblock Advances in Autonomous Robotics — Selected extended papers of the
   joint 2012 \{TAROS\} Conference and the \{FIRA\} RoboWorld Congress, Bristol,
   \{UK\}.
-
-\bibitem{Dogar_2010_6652}
-Mehmet Dogar and Siddhartha Srinivasa.
-\newblock Push-grasping with dexterous hands: Mechanics and a method.
-\newblock In {\em Proceedings of 2010 IEEE/RSJ International Conference on
-  Intelligent Robots and Systems (IROS 2010)}, October 2010.
 
 \bibitem{Dogar2011}
 Mehmet Dogar and Siddhartha Srinivasa.
@@ -114,12 +115,6 @@ Mustafa Ersen, Sanem~Sariel Talay, and Hulya Yalcin.
 David Fischinger, Astrid Weiss, and Markus Vincze.
 \newblock Learning grasps with topographic features.
 \newblock volume~34, pages 1167--1194, 2015.
-
-\bibitem{he.lahijanian2015towards-manipulation-planning}
-Keliang He, Morteza Lahijanian, Lydia~E. Kavraki, and Moshe~Y. Vardi.
-\newblock Towards manipulation planning with temporal logic specifications.
-\newblock In {\em 2015 IEEE Intl. Conf. Robotics and Automation (ICRA)}, pages
-  346--352, Seattle, WA, May 2015. IEEE.
 
 \bibitem{helmert2006fast}
 Malte Helmert.
@@ -166,25 +161,16 @@ Iain Little, Sylvie Thiebaux, et~al.
 \newblock Probabilistic planning vs. replanning.
 \newblock In {\em ICAPS Workshop on IPC: Past, Present and Future}, 2007.
 
-\bibitem{lozano2014constraint}
-Tom{\'a}s Lozano-P{\'e}rez and Leslie~Pack Kaelbling.
-\newblock A constraint-based method for solving sequential manipulation
-  planning problems.
-\newblock In {\em Intelligent Robots and Systems (IROS 2014), 2014 IEEE/RSJ
-  International Conference on}, pages 3684--3691. IEEE, 2014.
-
 \bibitem{marthi2007angelic}
 Bhaskara Marthi, Stuart~J Russell, and Jason Wolfe.
 \newblock Angelic semantics for high-level actions.
 \newblock In {\em ICAPS}, pages 232--239, 2007.
 
-\bibitem{mericli2013achievable}
-Tekin~A Mericli, Manuela Veloso, and H~Levent Akin.
-\newblock Achievable push-manipulation for complex passive mobile objects using
-  past experience.
-\newblock In {\em Proceedings of the 2013 international conference on
-  Autonomous agents and multi-agent systems}, pages 71--78. International
-  Foundation for Autonomous Agents and Multiagent Systems, 2013.
+\bibitem{martinez2015planning}
+David Mart{\'\i}nez, Guillem Alenya, and Carme Torras.
+\newblock Planning robot manipulation to clean planar surfaces.
+\newblock {\em Engineering Applications of Artificial Intelligence}, 39:23--32,
+  2015.
 
 \bibitem{Msenlechner2009UsingPA}
 Lorenz M{\"o}senlechner and Michael Beetz.
@@ -210,12 +196,6 @@ Jeremie Papon, Alexey Abramov, Markus Schoeler, and Florentin
 \newblock Voxel cloud connectivity segmentation - supervoxels for point clouds.
 \newblock In {\em Computer Vision and Pattern Recognition (CVPR), 2013 IEEE
   Conference on}, Portland, Oregon, June 22-27 2013.
-
-\bibitem{Reiter87}
-R.~Reiter.
-\newblock A logic for default reasoning.
-\newblock In M.~L. Ginsberg, editor, {\em Readings in Nonmonotonic Reasoning},
-  pages 68--93. Kaufmann, Los Altos, CA, 1987.
 
 \bibitem{artificialIntelligence}
 Stuart~J. Russell and Peter Norvig.
