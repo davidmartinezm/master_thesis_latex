@@ -44,13 +44,15 @@
 \abstract{
 Manipulation planning is an increasing field of study which merges the manipulation skills with an artificial intelligence system able to find the optimal sequence of actions in order to resolve manipulation problems. Those problems are complex since involve a mixture of symbolic planning and geometric planning. 
 
-In this thesis we present a task planner for table clearing of cluttered objects tasks which completely reasons at a symbolic level, postponing the reasoning with geometric constraints through backtracking. The planner used will be the Fast Downward. The task we are going to face is a complex one which involves important geometric information between objects and which are handled efficiently by symbolic predicates obtained through hand built mapping functions. Moreover the planner presented will face the problem avoiding collision with the other objects but only interacting with the object of interest.
+In this thesis we present a task planner for table clearing of cluttered objects tasks which completely reasons at a symbolic level, postponing the reasoning with geometric constraints through backtracking. The planning system used will be Fast Downward. The task we are going to face is table clearing of cluttered objects, this is a complex task which involves important geometric information between objects and which are handled efficiently by symbolic predicates obtained through hand-built mapping functions. Moreover the planner presented will face the problem avoiding collision with the other objects and the robot will only interact with the object of interest.
 
-The main contribution of this thesis is the coupling of pushing action and grasping action. Several scenarios of cluttered objects can be handled with only grasping actions, but others needs pushing actions in order to separate object that cannot be grasped. The planner here presented is able to understand when and where push an object when it is not possible to grasp it increasing in this way the number of possible scenario which can be handled. 
+The main contribution of this thesis is the coupling of pushing action and grasping action in a symbolic planner. Several scenarios of cluttered objects can be handled with only grasping actions, but others needs pushing actions in order to separate object that cannot be grasped. The planner here presented is able to understand when and where to push an object, when it is not possible to grasp it, increasing in this way the number of possible scenario which can be handled. 
 
 This work shows how some geometric problems can be efficiently handled by reasoning at an abstract level through symbolic predicates when such predicates are chosen correctly. The advantage of this kind of planner is a reduction in computation time and also an easier implementation. 
 
-The planner presents also some important limitations due to the lack of geometric information handled by the symbolic predicates, these are discussed in detail with some real examples. 
+
+\todo[inline]{Should I mention the next phrase in the abstract or is better I do not?}
+Despite this the planner has some important limitations due to the lack of geometric information, these are discussed in detail with some real examples. 
 }
 
 \tableofcontents
