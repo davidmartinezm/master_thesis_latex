@@ -11,10 +11,6 @@ A level-1 auxiliary file: 6-Experiments/experiments.aux
 A level-1 auxiliary file: 7-Conclusions/conclusions.aux
 The style file: plain.bst
 Database file #1: ./Bibliography/bibliography.bib
-Warning--to sort, need author or key in shopDescription
-Warning--to sort, need author or key in JSHOP2
-Warning--to sort, need author or key in Gourmand
-Warning--to sort, need author or key in PROST
 Warning--to sort, need author or key in FastDownwardPage
 Warning--to sort, need author or key in pddl
 Warning--to sort, need author or key in Bullet
@@ -26,45 +22,45 @@ Warning--empty year in coelhoplanning
 Warning--empty booktitle in haf
 Warning--can't use both volume and number fields in haf
 Warning--empty journal in SSS147762
-You've used 41 entries,
+You've used 38 entries,
             2118 wiz_defined-function locations,
-            723 strings with 11056 characters,
-and the built_in function-call counts, 13518 in all, are:
-= -- 1274
-> -- 664
+            709 strings with 10752 characters,
+and the built_in function-call counts, 13144 in all, are:
+= -- 1244
+> -- 670
 < -- 11
 + -- 267
-- -- 222
-* -- 863
-:= -- 2123
-add.period$ -- 116
-call.type$ -- 41
-change.case$ -- 228
+- -- 226
+* -- 844
+:= -- 2100
+add.period$ -- 115
+call.type$ -- 38
+change.case$ -- 222
 chr.to.int$ -- 0
-cite$ -- 56
-duplicate$ -- 561
-empty$ -- 1133
-format.name$ -- 222
-if$ -- 2928
+cite$ -- 49
+duplicate$ -- 550
+empty$ -- 1069
+format.name$ -- 226
+if$ -- 2828
 int.to.chr$ -- 0
-int.to.str$ -- 41
-missing$ -- 36
-newline$ -- 193
+int.to.str$ -- 38
+missing$ -- 37
+newline$ -- 186
 num.names$ -- 70
-pop$ -- 334
+pop$ -- 319
 preamble$ -- 1
-purify$ -- 189
+purify$ -- 186
 quote$ -- 0
-skip$ -- 427
+skip$ -- 393
 stack$ -- 0
-substring$ -- 646
-swap$ -- 146
+substring$ -- 613
+swap$ -- 145
 text.length$ -- 11
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 156
-warning$ -- 15
-while$ -- 101
-width$ -- 43
-write$ -- 400
-(There were 15 warnings)
+type$ -- 144
+warning$ -- 11
+while$ -- 102
+width$ -- 40
+write$ -- 389
+(There were 11 warnings)

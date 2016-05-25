@@ -1,20 +1,5 @@
 \begin{thebibliography}{10}
 
-\bibitem{shopDescription}
-Description of the shop project
-  \href{https://www.cs.umd.edu/projects/shop/description.html
-  }{https://www.cs.umd.edu/projects/shop/description.html }.
-
-\bibitem{Gourmand}
-\href{http://aiweb.cs.washington.edu/ai/planning/gourmand.html }{Gourmand Home
-  Page}.
-
-\bibitem{PROST}
-\href{http://prost.informatik.uni-freiburg.de/}{PROST Home Page}.
-
-\bibitem{JSHOP2}
-\href{https://www.cs.umd.edu/projects/shop/}{SHOP Home Page}.
-
 \bibitem{FastDownwardPage}
 \href{http://www.fast-downward.org/}{Fast Downward Home Page}.
 
@@ -56,12 +41,6 @@ Peter Brook, Matei Ciocarlie, and Kaijen Hsiao.
 \newblock Collaborative grasp planning with multiple object representations.
 \newblock In {\em Robotics and Automation (ICRA), 2011 IEEE International
   Conference on}, pages 2851--2858. IEEE, 2011.
-
-\bibitem{aSyMov}
-Stéphane Cambon, Fabien Gravot, and Rachid Alami.
-\newblock A robot task planner that merges symbolic and geometric reasoning.
-\newblock In Ramon~López de~Mántaras and Lorenza Saitta, editors, {\em ECAI},
-  pages 895--899. IOS Press, 2004.
 
 \bibitem{coelhoplanning}
 Rui Coelho and Alexandre Bernardino.
@@ -151,6 +130,17 @@ Dov Katz, Arun Venkatraman, Moslem Kazemi, J~Andrew Bagnell, and Anthony
   autonomous pile manipulation.
 \newblock {\em Autonomous Robots}, 37(4):369--382, 2014.
 
+\bibitem{PROST}
+Thomas Keller and Patrick Eyerich.
+\newblock Prost: Probabilistic planning based on uct.
+\newblock In {\em ICAPS}, 2012.
+
+\bibitem{Gourmand}
+Andrey Kolobov, Mausam, and Daniel~S Weld.
+\newblock Lrtdp vs. uct for online probabilistic planning.
+\newblock In {\em Twenty-Sixth AAAI Conference on Artificial Intelligence},
+  2012.
+
 \bibitem{PlanningAlgorithms}
 Steven~M. LaValle.
 \newblock {\em {Planning Algorithms}}.
@@ -178,6 +168,13 @@ Lorenz M{\"o}senlechner and Michael Beetz.
   projection of realistic robot behavior.
 \newblock In {\em AIPS}, 2009.
 
+\bibitem{shop}
+Dana Nau, Yue Cao, Amnon Lotem, and Hector Munoz-Avila.
+\newblock Shop: Simple hierarchical ordered planner.
+\newblock In {\em Proceedings of the 16th international joint conference on
+  Artificial intelligence-Volume 2}, pages 968--973. Morgan Kaufmann Publishers
+  Inc., 1999.
+
 \bibitem{SSS147762}
 Melodi Ozturk, Mustafa Ersen, Melis Kapotoglu, Cagatay Koc, Sanem Sariel-Talay,
   and Hulya Yalcin.
@@ -201,11 +198,6 @@ Jeremie Papon, Alexey Abramov, Markus Schoeler, and Florentin
 Stuart~J. Russell and Peter Norvig.
 \newblock {\em Artificial Intelligence: A Modern Approach}.
 \newblock Pearson Education, 2 edition, 2003.
-
-\bibitem{Visility-based-PRM}
-T.~Siméon, J.-P. Laumond, and C.~Nissoux.
-\newblock Visibility-based probabilistic roadmaps for motion planning.
-\newblock {\em Advanced Robotics}, 14(6):477--493, 2000.
 
 \bibitem{LCCP}
 S.~C. Stein, M.~Schoeler, J.~Papon, and F.~Woergoetter.

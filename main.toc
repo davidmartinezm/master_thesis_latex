@@ -1,32 +1,32 @@
 \select@language {english}
-\contentsline {chapter}{Contents}{2}{chapter*.2}
+\contentsline {chapter}{Contents}{2}{chapter*.1}
 \contentsline {chapter}{\numberline {1}Introduction}{3}{chapter.1}
 \contentsline {section}{\numberline {1.1}Problem Approach}{3}{section.1.1}
 \contentsline {section}{\numberline {1.2}Set Up}{4}{section.1.2}
 \contentsline {chapter}{\numberline {2}State of the art in manipulation planning}{7}{chapter.2}
 \contentsline {chapter}{\numberline {3}Task planner}{9}{chapter.3}
 \contentsline {section}{\numberline {3.1}Task Planners Review}{9}{section.3.1}
-\contentsline {section}{\numberline {3.2}Planner}{10}{section.3.2}
-\contentsline {section}{\numberline {3.3}Symbolic Predicates}{11}{section.3.3}
-\contentsline {paragraph}{Grasping Action}{12}{paragraph*.8}
-\contentsline {paragraph}{Pushing Action}{12}{paragraph*.9}
-\contentsline {paragraph}{Effects of the actions}{13}{paragraph*.10}
-\contentsline {paragraph}{Geometric constraints}{13}{paragraph*.11}
-\contentsline {paragraph}{PDDL}{15}{paragraph*.15}
+\contentsline {section}{\numberline {3.2}Planner}{9}{section.3.2}
+\contentsline {section}{\numberline {3.3}Symbolic Predicates}{10}{section.3.3}
+\contentsline {paragraph}{Grasping Action}{11}{paragraph*.7}
+\contentsline {paragraph}{Pushing Action}{11}{paragraph*.8}
+\contentsline {paragraph}{Effects of the actions}{12}{paragraph*.9}
+\contentsline {paragraph}{Geometric constraints}{12}{paragraph*.10}
+\contentsline {paragraph}{PDDL}{14}{paragraph*.14}
 \contentsline {chapter}{\numberline {4}Algorithm}{18}{chapter.4}
 \contentsline {section}{\numberline {4.1}Object Localization}{18}{section.4.1}
 \contentsline {subsection}{\numberline {4.1.1}Tabletop Object Detection}{18}{subsection.4.1.1}
 \contentsline {subsection}{\numberline {4.1.2}Object Segmentation}{19}{subsection.4.1.2}
-\contentsline {subsubsection}{Supervoxel}{19}{subsubsection*.18}
-\contentsline {subsubsection}{Local Convex Connected Patches Segmentation}{20}{subsubsection*.19}
+\contentsline {subsubsection}{Supervoxel}{19}{subsubsection*.17}
+\contentsline {subsubsection}{Local Convex Connected Patches Segmentation}{20}{subsubsection*.18}
 \contentsline {section}{\numberline {4.2}Background}{21}{section.4.2}
-\contentsline {paragraph}{Principal Components}{21}{paragraph*.24}
-\contentsline {paragraph}{Projection onto a plane}{21}{paragraph*.26}
-\contentsline {paragraph}{Rotation Matrices}{22}{paragraph*.27}
-\contentsline {paragraph}{Axis Aligned Bounding Box (AABB)}{23}{paragraph*.28}
-\contentsline {paragraph}{Convex Hull}{23}{paragraph*.29}
-\contentsline {paragraph}{Collision Detection}{23}{paragraph*.31}
-\contentsline {paragraph}{Objects Modelling}{24}{paragraph*.32}
+\contentsline {paragraph}{Principal Components}{21}{paragraph*.23}
+\contentsline {paragraph}{Projection onto a plane}{21}{paragraph*.25}
+\contentsline {paragraph}{Rotation Matrices}{22}{paragraph*.26}
+\contentsline {paragraph}{Axis Aligned Bounding Box (AABB)}{23}{paragraph*.27}
+\contentsline {paragraph}{Convex Hull}{23}{paragraph*.28}
+\contentsline {paragraph}{Collision Detection}{23}{paragraph*.30}
+\contentsline {paragraph}{Objects Modelling}{24}{paragraph*.31}
 \contentsline {section}{\numberline {4.3}Actions Execution}{25}{section.4.3}
 \contentsline {subsection}{\numberline {4.3.1}Pushing}{25}{subsection.4.3.1}
 \contentsline {subsection}{\numberline {4.3.2}Grasping}{28}{subsection.4.3.2}
@@ -40,4 +40,4 @@
 \contentsline {section}{\numberline {7.1}Conclusions}{38}{section.7.1}
 \contentsline {section}{\numberline {7.2}Limitations}{38}{section.7.2}
 \contentsline {section}{\numberline {7.3}Future Work}{38}{section.7.3}
-\contentsline {chapter}{Bibliography}{39}{chapter*.44}
+\contentsline {chapter}{Bibliography}{39}{chapter*.43}

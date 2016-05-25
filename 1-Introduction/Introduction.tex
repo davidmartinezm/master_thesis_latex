@@ -1,11 +1,8 @@
 \chapter{Introduction}
 \label{ch:introduction}
 
-Robotic manipulation of objects is an increasing field of research which has struggled researches from many years ago. In several industries environments robots can be easily programmed considering some standard objects, i.e. the manipulation is always the same and known a priori, and usually robot operations avoid to deal in cluttered scene, but this situation needs a plant designed in a manner to provide to the robot a non cluttered scene. 
-%In order to move the robots outside industries and bring them to home of people they need to be equipped with a particular intelligence and manipulation skills that are still at a first stage.
-But there are situations in which robots with enhanced intelligence can be useful. An example of this is the \textit{Amazon Picking Challenge} \citep{APC} which has the objective to provide a challenge 
-problem to the robotics research community that involves integrating the state of the art in object perception, 
-motion planning, grasp planning, and task planning to manipulate real-world items in industrial settings such ones human operators face in Amazon's warehouse. Joey Durham from Amazon Robotics describes the challenges of this competition with the following sentence:
+Robotic manipulation of objects is an increasing field of research which has struggled researches from many years ago. In several industrial environments robots can be easily programmed considering the objects to be known a priori, i.e. the manipulation is always the same, and usually robot operations avoid to deal in cluttered scene, but this situation needs a workspace designed in a manner to provide to the robot a non cluttered scene. But there are situations in which robots with enhanced intelligence can be useful.
+ An example in which a robot could face a cluttered scenario is the one of the \textit{Amazon Picking Challenge} \citep{APC}, which has the objective to provide a challenge problem to the robotics research community that involves integrating the state of the art in object perception, motion planning, grasp planning, and task planning to manipulate real-world items in industrial settings such ones human operators face in Amazon's warehouse. Joey Durham from Amazon Robotics describes the challenges of this competition with the following sentence:
 \begin{displayquote}
  “A robot for picking purposes must possess a lot of skills: The selected item must be identified, handled and deposited correctly and safely. This requires a certain level of visual, tactile and haptic perceptive skills and great handling capabilities.”
 \end{displayquote}
@@ -23,16 +20,16 @@ This work is structured as follow. First an introduction to the problem we want 
 In this chapter first an introduction to the problem and the approach adopted is commented, then the experimental set up is presented since it will be useful to understand some techniques and choices for the algorithm which will be discussed in next chapters. 
 
 \section{Problem Approach}
-In this section the approach to resolve the planning problem is described. The strategy to resolve the problem is inspired to a human-like solution. A human to resolve such a task would use three main actions: grasp an object, push it or drag it. When it is not possible to grasp an object, because other objects imped the human to put the hands in the proper way to grasp the desired one, he/she has to interact with the objects in order to achieve a configuration of the objects that can be suitable to grasp the desired object, and this is achieved through pushing or dragging actions. 
+In this section the approach to solve the planning problem is described. The strategy to solve the problem is inspired to a human-like solution. A human would solve such task with three main actions: grasp an object, push it or drag it. When it is not possible to grasp an object, because other objects hinder the human to put the hands in the proper way to grasp the desired one, he/she has to interact with the scene in order to put the desired object in a pose where it can be grasped.
 
-Dragging is a very complex action which will need the robot to lay the end effector on the top of an object and make enough pressure on the contact in order the friction between the table and the object is minor than the friction between the object and the robot's end effector. This is a very hard action which would imply an implementation of a reliable controller, moreover the goal is not only to move the object but also not to ruin it.
+Dragging is a very complex action which will require the robot to lay the end effector on the top of an object. This is a very hard action which would imply an implementation of a reliable controller, moreover the goal is not only to move the object but also not to ruin it.
 
-Pushing action is an action much easier than dragging since it only requires to put the end effector in a certain pose and then push the object by moving the end effector. However the pushing action is complex since to push an object making it following a certain path the pushing pose has to be chosen taking into account the shape of the object and a controller would be needed in order to correct the pose along the path. Despite this we handled to perform that action in a easy way by considering only objects with basic shapes.
+Pushing action is an action easier than dragging since it only requires to put the end effector in a certain pose and then push the object by moving the end effector. However the pushing action is complex since to push an object making it following a certain path the pushing pose has to be chosen taking into account the shape of the object and a controller would be needed in order to correct the pose along the path. Despite this we handled to perform that action in a easy way by considering only objects with basic shapes.
 
 For these considerations the main actions the robot has to use in order to interact with the objects are grasping and pushing.
-Grasping is the most important action since it lets to take an object from the pile of objects and drop it somewhere, for instance into a bin, clearing in this way the table. There exist different works facing the same task by focusing only in grasping (for instance \citep{AGILE}). The pushing becomes useful considering the problem that two adjacent objects could not be grasped if they are so close such that the robot's gripper, when attempting to grasp an object, is going to collide with the adjacent one, making the object of interest ungraspable. From this consideration is necessary the pushing action, in order to separate adjacent objects which could mutually exclude themselves to be grasped. 
+Grasping is the most important action since it lets to take an object from the pile of objects and drop it somewhere, for instance into a bin, clearing in this way the table. There exist different works facing the same task by focusing only in grasping \citep{haf} \citep{AGILE}. The pushing becomes useful considering the problem that two adjacent objects could not be grasped if they are so close such that the robot's gripper, when attempting to grasp an object, is going to collide with the adjacent one, making the object of interest ungraspable. From this consideration is necessary the pushing action, in order to separate adjacent objects which could mutually exclude themselves to be grasped. 
 
-Being observant to the philosophy to reproduce the human reasoning as much as possible, the manipulation of the objects is intended in manner to avoid to interact with more than one object per action. That is, when we push, or grasp, an object only that object will change its pose. 
+Being observant to the philosophy of a human-inspired solution, the manipulation of the objects is intended in manner to avoid to interact with more than one object per action. That is, when we push, or grasp, an object only that object will change its pose. 
 
 The robot's intelligence is enhanced by a planning system  which will return a sequence of actions in order to achieve the goal to clear the table. 
 The robot will reason totally in an abstraction level by considering only symbolic predicates which will be obtained by hand-built mapping functions making simpler the reasoning step. It is important noting that this problem should includes important geometric information which are very useful for the planner, such as how much to push an object, in what direction and the inverse kinematic of the robot. This geometric information are translated into symbolic ones relaxing the planning phase, although these are not able to catch all the geometric information. Then through backtracking the robot will evaluate if the returned plan can be actually executed by the robot (i.e. evaluate if the action to execute involves the robot to move inside its working space), if not it updates the predicates and replans. 
@@ -58,7 +55,7 @@ The robot used is a Barret WAM arm, which is a 7 degree of freedom (DoF) manipul
 \caption{Robot and vision sensor.}
 \end{figure}
 %This robot is characterized by a low inertia of the end effector thanks to the kind of its actuators. 
-The WAM is noteworthy because it does not use any gears for manipulating the joints, but rather a cable drive, so there are no backlash problems and it is both fast and stiff. Cable drives permit low friction and ripple-free torque transmission from the actuator to the joints. 
+The WAM is noteworthy because it does not use any gears for manipulating the joints, but cable drives, so there are no backlash problems and it is both fast and stiff. Cable drives permit low friction and ripple-free torque transmission from the actuator to the joints. 
 To detect the objects a Kinect camera, a RGB-D sensor, is employed (\figref{fig:kinect}).
 
 To manipulate the objects the manipulation skills of the robot are enhanced by a gripper designed in the IRI institute and actuated by Dynamixel motors. Such a gripper is depicted in Figure \ref{fig:gripper_general} from several point of views. Its closing width\footnote{Distance between the fingers when the gripper is closed.} is $3$ centimetres while the opening width\footnote{Distance between the fingers when the gripper is open.} is of $8$ centimetres, therefore we are constrained to grasp objects with a width in the range $[3 \div 8]cm$.
@@ -87,12 +84,11 @@ For the task planner, as the reader will see in Chapters \ref{ch:task_planner} a
 in order to compute the predicates. 
 
 The gripper will be modelled measuring some principal elements such as: finger's width and height, gripper's width, height and deep, closing and opening width. The modelling procedure is depicted in Figure \ref{fig:gripper_modelling}. The resulting model is a simple triangle mesh which includes all the important geometric information of the gripper.
-
-\begin{wrapfigure}{r}{6.5cm}
-\caption{Gripper and WAM.}\label{fig:wam_gripper}
+\begin{figure}[h]
+\centering
 \includegraphics[width=5.0cm]{Img/set_up/wam_gripper2.png}
-\end{wrapfigure}
-
+\caption{Gripper and WAM.}\label{fig:wam_gripper}
+\end{figure}
 Such a simple model allows the collision algorithm commented in Chapter \ref{ch:algorithm} to check for collision in just few millisecond. 
 A more detailed and complex model would only lead as benefit a higher precision, but for this kind of task an extremely accurate precision is not needed, and it will slow down the algorithm because the collision checking procedure would be more computationally expensive. 
 The gripper will be mounted in the end effector of the robot as shown in Figure \ref{fig:wam_gripper}. 

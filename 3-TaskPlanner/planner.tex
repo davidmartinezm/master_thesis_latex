@@ -2,68 +2,56 @@
 \label{ch:task_planner}
 In this chapter the general framework adopted is discussed, proposing a suitable task planning system. After the  review of the current state of the art of task planners, a proper planner is chosen and then a suitable description to the table clearing problem is discussed.
 \section{Task Planners Review}
-As already seen in chapter \ref{ch:state_of_the_art} there exist different kind of planners and they can be grouped in three main categories:
+To solve the categories of planners evaluated were three:
 \begin{enumerate}
 \item classical planners
 \item hierarchical planners
 \item probabilistic planners
 \end{enumerate}
-\textbf{Classical planners}, as suggested by the name, are the more classical and easy to use. They are characterized by environments which are fully observable, deterministic, finite and static (changes happen only when the agent acts) and discrete (in time, actions, objects...) \citep{artificialIntelligence}.
-A deterministic problem is generally formulated as a $6$-tuple $\Pi=\langle S^d, s_o^d, G^d, A^d, T^d, c^d \rangle$ \cite{little2007probabilistic}, where:
-\begin{itemize}
-\item $S^d$ is a finite set of states;
-\item $s_o^d \in S^d$ is an initial state;
-\item $G^d \in S^d$ is a goal state;
-\item $A^d(s)$ is a set of applicable actions for each $s \in S^d$;
-\item $T^d(a,s) \in S^d$ is a deterministic transition function for all actions $a \in A^d(s)$ and states $ s \in S^d$;
-\item $c^d(a)$ is the cost to apply action $a$. 
-\end{itemize}
-The solutions, or trajectories, $\tau_i$ are sequences of actions applicable from the initial state until the goal state. The cost of a trajectory $C(\tau_i)$ is the sum of the cost of the actions of the trajectory $C(\tau_i) = \sum_{a \in \tau} c^d(a)$. The optimal solution is the solution with less cost: $\tau^* = \min_{\tau_i} c(\tau_i)$. A very well known classic planner is the Fast Downward planner \cite{helmert2006fast}.
+\textbf{Classical planners} are characterized by environments which are fully observable, deterministic, finite and static (changes happen only when the agent acts) and discrete (in time, actions, objects...) \citep{artificialIntelligence}.  A very well known classic planner is the Fast Downward planner \cite{helmert2006fast}.
+
 
 \textbf{Hierarchical planning}, also called \textit{Hierarchical Task Network}(HTN), works in a similar way to how it is believed that human planning 
-works \citep{marthi2007angelic}. It is based on a reduction of the problem. The planner recursively decomposes tasks into subtasks, stopping when it reaches primitive tasks that can be performed directly by planning operators. This kind of planner needs to have a set of methods, where each method is a schema for decomposing a particular kind of task into a set of subtasks \citep{shopDescription}. For this kind of planning technique a well known planner is JSHOP2 \cite{JSHOP2}.
+works \citep{marthi2007angelic}. It is based on a reduction of the problem. The planner recursively decomposes tasks into subtasks, stopping when it reaches primitive tasks that can be performed directly by planning operators. This kind of planner needs to have a set of methods, where each method is a schema for decomposing a particular kind of task into a set of subtasks. For this kind of planning technique a well known planner is SHOP \citep{shop}.
 
-\textbf{Probabilistic planning} is a planning technique which considers that the environment is not deterministic but probabilistic. So the actions have a certain probability to obtain a certain state, and given an initial and final state the planner  finds the solution path with the highest probability. A well known example on which this kind of planners are build on is the Markov Decision Process. A probabilistic problem is generally formulated as a $6$-tuple $\Pi=\langle S, s_o, G, O, T, A \rangle$ \cite{little2007probabilistic}, where:
-\begin{itemize}
-\item $S$ is a finite set of states;
-\item $s_o \in S$ is the initial state;
-\item $G \in S$ is a goal state;
-\item $O$ is the set of outcomes, the probability of $o \in O$ is $Pr(o)$;
-\item $T(o,s) \in S$ is a (total) deterministic transition function for all outcomes $o \in O$ and states $s\in S$;
-\item $A(s)$ is a set of applicable actions for each $s \in S$, coupled to a function $out(a) \subseteq O$ mapping each action to a set of outcomes in such a way that 
-\begin{itemize}
-\item each outcome $o \in O$ belongs exactly to one action $act(o)$;
-\item $\sum_{o \in out(a)} Pr(o) = 1$ for all $a$.
-\end{itemize}
-\end{itemize}
-In this case the optimal solution is the one with the highest probability. In this category two famous probabilistic planners are Gourmand \cite{Gourmand} and PROST \cite{PROST}.
+\textbf{Probabilistic planning} is a planning technique which considers that the environment is not deterministic but probabilistic. So the actions have a certain probability to obtain a certain state, and given an initial and final state the planner  finds the solution path with the highest probability. A well known example on which this kind of planners are build on is the Markov Decision Process.
+%A probabilistic problem is generally formulated as a $6$-tuple $\Pi=\langle S, s_o, G, O, T, A \rangle$ %\cite{little2007probabilistic}, where:
+%\begin{itemize}
+%item $S$ is a finite set of states;
+%\item $s_o \in S$ is the initial state;
+%\item $G \in S$ is a goal state;
+%\item $O$ is the set of outcomes, the probability of $o \in O$ is $Pr(o)$;
+%\item $T(o,s) \in S$ is a (total) deterministic transition function for all outcomes $o \in O$ and states $s\in S$;
+%\item $A(s)$ is a set of applicable actions for each $s %\in S$, coupled to a function $out(a) \subseteq O$ mapping each action to a set of outcomes in such a way that 
+%\begin{itemize}
+%\item each outcome $o \in O$ belongs exactly to one action $act(o)$;
+%\item $\sum_{o \in out(a)} Pr(o) = 1$ for all $a$.
+%\end{itemize}
+%\end{itemize}
+In this category two probabilistic planners that perform good in planning competitions are Gourmand \cite{Gourmand} and PROST \cite{PROST}.
 
 \section{Planner}
-The problem this thesis is facing could be resolved by several approaches by using planners from all the categories. We have already seen that such a problem involves geometric constraints and those cannot be considered directly by the planner using a ready to use state of the art planner, that would imply a designing of a new planner. Moreover using a hybrid planner is also time consuming, so we decided to focuse on a strategy that would let us to use already existing planners. This way involves working with symbolic predicates. Symbolic predicates are predicates which can be true or false, and they will be introduced more in detail in the next sections. 
+%The problem this thesis is facing could be resolved by several approaches by using planners from all the categories. We have already seen that such a problem involves geometric constraints and those cannot be considered directly by the planner using a ready to use state of the art planner, that would imply a designing of a new planner. Moreover using a hybrid planner is also time consuming, so we decided to focuse on a strategy that would let us to use already existing planners. This way involves working with symbolic predicates. Symbolic predicates are predicates which can be true or false, and they will be introduced more in detail in the next sections. 
 
-The problem moreover involves a big amount of uncertainty due to the interaction of the robot with the environment. When the robot will interact with the objects it is very hard to predict correctly the position of the object after the execution, that is the next state, this is a crucial problem which should be considered. With a probabilistic planner, the planner will take into account what object has been moved and it will update the state obtaining a set of states, each one with a certain probability, and the returned plan, or solution, is the one with the highest probability. The probability also has to be modelled and it is highly depending on the form of the object, this makes the modelling of the probability a problem.
+The problem involves a big amount of uncertainty due to the interaction of the robot with the environment. When the robot will interact with the objects it is very hard to predict correctly the position of the object after the execution, that is the next state, this is a crucial problem which should be considered. With a probabilistic planner, the planner will take into account what object has been moved and it will update the state obtaining a set of states, each one with a certain probability, and the returned plan, or solution, is the one with the highest reward. The probability also has to be modelled and it is highly depending on the form of the object.
 Martinez et al. \citep{martinez2015planning} faced the problem of cleaning a surface entirely by probabilistic symbolic planning. The problem they wanted to solve was characterized by a strong probability factor and a wrong effect of the action would have lead to replan and therefore to slow down the system.
-Another way to face the problem of probability is replanning after each executed action, or whenever the current state deviates from the expected one, generating a new trajectory from the current state to the goal. The plan's actions are considered deterministic, and the only useful action is actually the first one of the plan, after its execution the system replans again. Little et al. discussed in \cite{little2007probabilistic} the problem of when is more useful the probabilistic planning with respect a simple replanning system. 
-They defined the concept of \textit{Probabilistic Interesting Problem} with the following definition:
+Another way to face the problem of probability is replanning after each executed action \textbf{cite Tomas Lozano}, or whenever the current state deviates from the expected one, generating a new trajectory from the current state to the goal. The plan's actions are considered deterministic, and the only useful action is actually the first one of the plan, after its execution the system replans again. Little et al. discussed in \cite{little2007probabilistic} the problem of when is more useful the probabilistic planning with respect a simple replanning system. 
+%They defined the concept of \textit{Probabilistic Interesting Problem} with the following definition:
+%\begin{displayquote}
+%A probabilistic planning problem is considered to be \textit{probabilistically interesting} if and only if it has all of the following structural properties:
+%\begin{itemize}
+%\item there are multiple goal trajectories;
+%\item there is at least one pair of distinct goal trajectories, $\tau$
+%and $\tau'$, that share a common sequence of outcomes for the first $n-1$ outcomes, and where $\tau_n$ and $\tau_n'$ are distinct outcomes of the same action; and
+%\item there exist two distinct goal trajectories $\tau$ and $\tau'$ and outcomes $o \in \tau$ and $o' \in \tau'$ of two distinct actions $a = act(o)$ and $a' = act(o')$  such that executing action $a$ strictly decreases the maximum probability of reaching a state where action $a'$ can be executed. To clarify: executing $a$ rules out any plan with a maximal probability of executing $a'$.
+%\end{itemize}
+%\end{displayquote}
+They define a planning problem \textit{probabilistic interesting} if dead ends can be avoided or when there exist more feasible solutions with low probability such that coupled have a greater probability to reach the goal than another single trajectory with an higher probability.
 
-\begin{displayquote}
-A probabilistic planning problem is considered to be \textit{probabilistically interesting} if and only if it has all of the following structural properties:
-\begin{itemize}
-\item there are multiple goal trajectories;
-\item there is at least one pair of distinct goal trajectories, $\tau$
-and $\tau'$, that share a common sequence of outcomes for the
-first $n-1$ outcomes, and where $\tau_n$ and $\tau_n'$ are distinct
-outcomes of the same action; and
-\item there exist two distinct goal trajectories $\tau$ and $\tau'$ and outcomes $o \in \tau$ and $o' \in \tau'$ of two distinct actions $a = act(o)$ and $a' = act(o')$  such that executing action $a$ strictly decreases
-the maximum probability of reaching a state where action $a'$ can
-be executed. To clarify: executing $a$ rules out any plan with a maximal probability of executing $a'$.
-\end{itemize}
-\end{displayquote}
-They assert that unless a probabilistic planning problem satisfies all of the structural conditions in this definition, then
-it is inevitable that a well-written replanner will outperform
-a well-written probabilistic planner. Moreover the authors do not negate the possibility that a deterministic replanner could perform optimally even for probabilistically interesting planning problems. 
+They assert that unless a probabilistic planning problem satisfies all of the conditions to be \textit{probabilistic interesting} it then it is inevitable that a well-written replanner will outperform a well-written probabilistic planner. Moreover the authors do not negate the possibility that a deterministic replanner could perform optimally even for probabilistically interesting planning problems. 
 
 To conclude, a replanner makes more probabilistic problems practically solvable. In the other hand it suffers to be less robust than a probabilistic one. 
+
 
 
 \begin{comment}
@@ -77,13 +65,26 @@ combination of chance and choice,
 \end{itemize}
 \end{comment}
 
-Taking into account such considerations, in order to face simply such a difficult problem, the problem has been thought to be solved thanks to a deterministic replanner although it is \textit{probabilistic interesting}. The choice also was guided by the difficulty to model the probability distribution of the actions which depends on the particular shape of the objects the robot has to interact with. 
+Taking into account such considerations and that, except for rare cases, our planning problem is not \textit{probabilistic interesting}, the problem has been thought to be solved thanks to a deterministic replanner.
 
-Between a classic planner and an heuristic one there is not much difference for the aim of this work.
-The planner chosen to develop the work is the \textbf{Fast Downward} planner \cite{helmert2006fast}\cite{FastDownwardPage}, a very well know classic one. The advantage of this planner is its wide documentation with respect other planners, which makes it easier to use and it also has a wide community. 
+How it will be seen next in this chapter we were able to resolve the planning problem by using a small variety of predicates. A hierarchical planner would be a good choice in order to speed up the process but a proper method, to decompose the task into subtasks, has to be design. Due to the few predicates the planning problem is easy to solve, and there is not a big advantage in using a hierarchical planner compared to a classical one, therefore we adopted for a classic planner. 
+The planner chosen to develop the work is the \textbf{Fast Downward} planner \citep{helmert2006fast}, a very well know classic one. 
+This planner is feature-wise complete, stable and fast in solving planning problem.
 
 \section{Symbolic Predicates}
-One the planner has been chosen, the planning problem has to be formulated accordingly to the capabilities of such a planner. The \textit{Fast Downward} planner needs the problem to be formulated in the common format of PDDL (\textit{Problem Domain Description Language}) \citep{pddl}. In this section the symbolic predicates that have been considered in order to resolve the problem are described.
+Once the planner has been chosen, the planning problem has to be formulated accordingly to the capabilities of such a planner. Since we chose a classic one, the problem is deterministic and it is generally formulated as a $6$-tuple $\Pi=\langle S^d, s_o^d, G^d, A^d, T^d, c^d \rangle$ \cite{little2007probabilistic}, where:
+\begin{itemize}
+\item $S^d$ is a finite set of states;
+\item $s_o^d \in S^d$ is an initial state;
+\item $G^d \in S^d$ is a goal state;
+\item $A^d(s)$ is a set of applicable actions for each $s \in S^d$;
+\item $T^d(a,s) \in S^d$ is a deterministic transition function for all actions $a \in A^d(s)$ and states $ s \in S^d$;
+\item $c^d(a)$ is the cost to apply action $a$. 
+\end{itemize}
+The solutions, or trajectories, $\tau_i$ are sequences of actions applicable from the initial state until the goal state. The cost of a trajectory $C(\tau_i)$ is the sum of the cost of the actions of the trajectory $C(\tau_i) = \sum_{a \in \tau} c^d(a)$. The optimal solution is the solution with less cost: $\tau^* = \min_{\tau_i} c(\tau_i)$.
+
+
+The \textit{Fast Downward} planner needs the problem to be formulated in the common format of PDDL (\textit{Problem Domain Description Language}) \citep{pddl}. In this section the symbolic predicates that have been considered in order to resolve the problem are described.
 
 The task this thesis is going to resolve is a common task done by humans who thinks in order to find a feasible sequence of actions. Such a sequence is normally composed of actions that avoid the collision between the manipulated object and the other ones, whenever possible. To do this we, as humans, think on what is going to happen if we manipulate an object in a certain way, and what objects can be manipulated at the current instant and what objects need to be moved in order to interact with a certain one. The design of the problem has been inspired on such a reasoning way. The reasoning part is entrusted to the planner, which needs a coherent problem description through symbolic predicates. 
 
