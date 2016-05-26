@@ -1,7 +1,7 @@
-\chapter{Algorithm}
-\label{ch:algorithm}
+\chapter{Implementation}
+\label{ch:implementation}
 
-In this chapter the algorithm is discussed, presenting how the objects are recognized and how the symbolic predicates are obtained. 
+In this chapter the implementation is discussed, presenting how the objects are recognized and how the symbolic predicates are obtained. 
 
 \section{Object Localization} 
 For the planner, to know how to move the object, is fundamental knowing the objects on the scenario, therefore they need to be detected. More correctly, they need to be segmented since the algorithm is dealing with unknown objects, it is not going to recognize an objects as a particular one, but it segments the objects. 
@@ -423,7 +423,7 @@ The grasping action, in its total is composed by the following set of actions:
 \end{enumerate}
 
 \section{Predicates Computations}
-In Chapter \ref{ch:task_planner}  the predicates used are described, in this section their computation is presented in detail. 
+In Chapter \ref{ch:planning_system}  the predicates used are described, in this section their computation is presented in detail. 
 
 Once the objects have been segmented, we have one point cloud per object, next we have to retrieve the symbolic predicates from the objects configuration. 
 
@@ -433,7 +433,7 @@ The \ttt{block\_grasp o1 o2} predicate refers the fact that object \ttt{o1} impe
 \begin{figure}[h]
 \centering
 \includegraphics[width=6.5cm]{Img/grasping/block_grasp.png}
-\caption{Visualization of the computation of \texttt{block\_grasp} predicate for object \ttt{o0}. The opened gripped model is transformed to the grasping pose for object \ttt{o0} and it is tested if the gripper mesh model collides with the other objects, in this it collides with \ttt{o1}. }\label{fig:block_grasp}
+\caption{Visualization of the computation of \texttt{block\_grasp} predicate for object \ttt{o0}. The opened gripped model is transformed to the grasping pose for object \ttt{o0} and it is tested if the gripper mesh model collides with the other objects, in this case it collides with \ttt{o1}. }\label{fig:block_grasp}
 \end{figure}
 
 \begin{algorithm}

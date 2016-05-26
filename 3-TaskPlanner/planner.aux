@@ -9,40 +9,37 @@
 \citation{PROST}
 \citation{martinez2015planning}
 \citation{little2007probabilistic}
-\@writefile{toc}{\contentsline {chapter}{\numberline {3}Task planner}{9}{chapter.3}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {3}Planning system}{9}{chapter.3}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\newlabel{ch:task_planner}{{3}{9}{Task planner}{chapter.3}{}}
+\newlabel{ch:planning_system}{{3}{9}{Planning system}{chapter.3}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {3.1}Task Planners Review}{9}{section.3.1}}
 \@writefile{toc}{\contentsline {section}{\numberline {3.2}Planner}{9}{section.3.2}}
 \citation{helmert2006fast}
 \citation{little2007probabilistic}
-\citation{pddl}
 \@writefile{toc}{\contentsline {section}{\numberline {3.3}Symbolic Predicates}{10}{section.3.3}}
-\@writefile{toc}{\contentsline {paragraph}{Grasping Action}{11}{paragraph*.7}}
-\@writefile{toc}{\contentsline {paragraph}{Pushing Action}{11}{paragraph*.8}}
+\citation{pddl}
 \citation{Bidot2015}
-\@writefile{toc}{\contentsline {paragraph}{Effects of the actions}{12}{paragraph*.9}}
-\@writefile{toc}{\contentsline {paragraph}{Geometric constraints}{12}{paragraph*.10}}
-\@writefile{loa}{\contentsline {algorithm}{\numberline {1}{\ignorespaces Planning procedure with backtracking. The input parameters are the initial state and the goal state. An action is defined by the kind of action and the object of interest ($action, object$). The procedure will return a feasible plan or not plan at all.\relax }}{13}{algorithm.1}}
-\newlabel{alg:backtracking}{{1}{13}{Planning procedure with backtracking. The input parameters are the initial state and the goal state. An action is defined by the kind of action and the object of interest ($action, object$). The procedure will return a feasible plan or not plan at all.\relax }{algorithm.1}{}}
-\@writefile{tdo}{\contentsline {todo}{\color@box {}{orange}{\leavevmode {\color  {orange}o}}\ Include this in the experiments?}{13}{section*.11}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.1}{\ignorespaces Unfeasible plan due to geometric constraints. In this case the planner returns as action to execute grasping or pushing away the white cup (highlighted by a red circle) but it is out the configuration space of the robot and there exist no plan for that problem. This problem is the one depicted in Figure \ref  {fig:example_scene}, where the other objects has been grasped as consequence of the plan execution.\relax }}{14}{figure.caption.12}}
-\newlabel{fig:backtracking1}{{3.1}{14}{Unfeasible plan due to geometric constraints. In this case the planner returns as action to execute grasping or pushing away the white cup (highlighted by a red circle) but it is out the configuration space of the robot and there exist no plan for that problem. This problem is the one depicted in Figure \ref {fig:example_scene}, where the other objects has been grasped as consequence of the plan execution.\relax }{figure.caption.12}{}}
-\@writefile{tdo}{\contentsline {todo}{\color@box {}{orange}{\leavevmode {\color  {orange}o}}\ I added this just to make nicer the algorithm and make the planner clean the table as much as possible}{14}{section*.13}}
-\@writefile{toc}{\contentsline {paragraph}{PDDL}{14}{paragraph*.14}}
+\@writefile{toc}{\contentsline {paragraph}{Grasping Action}{12}{paragraph*.7}}
+\@writefile{toc}{\contentsline {paragraph}{Pushing Action}{12}{paragraph*.8}}
+\@writefile{toc}{\contentsline {paragraph}{Backtracking}{13}{paragraph*.9}}
+\@writefile{loa}{\contentsline {algorithm}{\numberline {1}{\ignorespaces Planning procedure with backtracking.  \textbf  {Input:} initial state $s_{0}^d$ and goal state $G^d$.   \textbf  {Output:} a feasible plan or not plan at all. \relax }}{13}{algorithm.1}}
+\newlabel{alg:backtracking}{{1}{13}{Planning procedure with backtracking.\\ \textbf {Input:} initial state $s_{0}^d$ and goal state $G^d$. \\ \textbf {Output:} a feasible plan or not plan at all. \relax }{algorithm.1}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.1}{\ignorespaces Unfeasible plan due to geometrical constraints. In this case the planner returns as action to execute grasping or pushing away the white cup (highlighted by a red circle) but it is out the configuration space of the robot and there exist no plan for that problem.\relax }}{14}{figure.caption.10}}
+\newlabel{fig:backtracking1}{{3.1}{14}{Unfeasible plan due to geometrical constraints. In this case the planner returns as action to execute grasping or pushing away the white cup (highlighted by a red circle) but it is out the configuration space of the robot and there exist no plan for that problem.\relax }{figure.caption.10}{}}
+\@writefile{toc}{\contentsline {paragraph}{PDDL}{14}{paragraph*.11}}
 \newlabel{graspPDDL}{{3.1}{14}{PDDL syntax of the grasping action}{lstlisting.3.1}{}}
 \@writefile{lol}{\contentsline {lstlisting}{\numberline {3.1}PDDL syntax of the grasping action}{14}{lstlisting.3.1}}
 \newlabel{pushPDDL}{{3.2}{15}{PDDL syntax of the pushing action along direction 1}{lstlisting.3.2}{}}
 \@writefile{lol}{\contentsline {lstlisting}{\numberline {3.2}PDDL syntax of the pushing action along direction 1}{15}{lstlisting.3.2}}
-\newlabel{fig:pipeline1}{{3.2a}{16}{Perception Pipeline\relax }{figure.caption.15}{}}
-\newlabel{sub@fig:pipeline1}{{a}{16}{Perception Pipeline\relax }{figure.caption.15}{}}
-\newlabel{fig:pipeline2}{{3.2b}{16}{Planning Pipeline\relax }{figure.caption.15}{}}
-\newlabel{sub@fig:pipeline2}{{b}{16}{Planning Pipeline\relax }{figure.caption.15}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.2}{\ignorespaces Perception and planning pipeline\relax }}{16}{figure.caption.15}}
-\newlabel{fig:pipeline}{{3.2}{16}{Perception and planning pipeline\relax }{figure.caption.15}{}}
+\newlabel{fig:pipeline1}{{3.2a}{16}{Perception Pipeline\relax }{figure.caption.12}{}}
+\newlabel{sub@fig:pipeline1}{{a}{16}{Perception Pipeline\relax }{figure.caption.12}{}}
+\newlabel{fig:pipeline2}{{3.2b}{16}{Planning Pipeline\relax }{figure.caption.12}{}}
+\newlabel{sub@fig:pipeline2}{{b}{16}{Planning Pipeline\relax }{figure.caption.12}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.2}{\ignorespaces Perception and planning pipeline\relax }}{16}{figure.caption.12}}
+\newlabel{fig:pipeline}{{3.2}{16}{Perception and planning pipeline\relax }{figure.caption.12}{}}
 \@setckpt{3-TaskPlanner/planner}{
-\setcounter{page}{18}
+\setcounter{page}{17}
 \setcounter{equation}{0}
 \setcounter{enumi}{3}
 \setcounter{enumii}{0}
@@ -64,7 +61,7 @@
 \setcounter{Hfootnote}{2}
 \setcounter{bookmark@seq@number}{9}
 \setcounter{vrcnt}{0}
-\setcounter{lstnumber}{33}
+\setcounter{lstnumber}{32}
 \setcounter{float@type}{16}
 \setcounter{algorithm}{1}
 \setcounter{ALG@line}{12}
@@ -87,7 +84,7 @@
 \setcounter{subfigure}{2}
 \setcounter{subtable}{0}
 \setcounter{NAT@ctr}{0}
-\setcounter{@todonotes@numberoftodonotes}{2}
+\setcounter{@todonotes@numberoftodonotes}{0}
 \setcounter{@stackindex}{0}
 \setcounter{ROWcellindex@}{0}
 \setcounter{section@level}{0}
