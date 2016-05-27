@@ -1,8 +1,5 @@
 \begin{thebibliography}{10}
 
-\bibitem{FastDownwardPage}
-\href{http://www.fast-downward.org/}{Fast Downward Home Page}.
-
 \bibitem{PCL_}
 \href{http://www.openperception.org/}{http://www.openperception.org/} - open
   perception.
@@ -198,6 +195,12 @@ Jeremie Papon, Alexey Abramov, Markus Schoeler, and Florentin
 Stuart~J. Russell and Peter Norvig.
 \newblock {\em Artificial Intelligence: A Modern Approach}.
 \newblock Pearson Education, 2 edition, 2003.
+
+\bibitem{rusu2008towards}
+Radu~Bogdan Rusu, Zoltan~Csaba Marton, Nico Blodow, Mihai Dolha, and Michael
+  Beetz.
+\newblock Towards 3d point cloud based object maps for household environments.
+\newblock {\em Robotics and Autonomous Systems}, 56(11):927--941, 2008.
 
 \bibitem{LCCP}
 S.~C. Stein, M.~Schoeler, J.~Papon, and F.~Woergoetter.

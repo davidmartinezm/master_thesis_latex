@@ -47,7 +47,7 @@ Another way to face the problem of probability is replanning after each executed
 %\item there exist two distinct goal trajectories $\tau$ and $\tau'$ and outcomes $o \in \tau$ and $o' \in \tau'$ of two distinct actions $a = act(o)$ and $a' = act(o')$  such that executing action $a$ strictly decreases the maximum probability of reaching a state where action $a'$ can be executed. To clarify: executing $a$ rules out any plan with a maximal probability of executing $a'$.
 %\end{itemize}
 %\end{displayquote}
-They defined a planning problem \textit{probabilistic interesting} if dead ends can be avoided or when there exist more feasible solutions with low probability such that coupled have a greater probability to reach the goal than another single trajectory with an higher probability.
+They defined a planning problem \textit{probabilistic interesting} if dead ends can be avoided or when there exist more feasible solutions with low probability such that blended have a greater probability to reach the goal than another single trajectory with an higher probability.
 
 They assert that unless a probabilistic planning problem satisfies all of the conditions to be \textit{probabilistic interesting} then it is inevitable that a well-written replanner will outperform a well-written probabilistic planner. Moreover the authors do not negate the possibility that a deterministic replanner could perform optimally even for probabilistically interesting planning problems. 
 
@@ -153,19 +153,19 @@ The geometrical constraints related to the inverse kinematic of the robot have b
 
 \begin{algorithm}
 \caption{Planning procedure with backtracking.\\
-\textbf{Input:} initial state $s_{0}^d$ and goal state $G^d$. \\
-\textbf{Output:} a feasible plan or not plan at all. }\label{alg:backtracking}
+\textbf{Inputs:} initial state $s_{0}^d$ and goal state $G^d$. \\
+\textbf{Outputs:} a feasible plan or not plan at all. }\label{alg:backtracking}
 \begin{algorithmic}
 \Procedure{GetPlan}{$s_{0}^d$,$G^d$}
 \Repeat
-  \State $plan =$ \textsc{GetFastDownwardPlan}($s_{0}^d$,$G^d$)
+  \State $plan \gets$ \textsc{GetFastDownwardPlan}($s_{0}^d$,$G^d$)
   \If{\textsc{$\neg$isPlanEmpty}($plan$)} 
   		\Return NULL 
   \EndIf
-  \State $action=$ \textsc{GetFirstAction}($plan$)
-  \State $success =$ \textsc{HasIKSolution}($action$) 
+  \State $action\gets$ \textsc{GetFirstAction}($plan$)
+  \State $success \gets$ \textsc{HasIKSolution}($action$) 
   \If{$\neg success$}
-    \State $s_{0}^d =$ \textsc{UpdateInitialState}($action$) 
+    \State $s_{0}^d \gets$ \textsc{UpdateInitialState}($action$) 
   \EndIf
 \Until{$success$}
 \Return $plan$

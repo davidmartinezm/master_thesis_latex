@@ -11,7 +11,6 @@ A level-1 auxiliary file: 6-Experiments/experiments.aux
 A level-1 auxiliary file: 7-Conclusions/conclusions.aux
 The style file: plain.bst
 Database file #1: ./Bibliography/bibliography.bib
-Warning--to sort, need author or key in FastDownwardPage
 Warning--to sort, need author or key in pddl
 Warning--to sort, need author or key in Bullet
 Warning--to sort, need author or key in PCL_
@@ -24,43 +23,43 @@ Warning--can't use both volume and number fields in haf
 Warning--empty journal in SSS147762
 You've used 38 entries,
             2118 wiz_defined-function locations,
-            709 strings with 10752 characters,
-and the built_in function-call counts, 13144 in all, are:
-= -- 1244
-> -- 670
+            713 strings with 10852 characters,
+and the built_in function-call counts, 13422 in all, are:
+= -- 1273
+> -- 697
 < -- 11
-+ -- 267
-- -- 226
-* -- 844
-:= -- 2100
-add.period$ -- 115
++ -- 277
+- -- 236
+* -- 878
+:= -- 2159
+add.period$ -- 117
 call.type$ -- 38
-change.case$ -- 222
+change.case$ -- 227
 chr.to.int$ -- 0
-cite$ -- 49
-duplicate$ -- 550
-empty$ -- 1069
-format.name$ -- 226
-if$ -- 2828
+cite$ -- 48
+duplicate$ -- 554
+empty$ -- 1073
+format.name$ -- 236
+if$ -- 2874
 int.to.chr$ -- 0
 int.to.str$ -- 38
-missing$ -- 37
-newline$ -- 186
-num.names$ -- 70
-pop$ -- 319
+missing$ -- 38
+newline$ -- 188
+num.names$ -- 72
+pop$ -- 317
 preamble$ -- 1
-purify$ -- 186
+purify$ -- 191
 quote$ -- 0
-skip$ -- 393
+skip$ -- 390
 stack$ -- 0
-substring$ -- 613
+substring$ -- 638
 swap$ -- 145
 text.length$ -- 11
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 144
-warning$ -- 11
-while$ -- 102
+warning$ -- 10
+while$ -- 106
 width$ -- 40
-write$ -- 389
-(There were 11 warnings)
+write$ -- 395
+(There were 10 warnings)

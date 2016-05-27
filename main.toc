@@ -17,20 +17,20 @@
 \contentsline {subsection}{\numberline {4.1.1}Tabletop Object Detection}{17}{subsection.4.1.1}
 \contentsline {subsection}{\numberline {4.1.2}Object Segmentation}{18}{subsection.4.1.2}
 \contentsline {subsubsection}{Supervoxel}{18}{subsubsection*.14}
-\contentsline {subsubsection}{Local Convex Connected Patches Segmentation}{19}{subsubsection*.15}
+\contentsline {subsubsection}{Local Convex Connected Patches Segmentation}{19}{subsubsection*.16}
 \contentsline {section}{\numberline {4.2}Background}{20}{section.4.2}
-\contentsline {paragraph}{Principal Components}{20}{paragraph*.20}
+\contentsline {paragraph}{Principal Direction}{20}{paragraph*.20}
 \contentsline {paragraph}{Projection onto a plane}{20}{paragraph*.22}
 \contentsline {paragraph}{Rotation Matrices}{21}{paragraph*.23}
-\contentsline {paragraph}{Axis Aligned Bounding Box (AABB)}{22}{paragraph*.24}
+\contentsline {paragraph}{Bounding Box}{22}{paragraph*.24}
 \contentsline {paragraph}{Convex Hull}{22}{paragraph*.25}
 \contentsline {paragraph}{Collision Detection}{22}{paragraph*.27}
 \contentsline {paragraph}{Objects Modelling}{23}{paragraph*.28}
-\contentsline {section}{\numberline {4.3}Actions Execution}{24}{section.4.3}
-\contentsline {subsection}{\numberline {4.3.1}Pushing}{24}{subsection.4.3.1}
+\contentsline {section}{\numberline {4.3}Actions Execution}{23}{section.4.3}
+\contentsline {subsection}{\numberline {4.3.1}Pushing}{23}{subsection.4.3.1}
 \contentsline {subsection}{\numberline {4.3.2}Grasping}{27}{subsection.4.3.2}
-\contentsline {section}{\numberline {4.4}Predicates Computations}{28}{section.4.4}
-\contentsline {subsection}{\numberline {4.4.1}Predicate: \texttt {block\_grasp}}{28}{subsection.4.4.1}
+\contentsline {section}{\numberline {4.4}States generation}{27}{section.4.4}
+\contentsline {subsection}{\numberline {4.4.1}Predicate: \texttt {block\_grasp}}{27}{subsection.4.4.1}
 \contentsline {subsection}{\numberline {4.4.2}Predicate: \texttt {on}}{28}{subsection.4.4.2}
 \contentsline {subsection}{\numberline {4.4.3}Predicate: \texttt {block\_dir$_i$}}{30}{subsection.4.4.3}
 \contentsline {chapter}{\numberline {5}Software design}{33}{chapter.5}
@@ -39,4 +39,4 @@
 \contentsline {section}{\numberline {7.1}Conclusions}{37}{section.7.1}
 \contentsline {section}{\numberline {7.2}Limitations}{37}{section.7.2}
 \contentsline {section}{\numberline {7.3}Future Work}{37}{section.7.3}
-\contentsline {chapter}{Bibliography}{38}{chapter*.40}
+\contentsline {chapter}{Bibliography}{38}{chapter*.38}
