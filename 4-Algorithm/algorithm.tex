@@ -1,22 +1,22 @@
 \chapter{Implementation}
 \label{ch:implementation}
 
-In this chapter the implementation is discussed, presenting how the objects are recognized and how the symbolic predicates are obtained. 
+In this chapter the implementation is discussed, presenting how the objects are detected and how the symbolic predicates are obtained. 
 
 \section{Object Localization} 
-For the planner, to know how to move the object, is fundamental knowing the objects on the scenario, therefore they need to be detected. More correctly, they need to be segmented since the algorithm is dealing with unknown objects, it is not going to recognize an objects as a particular one, but it segments the objects. 
+For the planner, to know how to move the objects, is fundamental knowing where the objects are on the scenario, therefore they need to be detected. More correctly, they need to be segmented since the algorithm is dealing with unknown objects it is not going to recognize an object as a particular one, instead it segments the objects in the scene. 
 
-This stage is composed on two steps:
+This stage is composed of two steps:
 \begin{enumerate}
-\item Detecting the table top objects
-\item Segmenting the table top objects
+\item Detecting the tabletop objects
+\item Segmenting the tabletop objects
 \end{enumerate}
-The depth sensor is recording a depth map of a table, the algorithm has therefore to detect first the table, and so the objects that stands on top of it, and then segmenting them. We don't want to segment the entire image, if so, the table will be segmented as an object and the floor as well.
+The Kinect camera is recording a depth image of a table, the algorithm has therefore to detect first the table, and so the objects that stands on top of it, and then segmenting them. We don't want to segment the entire image, if so, the table would be segmented as an object and the floor as well.
 
 \subsection{Tabletop Object Detection} 
 The strategy for the tabletop object detection phase is composed of 3 different steps:
 \begin{enumerate}
-\item \textbf{Table plane estimation} (by RANSAC): the points of the table are detected estimating first a plane in the point cloud, all the points which belong to such a plane are the points of the table. 
+\item \textbf{Table plane estimation} (by RANSAC): the points of the table are detected estimating a plane in the point cloud, all the points which belong to such a plane are the points of the table. 
 \item \textbf{2D Convex Hull of the table}: having the points of the table a 2D convex hull is computed in order to get a 2D shape containing those points.
 \item \textbf{Polygonal prism projection}: all the points are projected on the table plane previously estimated and all the points which projections belong to the 2D convex hull are considered to be points of tabletop objects. 
 \end{enumerate}
@@ -317,6 +317,7 @@ Inspired by this consideration, we decided to consider as possible directions to
 \includegraphics[width=5.5cm]{Img/pushing/directions.png}
 \caption{Pushing directions computed using the segmented surface seen by the Kinect.}\label{fig:directions1}
 \end{subfigure}
+\quad
 \begin{subfigure}[t]{6cm}
 \includegraphics[width=5.5cm]{Img/pushing/directions2.png}
 \caption{Pushing directions associated to the object's convex hull.}
