@@ -47,7 +47,11 @@ Another way to face the problem of probability is replanning after each executed
 %\item there exist two distinct goal trajectories $\tau$ and $\tau'$ and outcomes $o \in \tau$ and $o' \in \tau'$ of two distinct actions $a = act(o)$ and $a' = act(o')$  such that executing action $a$ strictly decreases the maximum probability of reaching a state where action $a'$ can be executed. To clarify: executing $a$ rules out any plan with a maximal probability of executing $a'$.
 %\end{itemize}
 %\end{displayquote}
-They defined a planning problem \textit{probabilistic interesting} if dead ends can be avoided or when there exist more feasible solutions with low probability such that blended have a greater probability to reach the goal than another single trajectory with an higher probability.
+
+They defined a planning problem \textit{probabilistic interesting} if dead ends can be avoided,
+exist multiple goal trajectories and there is at least one pair of distinct goal trajectories, $\tau$ and $\tau^{'}$ that share a common sequence of outcomes for the first $n-1$ outcomes, and where $\tau_{n}$ and $\tau_{n}^{'}$ are distinct outcomes of the same action. 
+% COMMENT: The following is the old one
+%They defined a planning problem \textit{probabilistic interesting} if dead ends can be avoided or when there exist several feasible solutions with low probability such that blended have a greater probability to reach the goal than another single trajectory with an higher probability.
 
 They assert that unless a probabilistic planning problem satisfies all of the conditions to be \textit{probabilistic interesting} then it is inevitable that a well-written replanner will outperform a well-written probabilistic planner. Moreover the authors do not negate the possibility that a deterministic replanner could perform optimally even for probabilistically interesting planning problems. 
 

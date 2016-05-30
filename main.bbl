@@ -1,17 +1,9 @@
 \begin{thebibliography}{10}
 
-\bibitem{PCL_}
-\href{http://www.openperception.org/}{http://www.openperception.org/} - open
-  perception.
-
 \bibitem{pddl}
 {PDDL - The Planning Domain Definition Language}.
 \newblock Technical report, CVC TR-98-003/DCS TR-1165, Yale Center for
   Computational Vision and Control, 1998.
-
-\bibitem{Bullet}
-Bullet \href{http://wiki.ros.org/bullet }{\url{http://wiki.ros.org/bullet }},
-  2015.
 
 \bibitem{abdo2013learning}
 Nichola Abdo, Henrik Kretzschmar, Luciano Spinello, and Cyrill Stachniss.
@@ -132,6 +124,14 @@ Thomas Keller and Patrick Eyerich.
 \newblock Prost: Probabilistic planning based on uct.
 \newblock In {\em ICAPS}, 2012.
 
+\bibitem{koenig2004design}
+Nathan Koenig and Andrew Howard.
+\newblock Design and use paradigms for gazebo, an open-source multi-robot
+  simulator.
+\newblock In {\em Intelligent Robots and Systems, 2004.(IROS 2004).
+  Proceedings. 2004 IEEE/RSJ International Conference on}, volume~3, pages
+  2149--2154. IEEE.
+
 \bibitem{Gourmand}
 Andrey Kolobov, Mausam, and Daniel~S Weld.
 \newblock Lrtdp vs. uct for online probabilistic planning.
@@ -191,10 +191,22 @@ Jeremie Papon, Alexey Abramov, Markus Schoeler, and Florentin
 \newblock In {\em Computer Vision and Pattern Recognition (CVPR), 2013 IEEE
   Conference on}, Portland, Oregon, June 22-27 2013.
 
+\bibitem{ROS}
+Morgan Quigley, Ken Conley, Brian~P. Gerkey, Josh Faust, Tully Foote, Jeremy
+  Leibs, Rob Wheeler, and Andrew~Y. Ng.
+\newblock Ros: an open-source robot operating system.
+\newblock In {\em ICRA Workshop on Open Source Software}, 2009.
+
 \bibitem{artificialIntelligence}
 Stuart~J. Russell and Peter Norvig.
 \newblock {\em Artificial Intelligence: A Modern Approach}.
 \newblock Pearson Education, 2 edition, 2003.
+
+\bibitem{PCL}
+Radu~Bogdan Rusu and Steve Cousins.
+\newblock 3d is here: Point cloud library (pcl).
+\newblock In {\em International Conference on Robotics and Automation},
+  Shanghai, China, 2011 2011.
 
 \bibitem{rusu2008towards}
 Radu~Bogdan Rusu, Zoltan~Csaba Marton, Nico Blodow, Mihai Dolha, and Michael
