@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2016.5.9)  30 MAY 2016 11:19
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2016.5.9)  30 MAY 2016 16:03
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1475,7 +1475,7 @@ tination with the same identifier (name{page.1}) has been already used, duplica
 te ignored
 <to be read again> 
                    \relax 
-l.54 \tableofcontents
+l.55 \tableofcontents
                       [1
 
 ] (./main.toc)
@@ -3298,51 +3298,118 @@ dir/pushing44.png> <./Img/block_dir/pushing55.png>] [32]
 
 (./5-Implementation/implementation.tex
 Chapter 5.
-) [33
+<Img/software/Software_arquitecture.png, id=727, 808.01875pt x 532.99126pt>
+File: Img/software/Software_arquitecture.png Graphic file (type png)
+
+<use Img/software/Software_arquitecture.png>
+Package pdftex.def Info: Img/software/Software_arquitecture.png used on input l
+ine 42.
+(pdftex.def)             Requested size: 398.33858pt x 262.75389pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[33
 
 
 
-] [34]
+] <Img/simulation/setup_sim.png, id=740, 642.4pt x 481.8pt>
+File: Img/simulation/setup_sim.png Graphic file (type png)
+
+<use Img/simulation/setup_sim.png>
+Package pdftex.def Info: Img/simulation/setup_sim.png used on input line 61.
+(pdftex.def)             Requested size: 170.71652pt x 128.03662pt.
+
+<Img/simulation/image.png, id=741, 481.8pt x 361.35pt>
+File: Img/simulation/image.png Graphic file (type png)
+
+<use Img/simulation/image.png>
+Package pdftex.def Info: Img/simulation/image.png used on input line 66.
+(pdftex.def)             Requested size: 170.71652pt x 128.03477pt.
+
+<Img/simulation/action1.png, id=742, 642.4pt x 481.8pt>
+File: Img/simulation/action1.png Graphic file (type png)
+
+<use Img/simulation/action1.png>
+Package pdftex.def Info: Img/simulation/action1.png used on input line 72.
+(pdftex.def)             Requested size: 170.71652pt x 128.03662pt.
+
+<Img/simulation/pushing.png, id=743, 642.4pt x 481.8pt>
+File: Img/simulation/pushing.png Graphic file (type png)
+
+<use Img/simulation/pushing.png>
+Package pdftex.def Info: Img/simulation/pushing.png used on input line 78.
+(pdftex.def)             Requested size: 170.71652pt x 128.03662pt.
+
+Underfull \hbox (badness 1281) in paragraph at lines 79--79
+[]\OT1/cmr/bx/n/10 (d) |\OT1/cmr/m/n/10 Ex-e-cu-tion of the first plan's ac-tio
+n
+ []
+
+<Img/simulation/action2.png, id=744, 642.4pt x 481.8pt>
+File: Img/simulation/action2.png Graphic file (type png)
+
+<use Img/simulation/action2.png>
+Package pdftex.def Info: Img/simulation/action2.png used on input line 83.
+(pdftex.def)             Requested size: 170.71652pt x 128.03662pt.
+
+<Img/simulation/action3.png, id=745, 642.4pt x 481.8pt>
+File: Img/simulation/action3.png Graphic file (type png)
+
+<use Img/simulation/action3.png>
+Package pdftex.def Info: Img/simulation/action3.png used on input line 88.
+(pdftex.def)             Requested size: 170.71652pt x 128.03662pt.
+) [34 <./Img/software/Software_arquitecture.png>] [35 <./Img/simulation/setup_s
+im.png> <./Img/simulation/image.png> <./Img/simulation/action1.png> <./Img/simu
+lation/pushing.png> <./Img/simulation/action2.png> <./Img/simulation/action3.pn
+g>]
 \openout2 = `6-Experiments/experiments.aux'.
 
  (./6-Experiments/experiments.tex
 Chapter 6.
-[35
+<Img/experiments/exp1/image.png, id=764, 481.8pt x 361.35pt>
+File: Img/experiments/exp1/image.png Graphic file (type png)
+
+<use Img/experiments/exp1/image.png>
+Package pdftex.def Info: Img/experiments/exp1/image.png used on input line 12.
+(pdftex.def)             Requested size: 170.71652pt x 128.03477pt.
+
+<Img/experiments/exp1/objects.png, id=765, 261.97874pt x 187.45032pt>
+File: Img/experiments/exp1/objects.png Graphic file (type png)
+
+<use Img/experiments/exp1/objects.png>
+Package pdftex.def Info: Img/experiments/exp1/objects.png used on input line 17
+.
+(pdftex.def)             Requested size: 170.71652pt x 122.15302pt.
+) [36
 
 
 
-] <Img/general/experiments.png, id=752, 687.56876pt x 419.5675pt>
-File: Img/general/experiments.png Graphic file (type png)
-
-<use Img/general/experiments.png>
-Package pdftex.def Info: Img/general/experiments.png used on input line 74.
-(pdftex.def)             Requested size: 433.62pt x 264.6042pt.
- [36]) [37 <./Img/general/experiments.png>]
+ <./Img/experiments/exp1/image.png> <./Img/experiments/exp1/objects.png>]
 \openout2 = `7-Conclusions/conclusions.aux'.
 
-
-(./7-Conclusions/conclusions.tex
+ (./7-Conclusions/conclusions.tex
 Chapter 7.
-) [38
+) [37
 
 
 
-] (./main.bbl [39
+] (./main.bbl [38
 
 
-] [40])
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 71.
- [41]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 71.
+] [39])
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 72.
+ [40]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 72.
  (./main.aux (./title.aux)
 (./1-Introduction/Introduction.aux) (./2-StateOfTheArt/review.aux)
 (./3-TaskPlanner/planner.aux) (./4-Algorithm/algorithm.aux)
 (./5-Implementation/implementation.aux) (./6-Experiments/experiments.aux)
 (./7-Conclusions/conclusions.aux))
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 71.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 71.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 72.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 72.
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 3A4C1D88FB084C6D78140A775BEFD73C;1684.
+(rerunfilecheck)             Checksum: 1C0B28CE6B3DAA6FF4E2E4A294AE931D;1684.
 
 
 LaTeX Warning: There were undefined references.
@@ -3350,18 +3417,18 @@ LaTeX Warning: There were undefined references.
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 71.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 72.
  )
 (\end occurred inside a group at level 1)
 
 ### simple group (level 1) entered at line 44 ({)
 ### bottom level 
 Here is how much of TeX's memory you used:
- 29385 strings out of 494985
- 515901 string characters out of 6180357
- 1077426 words of memory out of 5000000
- 31671 multiletter control sequences out of 15000+600000
- 22278 words of font info for 89 fonts, out of 8000000 for 9000
+ 29441 strings out of 494985
+ 517349 string characters out of 6180357
+ 1078678 words of memory out of 5000000
+ 31717 multiletter control sequences out of 15000+600000
+ 21925 words of font info for 88 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
  63i,15n,93p,10419b,2232s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/c
@@ -3379,20 +3446,19 @@ nts/cm/cmr5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/c
 mr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb>
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/sh
 are/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/share/texl
-ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsl10.pfb></usr/share/texlive/te
-xmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-di
-st/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texlive/texmf-dist/font
-s/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1
-/public/amsfonts/cm/cmsy9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public
-/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfo
-nts/cm/cmti12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm
-/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt1
-2.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb><
-/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb>
-Output written on main.pdf (42 pages, 13192863 bytes).
+ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/te
+xmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texlive/texmf-dis
+t/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts
+/type1/public/amsfonts/cm/cmsy9.pfb></usr/share/texlive/texmf-dist/fonts/type1/
+public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public
+/amsfonts/cm/cmti12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfo
+nts/cm/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm
+/cmtt12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8
+.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb>
+Output written on main.pdf (41 pages, 14139268 bytes).
 PDF statistics:
- 922 PDF objects out of 1000 (max. 8388607)
- 731 compressed objects within 8 object streams
- 241 named destinations out of 1000 (max. 500000)
- 517 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 931 PDF objects out of 1000 (max. 8388607)
+ 728 compressed objects within 8 object streams
+ 242 named destinations out of 1000 (max. 500000)
+ 557 words of extra memory for PDF output out of 10000 (max. 10000000)
 

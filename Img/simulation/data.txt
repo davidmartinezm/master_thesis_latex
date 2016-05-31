@@ -1,0 +1,9 @@
+--exp0
+comments: simulation3
+plan: (push_dir1 o2) (push_dir1 o0) (grasp o2) (grasp o1) (grasp o0) 
+labels: n_objects seg_time[ms] predicates_time[ms] planning_time[ms] IK[ms] on_predicates[ms] block_predicates[ms] block_grasp_predicates[ms] objects_collisions[ms] ee_collisions[ms] average_objects_collision[ms] average_ee_collision[ms] action ik_feasible 
+data: 3 694 778 465 948 20 300 29 182 111 30.3333 18.5 push_dir1-o2 1 
+data: 3 467 697 422 1015 18 247 16 144 94 24 15.6667 grasp-o2 1 
+data: 2 380 367 452 1871 6 64 5 39 23 19.5 11.5 push_dir1-o0 1 
+data: 2 475 384 533 534 9 83 5 47 30 23.5 15 grasp-o0 1 
+data: 1 456 289 318 492 2 1 0 0 0 -nan -nan grasp-o0 1 

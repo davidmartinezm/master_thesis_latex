@@ -12,6 +12,7 @@ A level-1 auxiliary file: 7-Conclusions/conclusions.aux
 The style file: plain.bst
 Database file #1: ./Bibliography/bibliography.bib
 Warning--to sort, need author or key in pddl
+Warning--to sort, need author or key in RVIZ
 Warning--empty author in pddl
 Warning--empty journal in Benchmarking
 Warning--empty journal in coelhoplanning
@@ -20,45 +21,45 @@ Warning--empty booktitle in haf
 Warning--can't use both volume and number fields in haf
 Warning--empty year in koenig2004design
 Warning--empty journal in SSS147762
-You've used 39 entries,
+You've used 40 entries,
             2118 wiz_defined-function locations,
-            723 strings with 11263 characters,
-and the built_in function-call counts, 14372 in all, are:
-= -- 1366
-> -- 764
+            726 strings with 11356 characters,
+and the built_in function-call counts, 14520 in all, are:
+= -- 1378
+> -- 765
 < -- 13
-+ -- 302
++ -- 303
 - -- 260
-* -- 953
-:= -- 2325
-add.period$ -- 125
-call.type$ -- 39
-change.case$ -- 242
+* -- 958
+:= -- 2339
+add.period$ -- 126
+call.type$ -- 40
+change.case$ -- 245
 chr.to.int$ -- 0
-cite$ -- 48
-duplicate$ -- 593
-empty$ -- 1125
+cite$ -- 50
+duplicate$ -- 600
+empty$ -- 1148
 format.name$ -- 260
-if$ -- 3070
+if$ -- 3107
 int.to.chr$ -- 0
-int.to.str$ -- 39
+int.to.str$ -- 40
 missing$ -- 41
-newline$ -- 197
+newline$ -- 200
 num.names$ -- 78
-pop$ -- 333
+pop$ -- 341
 preamble$ -- 1
-purify$ -- 205
+purify$ -- 207
 quote$ -- 0
-skip$ -- 407
+skip$ -- 417
 stack$ -- 0
-substring$ -- 683
-swap$ -- 160
+substring$ -- 688
+swap$ -- 161
 text.length$ -- 13
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 148
-warning$ -- 9
+type$ -- 152
+warning$ -- 10
 while$ -- 115
-width$ -- 41
-write$ -- 417
-(There were 9 warnings)
+width$ -- 42
+write$ -- 422
+(There were 10 warnings)

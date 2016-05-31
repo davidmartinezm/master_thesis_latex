@@ -1,5 +1,9 @@
 \begin{thebibliography}{10}
 
+\bibitem{RVIZ}
+Rviz \href{http://wiki.ros.org/rviz}{http://wiki.ros.org/rviz}, available on
+  may 2016.
+
 \bibitem{pddl}
 {PDDL - The Planning Domain Definition Language}.
 \newblock Technical report, CVC TR-98-003/DCS TR-1165, Yale Center for

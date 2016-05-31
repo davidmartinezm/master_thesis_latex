@@ -1,6 +1,28 @@
 \chapter{Experiments}
 \label{ch:experiments}
 
+In this chapter some experiment are presented in order to assert the quality of the proposed planning system. The experiment was designed in manner to present the advantages of the planner, i.e. the importance of the pushing action, for several scenarios. Moreover the objects have been chosen accordingly to the gripper's opening width. In particular to include also cases in which the robot fail in grasping an object, we added the set of objects an object which has a width of $6.5$ centimetres. Considering the opening width of the gripper is $7$ centimetres, it is a difficult object to grasp since the gripper has to be centred perfectly with respect the object. 
+
+\paragraph{First Experiment}
+The first experiment presents all the challenges the planners can hold, which are, objects on top of others and objects that need to be moved in order to grasp all of them. 
+\begin{figure}[h]
+\centering
+\begin{subfigure}[t]{0.45\textwidth}
+\centering
+\includegraphics[width=6cm]{Img/experiments/exp1/image.png}
+\caption{}
+\end{subfigure}
+\begin{subfigure}[t]{0.45\textwidth}
+\centering
+\includegraphics[width=6cm]{Img/experiments/exp1/objects.png}
+\caption{}
+\end{subfigure}
+\caption{}
+\end{figure}
+We first present the results of a run, next we comment the results of the planning system obtained from 5 runs of this experiment. 
+
+
+\iffalse
 In this chapter the performance of the proposed task planner for the considered task is evaluated by performing several experiments with the aim to study the quality, its benefits and its limitations.
 
 To get the quality of the task planner the strategy defined in the article \citep{Benchmarking} by Amignoni et al. In that article they proposed a general method to evaluated the quality of a task planner. 
@@ -78,3 +100,5 @@ Find a way to get the computational complexity.
 \item 2 experiments in which everything works
 \item experiment which shows the limitaiton of the planner
 \end{itemize}
+
+\fi

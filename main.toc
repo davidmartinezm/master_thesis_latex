@@ -35,10 +35,11 @@
 \contentsline {subsection}{\numberline {4.4.3}Predicate: \texttt {block\_dir$_i$}}{30}{subsection.4.4.3}
 \contentsline {chapter}{\numberline {5}Software design}{33}{chapter.5}
 \contentsline {paragraph}{ROS}{33}{paragraph*.37}
-\contentsline {paragraph}{Simulation}{34}{paragraph*.38}
-\contentsline {chapter}{\numberline {6}Experiments}{35}{chapter.6}
-\contentsline {chapter}{\numberline {7}Conclusions}{38}{chapter.7}
-\contentsline {section}{\numberline {7.1}Conclusions}{38}{section.7.1}
-\contentsline {section}{\numberline {7.2}Limitations}{38}{section.7.2}
-\contentsline {section}{\numberline {7.3}Future Work}{38}{section.7.3}
-\contentsline {chapter}{Bibliography}{39}{chapter*.40}
+\contentsline {paragraph}{Simulation}{34}{paragraph*.39}
+\contentsline {chapter}{\numberline {6}Experiments}{36}{chapter.6}
+\contentsline {paragraph}{First Experiment}{36}{paragraph*.41}
+\contentsline {chapter}{\numberline {7}Conclusions}{37}{chapter.7}
+\contentsline {section}{\numberline {7.1}Conclusions}{37}{section.7.1}
+\contentsline {section}{\numberline {7.2}Limitations}{37}{section.7.2}
+\contentsline {section}{\numberline {7.3}Future Work}{37}{section.7.3}
+\contentsline {chapter}{Bibliography}{38}{chapter*.43}
