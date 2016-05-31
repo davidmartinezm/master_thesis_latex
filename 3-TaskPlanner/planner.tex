@@ -182,7 +182,7 @@ The geometrical constraints related to the inverse kinematic of the robot have b
 
 It is possible that an object cannot be grasped on a certain pose, because the inverse kinematic has no solution, but it can be moved in a new pose in which it can be grasped. Therefore the pushing actions also will include the effect that the object of interest will have a solution of the inverse kinematic in the new pose. This is usually a rare case but it might happen. Of course, since the planner has no geometric information, it does not know in which pushing direction the object can be reach a position where it can be grasped, therefore this will be a totally random choice up to the planner. In the case the object is in a pose where it cannot be neither grasped or pushed because of the inverse kinematic, first the planner will return as a solution to grasp it, then it will replan and the solution will be to push it in one direction and grasp it, and so until no action can be executed and there exist no solution for the plan. In the best case, the planner will chose to push the object in direction in which the next pose will be more likely a graspable one. 
 
-\begin{figure}[h]
+\begin{figure}[tb]
 \centering
 \includegraphics[width=6cm]{Img/backtracking/image4.png}
 \caption{Unfeasible plan due to geometrical constraints. In this case the planner returns as action to execute grasping or pushing away the white cup (highlighted by a red circle) but it is out the configuration space of the robot and there exist no plan for that problem.} \label{fig:backtracking1}
@@ -274,7 +274,8 @@ After the execution of an action the planner gets a new depth image from the Kin
 
 In order to provide a graphical scheme to the reader the perception and planning pipeline is depicted in Figure \ref{fig:pipeline}. It can be appreciated the two fold strategy of the algorithm, the first stage (Figure \ref{fig:pipeline1}) is devoted to get the predicates from the Kinect sensor and the second one to evaluate the feasibility of the returned plan and toe xecute it(Figure \ref{fig:pipeline2}).
 
-\begin{figure}[t]
+\begin{figure}[tb]
+
 \centering
 \begin{subfigure}[t]{\textwidth}
 \centering

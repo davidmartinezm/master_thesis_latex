@@ -23,7 +23,7 @@ The strategy for the tabletop object detection phase is composed of 3 different 
 \item \textbf{Polygonal prism projection}: all the points are projected on the table plane previously estimated and all the points which projections belong to the 2D convex hull are considered to be points of tabletop objects. The points that do not belong to it are points of non-tabletop objects.
 \end{enumerate}
 
-\begin{figure}[htp]
+\begin{figure}[tb]
 \centering
 \begin{subfigure}[t]{0.32\textwidth}
 \includegraphics[width = 1.1\textwidth]{Img/ObjectSegmentation/pcl.png}
@@ -72,7 +72,7 @@ The algorithm works in 3 main steps:
 \item Clustering together all adjacent voxels which share similar features
 \end{itemize} 
 
-\begin{figure}[h]
+\begin{figure}[tb]
 \centering
 \begin{subfigure}[t]{0.3\textwidth}
 \centering
@@ -96,7 +96,7 @@ The algorithm works in 3 main steps:
 \label{sec:LCCP}
 Once the supervoxels of the tabletop objects are computed, they can be clustered in order to segment the objects. Papon et al. also proposed a segmentation algorithm based on their supervoxel technique, called \textit{Local Convex Connected Patches Segmentation} (\texttt{LCCP}) \citep{LCCP}. This algorithm permits to segment objects by clustering together adjacent convex supervoxels, in Figure \ref{img:LCCP_structure} the algorithm is briefly described.   The algorithm is quite simple but very good for segmentation of objects that have convex shapes. 
 
-\begin{figure}[h]
+\begin{figure}[tb]
 \centering
 \includegraphics[width=\textwidth]{Img/ObjectSegmentation/lccp_structure.jpg}
 \caption{\texttt{LCCP} algorithm's structure. Reproduced from \citep{LCCP}}
@@ -112,7 +112,7 @@ Then, due to the smoothed normals that could appear in some edges of the objects
 
 By tuning properly the parameters of the segmentation algorithm the objects can be correctly segmented obtaining for one of them a point cloud. Two examples of the segmentation algorithm for a cluttered scene are depicted in Figure \ref{fig:seg_results}. 
 
-\begin{figure}[h]
+\begin{figure}[tb]
 \centering
 \begin{subfigure}[t]{0.2\textwidth}
 \centering
@@ -160,7 +160,7 @@ The principal direction of an object is its principal axis which is defined as a
 
 To obtain the principal axis the principal component analysis (PCA) \citep{PCA} technique is used. This technique is a common statistical procedure that uses orthogonal transformation to convert a set of  observations of possibly correlated variables into a set of values of linearly uncorrelated variables, which are called principal components. The transformation is defined in a manner that the first component has the largest variance, the second has the second largest variance and so on. The principal components are orthogonal because they are the eigenvectors of the covariance matrix, which is symmetric. An example of the principal components for a 2D data set is depicted in Figure \ref{fig:pca1}\footnote{Image taken from \href{https://en.wikipedia.org/wiki/Principal_component_analysis}{https://en.wikipedia.org/wiki/Principal\_component\_analysis}}. The principal components are computed through the covariance matrix of the set of observation, and its eigenvectors $\bar{\lambda_v}$ represent the principal components while its eigenvalues $\lambda$ represent the variance of the data set along the principal component $\bar{\lambda_v}$. 
 
-\begin{figure}[h]
+\begin{figure}[tb]
 \centering
 \begin{subfigure}[t]{0.45\textwidth}
 \includegraphics[width=\textwidth]{Img/pca/pca.png}
@@ -233,7 +233,7 @@ An axis-aligned bounding box (AABB) is a bounding box aligned with the axis of t
 
 \paragraph{Convex Hull}
 A convex hull of a point cloud $P$ is the smallest 3D convex set that contains $P$. 
-\begin{figure}[h]
+\begin{figure}[tb]
 \centering
 \begin{subfigure}[t]{0.3\textwidth}
 \centering
@@ -266,7 +266,7 @@ In order to relax the collision detection majority of collision libraries, befor
 \paragraph{Objects Modelling}
 The Kinect, given its pose, is only able to see mainly the top surface of the objects and not all the sides, and therefore we cannot apply directly the convex hull algorithm to the detected surfaces. If we would apply the convex hull on an object's surfaces, we will have likely the situation depicted in Figure \ref{fig:cv_top_collision}, in which the collision detections would not detect any collision when it should. This is because we are totally missing the rest of information about the geometry of the object since we only know the objects top surfaces.
 
-\begin{figure}[h]
+\begin{figure}[tb]
 \centering
 \begin{subfigure}[t]{0.3\textwidth}
 \centering
@@ -289,7 +289,7 @@ The Kinect, given its pose, is only able to see mainly the top surface of the ob
 From the Kinect's point cloud also the table plane is known, so the information we have are: the table plane model and the segmented objects (mainly the top surfaces).
 If an human would be in the same pose of the Kinect, looking at the table, it will imagine that the objects are not floating surfaces, and he/she will deduce the objects shape from the shape of the top surface. The sides of the objects can be deduced by projecting the top surface's edges to the plane and then filling the missing object's sides with points. To do that we have to detect the top surface's edges. A easier method is directly projecting all the points of the surfaces onto the table plane and then apply the convex hull algorithm to the resulting point cloud given by the sum of the top surface and its projection. In this way the missing sides are indirectly retrieved by the convex hull. An example of this method is depicted in Figure \ref{fig:full_convexhull}.
 
-\begin{figure}[h]
+\begin{figure}[tb]
 \centering
 \begin{subfigure}[t]{0.45\textwidth}
 \centering
@@ -349,7 +349,7 @@ Next, having some pushing directions along with the robot will push the object, 
 
 In Figure \ref{fig:gripper_side}
 is possible observing the profile of the gripper mounted to the base of the gripper, highlighted by the blue color. Such base has a circular shape and the gripper's deep is less then the one of the base. It is undesirable pushing an object with a circular, or spherical, shape for the end effector because there is more uncertainty on the resulting path of the manipulated object. The gripper has no a circular shape and it is all symmetric, this make it suitable to push an object with a certain stability (i.e. make the object follow the desired path) during the action. Since we want a pushing action accurate as most as possible, we don't want that the gripper's base touches the manipulated object. 
-\begin{figure}[h]
+\begin{figure}[tb]
 \begin{subfigure}[t]{0.25\textwidth}
 \centering
 \includegraphics[width=2.5cm]{Img/set_up/gripper_side2.png}
@@ -366,7 +366,7 @@ Knowing also the height of the objects retrieved by its OBB, it is possible havi
 
 Due to the limited opening width of the gripper (8 centimetres) the object the robot is going to manipulate have small width. This means that when pushing along the principal axis, the object's width is likely small. Such a situation is depicted in Figure \ref{fig:pushing_way1}. Pushing in such a way the gripper will likely push also the black juice box. Therefore when pushing along the principal axis the pose is chosen to be the one in Figure \ref{fig:pushing_way2}. Of course is more stable a pushing pose like the one in Figure \ref{fig:pushing_way1}, since the contacts point (the fingers) are more distant. For this reason that pose is used only when pushing the objects along a direction 3 and 4.
 
-\begin{figure}[h]
+\begin{figure}[tb]
 \centering
 \begin{subfigure}[t]{0.45\textwidth}
 \centering
@@ -445,7 +445,7 @@ In Chapter \ref{ch:planning_system}  the predicates used are described, in this 
 \subsection{Predicate: \texttt{block\_grasp}}
 The \ttt{(block\_grasp o1 o0)} predicate refers to the fact that object \ttt{o1} blocks \ttt{o0} to be grasped. The computation is this predicate is straightforward: the mesh model of the opened gripper is transformed to the grasping pose of object \ttt{o0}, and checked if it collides with the other objects. In figure \ref{fig:block_grasp} such procedure is shown and in Algorithm \ref{alg:block_grasp} the pseudo algorithm is described in detail. 
 
-\begin{figure}[h]
+\begin{figure}[tb]
 \centering
 \includegraphics[width=6.5cm]{Img/grasping/block_grasp.png}
 \caption{Visualization of the computation of \texttt{block\_grasp} predicate for object \ttt{o0}. The opened gripped model is transformed to the grasping pose for object \ttt{o0} and it is tested if the gripper mesh model collides with the other objects, in this case it collides with \ttt{o1}. }\label{fig:block_grasp}
@@ -487,7 +487,7 @@ Our idea is based on the fact that an object which stands on top of another one 
 Let's consider the scene in Figure \ref{fig:on_predicate_original}, the object \ttt{o0} occludes a portion of object \ttt{o1}. The projections ${\sc P_{0}}$ and ${\sc P_{1}}$ onto the table plane of \ttt{o0} and \ttt{o1} are respectively the red and green ones in Figure \ref{fig:on_1}. This means that the convex hull ${\sc C_{P_{1}}}$ of the projection $P_{1}$ of \ttt{o1} intersects with the projection ${\sc P_{0}}$ of \ttt{o0}, while the projection ${\sc P_{1}}$ of \ttt{o1} does not interesct with the convex hull ${\sc C_{P_{0}}}$ of the projection of \ttt{o0} (Figures \ref{fig:on_2} and \ref{fig:on_3}). 
 
 
-\begin{figure}[h]
+\begin{figure}[tb]
 \centering
 \begin{subfigure}[t]{0.45\textwidth}
 \centering
@@ -539,7 +539,7 @@ We decided to use a discrete strategy, that is we consider several poses between
 
 
 
-\begin{figure}[h]
+\begin{figure}[tb]
 \centering
 \begin{subfigure}[t]{5cm}
 \centering
