@@ -321,11 +321,11 @@ Pushing is a difficult action to execute when the goal is to move one object alo
 
 %Grasping, although is a difficult task, has already an advanced state of the art regarding finding grasping pose also for complex objects. Somehow grasping is easier because it does not consider the whole object geometry but it is focused on looking for local futures that can be interesting for grasping the object (e.g. antipodal points). 
 
-When we push an object all the object's geometry has to be taken into account in order to find a suitable pushing direction. Moreover, humans push objects with a certain initial direction chosen accordingly the object geometry and then adapt the pushing direction accordingly to the error with respect the desired one. This would imply the implementation of a controller which is out the scope of this thesis. 
+%When we push an object all the object's geometry has to be taken into account in order to find a suitable pushing direction. Moreover, humans push objects with a certain initial direction chosen accordingly the object geometry and then adapt the pushing direction accordingly to the error with respect the desired one. This would imply the implementation of a controller which is out the scope of this thesis. 
 
-We considered to work with objects with simple shapes, such as parallelepipeds. 
-A human would push such object mainly accordingly its principal axis and the one orthogonal to its (i.e. the first 2 principal components of Figure \ref{fig:pca2}), he/she also could push it along the diagonal thanks to the several degrees of freedom of the hands. 
-Inspired by this consideration, we decided to consider as possible directions to push an object  its first two principal directions. In particular, there are two senses for each direction, so in total we have 4 possible pushing directions per object, as depicted in Figure \ref{fig:directions}.
+With the aim to manipulate carefully the objects when pushing we considered to work with objects with simple shapes, such as parallelepipeds. 
+A human would push such object mainly accordingly its principal axis and the one orthogonal to its (i.e. the first 2 principal components of Figure \ref{fig:pca2}), he/she also could push it along the diagonal thanks to the dexterity of the hands. 
+Inspired by this consideration, we decided to consider as possible directions to push an object its first two principal directions. In particular, there are two senses for each direction, so in total we have 4 possible pushing directions per object, as depicted in Figure \ref{fig:directions}.
 
 \begin{figure}
 \centering
@@ -342,13 +342,13 @@ Inspired by this consideration, we decided to consider as possible directions to
 \caption{Example of pushing directions.}\label{fig:directions}
 \end{figure}
 
-Another things to take into account is that the principal directions are not always parallel to the table plane. An object which stands on top of a table will be obviously pushed along a direction parallel to the table. As previously described in Section \ref{sec:background_alg} a point can be projected on to the table plane, but a point and a vector (the principal directions are vectors) have the same representation, and therefore we can apply exactly the same equations to obtain the projections of the principal components onto the table plane. So the pushing directions considered are nthe principal directions but their projections. 
+Another things to take into account is that the principal directions are not always parallel to the table plane. An object which stands on top of a table will be obviously pushed along a direction parallel to the table. For this aim the first two principal directions are projected on to the table plane. So the pushing directions considered are not the principal directions but their projections. 
 
 
 Next, having some pushing directions along with the robot will push the object, the pose for the the gripper to push that object has to be decided. The pose has been chosen accordingly to the shape of the gripper.
 
 In Figure \ref{fig:gripper_side}
-is possible observing the profile of the gripper mounted to the base of the gripper, highlighted by the blue color. Such base has a circular shape and the gripper's deep is less then the one of the base. It is undesirable pushing an object with a circular, or spherical, shape for the end effector because there is more uncertainty on the resulting path of the manipulated object. The gripper has no a circular shape and it is all symmetric, this make it suitable to push an object with a certain stability (i.e. make the object follow the desired path) during the action. Since we want a pushing action accurate as most as possible, we don't want that the gripper's base touches the manipulated object. 
+is possible observing the profile of the gripper mounted to the base of the gripper, highlighted by the blue color. Such base has a circular shape and the gripper's deep is less then the one of the base. It is undesirable pushing an object with a circular, or spherical, shape for the end effector because there is more uncertainty on the resulting path of the manipulated object. The gripper has no a circular shape and it is symmetric, this make it suitable to push an object with a certain stability (i.e. make the object follow the desired path) during the action. 
 \begin{figure}[tb]
 \begin{subfigure}[t]{0.25\textwidth}
 \centering
@@ -364,7 +364,7 @@ is possible observing the profile of the gripper mounted to the base of the grip
 \end{figure}
 Knowing also the height of the objects retrieved by its OBB, it is possible having a pose for the gripper is such a way that the gripper's base does not touch the object. The gripper's pose, relative the object, is computed in manner to locate the red point of Figure \ref{fig:gripper_side} to be at the same height of the object. In this way the fingers will fully touch the object during the pushing action. Moreover, to make easy for the robot reaching the pushing pose, it was defined to be a certain distance from the object (in our experiment it was set to 5cm). It would be difficult to reach a pose of Figure \ref{fig:pushing_pose} without colliding with the object.  
 
-Due to the limited opening width of the gripper (8 centimetres) the object the robot is going to manipulate have small width. This means that when pushing along the principal axis, the object's width is likely small. Such a situation is depicted in Figure \ref{fig:pushing_way1}. Pushing in such a way the gripper will likely push also the black juice box. Therefore when pushing along the principal axis the pose is chosen to be the one in Figure \ref{fig:pushing_way2}. Of course is more stable a pushing pose like the one in Figure \ref{fig:pushing_way1}, since the contacts point (the fingers) are more distant. For this reason that pose is used only when pushing the objects along a direction 3 and 4.
+Due to the limited opening width of the gripper (7 centimetres) the object the robot is going to manipulate have small width. This means that when pushing along the principal axis, the object's width is likely small. Such a situation is depicted in Figure \ref{fig:pushing_way1}. Pushing in such a way the gripper will likely push also the black juice box. Therefore when pushing along the principal axis the pose is chosen to be the one in Figure \ref{fig:pushing_way2}. Of course is more stable a pushing pose like the one in Figure \ref{fig:pushing_way1}, since the contacts point (the fingers) are more distant. For this reason that pose is used only when pushing the objects along a direction 3 and 4.
 
 \begin{figure}[tb]
 \centering
@@ -400,12 +400,12 @@ c_x \\ c_y \\ c_z
 where $dir1_X$ refers to the x coordinate of the vector that defines the direction 1, $n$ is the table normal and $c$ is the desired tool central point. 
 % The rotation matrix $R_{dir3}$ for pushing along direction 3 would be the same of $R_{dir1}$. 
 
-As previously said, the planner consider to push the objects at infinity, in the reality the robot has to push the objects for a finite length. Since the planner has no geometric information, the pushing length is chosen accordingly the dimension of the AABB relative to the pushing direction. For instance, if the robot is going to push the object \ttt{o1} along direction 1 the length $l$ of the pushing action is $l=k \cdot AABB_{\mathtt{o1}}(length)$, where $k$ is a gain factor (1 in our experiments) called \textit{pushing step}. This is a big limitation since the robot will push an object for a length which is function of the manipulated object and not to surrounding ones. 
+As previously said, the planner considers to push the objects at infinity, in the reality the robot has to push the objects for a finite length. Since the planner has no geometric information, the pushing length is chosen accordingly the dimension of the AABB relative to the pushing direction. For instance, if the robot is going to push the object \ttt{o1} along direction 1 the length $l$ of the pushing action is $l=k \cdot AABB_{\mathtt{o1}}(length)$, where $k$ is a gain factor (1 in our experiments) called \textit{pushing step}. This is a limitation since the robot will push an object for a length which is function of the manipulated object and not to surrounding ones. 
 
 To retrieve the path we consider the total length $l$ and we discretize it by $n$ points having in this way $n+2$ poses ($+2$ because of the pushing pose and the final pose). For each pose the inverse kinematic is done. In this way we obtain a discrete path. 
 
-When the robot approaches the pushing pose it could be that it collides with other objects. It would be suitable to use \textit{MoveIt!}\footnote{Ioan A. Sucan and Sachin Chitta, “MoveIt!”, [Online] Available:\href{http://moveit.ros.org} {\url{http://moveit.ros.org}}} which can build an octomap representation of the scene and find a path avoiding collisions with the scene. The integration of \textit{MoveIt!} will be a future work. To avoid the collisions we considered a pre-pushing pose which has the same pose of the pushing pose but translated, accordingly to the table's normal, $10$ centimetres from the pushing pose. This pre-grasping pose is easier to reach without collisions. 
-After the execution of the pushing action the robot goes to its \textit{home} pose (depicted in Figure \ref{fig:setup_}) in order not to stay inside the Kinect's view. When it goes to home it might happen that it collides with some objects, so also for the final pose with consider another one translated, accordingly the table normal, $10$ centimetres from the last pose. 
+When the robot approaches the pushing pose it could be that it collides with other objects. It would be suitable to use \textit{MoveIt!}\footnote{Ioan A. Sucan and Sachin Chitta, “MoveIt!”, [Online] Available:\href{http://moveit.ros.org} {\url{http://moveit.ros.org}}} which can build an octomap representation of the scene and find a path avoiding collisions with the scene. The integration of \textit{MoveIt!} will be a future work. To avoid the collisions we considered a pre-pushing pose which has the same pose of the pushing pose but translated, accordingly to the table's normal, $10$ centimetres from the pushing pose. This pre-pushing pose is easier to reach without collisions. 
+After the execution of the pushing action the robot goes to its \textit{home} pose (depicted in Figure \ref{fig:setup_}) in order not to stay inside the Kinect's view. When it goes to home it might happen that it collides with some objects, so also for the final pose we considered another one translated, accordingly the table normal, $10$ centimetres from the last pose. 
 In this way the pushing trajectory is defined by a total of $n+4$ poses. 
 
 
@@ -475,7 +475,7 @@ The \ttt{(block\_grasp o1 o0)} predicate refers to the fact that object \ttt{o1}
 \end{algorithmic}
 \end{algorithm}   
  
-Notice that this method implies to check for collision between the gripper and objects that might be very far from the interested object, i.e. there is no need to compute the collision detection.  Despite this, as explained in Section \ref{sec:background_alg}, the majority of collision detection algorithms first check if the bounding boxes of the objects intersect. This is a computationally cheap operation, and only if they intersect the computationally expensive algorithm are used to check for collision. This makes the Algorithm \ref{alg:block_grasp} efficient and computationally not expensive. It has been observed that, in average, to compute this predicate the time is about $10$ milliseconds per object. 
+Notice that this method implies to check for collision between the gripper and objects that might be very far from the interested object, i.e. there is no need to compute the collision detection.  Despite this, as explained in Section \ref{sec:background_alg}, the majority of collision detection algorithms first check if the bounding boxes of the objects intersect. This is a computationally cheap operation, and only if they intersect the computationally expensive algorithm are used to check for collision. This makes the Algorithm \ref{alg:block_grasp} efficient and computationally not expensive. It has been observed that, in average, to compute this predicate the time is about $10$ milliseconds per object and the complexity to compute this state is $\mathcal{O}(n^2)$, where $n$ is the number of objects.
  
 \subsection{Predicate: \texttt{on}}
 The \ttt{(on o0 o1)} predicate means that object \ttt{o0} is on top of object \ttt{o1}. With the convex hull of the objects is easy to understand if two objects are one on top of the other one by checking for collision, but in this way we do not know who is above and who is below. To do this their surface projections onto the table plane are used. 
@@ -526,7 +526,7 @@ It is important to take into account also that actually the edges of the occlude
 where $length(A)$ means the number of elements in the set $A$.
 The values of the thresholds $th_0$ and $th_1$ are determined empirically and they are $th_0=th_1=100$.
 
-The formula \ref{eq:on} is then evaluated for every possible combinations of objects, that is $n(n-1)$ times, where $n$ is the number of objects. Despite this, its computation is very fast. The example in Figure \ref{fig:on_predicate} was evaluated just 2 times since there are only 2 objects and it took $3$ milliseconds, that is $\approx 1.5 \frac{ms}{pair \; of \; object}$. For instance, for a complex scene with 10 objects the total time devoted to compute this predicate would be approximatively $10 \cdot 9 \cdot 1.5 \approx 135 ms$.
+The formula \ref{eq:on} is then evaluated for every possible combinations of objects, therefore the complexity to generate this state is $\mathcal{O}(n^2)$, where $n$ is the number of objects. Despite this, its computation is very fast. The example in Figure \ref{fig:on_predicate} was evaluated just 2 times since there are only 2 objects and it took $3$ milliseconds, that is $\approx 1.5 \frac{ms}{pair \; of \; object}$. For instance, for a complex scene with 10 objects the total time devoted to compute this predicate would be approximatively $10 \cdot 9 \cdot 1.5 \approx 135 ms$.
 
 
 
@@ -619,7 +619,8 @@ Note that also the gripper during the pushing action will move, so ideally the c
 \EndFunction
 \end{algorithmic}
 \end{algorithm}  
-The computation of this predicate can be appreciated in detail in Algorithm \ref{alg:block_dir}.% From that pseudo code can be noted that the complexity of this function to compute the predicate approximatively is $\mathcal{O}(n \cdot n_{directions} \cdot n_{poses}\cdot (n-1) + (n-1)\cdot n_{directions} )$, which is exponential. 
+The computation of this predicate can be appreciated in detail in Algorithm \ref{alg:block_dir}. From that pseudo code can be noted that the complexity of this function to compute the predicate approximatively is %$\mathcal{O}(n \cdot n_{directions} \cdot n_{poses}\cdot (n-1) + (n-1)\cdot n_{directions} )$, 
+$\mathcal{O}(n^2)$, where $n$ is the number of objects. 
 
 The computation of this algorithm is the most computational expensive of all the planner since it involves many collision detection phases. In fact the time required to compute this predicate for the example in Figure \ref{fig:block_dir} (considering to push the objects $1.5$ times the OBB dimension relative to the pushing direction) was $\approx 1.115 seconds$, were $\approx 0.869s$ were dedicated to check if the objects would collide when moved, while $\approx 0.239s$ were dedicated to check if the gripper collides with some objects.  
 
