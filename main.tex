@@ -8,6 +8,7 @@
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage{amssymb}
+\usepackage{booktabs}
 \usepackage{mathtools}
 \usepackage{graphicx,wrapfig,lipsum}
 % the wrapfig can easily put images at a side of the text
@@ -65,7 +66,7 @@ Manipulation planning is a field of study with increasing interest, it combines 
 In this thesis we present a planning system for clearing a table with cluttered objects, which reasons at a symbolic level and reasons about geometric constraints through backtracking.
 We show that the planning system developed is able to handle efficiently the task.
 
-The main contribution of this thesis is a planning system able to solve a wider variety of scenarios for clearing a table with cluttered objects. Grasping actions alone are not enough, and pushing actions may be needed to move an object to a pose in which it can be grasped. The planner presented here can reason about sequences of pushing and grasping actions that allow a robot to grasp an object that was not initially graspable.
+The main contribution of this thesis is a planning system able to solve a wider variety of scenarios for clearing a table with cluttered objects. Grasping actions alone are not enough, and pushing actions may be needed to move an object to a pose in which it can be grasped. The planning system presented here can reason about sequences of pushing and grasping actions that allow a robot to grasp an object that was not initially graspable.
 
 This work shows that some geometric problems can be efficiently handled by reasoning at an abstract level through symbolic predicates when such predicates are chosen correctly. The advantage of this system is a reduction in execution time and it is also easy to implement. 
 
@@ -78,14 +79,16 @@ This work shows that some geometric problems can be efficiently handled by reaso
 \include{3-TaskPlanner/planner}
 \include{4-Algorithm/algorithm}
 \include{5-Implementation/implementation}
+\include{Environmental_Impact/environmental_impact}
 \include{6-Experiments/experiments}
 \include{7-Conclusions/conclusions}
 
 
 
 %%%%%% BIBLIOGRAPHY %%%%%%%%%%%%%%%%%%%%%
-%\bibliographystyle{plain}
+\newpage
 \bibliographystyle{plain}
+%\bibliographystyle{acm}
 \bibliography{./Bibliography/bibliography}
 
 \end{document}

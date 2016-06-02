@@ -1,25 +1,246 @@
 \chapter{Experiments}
 \label{ch:experiments}
 
-In this chapter some experiment are presented in order to assert the quality of the proposed planning system. The experiment was designed in manner to present the advantages of the planner, i.e. the importance of the pushing action, for several scenarios. Moreover the objects have been chosen accordingly to the gripper's opening width. In particular to include also cases in which the robot fail in grasping an object, we added the set of objects an object which has a width of $6.5$ centimetres. Considering the opening width of the gripper is $7$ centimetres, it is a difficult object to grasp since the gripper has to be centred perfectly with respect the object. 
+In this chapter an experiment is presented in order to assert the quality of the proposed planning system. The experiment was designed in manner to present the advantages of the planner, i.e. the importance of the pushing action, for several scenarios. 
 
 \paragraph{First Experiment}
-The first experiment presents all the challenges the planners can hold, which are, objects on top of others and objects that need to be moved in order to grasp all of them. 
+The first experiment presents all the challenges the planners can handle, which are, objects on top of others and objects that need to be moved in order to grasp all of them. 
+\begin{figure}[tb]
+\centering
+\begin{subfigure}[t]{0.45\textwidth}
+\includegraphics[width=6cm]{Img/experiments/image.png}
+\caption{Kinect's view}\label{fig:experiment_good1}
+\end{subfigure}
+\begin{subfigure}[t]{0.45\textwidth}
+\includegraphics[width=6cm]{Img/experiments/image_labels.png}
+\caption{Objects labels.}\label{fig:experiment_good2}
+\end{subfigure}
+\caption{Kinect's view of the first experiment.}\label{fig:experiment_good}
+\end{figure}
+In order to get some statistics about the experiment we performed 6 runs. 
+We first present the results of a run with some images, and then the actual plan of each run. Finally we discuss the quality of the system in terms of execution and decision time. 
+
+%reference: http://tex.stackexchange.com/questions/53061/insert-image-and-list-inside-a-table
+\begin{table}[!h]
+\begin{center}
+\begin{tabular}{>{\centering\arraybackslash}m{3cm} >{\centering\arraybackslash}m{3cm} >{\centering\arraybackslash}m{3cm} >{\centering\arraybackslash}m{3cm} }
+%{>{\centering}m{1in} >{\centering}m{lin} >{\centering}m{lin} >{\centering}m{lin}}
+\toprule 
+Iteration & Action & Action execution & Result\\
+\cmidrule(r){1-1}\cmidrule(lr){2-2}\cmidrule(lr){3-3}\cmidrule(l){4-4}
+1 &
+\ttt{(push\_dir3 o2)} 
+& 
+\includegraphics[height=23mm]{Img/experiments/exp_good/action1c.png}
+&
+\includegraphics[height=23mm]{Img/experiments/result1.png}
+\\
+2 &
+\ttt{(grasp o2)} 
+& 
+\includegraphics[height=23mm]{Img/experiments/exp_good/action2c.png}
+&
+\includegraphics[height=23mm]{Img/experiments/result2.png}
+\\
+3 &
+\ttt{(push\_dir1 o1)} 
+& 
+%\raisebox{-\totalheight}{
+\includegraphics[height=23mm]{Img/experiments/exp_good/action3c.png}%}
+&
+\includegraphics[height=23mm]{Img/experiments/result3.png}
+\\
+4 &
+\ttt{(push\_dir1 o0)} 
+& 
+\includegraphics[height=23mm]{Img/experiments/exp_good/action4c.png}
+&
+\includegraphics[height=23mm]{Img/experiments/result4.png}
+\\
+5 &
+\ttt{(grasp o4)} 
+& 
+\includegraphics[height=23mm]{Img/experiments/exp_good/action5c.png}
+&
+\includegraphics[height=23mm]{Img/experiments/result5.png}
+\\
+6 &
+\ttt{(grasp o1)} 
+& 
+\includegraphics[height=23mm]{Img/experiments/exp_good/action6c.png}
+&
+\includegraphics[height=23mm]{Img/experiments/result6.png}
+\\
+7 &
+\ttt{(grasp o3)}
+& 
+\includegraphics[height=23mm]{Img/experiments/exp_good/action7c.png}
+&
+\includegraphics[height=23mm]{Img/experiments/result7.png}
+\\
+8 &
+\ttt{(grasp o0)} 
+& 
+\includegraphics[height=23mm]{Img/experiments/exp_good/action8c.png}
+&
+\includegraphics[height=23mm]{Img/experiments/result8.png}
+\\
+9 &
+\ttt{(grasp o5)} 
+& 
+\includegraphics[height=23mm]{Img/experiments/exp_good/action9c.png}
+&
+\includegraphics[height=23mm]{Img/experiments/result9.png}
+\end{tabular}
+\end{center}
+\caption{Sequence of action for the experiment of Figure \ref{fig:experiment_good2}}\label{tab:experiment_good}
+\end{table}
+
+In Table \ref{tab:experiment_good} the executed plan, for the experiment of Figure \ref{fig:experiment_good} is shown. The plan first decides to push away object \ttt{o2} since it is not able to grasp it due to its grasping pose. In that pose the Kinect is able to see also a side of the object, and therefore its third principal component is such that the grasping pose is the one in the Figure \ref{fig:exp_good_grasp_o2} which is colliding which object \ttt{o3}, therefore it has to move object \ttt{o3} but it cannot because \ttt{o2} hinder that action, another option is pushing away \ttt{o2} and then grasp it. In the next iteration the system takes a new image and now the Kinect is no more able to see one side of \ttt{o2} but only the top surface, so its grasping pose is now a feasible one, and decides to grasp it. Then it push away object \ttt{o1} because it is not possible to grasp it or to move the other objects having \ttt{o1} in such a position. Next it pushes object \ttt{o0}, this action shows the optimality of the planner. If it did not push \ttt{o0} it had to push away first \ttt{o5} and \ttt{o3} to make \ttt{o0} graspable, therefore it saved one action. The outcome of this action is not the expected one since the gripper, during the pushing action, touched slightly \ttt{o5}. In this case is also possible noting the ability of the system to adapt to new situations. Then the robot finishes the task grasping the remaining objects.
+
+\begin{figure}
+\centering
+\begin{subfigure}[t]{0.45\textwidth}
+\centering
+\includegraphics[width = 7cm]{Img/experiments/exp_good/grasp_o2.png}
+\caption{}
+\end{subfigure}
+\begin{subfigure}[t]{0.45\textwidth}
+\centering
+\includegraphics[width = 7cm]{Img/experiments/exp_good/grasp_o2_2.png}
+\caption{}
+\end{subfigure}
+\caption{Collision between the gripper and \ttt{o3} for the grasping pose of object \ttt{o2}.}\label{fig:exp_good_grasp_o2}
+\end{figure}
+
+From the experiments done the segmentation has been noted that the segmentation have a strongly importance since, due to the noise of the Kinect, the segmentation was not always the same. Moreover, at the edges the segmentation algorithm had some drawbacks since they tend to be clustered to the bigger adjacent clusters of supervoxels, some edges of an object could be detected as part of the adjacent object. This in several situation can leads to no plan since the object model is not similar to the real object, adn during the computation of collisions the system could detect false collisions. In this case the system can either return that the problem has no solution, so it will take a new images and repeat all the process (in this case the new segmentation could solve the problem), or find anyway a plan.  
+
+In Table ... the executed plans of all the runs for this experiment are reported. The plans differ because of two main reasons: the segmentation is not always the same and in the attempt to reproduce the objects those could have been located not in the exactly poses of previous experiments. 
+
+
+
+%%%%%%%%%%% MY COMMENT: The total time here takes into account that the wrong segmentation cases were neglected and also the time needed to save the point clouds
+\begin{table}
+\caption{Executed plans of the 6 runs for the experiment of Figure \ref{fig:experiment_good}. $N_{actions}$ is the total number of executed actions, $Time_{tot}$ is the total time to solve the task (neglecting the time lost due to the wrong segmentation), $\neg Solution$ is the number of iterations in which no solution was found because of the segmentation and $\neg IK$ is the number of actions that had no solution for the inverse kinematic and the system replaned.}\label{tab:6runs}
+\begin{center}
+\begin{tabular}{>{\centering\arraybackslash}m{1.5cm} >{\centering\arraybackslash}m{8cm} >{\centering\arraybackslash}m{1.5cm} >{\centering\arraybackslash}m{1.5cm} >{\centering\arraybackslash}m{1.5cm} >{\centering\arraybackslash}m{1cm}}
+\toprule 
+Run & Plan & $N_{actions}$ & $Time_{tot}$ & $\neg Solution$ & $\neg IK$\\
+%\cmidrule(r){1-1}\cmidrule(lr){2-2}\cmidrule(l){3-3}
+\toprule
+1 & 
+\ttt{(push\_dir3 o2)} 
+\ttt{(push\_dir1 o1)} 
+\ttt{(grasp o1)} 
+\ttt{(push\_dir1 o5)} 
+\ttt{(grasp o5)} 
+\ttt{(push\_dir3 o2)} 
+\ttt{(push\_dir1 o0)} 
+\ttt{(grasp o0)} 
+\ttt{(grasp o3)}
+\ttt{(grasp o2)} 
+\ttt{(grasp o4)} 
+& 11 & $431.5s$ & 3 & 6\\
+\toprule
+2 &
+\ttt{(push\_dir3 o2)} 
+\ttt{(grasp o2)} 
+\ttt{(push\_dir2 o1)} 
+\ttt{(grasp o1)} 
+\ttt{(grasp o4)} 
+\ttt{(push\_dir2 o0)} 
+\ttt{(grasp o0)} 
+\ttt{(grasp o3)} 
+\ttt{(grasp o5)} 
+& 9 & $316.6s$ & 19 & 0\\
+\toprule
+3 & 
+\ttt{(push\_dir3 o2)} 
+\ttt{(grasp o2)} 
+\ttt{(grasp o4)} 
+\ttt{(push\_dir2 o1)} 
+\ttt{(grasp o1)} 
+\ttt{(push\_dir1 o0)} 
+\ttt{(grasp o0)} 
+\ttt{(grasp o3)} 
+\ttt{(grasp o5)} 
+& 9 & $327.6s$ & 3 & 1\\
+\toprule
+4 & 
+\ttt{(grasp o2)} 
+\ttt{(grasp o4)} 
+\ttt{(push\_dir1 o3)} 
+\ttt{(grasp o3)} 
+\ttt{(push\_dir1 o1)} 
+\ttt{(grasp o1)} 
+\ttt{(push\_dir1 o5)} 
+\ttt{(grasp o5)} 
+\ttt{(grasp o0)} 
+& 9 & $294.7s$ & 0 & 0\\
+\toprule
+5 &
+\ttt{(push\_dir3 o2)} 
+\ttt{(grasp o4)} 
+\ttt{(push\_dir1 o1)} 
+\ttt{(grasp o1)} 
+\ttt{(push\_dir1 o5)} 
+\ttt{(grasp o5)} 
+\ttt{(push\_dir1 o0)} 
+\ttt{(grasp o0)} 
+\ttt{(grasp o3)} 
+\ttt{(grasp o2)} 
+& 10 & $324.0s$ & 0 & 0\\
+\toprule
+6 & 
+\ttt{(push\_dir3 o2)} 
+\ttt{(grasp o2)} 
+\ttt{(push\_dir1 o1)} 
+\ttt{(push\_dir1 o0)} 
+\ttt{(grasp o4)} 
+\ttt{(grasp o1)} 
+\ttt{(grasp o3)}
+\ttt{(grasp o0)} 
+\ttt{(grasp o5)} 
+& 9 & $298.1s$ & 6 & 0\\
+\toprule
+\end{tabular}
+\end{center}
+\end{table}
+
+\paragraph{Comments}
+In run 1 the robot grasps object \ttt{o3} although there was \ttt{o4} on top of it. This is because during the execution of \ttt{(push\_dir1 o0)}  action the gripper's cable touch object \ttt{o4} moving it away.  In runs 1,4 and 5 the optimal plan does not return to push object \ttt{o0} as a solution but it returns to push either \ttt{o5} or \ttt{o3}, this also is because of the segmentation. 
+
+
+For the run 3 the time is high because we filter each point cloud (this slow down the process - fix the code?) - compute the inverse kinematic, when it has no solution its time consuming. 
+
+\begin{figure}[tb]
+\centering
+\includegraphics[width=6cm]{Img/experiments/exp_good/pushing_o0c.png}
+\caption{Pushing \ttt{o0} the gripper touches also \ttt{o5}.}\label{fig:pushing_o0}
+\end{figure}
+
 \begin{figure}[tb]
 \centering
 \begin{subfigure}[t]{0.45\textwidth}
 \centering
-\includegraphics[width=6cm]{Img/experiments/exp1/image.png}
-\caption{}
+\includegraphics[width=6cm]{Img/experiments/exp_good/grasp_o4.png}
 \end{subfigure}
 \begin{subfigure}[t]{0.45\textwidth}
 \centering
-\includegraphics[width=6cm]{Img/experiments/exp1/objects.png}
-\caption{}
+\includegraphics[width=6cm]{Img/experiments/exp_good/grasp_o4_rviz.png}
 \end{subfigure}
-\caption{}
+\caption{Grasping pose of object \ttt{o4} with unfeasible IK.}\label{fig:grasp_o4}
 \end{figure}
-We first present the results of a run, next we comment the results of the planning system obtained from 5 runs of this experiment. 
+
+Due to the strange position of object \ttt{o4} the grasping poses some times were the one depicted in Figure \ref{fig:grasping_pose_o4}. When the planner returned to grasp \ttt{o4} the inverse kinematic returned no solution, so it planed again performing a different action. A feasible grasping pose for object \ttt{o4} was find since, due to the noise of the Kinect, the grasping poses was not always the same and a feasible one could appear. This is because of the height, seen by the Kinect, of \ttt{o4} was higher than its width, so the second principal direction was perpendicular to the top largest surface (Figure \ref{fig:grasp_o4}). 
+
+
+We will next present some data regarding the times of computing the rpedicates, getting a plan, executing acitons...
+
+
+
+
+
 
 
 \iffalse
