@@ -11,7 +11,7 @@
 \usepackage{mathtools}
 \usepackage{graphicx,wrapfig,lipsum}
 % the wrapfig can easily put images at a side of the text
-
+\usepackage{etseib}
 \usepackage{fancyhdr}
 \usepackage{hyperref}
 \usepackage{subcaption}
@@ -36,10 +36,25 @@
 \author{Nicola Covallero}
 \title{Master Thesis}
 \date{\today}
+
+\usepackage{etseib}
+\tfmTitle{Task planning for table clearing of cluttered objects}
+\tfmAuthor{Nicola Covallero}{Master Degree in Automatic Control and Robotics}
+
+
 \begin{document}
 \include{title}
 
-%\maketitle
+%etseib template
+%\maketitle % Print the title
+%\logoupc
+\thispagestyle{empty}
+\pagenumbering{Roman}
+\newpage
+
+\blank
+\pautes
+
 
 
 
@@ -55,7 +70,8 @@ The main contribution of this thesis is a planning system able to solve a wider 
 This work shows that some geometric problems can be efficiently handled by reasoning at an abstract level through symbolic predicates when such predicates are chosen correctly. The advantage of this system is a reduction in execution time and it is also easy to implement. 
 
 \tableofcontents
-\pagebreak
+\newpage
+\pagenumbering{arabic}
 
 \include{1-Introduction/Introduction}
 \include{2-StateOfTheArt/review}
@@ -68,6 +84,7 @@ This work shows that some geometric problems can be efficiently handled by reaso
 
 
 %%%%%% BIBLIOGRAPHY %%%%%%%%%%%%%%%%%%%%%
+%\bibliographystyle{plain}
 \bibliographystyle{plain}
 \bibliography{./Bibliography/bibliography}
 
