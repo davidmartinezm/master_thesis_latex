@@ -1,25 +1,26 @@
 \chapter{Experiments}
 \label{ch:experiments}
 
-In this chapter an experiment is presented in order to assert the quality of the proposed planning system. The experiment was designed in manner to present the advantages of the planner, i.e. the importance of the pushing action, for several scenarios. 
+In this chapter an experiment is presented in order to assert the quality of the proposed planning system. The experiment was designed in order to present the advantages of the planner, i.e. the importance of the pushing action. 
 
-\paragraph{First Experiment}
-The first experiment presents all the challenges the planners can handle, which are, objects on top of others and objects that need to be moved in order to grasp all of them. 
+The experiment (Figure \ref{fig:experiment_good}) presents all the challenges the planners can handle, which are: objects on top of others and objects that need to be moved in order to grasp all of them. 
 \begin{figure}[tb]
 \centering
 \begin{subfigure}[t]{0.45\textwidth}
-\includegraphics[width=6cm]{Img/experiments/image.png}
+\centering
+\includegraphics[height=5cm]{Img/experiments/image.png}
 \caption{Kinect's view}\label{fig:experiment_good1}
 \end{subfigure}
 \begin{subfigure}[t]{0.45\textwidth}
-\includegraphics[width=6cm]{Img/experiments/image_labels.png}
+\centering
+\includegraphics[height=5cm]{Img/experiments/image_labels.png}
 \caption{Objects labels.}\label{fig:experiment_good2}
 \end{subfigure}
 \caption{Kinect's view of the first experiment.}\label{fig:experiment_good}
 \end{figure}
-In order to get some statistics about the experiment we performed 6 runs. 
-We first present the results of a run with some images, and then the actual plan of each run. Finally we discuss the quality of the system in terms of execution and decision time. 
 
+
+\iffalse
 %reference: http://tex.stackexchange.com/questions/53061/insert-image-and-list-inside-a-table
 \begin{table}[!h]
 \begin{center}
@@ -95,8 +96,107 @@ Iteration & Action & Action execution & Result\\
 \end{center}
 \caption{Sequence of action for the experiment of Figure \ref{fig:experiment_good2}}\label{tab:experiment_good}
 \end{table}
+\fi
 
-In Table \ref{tab:experiment_good} the executed plan, for the experiment of Figure \ref{fig:experiment_good} is shown. The plan first decides to push away object \ttt{o2} since it is not able to grasp it due to its grasping pose. In that pose the Kinect is able to see also a side of the object, and therefore its third principal component is such that the grasping pose is the one in the Figure \ref{fig:exp_good_grasp_o2} which is colliding which object \ttt{o3}, therefore it has to move object \ttt{o3} but it cannot because \ttt{o2} hinder that action, another option is pushing away \ttt{o2} and then grasp it. In the next iteration the system takes a new image and now the Kinect is no more able to see one side of \ttt{o2} but only the top surface, so its grasping pose is now a feasible one, and decides to grasp it. Then it push away object \ttt{o1} because it is not possible to grasp it or to move the other objects having \ttt{o1} in such a position. Next it pushes object \ttt{o0}, this action shows the optimality of the planner. If it did not push \ttt{o0} it had to push away first \ttt{o5} and \ttt{o3} to make \ttt{o0} graspable, therefore it saved one action. The outcome of this action is not the expected one since the gripper, during the pushing action, touched slightly \ttt{o5}. In this case is also possible noting the ability of the system to adapt to new situations. Then the robot finishes the task grasping the remaining objects.
+\begin{figure}
+\centering
+\begin{subfigure}[t]{\textwidth}
+\begin{subfigure}[t]{0.195\textwidth}
+\centering 
+\includegraphics[width=\textwidth]{Img/experiments/exp_good/action1c.png}
+\end{subfigure}
+\begin{subfigure}[t]{0.195\textwidth}
+\centering 
+\includegraphics[width=\textwidth]{Img/experiments/exp_good/action2c.png}
+\end{subfigure}
+\begin{subfigure}[t]{0.195\textwidth}
+\centering 
+\includegraphics[width=\textwidth]{Img/experiments/exp_good/action3c.png}
+\end{subfigure}
+\begin{subfigure}[t]{0.195\textwidth}
+\centering 
+\includegraphics[width=\textwidth]{Img/experiments/exp_good/action4c.png}
+\end{subfigure}
+\begin{subfigure}[t]{0.195\textwidth}
+\centering 
+\includegraphics[width=\textwidth]{Img/experiments/exp_good/action5c.png}
+\end{subfigure}
+\\
+\begin{subfigure}[t]{0.195\textwidth}
+\centering 
+\stackunder[5pt]	{\includegraphics[width=\textwidth]{Img/experiments/result1.png}}{\ttt{(push\_dir3 o2)}}
+\end{subfigure}
+\begin{subfigure}[t]{0.195\textwidth}
+\centering 
+\stackunder[5pt]	{\includegraphics[width=\textwidth]{Img/experiments/result2.png}}{\ttt{(grasp o2)} }
+\end{subfigure}
+\begin{subfigure}[t]{0.195\textwidth}
+\centering 
+\stackunder[5pt]	{\includegraphics[width=\textwidth]{Img/experiments/result3.png}}{\ttt{(push\_dir1 o1)} }
+\end{subfigure}
+\begin{subfigure}[t]{0.195\textwidth}
+\centering 
+\stackunder[5pt]	{\includegraphics[width=\textwidth]{Img/experiments/result4.png}}{\ttt{(push\_dir1 o0)} }
+\end{subfigure}
+\begin{subfigure}[t]{0.195\textwidth}
+\centering 
+\stackunder[5pt]	{\includegraphics[width=\textwidth]{Img/experiments/result5.png}}{\ttt{(grasp o4)} }
+\end{subfigure}
+\end{subfigure}
+\vspace{1cm}
+\begin{center}
+\begin{subfigure}[t]{\textwidth}
+\centering
+\begin{subfigure}[t]{0.195\textwidth}
+\centering 
+\includegraphics[width=\textwidth]{Img/experiments/exp_good/action6c.png}
+\end{subfigure}
+\begin{subfigure}[t]{0.195\textwidth}
+\centering 
+\includegraphics[width=\textwidth]{Img/experiments/exp_good/action7c.png}
+\end{subfigure}
+\begin{subfigure}[t]{0.195\textwidth}
+\centering 
+\includegraphics[width=\textwidth]{Img/experiments/exp_good/action8c.png}
+\end{subfigure}
+\begin{subfigure}[t]{0.195\textwidth}
+\centering 
+\includegraphics[width=\textwidth]{Img/experiments/exp_good/action9c.png}
+\end{subfigure}
+\\
+\begin{subfigure}[t]{0.195\textwidth}
+\centering 
+\stackunder[5pt]	{\includegraphics[width=\textwidth]{Img/experiments/result6.png}}{\ttt{(grasp o1)} }
+\end{subfigure}
+\begin{subfigure}[t]{0.195\textwidth}
+\centering 
+\stackunder[5pt]	{\includegraphics[width=\textwidth]{Img/experiments/result7.png}}{\ttt{(grasp o3)}}
+\end{subfigure}
+\begin{subfigure}[t]{0.195\textwidth}
+\centering 
+\stackunder[5pt]	{\includegraphics[width=\textwidth]{Img/experiments/result8.png}}{\ttt{(grasp o0)}}
+\end{subfigure}
+\begin{subfigure}[t]{0.195\textwidth}
+\centering 
+\stackunder[5pt]	{\includegraphics[width=\textwidth]{Img/experiments/result9.png}}{\ttt{(grasp o5)}}
+\end{subfigure}
+\end{subfigure}
+\end{center}
+
+\caption{Results of a run for the experiment of Figure \ref{fig:experiment_good}. The executed plan is: \ttt{(push\_dir3 o2)} 
+\ttt{(grasp o2)} 
+\ttt{(push\_dir1 o1)} 
+\ttt{(push\_dir1 o0)} 
+\ttt{(grasp o4)} 
+\ttt{(grasp o1)} 
+\ttt{(grasp o3)}
+\ttt{(grasp o0)} 
+\ttt{(grasp o5)}. The first and third row of images show the executed action, while below the results of those actions. The number below the images refers to the number of the iteration of the system.}\label{fig:execution_experiment}
+\end{figure}
+
+In Figure \ref{fig:execution_experiment} the execution of the plan and the results of each action are shown. The plan first decides to push away object \ttt{o2} since it is not able to grasp it due to its grasping pose. In that pose the Kinect is able to see also a side of the object, and therefore its third principal component is such that the grasping pose is the one in the Figure \ref{fig:exp_good_grasp_o2} which is colliding which object \ttt{o3}. Therefore it has to move object \ttt{o3} but it cannot because \ttt{o2} hinder that action, another option is pushing away \ttt{o2} and then grasp it. In the next iteration the system takes a new image and the Kinect is no more able to see the side of \ttt{o2} but only the top surface, so its grasping pose is now a feasible one, and decides to grasp it. Then it pushes away object \ttt{o1} because it is not possible to grasp it or to move the other objects having \ttt{o1} in such a position. Next it pushes object \ttt{o0}, this action shows the optimality of the planner. If it did not push \ttt{o0} it had to push away first \ttt{o5} and \ttt{o3} to make \ttt{o0} graspable, therefore it saved one action. The outcome of this action is not the expected one since the gripper, during the pushing action, touched slightly also \ttt{o5} (Figure \ref{fig:pushing_o0}). In this case is possible noting the ability of the system to adapt to new situations. Then the robot finishes the task grasping the remaining objects.
+
+
 
 \begin{figure}
 \centering
@@ -113,9 +213,10 @@ In Table \ref{tab:experiment_good} the executed plan, for the experiment of Figu
 \caption{Collision between the gripper and \ttt{o3} for the grasping pose of object \ttt{o2}.}\label{fig:exp_good_grasp_o2}
 \end{figure}
 
-From the experiments done the segmentation has been noted that the segmentation have a strongly importance since, due to the noise of the Kinect, the segmentation was not always the same. Moreover, at the edges the segmentation algorithm had some drawbacks since they tend to be clustered to the bigger adjacent clusters of supervoxels, some edges of an object could be detected as part of the adjacent object. This in several situation can leads to no plan since the object model is not similar to the real object, adn during the computation of collisions the system could detect false collisions. In this case the system can either return that the problem has no solution, so it will take a new images and repeat all the process (in this case the new segmentation could solve the problem), or find anyway a plan.  
+In order to get some statistics regarding the planning system we performed 6 runs of the experiment. In Table \ref{tab:6runs} the executed plans of all the runs are reported. The plans differ because of two main reasons: the segmentation is not always the same and in the attempt to reproduce the objects those could have been located not in the exactly poses of previous experiments. 
 
-In Table ... the executed plans of all the runs for this experiment are reported. The plans differ because of two main reasons: the segmentation is not always the same and in the attempt to reproduce the objects those could have been located not in the exactly poses of previous experiments. 
+From these experiments it has been noted that the segmentation have a strongly importance since, due to the noise of the Kinect, the segmentation was not always the same. Moreover, at the edges the segmentation algorithm had some drawbacks since it could cluster some edjes points to the biggest adjacent clusters of supervoxels, this means that some edges of an object could be detected as part of the adjacent object. This, in several situation, can leads to find no plan since the object model is not similar to the real object, and during the computation of the collisions the system could detect false collisions. In this case the system can either return that the problem has no solution, so it will take a new images and repeat all the process (in this case the new segmentation could solve the problem), or find anyway a plan.  
+
 
 
 
@@ -208,15 +309,13 @@ Run & Plan & $N_{actions}$ & $Time_{tot}$ & $\neg Solution$ & $\neg IK$\\
 \end{table}
 
 \paragraph{Comments}
-In run 1 the robot grasps object \ttt{o3} although there was \ttt{o4} on top of it. This is because during the execution of \ttt{(push\_dir1 o0)}  action the gripper's cable touch object \ttt{o4} moving it away.  In runs 1,4 and 5 the optimal plan does not return to push object \ttt{o0} as a solution but it returns to push either \ttt{o5} or \ttt{o3}, this also is because of the segmentation. 
+In run 1 the robot grasps object \ttt{o3} although there was \ttt{o4} on top of it. This is because during the execution of \ttt{(push\_dir1 o0)}  action the gripper's cable touch object \ttt{o4} moving it away.  In runs 1,4 and 5 the optimal plan does not return to push object \ttt{o0} as a solution but it returns to push either \ttt{o5} or \ttt{o3}, this also is because of the segmentation (at that iteration that system detected it was not possible pushing away \ttt{o0}). 
 
-
-For the run 3 the time is high because we filter each point cloud (this slow down the process - fix the code?) - compute the inverse kinematic, when it has no solution its time consuming. 
 
 \begin{figure}[tb]
 \centering
 \includegraphics[width=6cm]{Img/experiments/exp_good/pushing_o0c.png}
-\caption{Pushing \ttt{o0} the gripper touches also \ttt{o5}.}\label{fig:pushing_o0}
+\caption{Unexpected outcome: pushing \ttt{o0} the gripper touches also \ttt{o5}.}\label{fig:pushing_o0}
 \end{figure}
 
 \begin{figure}[tb]
@@ -232,15 +331,65 @@ For the run 3 the time is high because we filter each point cloud (this slow dow
 \caption{Grasping pose of object \ttt{o4} with unfeasible IK.}\label{fig:grasp_o4}
 \end{figure}
 
-Due to the strange position of object \ttt{o4} the grasping poses some times were the one depicted in Figure \ref{fig:grasping_pose_o4}. When the planner returned to grasp \ttt{o4} the inverse kinematic returned no solution, so it planed again performing a different action. A feasible grasping pose for object \ttt{o4} was find since, due to the noise of the Kinect, the grasping poses was not always the same and a feasible one could appear. This is because of the height, seen by the Kinect, of \ttt{o4} was higher than its width, so the second principal direction was perpendicular to the top largest surface (Figure \ref{fig:grasp_o4}). 
+Due to the strange position of object \ttt{o4} the grasping poses some times were the one depicted in Figure \ref{fig:{fig:grasp_o4}}. When the planner returned to grasp \ttt{o4} the inverse kinematic returned no solution, so it planed again performing a different action. A feasible grasping pose for object \ttt{o4} was find since, due to the noise of the Kinect, the grasping poses was not always the same and a feasible one could appear. This is because of the height, seen by the Kinect, of \ttt{o4} was higher than its width, so the second principal direction was perpendicular to the top largest surface (Figure \ref{fig:grasp_o4}). This can be easily solved by using more sophisticated grasping planning algorithms. 
 
 
-We will next present some data regarding the times of computing the rpedicates, getting a plan, executing acitons...
+\begin{figure}[tb]
+\centering
+\begin{subfigure}[t]{0.4\textwidth}
+\centering
+\includegraphics[height=6.5cm]{Img/experiments/exp_good/data/filtering.eps}
+\caption{Filtering time[seconds].}
+\end{subfigure}
+\begin{subfigure}[t]{0.4\textwidth}
+\centering
+\includegraphics[height=6.5cm]{Img/experiments/exp_good/data/segmentation.eps}
+\caption{Segmentation time[milliseconds].}
+\end{subfigure}
+\\
+\begin{subfigure}[t]{0.45\textwidth}
+\centering
+\includegraphics[width=\textwidth]{Img/experiments/exp_good/data/predicates.eps}
+\caption{State generation time[milliseconds].}
+\label{fig:time_predicates}
+\end{subfigure}
+\begin{subfigure}[t]{0.45\textwidth}
+\centering
+\includegraphics[width=\textwidth]{Img/experiments/exp_good/data/planning.eps}
+\caption{Planning time[seconds].}\label{fig:time_plan}
+\end{subfigure}
+\\
+\begin{subfigure}[t]{0.4\textwidth}
+\centering
+\includegraphics[height=6.5cm]{Img/experiments/exp_good/data/ik.eps}
+\caption{Inverse kinematic time[seconds].}
+\end{subfigure}
+\begin{subfigure}[t]{0.4\textwidth}
+\centering
+\includegraphics[height=6.5cm]{Img/experiments/exp_good/data/actions.eps}
+\caption{Action execution time[seconds].}
+\end{subfigure}
+\caption{Elapsed time for the different phases of the algorithm. These data are taken from the 6 runs of the experiment of Figure \ref{fig:experiment_good}, also using data, whenever using them made sense, were the segmentation was wrong and no plan was found or the inverse kinematic had no solution.}\label{fig:time_results}
+\end{figure}
+% COMMENT ABOUT THE FIGURE: I took data also from runs where the segmentation was wrong and no plan was found. For example in those cases it is anyway usefull to use the data of the elapsed times for the segmentation/state generation/planning, but not for executed actions since no actions was performed, or for the IK since without a plan we don't solve IK. In this way we are able to have a more precise estimation of the elapsed time since we have more data. Despite this, for example for the case of the state generation time, each box was not obtained with the same number of data. 
 
 
+\paragraph{Computation time analysis}
+From the 6 runs of this experiment the different elapsed times for the several step of the algorithm have been measured (Figure \ref{fig:time_results}). The reasoning process is slowed down by the filtering process ($\approx 2.2sec$), therefore other filtering algorithms could be considered. The segmentation is really fast since in average it takes half second to segment the image. 
+
+The most important part of this analysis regards the time needed to generate the states and get a plan (Figures \ref{fig:time_predicates} and \ref{fig:time_plan}). The planning system is able to compute the predicates quite fast and, as commented in Chapter \ref{ch:implementation}, its complexity is $\mathcal{O}(n^2)$. The time to get a plan depends on the complexity of the problem, therefore on the number of objects. The Fast Downward planner showed to be very fast in resolving problems also for complex problems, for the experiments done there were cases in which the number of states was about $50$. It is important also taking into account that our implementation to get the plan is not the optimal one since we write each time a PDDL file and then call the binary of the planner. Those the process is slowed down by the writing of the PDDL file and the parsing of that file. Despite this, the planning process is very fast. 
+
+Regarding the time needed to compute the inverse kinematic there is a big variance due to the fact of the poses, there exist poses for which is easier to find a solution, moreover the IK is solved in order to find the point in the joint space nearest to the current joints state. the inverse kinematic, when it returns no solution, takes usually $\approx 3.4secs$. 
+
+The execution of the actions is obviously the more time expensive.
+
+To conclude, the result regarding the time of the whole planning system for each iteration (taking into account filtering, segmentation, state generations, planning and inverse kinematic) is depicted in Figure \ref{fig:whole_time}.
 
 
-
+\begin{figure}
+\centering
+\includegraphics[width=8cm]{Img/experiments/exp_good/data/exp_times_no_actions.eps}
+\end{figure}
 
 
 \iffalse

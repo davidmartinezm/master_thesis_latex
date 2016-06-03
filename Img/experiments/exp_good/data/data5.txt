@@ -1,0 +1,23 @@
+--exp0
+plan: (push_dir3 o2) (grasp o5) (push_dir1 o4) (grasp o2) (push_dir1 o1) (grasp o3) (grasp o0) (grasp o4) (grasp o1) 
+labels: n_objects filtering_time[ms] seg_time[ms] predicates_time[ms] planning_time[ms] IK[ms] on_predicates[ms] block_predicates[ms] block_grasp_predicates[ms] objects_collisions[ms] ee_collisions[ms] average_objects_collision[ms] average_ee_collision[ms] action_execution_time[ms] time_from_start[ms] action ik_feasible time_to_save_pcl 
+data: 6 2784 641 1184 555 869 45 693 61 428 245 14.2667 8.16667 19077 38272 push_dir3-o2 1 2572 
+(push_dir3 o2) (grasp o5) (push_dir1 o4) (grasp o2) (push_dir1 o1) (grasp o3) (grasp o0) (grasp o4) (grasp o1) 
+data: 6 2172 711 1247 524 484 40 784 78 514 255 17.1333 8.5 25056 71902 grasp-o4 1 2398 
+(grasp o4) (push_dir1 o1) (push_dir3 o2) (push_dir1 o0) (grasp o3) (grasp o5) (grasp o2) (grasp o0) (grasp o1) 
+data: 5 1776 668 915 441 925 25 501 51 281 184 14.05 9.2 18055 104417 push_dir1-o2 1 1743 
+(push_dir1 o2) (push_dir1 o1) (grasp o3) (grasp o4) (grasp o0) (grasp o2) (grasp o1) 
+data: 5 2034 509 807 366 569 20 399 33 239 144 11.95 7.2 25053 136551 grasp-o4 1 2197 
+(grasp o4) (push_dir1 o1) (push_dir3 o0) (push_dir1 o2) (grasp o0) (grasp o1) (grasp o3) (grasp o2) 
+data: 5 2108 593 618 428 598 12 309 23 201 103 10.05 5.15 20059 170149 push_dir1-o4 1 1878 
+(push_dir1 o4) (push_dir3 o0) (push_dir1 o2) (grasp o1) (grasp o0) (grasp o4) (grasp o3) (grasp o2) 
+data: 4 1946 528 661 443 530 23 225 29 139 71 11.5833 5.91667 26147 203389 grasp-o0 1 1615 
+(grasp o0) (push_dir3 o1) (grasp o1) (push_dir1 o2) (grasp o3) (grasp o2) 
+data: 3 2280 520 487 511 934 31 150 20 89 50 14.8333 8.33333 20060 236589 push_dir1-o1 1 1776 
+(push_dir1 o1) (grasp o2) (grasp o0) (grasp o1) 
+data: 3 1937 466 415 311 481 7 111 11 77 32 12.8333 5.33333 24149 267228 grasp-o1 1 1311 
+(grasp o1) (grasp o2) (grasp o0) 
+data: 2 2224 466 332 287 471 3 75 5 45 28 22.5 14 34057 307204 grasp-o1 1 1614 
+(grasp o1) (grasp o0) 
+data: 1 1968 514 209 268 483 0 3 0 0 0 -nan -nan 28061 341417 grasp-o0 1 1867 
+(grasp o0) 

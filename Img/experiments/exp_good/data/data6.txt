@@ -1,0 +1,33 @@
+--exp0
+plan: 
+labels: n_objects filtering_time[ms] seg_time[ms] predicates_time[ms] planning_time[ms] IK[ms] on_predicates[ms] block_predicates[ms] block_grasp_predicates[ms] objects_collisions[ms] ee_collisions[ms] average_objects_collision[ms] average_ee_collision[ms] action_execution_time[ms] time_from_start[ms] action ik_feasible time_to_save_pcl 
+data: 7 2660 601 1299 705 0 42 807 76 514 281 12.2381 6.69048 0 9327 no_plan 1 1917 
+
+data: 7 2124 564 1247 509 708 54 836 65 532 289 12.6667 6.88095 19079 45440 push_dir3-o2 1 1836 
+(push_dir3 o2) (grasp o4) (push_dir1 o1) (grasp o2) (grasp o1) (push_dir1 o0) (grasp o5) (grasp o6) (grasp o3) (grasp o0) 
+data: 10 3531 517 2657 679 0 70 2012 200 1257 670 13.9667 7.44444 0 54200 no_plan 1 2139 
+
+data: 8 1855 572 1566 505 460 50 1110 88 626 445 11.1786 7.94643 26058 88577 grasp-o3 1 1849 
+(grasp o3) (grasp o5) (push_dir1 o2) (push_dir1 o1) (grasp o2) (grasp o4) (grasp o6) (grasp o0) (grasp o1) (grasp o7) 
+data: 7 2488 654 1380 529 0 47 936 82 554 356 13.1905 8.47619 0 96043 no_plan 1 1747 
+
+data: 6 1834 493 958 454 0 32 553 64 343 197 11.4333 6.56667 0 102741 no_plan 1 1573 
+
+data: 5 1939 605 1017 633 810 33 536 39 330 179 16.5 8.95 18052 134530 push_dir1-o2 1 1507 
+(push_dir1 o2) (grasp o4) (grasp o2) (push_dir1 o1) (grasp o3) (grasp o0) (grasp o1) 
+data: 6 2724 532 959 410 0 35 503 55 308 181 10.2667 6.03333 0 141015 no_plan 1 1650 
+
+data: 5 2215 550 996 422 900 35 528 62 320 189 16 9.45 16045 170659 push_dir1-o3 1 2259 
+(push_dir1 o3) (grasp o2) (grasp o4) (grasp o1) (grasp o0) (grasp o3) 
+data: 6 2614 477 1038 418 0 41 564 51 364 180 12.1333 6 0 177923 no_plan 1 2073 
+
+data: 6 1985 503 1015 431 587 41 537 40 328 184 10.9333 6.13333 25062 210722 grasp-o2 1 2171 
+(grasp o2) (grasp o3) (grasp o5) (grasp o1) (grasp o4) (grasp o0) 
+data: 4 2096 547 752 355 653 30 330 43 204 99 17 8.25 29047 247327 grasp-o1 1 1968 
+(grasp o1) (grasp o2) (grasp o3) (grasp o0) 
+data: 3 2023 558 529 337 476 17 187 13 118 52 19.6667 8.66667 34050 288296 grasp-o0 1 1872 
+(grasp o0) (grasp o2) (grasp o1) 
+data: 2 2039 471 277 279 538 9 34 3 23 10 11.5 5 27151 321961 grasp-o1 1 1867 
+(grasp o1) (grasp o0) 
+data: 1 2354 385 216 292 530 1 0 0 0 0 -nan -nan 27138 355439 grasp-o0 1 1981 
+(grasp o0) 
