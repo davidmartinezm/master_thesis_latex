@@ -279,16 +279,15 @@ for i=1:length(tmp)
 end
 names1 = cell(length(tmp1),1);
 for i=1:length(tmp1)
-    names1{i} = ['PLANNING PIPELINE (with IK)'];
+    names1{i} = ['STATE GENERETION + PLANNING PIPELINE (with IK)'];
 end
 names2 = cell(length(tmp2),1);
 for i=1:length(tmp2)
     names2{i} = ['PLANNING PIPELINE (no IK)'];
 end
-boxplot([tmp;tmp1;tmp2],[names;names1;names2])
+boxplot([tmp;tmp1;tmp2]./1000,[names;names1;names2])
 ylabel('Time [seconds]')
-title('Time to decide an action')
-
+%title('Time to decide an action')
 %% BAR PLOT
 data6_execute = [];
 for i=1:size(data6,1)
@@ -301,8 +300,8 @@ for i=1:size(data6_execute,1)
     y_data6 = [y_data6; [data6_execute(i,2:IK) data6_execute(i,ACTION_EXECUTION_TIME)]];
 end
 bar(y_data6./1000,'stacked')
-title('Time devoted to each step')
-xlabel('Iterations')
+%title('Time devoted to each step')
+xlabel({'Iterations','Number of segmented objects'})
 ylabel('Time [seconds]')
 legend('Filterting','Segmentation','States generation','Planning','IK','Action Execution')
 %% without action execution
@@ -311,8 +310,10 @@ for i=1:size(data6_execute,1)
     y_data6 = [y_data6; [data6_execute(i,2:IK)]];
 end
 bar(y_data6./1000,'stacked')
-set(gca,'XTickLabel',{{'1'},{'2'},{'3'},{'4'},{'5'},{'6'},{'7'},{'8'},{'9'}})
-title('Time devoted to each step')
-xlabel({'Iterations','Number of segmented objects'})
+set(gca,'XTickLabel',{'1 - 7','2 - 8','3 - 5','4 - 5','5 - 6','6 - 4','7 - 3','8 - 2',{'9 - 1'}})
+
+%set(gca,'XTickLabel',{{'1'},{'2'},{'3'},{'4'},{'5'},{'6'},{'7'},{'8'},{'9'}})
+%title('Time devoted to each step')
+xlabel('Iterations - Number of segmented objects')
 ylabel('Time [seconds]')
 legend('Filterting','Segmentation','States generation','Planning','IK')

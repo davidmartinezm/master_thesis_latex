@@ -227,7 +227,7 @@ for i=1:size(tmp2,1)
 end
 
 boxplot([tmp(:,IK);tmp1(:,IK);tmp2(:,IK) ]./1000,[names;names1;names2])
-xlabel('INVERSE KINEMATIC')
+xlabel('Inverse Kinematic')
 ylabel('Time [Seconds]')
 title('Time to solve the IK')
 
@@ -279,16 +279,15 @@ for i=1:length(tmp)
 end
 names1 = cell(length(tmp1),1);
 for i=1:length(tmp1)
-    names1{i} = ['PLANNING PIPELINE (with IK)'];
+    names1{i} = ['STATE GENERETION + PLANNING PIPELINE (with IK)'];
 end
 names2 = cell(length(tmp2),1);
 for i=1:length(tmp2)
     names2{i} = ['PLANNING PIPELINE (no IK)'];
 end
-boxplot([tmp;tmp1;tmp2],[names;names1;names2])
+boxplot([tmp;tmp1;tmp2]./1000,[names;names1;names2])
 ylabel('Time [seconds]')
-title('Time to decide an action')
-
+%title('Time to decide an action')
 %% BAR PLOT
 data6_execute = [];
 for i=1:size(data6,1)
@@ -301,9 +300,8 @@ for i=1:size(data6_execute,1)
     y_data6 = [y_data6; [data6_execute(i,2:IK) data6_execute(i,ACTION_EXECUTION_TIME)]];
 end
 bar(y_data6./1000,'stacked')
-title('Time devoted to each step')
-xlabel('Iterations')
-ylabel('Time [seconds]')
+set(gca,'XTickLabel',{sprintf('%s - %s','1','7'),sprintf('%s - %s','2','8'),sprintf('%s - %s','3','5'),sprintf('%s - %s','4','5'),sprintf('%s - %s','5','6'),sprintf('%s - %s','6','4'),sprintf('%s - %s','7','3'),sprintf('%s - %s','8','2'),sprintf('%s - %s','9','1')});
+xlabel('Iterations - Number of segmented objects')
 legend('Filterting','Segmentation','States generation','Planning','IK','Action Execution')
 %% without action execution
 y_data6 = [];
@@ -311,10 +309,7 @@ for i=1:size(data6_execute,1)
     y_data6 = [y_data6; [data6_execute(i,2:IK)]];
 end
 bar(y_data6./1000,'stacked')
-set(gca,'XTickLabel',{sprintf('%s - %s','1','7'),sprintf('%s \n%s','2','8'),
-sprintf('%s \n%s','3','5'),sprintf('%s \n%s','4','5'),sprintf('%s \n%s','5','6')),
-sprintf('%s \n%s','6','4'),sprintf('%s \n%s','7','3'),sprintf('%s \n%s','8','2'),sprintf('%s \n%s','9','1')})
-title('Time devoted to each step')
-xlabel({'Iterations - Number of segmented objects'})
+set(gca,'XTickLabel',{sprintf('%s - %s','1','7'),sprintf('%s - %s','2','8'),sprintf('%s - %s','3','5'),sprintf('%s - %s','4','5'),sprintf('%s - %s','5','6'),sprintf('%s - %s','6','4'),sprintf('%s - %s','7','3'),sprintf('%s - %s','8','2'),sprintf('%s - %s','9','1')});
+xlabel('Iterations - Number of segmented objects')
 ylabel('Time [seconds]')
 legend('Filterting','Segmentation','States generation','Planning','IK')
