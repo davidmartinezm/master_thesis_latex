@@ -4,9 +4,9 @@ In this chapter the general framework adopted is discussed, proposing a suitable
 \section{Task Planners Review}
 To choose the proper planner for the task we evaluated three main categories of planners:
 \begin{enumerate}
-\item classical planners\DM{,}
-\item hierarchical planners\DM{,}
-\item probabilistic planners\DM{.}
+\item classical planners,
+\item hierarchical planners,
+\item probabilistic planners.
 \end{enumerate}
 \textbf{Classical planners} are characterized by environments which are fully observable, deterministic, finite and static (changes happen only when the agent acts) and discrete (in time, actions, objects...) \citep{artificialIntelligence}.  A very well known classic planner is the Fast Downward planner \cite{helmert2006fast}.
 
@@ -14,7 +14,7 @@ To choose the proper planner for the task we evaluated three main categories of 
 \textbf{Hierarchical planning}, also called \textit{Hierarchical Task Network}(HTN), works in a similar way to how it is believed that human planning 
 works \citep{marthi2007angelic}. It is based on a reduction of the problem. The planner recursively decomposes tasks into subtasks, stopping when it reaches primitive tasks that can be performed directly by planning operators. This kind of planner needs to have a set of methods, where each method is a schema for decomposing a particular kind of task into a set of subtasks. For this kind of planning technique a well known planner is SHOP \citep{shop}.
 
-\textbf{Probabilistic planning} is a planning technique which considers that the environment is not deterministic but probabilistic. So the actions have a \DMC{certain} probability to obtain a certain state, and given an initial and \DMC{final state}{goal,} the planner  finds the solution path with the highest reward, which depends also on the probability. \DMC{A well known example on which this kind of planners are build on is the Markov Decision Process}{Probabilist problems problems are usually formalized as Markov Decision Processes}.
+\textbf{Probabilistic planning} is a planning technique which considers that the environment is not deterministic but probabilistic. So the actions have a probability to obtain a certain state, and given an initial and goal, the planner finds the solution path with the highest reward, which depends also on the probability. Probabilist problems are usually formalized as Markov Decision Processes (MDP).
 %A probabilistic problem is generally formulated as a $6$-tuple $\Pi=\langle S, s_o, G, O, T, A \rangle$ %\cite{little2007probabilistic}, where:
 %\begin{itemize}
 %item $S$ is a finite set of states;
@@ -28,15 +28,15 @@ works \citep{marthi2007angelic}. It is based on a reduction of the problem. The 
 %\item $\sum_{o \in out(a)} Pr(o) = 1$ for all $a$.
 %\end{itemize}
 %\end{itemize}
-In this category two probabilistic planners that perform good in planning competitions are Gourmand \cite{Gourmand} and PROST \cite{PROST}.
+In this category two probabilistic planners that performed good in planning competitions are Gourmand \cite{Gourmand} and PROST \cite{PROST}.
 
 \section{Planner}
 %The problem this thesis is facing could be solved by several approaches by using planners from all the categories. We have already seen that such a problem involves geometric constraints and those cannot be considered directly by the planner using a ready to use state of the art planner, that would imply a designing of a new planner. Moreover using a hybrid planner is also time consuming, so we decided to focuse on a strategy that would let us to use already existing planners. This way involves working with symbolic predicates. Symbolic predicates are predicates which can be true or false, and they will be introduced more in detail in the next sections. 
 
-The problem involves a big amount of uncertainty due to the interaction of the robot with the environment. When the robot \DMC{will}{} interacts with the objects\DM{,} it is very hard to predict correctly the position of the object after the execution, that is the next state\DMC{, this is a crucial problem which should be considered}{}. \DMC{With a probabilistic planner, the planner will take into account what object has been moved and it will update the state obtaining a set of states, each one with a certain probability.}{A probabilistic planner considers the probability associated with every effect to predict the state after executing an action...} The probability also has to be \DMC{modelled}{specified or learned for each type of object} \DMC{and it is highly depending on the form of the object}.
+The problem involves a big amount of uncertainty due to the interaction of the robot with the environment. When the robot interacts with the objects, it is very hard to predict correctly the position of the object after the execution, that is the next state. A probabilistic planner considers the probability associated with every effect to predict the state after executing an action, such a probability has to be specified or learned for each type of object.
 
-Martinez et al. \citep{martinez2015planning} faced the problem of cleaning a surface entirely by probabilistic symbolic planning. The problem they \DMC{wanted to solve}{solved} was characterized by a strong \DMC{probability factor}{uncertainty,} and a \DMC{wrong}{unexpected} effect of \DMC{the}{an} action would \DMC{have lead}{require} to replan\DM{,} and therefore to slow down the system.
-Another way to face the problem of probability is replanning after each executed action \cite{kaelbling2012unifying}, or whenever the current state deviates from the expected one, generating a new plan from the current state to the goal. \DMC{The plan's}{In this case the} actions are considered deterministic, \DMC{and the only useful action is actually the first one of the plan, after its execution the system}{and only the first action is executed before replanning again.} replans again. 
+Martinez et al. \citep{martinez2015planning} faced the problem of cleaning a surface entirely by probabilistic symbolic planning. The problem they solved was characterized by a strong uncertainty, and a unexpected effect of an action would require to replan and therefore to slow down the system.
+Another way to face the problem of probability is replanning after each executed action \cite{kaelbling2012unifying}, or whenever the current state deviates from the expected one, generating a new plan from the current state to the goal. In this case the actions are considered deterministic, and only the first action is executed before replanning again. 
 
 Little et al. discussed in \cite{little2007probabilistic} the problem of when is more useful the probabilistic planning with respect a simple replanning system. 
 %They defined the concept of \textit{Probabilistic Interesting Problem} with the following definition:
@@ -56,50 +56,36 @@ exist multiple goal trajectories and there is at least one pair of distinct goal
 
 They assert that unless a probabilistic planning problem satisfies all of the conditions to be \textit{probabilistic interesting} then it is inevitable that a well-written replanner will outperform a well-written probabilistic planner. Moreover the authors do not negate the possibility that a deterministic replanner could perform optimally even for probabilistically interesting planning problems. 
 
-To conclude, \DM{in many problems it is more efficient to replan with a deterministic planner rather than directly using a probabilitic planner.} \DMC{a replanner makes more probabilistic problems practically solvable. In the other hand it suffers to be less robust than a probabilistic one}{}. 
+To conclude, in many problems it is more efficient to replan with a deterministic planner rather than directly using a probabilitic planner. 
 
 
+Taking into account such considerations and that, except for rare cases, our planning problem is not \textit{probabilistic interesting}, the problem has been thought to be solved by a deterministic planner.
 
-\begin{comment}
-From their analysis the state that probabilist planning has some useful properties which a deterministic replanning does not have, and they are:
-\begin{itemize}
-\item The lack off \textit{dead end} states, from which the goal is unreachable through any
-combination of chance and choice,
-\item  the degree to which the probability of reaching a \textit{dead end} state can be reduced through the choice of actions,
-\item a higher degree in the solution trajectory, yielding to possible several and feasible solutions,
-\item  the presence of mutual exclusion
-\end{itemize}
-\end{comment}
+A hierarchical planner would be a good choice if the problem presented some hierarchies, for instance in the case the goal was to clear several tables. Since the problem is about cleaning a single table it is more straightforward to use a classical planner.
 
-Taking into account such considerations and that, except for rare cases, our planning problem is not \textit{probabilistic interesting}, the problem has been thought to be solved \DMC{thanks to}{by} a deterministic planner.
-
-A hierarchical planner would be a good choice if the problem \DMC{presents}{presented} some hierarchies, for instance in the case the goal \DMC{is}{was} to clear several tables. Since the problem is about cleaning a single table \DMC{the problem can be easily modelled through a classic planner and it is straightforward}{it is more straightforward to use a classical planner}.
-
-The planner chosen \DMC{to develop the work is}{was} the \textbf{Fast Downward} planner \citep{helmert2006fast}, a very well know classic one. 
-This planner is feature-wise complete, stable and fast in solving planning problem\DM{s}.
+The planner chosen was the \textbf{Fast Downward} planner \citep{helmert2006fast}, a very well know classic one. 
+This planner is feature-wise complete, stable and fast in solving planning problems.
 
 \section{Symbolic Predicates}
-\DMcomment{Should be two different sections: formulation and predicates}
 
-\DMC{Once the planner has been chosen, the planning problem has to be formulated accordingly to the capabilities of the planner. Since we chosen a classic one, the problem is deterministic and it is generally}{The problem is} formulated as a $6$-tuple $\Pi=\langle S^d, s_o^d, G^d, A^d, T^d, c^d \rangle$, where:
+\subsection{Formulation}
+The problem is formulated as a $6$-tuple $\Pi=\langle S, s_o, G, A, T, c \rangle$, where:
 \begin{itemize}
-\item $S^d$ is a finite set of states;
-\item $s_o^d \in S^d$ is an initial state;
-\item $G^d \in S^d$ is a goal state;
-\item $A^d(s)$ is a set of applicable actions for each $s \in S^d$;
-\item $T^d(a,s) :$ \DM{$ S \times A \times S$} is a deterministic transition function\DMC{ for all actions $a \in A^d(s)$ and states $ s \in S^d$}{};
-\item $c^d(a)$ is the cost to apply action $a$.
+\item $S$ is a finite set of states;
+\item $s_o \in S$ is an initial state;
+\item $G \in S$ is a goal state;
+\item $A(s)$ is a set of applicable actions for each $s \in S$;
+\item $T(a,s) :$ $ S \times A \times S$ is a deterministic transition function;
+\item $c(a)$ is the cost to apply action $a$.
 \end{itemize}
-\DMcomment{Why do you put a $d$ on everything?}
-The plans, or trajectories\DMcomment{why trajectories? You get plans (or action sequences) with a planner.}, $\tau_i$ are sequences of actions applicable from the initial state until the goal state. The cost of a trajectory $C(\tau_i)$ is the sum of the cost of the actions of the trajectory $C(\tau_i) = \sum_{a \in \tau} c^d(a)$. The optimal solution is the solution with less cost: $\tau^* = \min_{\tau_i} c(\tau_i)$.
-In this work we \DMC{did}{do} not specify \DMC{any}{specific} cost \DMC{to}{for} the actions, so the planner \DMC{will return as solution the one with less number of}{returns the plan with fewer} actions.
-\DMcomment{You don't use costs now for anything?}
+The plans $\tau_i$ are sequences of actions applicable from the initial state until the goal state. The cost of a trajectory $C(\tau_i)$ is the sum of the cost of the actions of the trajectory $C(\tau_i) = \sum_{a \in \tau} c(a)$. The optimal solution is the solution with less cost: $\tau^* = \min_{\tau_i} c(\tau_i)$.
+In this work we do not specify specific costs for the actions, so the planner returns the plan with fewer actions.
 
 
-\DMcomment{The predicates section should start here}
-The \textit{Fast Downward} planner needs the problem to be formulated in \DMC{the common format of PDDL}{} (\textit{Problem Domain Description Language}) \citep{pddl}. In this section the symbolic predicates that have been considered in order to solve the problem are described.
+\subsection{Predicates}
+The \textit{Fast Downward} planner needs the problem to be formulated in \textit{Problem Domain Description Language} (PDDL) \citep{pddl}. In this section the symbolic predicates that have been considered in order to solve the problem are described.
 
-The task this thesis faces is a common task done by humans, who think in order to find a feasible sequence of actions. Such a sequence is normally composed of actions that avoid the collision between the manipulated objects and the other ones, whenever possible. To do this we, as humans, think on what is going to happen if we manipulate an object in a certain way. The design of the problem has been inspired by such a reasoning way and therefore we will handle carefully the objects avoiding collisions between them. The reasoning part is entrusted to the planner, which needs a coherent problem description through symbolic predicates. \DMcomment{Too long... Say something short such as: Symbolic predicates are added so that the planner can reason about collisions and geometrical constraints.}
+The task this thesis faces is a common task done by humans, who think in order to find a feasible sequence of actions. Such a sequence is normally composed of actions that avoid the collision between the manipulated objects and the other ones, whenever possible. To do this we, as humans, think on what is going to happen if we manipulate an object in a certain way. The design of the problem has been inspired by such a reasoning way and symbolic predicates are added so that the planner can reason about collisions and geometrical constraints.
 
 As described in the introduction, the system will be able to perform two types of actions: \textbf{pushing} and \textbf{grasping}.
 Grasping action is a necessary action in order to grasp an object and drop it into a bin, while the pushing action is an auxiliary action which has the aim to move an object in a pose that do not obstacle the solution of the problem. 
@@ -114,16 +100,17 @@ The symbolic predicates are designed accordingly to the available actions trying
 Answering these questions the following predicates are defined:
 
 \begin{itemize}
-\item \textbf{grasped}: \ttt{(grasped o1)} means that object \ttt{o1} has been grasped and dropped into the bin. The goal is reached when all the object have been grasped. \DMcomment{Rename as removed or bin or something like that}
-\item \textbf{on}:\ttt{(on o1 o2)} means that object \ttt{o1} stands on top of object \ttt{o2}. This predicate is defined since we don't want to interact with an object that has objects on top of itself. If we \DM{would} grasp it, the object above will likely fall corrupting in this way the scene. That behaviour is undesired since a human would not grasp the bottom object without first grabbing the one on the top. Similarly for the pushing action, when an object with objects on top of itself is pushed, they could fall or collide with other objects. Vice versa if it was on top of other objects.
+\item \textbf{removed}: \ttt{(removed o1)} means that object \ttt{o1} has been grasped and dropped into the bin. The goal is reached when all the object have been removed. 
+\item \textbf{on}:\ttt{(on o1 o2)} means that object \ttt{o1} stands on top of object \ttt{o2}. This predicate is defined since we don't want to interact with an object that has objects on top of itself. If we would grasp it, the object above would likely fall corrupting in this way the scene. That behaviour is undesired since a human would not grasp the bottom object without first grabbing the one on the top. Similarly for the pushing action, when an object with objects on top of itself is pushed, they could fall or collide with other objects. Vice versa if it was on top of other objects.
 \item \textbf{block\_grasp}: \ttt{(block\_grasp o1 o2)} means that object \ttt{o1} obstacles  object \ttt{o2} to be grasped. 
-Once we are sure that an object has no objects on top of it we have to check if it can be grasped, that is if the gripper will collide with \DMC{some objects}{object o2} attempting to grasp the desired one. With this predicate the planner knows that the robot has first to interact with those objects before to grasp the desired one.
-\item \textbf{block\_dir1}, \textbf{block\_dir2}, \textbf{block\_dir3}, \textbf{block\_dir4}: \ttt{(block\_dir1 o1 o2)} means that object \ttt{o1} obstacles  object \ttt{o2} to be moved along direction 1. We will consider 4 possible pushing directions (defined in Chapter \ref{ch:implementation}) per object. Being observant to the philosophy  of human-inspired actions, we avoid collisions when we push an object\DMC{, to do that}{. To do so} we translate the object along the pushing direction, for a certain length, and check for collision. Moreover, to push an object the end effector has to be put in the opposite side with respect the pushing direction, so an object cannot be pushed along a certain direction even in the case the gripper collides with an object.
-Therefore if an object cannot be moved along a certain direction \DMC{because it would collide with some objects, or the gripper would collide, those have to be moved or grasped.}{it is because the object would collide, or the gripper would collide.}
-\item \textbf{ik\_unfeasible\_dir1}, \textbf{ik\_unfeasible\_dir2}, \textbf{ik\_unfeasible\_dir3}, \textbf{ik\_unfeasible\_dir4}, \textbf{ik\_unfeasible\_grasp}: \ttt{(ik\_unfeasible\_dir1 o1)} means that the inverse kinematic to push the object \ttt{o1} along direction 1 has no solution. \DMC{Similarly for the other actions.}{DM: This sentence is badly written.} \DMC{This}{These} predicates are added in order to consider the geometrical constraints regarding the working space of the robot.
+Once we are sure that an object has no objects on top of it we have to check if it can be grasped, that is if the gripper will collide with object \ttt{o2} attempting to grasp the desired one. With this predicate the planner knows that the robot has first to interact with those objects before to grasp the desired one.
+\item \textbf{block\_dir1}, \textbf{block\_dir2}, \textbf{block\_dir3}, \textbf{block\_dir4}: \ttt{(block\_dir1 o1 o2)} means that object \ttt{o1} obstacles  object \ttt{o2} to be moved along direction 1. We will consider 4 possible pushing directions (defined in Chapter \ref{ch:implementation}) per object. Being observant to the philosophy  of human-inspired actions, we avoid collisions when we push an object. To do so we translate the object along the pushing direction, for a certain length, and check for collision. Moreover, to push an object the end effector has to be put in the opposite side with respect the pushing direction, so an object cannot be pushed along a certain direction even in the case the gripper collides with an object.
+Therefore if an object cannot be moved along a certain direction it is because the object would collide, or the gripper would collide.
+\item \textbf{ik\_unfeasible\_dir1}, \textbf{ik\_unfeasible\_dir2}, \textbf{ik\_unfeasible\_dir3}, \textbf{ik\_unfeasible\_dir4}, \textbf{ik\_unfeasible\_grasp}: to consider the geometrical constraints regarding the working space of the robot, a predicate which states whether the inverse kinematic has solution is added for each action. For instance, \ttt{(ik\_unfeasible\_dir1 o1)} means that the inverse kinematic to push the object \ttt{o1} along direction 1 has no solution. %These predicates are added in order to consider the geometrical constraints regarding the working space of the robot.
 \end{itemize}
 
-\DMcomment{subsection Actions?}
+\subsection{Actions}
+In this section the actions preconditions and effects are described.
 
 \paragraph{Grasping Action}
 The \textbf{preconditions} to grasp a certain object are:
@@ -134,7 +121,7 @@ The \textbf{preconditions} to grasp a certain object are:
 \end{itemize}
 The \textbf{effects} of the grasping action are:
 \begin{itemize}
-\item the grasped object is dropped into the bin,
+\item the grasped object is removed and dropped into the bin,
 \item the grasped object no more blocks other object to be pushed or grasped,
 \item if the grasped object was on top of other ones, it is no more on top of them.
 \end{itemize}  
@@ -159,28 +146,36 @@ Therefore the \textbf{effects} of this action are:
 %The effects of the action has to change the current predicates of the problem in order to update coherently the state. For the \textit{grasping} action whenever an object is grasped, since we are working in a deterministic scenario, the object is supposed to be grasped successfully and dropped in the bin. If such an object was on top of other ones, it was impeding some objects to be pushed in some direction or to be grasped those predicates have to be update coherently. Moreover to considered that the object is no more in the scene the predicate \textbf{grasped} is added. In particular \texttt{(grasped o1)} means that the object labelled as \texttt{o1} has been grasped and dropped into the bin, and therefore there is nothing more to do with it. The \textit{pushing} action, still thinking in a deterministic scenario, is supposed to be done in a manner that the object will be moved far enough from the others in such a way that it can be considered isolated. Considering it is isolated from the others, if it was blocking some objects to be pushed in a certain direction now it will not impedes them no more, and the same if an object impeded the current one, so the \texttt{block\_dir}$_i$ predicates are update, and the \texttt{block\_grasp} as well.  
 
 	
-\paragraph{Backtracking}
+\subsection{Backtracking}
 %The proposed planner until now does not include any geometric information, such as whether the robot can actually perform a certain action. It may happens that the object is outside the working space of the robot and this makes it hard to interact with. In such a case the robot will have a plan but it is impossible its execution, this make the plan unfeasible. 
 
-The geometrical constraints related to the inverse kinematic of the robot \DMC{have been added in the problem description but their computation is quite}{are computationally} expensive. Moreover, as the reader will see in Chapter \ref{ch:implementation}, the actions are defined by more poses, so the inverse kinematic is even more expensive, usually it is a matter of $2$ or $3$ seconds per action. Computing it for each possible action (we have 5 actions in total, one grasping action and 4 pushing actions) for each object would make the computation of the predicates too expensive making the planning system quite slow. Usually the objects are inside the working space of the robot and the computation of the \ttt{ik\_unfeasible} predicates is usually unnecessary.
+The geometrical constraints related to the inverse kinematic of the robot are computationally expensive. Moreover, as the reader will see in Chapter \ref{ch:implementation}, the actions are defined by more poses, so the inverse kinematic is even more expensive, usually it is a matter of $2$ or $3$ seconds per action. Computing it for each possible action (we have 5 actions in total, one grasping action and 4 pushing actions) for each object would make the computation of the predicates too expensive making the planning system quite slow. Usually the objects are inside the working space of the robot and the computation of the \ttt{ik\_unfeasible} predicates is usually unnecessary.
 
-To overcome this we used the \textbf{backtracking} technique\citep{Bidot2015}. Backtracking is based on updating the initial state, used to get the current plan, considering the geometrical constraints, and plan again with the updated initial state obtaining in this way a different plan that could be feasible. The obtained plan will still be evaluated and backtracked until a feasible plan is obtained or there exists no plan. Despite this, planning symbolically is very fast therefore replanning several times is not a problem. With this method the inverse kinematic will be solved only for the action we want to execute, the first one of the plan, and no time is wasted in computing the inverse kinematic for unnecessary actions. If executing the first plan's action is not possible the equivalent \ttt{ik\_unfeasible} predicate is updated. The pseudo algorithm to get a plan is shown in Algorithm \ref{alg:backtracking}.\DMcomment{Summarize this. Backtracking is that 1) after a plan is done, we check if it is feasible, 2) if not feasible, update state with updated information and repeat 1)}
+To overcome this we used the \textbf{backtracking} technique\citep{Bidot2015}. 
+Backtracking is based on a two-fold strategy:
+\begin{enumerate}
+\item checking if the plan is feasible, 
+\item if it is not, the state is updated with the new information and the system repeats from point 1 until a feasible plan is obtained.
+\end{enumerate} 
+%Backtracking is based on updating the initial state, used to get the current plan, considering the geometrical constraints, and plan again with the updated initial state obtaining in this way a different plan that could be feasible. The obtained plan will still be evaluated and backtracked until a feasible plan is obtained or there exists no plan.
+Planning symbolically is very fast therefore replanning several times is not a problem. With this method the inverse kinematic will be solved only for the action we want to execute, the first one of the plan, and no time is wasted in computing the inverse kinematic for unnecessary actions. If executing the first plan's action is not possible the equivalent \ttt{ik\_unfeasible} predicate is updated. The pseudo algorithm to get a plan is shown in Algorithm \ref{alg:backtracking}.
+%\DMcomment{Summarize this. Backtracking is that 1) after a plan is done, we check if it is feasible, 2) if not feasible, update state with updated information and repeat 1) - I don't see the need to summerize this}
 
 \begin{algorithm}
 \caption{Planning procedure with backtracking.\\
-\textbf{Inputs:} initial state $s_{0}^d$ and goal state $G^d$. \\
+\textbf{Inputs:} initial state $s_{0}$ and goal state $G$. \\
 \textbf{Outputs:} a feasible plan or not plan at all. }\label{alg:backtracking}
 \begin{algorithmic}
-\Procedure{GetPlan}{$s_{0}^d$,$G^d$}
+\Procedure{GetPlan}{$s_{0}$,$G$}
 \Repeat
-  \State $plan \gets$ \textsc{GetFastDownwardPlan}($s_{0}^d$,$G^d$)
+  \State $plan \gets$ \textsc{GetFastDownwardPlan}($s_{0}$,$G$)
   \If{\textsc{$\neg$isPlanEmpty}($plan$)} 
   		\Return NULL 
   \EndIf
   \State $action\gets$ \textsc{GetFirstAction}($plan$)
   \State $success \gets$ \textsc{HasIKSolution}($action$) 
   \If{$\neg success$}
-    \State $s_{0}^d \gets$ \textsc{UpdateInitialState}($action$) 
+    \State $s_{0} \gets$ \textsc{UpdateInitialState}($action$) 
   \EndIf
 \Until{$success$}
 \Return $plan$
@@ -191,7 +186,7 @@ To overcome this we used the \textbf{backtracking} technique\citep{Bidot2015}. B
 %This technique has been sued before to consider geometrical constraints when planning. This is a considerable limitation of symbolic planning but since they are typically very fast to execute, backtracking and replanning will not make them too much slower.
 
 
-It is possible that an object cannot be grasped on a certain pose, because the inverse kinematic has no solution, but it can be moved in a new pose in which it can be grasped. Therefore the pushing actions also will include the effect that the object of interest will have a solution of the inverse kinematic in the new pose. This is usually a rare case but it might happen. Of course, since the planner has no geometric information, it does not know in which pushing direction the object can be reach a position where it can be grasped, therefore this will be a totally random choice up to the planner. In the case the object is in a pose where it cannot be neither grasped or pushed because of the inverse kinematic, first the planner will return as a solution to grasp it, then it will replan and the solution will be to push it in one direction and grasp it, and so until no action can be executed and there exist no solution for the plan. In the best case, the planner will chose to push the object in direction in which the next pose will be more likely a graspable one. \DMcomment{Is what you say in this paragraph actually useful?}
+It is possible that an object cannot be grasped on a certain pose, because the inverse kinematic has no solution, but it can be moved in a new pose in which it can be grasped. Therefore the pushing actions also will include the effect that the object of interest will have a solution of the inverse kinematic in the new pose. This is usually a rare case but it might happen.  In the case the object is in a pose where it cannot be neither grasped or pushed because of the inverse kinematic, first the planner will return as a solution to grasp it, then it will replan and the solution will be to push it in one direction and grasp it, and so until no action can be executed and there exist no solution for the plan. 
 
 \begin{figure}[tb]
 \centering
@@ -199,13 +194,50 @@ It is possible that an object cannot be grasped on a certain pose, because the i
 \caption{Unfeasible plan due to geometrical constraints. In this case the planner returns as action to execute grasping or pushing away the white cup (highlighted by a red circle) but it is out the configuration space of the robot and there exist no plan for that problem.} \label{fig:backtracking1}
 \end{figure}
 
-A situation in which the backtracking is useful is shown in Figure \ref{fig:backtracking1}. Accordingly to our strategy, the robot cannot grasp the black or red box because the gripper would collide, and the same fto push them. It has to interact with the white cup in order to make space to move the other objects and then grasp them. The planner first returns the following plan: \texttt{(grasp o2)}, \texttt{(push\_dir1 o0)}, \texttt{(grasp o1)}, \texttt{(grasp o0)}. It tries to solve the inverse kinematic for the \texttt{(grasp o2)} action, but it finds no solution. Therefore the predicate \ttt{(ik\_unfeasible\_grasp o2)} is added and the planner replans. The new plan is: \texttt{(push\_dir1 o2)}, \texttt{(grasp o2)}, \texttt{(push\_dir1 o0)}, \texttt{(grasp o1)}, \texttt{(grasp o0)}. In this case it tries to get a solution for the inverse kinematic for the pushing action but it finds no solution, so the predicate \ttt{(ik\_unfeasible\_dir1 o2)} is added. And so on until the planner finds that all the possible actions for a feasible plan have no solutions for the inverse kinematic. In this way the planner includes the ability to understand also why no plan exists for a certain problem. \DMcomment{Itemize this in steps}
+A situation in which the backtracking is useful is shown in Figure \ref{fig:backtracking1}. Accordingly to our strategy, the robot cannot grasp the black or red box because the gripper would collide, and the same for pushing them. It has to interact with the white cup in order to make space to move the other objects and then grasp them. For this case the system would perform the following set of operations:
+\begin{enumerate}
+\item It first gets the following plan: \texttt{(grasp o2)}, \texttt{(push\_dir1 o0)}, \texttt{(grasp o1)}, \texttt{(grasp o0)},
 
-It may happen that the object outside the working space of the robot blocks the execution of the task because it is impossible to achieve the goal to grasp all the object since one is outside the working space.
-This happens when all the \ttt{ik\_unfeasible} predicates for an object are set to true. When this situation occurs that object is removed from the goal. \DMcomment{Say that it is removed from the goals so that the rest of the goal can be completed.}
+\item It solves the inverse kinematic for the \texttt{(grasp o2)} action, but it finds no solution and adds the predicate \ttt{(ik\_unfeasible\_grasp o2)}, 
 
-\paragraph{PDDL}
-For clarity purposes, the PDDL syntax of the described actions is \DMC{here reported}{shown here}. 
+\item It replans and gets the following plan: \texttt{(push\_dir1 o2)}, \texttt{(grasp o2)}, \texttt{(push\_dir1 o0)}, \texttt{(grasp o1)}, \texttt{(grasp o0)},
+
+\item  It solves the inverse kinematic for the \texttt{(push\_dir1 o2)} action  but it finds no solution, so the predicate \ttt{(ik\_unfeasible\_dir1 o2)} is added,
+
+\item It continues until there exists no solution for the planning problem.
+\end{enumerate}
+
+%The planner first returns the following plan: \texttt{(grasp o2)}, \texttt{(push\_dir1 o0)}, \texttt{(grasp o1)}, \texttt{(grasp o0)}. It tries to solve the inverse kinematic for the \texttt{(grasp o2)} action, but it finds no solution. Therefore the predicate \ttt{(ik\_unfeasible\_grasp o2)} is added and the planner replans. The new plan is: \texttt{(push\_dir1 o2)}, \texttt{(grasp o2)}, \texttt{(push\_dir1 o0)}, \texttt{(grasp o1)}, \texttt{(grasp o0)}. In this case it tries to get a solution for the inverse kinematic for the pushing action but it finds no solution, so the predicate \ttt{(ik\_unfeasible\_dir1 o2)} is added. And so on until the planner finds that all the possible actions for a feasible plan have no solutions for the inverse kinematic. In this way the planner includes the ability to understand also why no plan exists for a certain problem. \DMcomment{Itemize this in steps}
+
+It may happen that the object outside the working space of the robot blocks the execution of the task because it is impossible to achieve the goal to grasp all the objects since one is outside the working space.
+This happens when all the \ttt{ik\_unfeasible} predicates for an object are set to true. When this situation occurs the object is removed from the goals so that the rest of the goal can be completed.
+
+
+It is important to point out again that the system is deterministic, meaning that all the actions are supposed to give the resultant state with a probability of $1$. Clearly the biggest uncertainty is related to the pushing action; the method used to select the pushing directions does not taken into account reliably the geometry of the object and the trajectory will be unlikely the desired one but a similar one. Overall the planner is considering to push the manipulated object at infinity to isolate it, and that's false. This is another uncertainty of the pushing action due to the lack of geometrical information.
+ 
+After the execution of an action the planner gets a new depth image from the Kinect, it segments the scene, it recomputes the predicates and replans. In this way the planner considers a totally new problem and all the uncertainties associated to the previous plan will be solved by the current one. 
+%In this manner we are forced to considered that some interactions between objects are allowed but tried to be avoid as much as possible. 
+
+In order to provide a graphical scheme to the reader the perception and planning pipeline is depicted in Figure \ref{fig:pipeline}. It can be appreciated the two fold strategy of the algorithm, the first stage (Figure \ref{fig:pipeline1}) is devoted to get the predicates from the Kinect sensor and the second one to get a plan, to evaluate its feasibility and to execute it (Figure \ref{fig:pipeline2}).
+
+\begin{figure}[tb]
+
+\centering
+\begin{subfigure}[t]{\textwidth}
+\centering
+\includegraphics[width=\textwidth]{Img/planning/Pipeline1.png}
+\caption{Perception Pipeline}\label{fig:pipeline1}
+\end{subfigure}
+\begin{subfigure}[t]{\textwidth}
+\centering
+\includegraphics[width=\textwidth]{Img/planning/Pipeline2.png}
+\caption{Planning Pipeline}\label{fig:pipeline2}
+\end{subfigure}
+\caption{Perception and planning pipeline}\label{fig:pipeline}
+\end{figure}
+
+\section{PDDL}
+For clarity purposes, the PDDL syntax of the described actions is shown here. 
 For the \textit{grasping} action its PDDL syntax is shown in listing \ref{graspPDDL}.
 
 \lstset{language=pddl}
@@ -221,8 +253,8 @@ For the \textit{grasping} action its PDDL syntax is shown in listing \ref{graspP
                   ; to be grasped
                   (not (exists (?x - obj)(block_grasp ?x ?o))))
     :effect (and
-            ; the object "o" is grasped
-            (grasped ?o)
+            ; the object "o" is removed
+            (removed ?o)
             ; if the object was on top of other ones now it is
             ; no more on top of them
             (forall (?x - obj)
@@ -275,37 +307,10 @@ For the \textit{pushing} action its PDDL syntax is shown in listing \ref{pushPDD
                (when (ik_unfeasible_grasp ?o)(not (ik_unfeasible_grasp ?o))))))
 \end{lstlisting}
 
-\mbox{}
-
-
-\DMC{With such predicates the planner has all the basic information about the location of the objects on the scene. The symbolic predicates try to simplify the problem translating the geometric properties of the objects in symbolic ones, relaxing the planning phase.}{} It is important to point out again that the system is deterministic, meaning that all the actions are supposed to give the resultant state with a probability of $1$. Clearly the biggest uncertainty is related to the pushing action; the method used to select the pushing directions does not taken into account reliably the geometry of the object and the trajectory will be unlikely the desired one but a similar one. Overall the planner is considering to push the manipulated object at infinity to isolate it, and that's false. This is another uncertainty of the pushing action due to the lack of geometrical information.
- 
-After the execution of an action the planner gets a new depth image from the Kinect, it segments the scene, it recomputes the predicates and replans. In this way the planner considers a totally new problem and all the uncertainties associated to the previous plan will be solved by the current one. 
-%In this manner we are forced to considered that some interactions between objects are allowed but tried to be avoid as much as possible. 
-
-In order to provide a graphical scheme to the reader the perception and planning pipeline is depicted in Figure \ref{fig:pipeline}. It can be appreciated the two fold strategy of the algorithm, the first stage (Figure \ref{fig:pipeline1}) is devoted to get the predicates from the Kinect sensor and the second one to evaluate the feasibility of the returned plan and to execute it (Figure \ref{fig:pipeline2}).
-
-\begin{figure}[tb]
-
-\centering
-\begin{subfigure}[t]{\textwidth}
-\centering
-\includegraphics[width=\textwidth]{Img/planning/Pipeline1.png}
-\caption{Perception Pipeline}\label{fig:pipeline1}
-\end{subfigure}
-\begin{subfigure}[t]{\textwidth}
-\centering
-\includegraphics[width=\textwidth]{Img/planning/Pipeline2.png}
-\caption{Planning Pipeline}\label{fig:pipeline2}
-\end{subfigure}
-\caption{Perception and planning pipeline}\label{fig:pipeline}
-\end{figure}
 
 %Notice that the \ttt{grasped} predicate is just a predicate used only by the planner in order to know when the object has been dropped into the bin or not, it does not need to be updated by the planning system. 
 
-\mbox{}\DMcomment{ Why is there an mbox here?}
 
-\DMC{How the predicates are computed will be discussed in detail in the next chapter.}{}
 
 
 
