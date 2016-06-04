@@ -17,6 +17,28 @@ This work is structured as follow. First an introduction to the problem we want 
 
 This chapter introduces the problem that we are tackling and the experimental set up.
 
+\section{Project motivation}
+This project is motivated by the increasing interest by the scientific community regarding the artificial intelligence for robots. Robotic manipulators are widely used in industry, to solve standard tasks which can be solved programatically by algorithms, such as a soldering robotic manipulator. 
+But there are cases in which an enhanced intelligence for the robot could be useful. These manipulators have the goal to substitute humans in repetitive tasks such the one to clean an table of objects, or to grasp a specific object in complex scenes. The latter is the case of the \textit{Amazon Picking Challenge}.  
+The manipulation of objects is an important area of research with an advanced state of the art regarding grasping objects. But still there is a gap to make them completely autonomous to resolve manipulation problem. The robots not always can grasp an object because adjacent objects hinder that action, so the robot needs to interact with the objects in a intelligent way in order to achieve the goal. In this thesis we investigate a intelligence system which can reasons about how to interact with the objects in order to achieve the goal to grasp an object, or grasp them all. 
+
+With these considerations we think the thesis is well motivated since the work is focused in an important area of research in robotics. 
+
+\section{Objectives}
+The objective of this thesis is designing and implementing a artificial intelligence system which can reason about how interact with the objects in order to clear a table with cluttered objects. To clear a table means grasp all the objects and removed them by dropping them, for example, in a bin. To do so a robotic manipulator is used in order to interact with the objects. The idea is to design the planning system by human-inspired actions, that is the intelligence system we want to develop tries to solve the task similarly as a human would do.
+
+\section{Methodology}
+The methodology we will follow for the project is composed of 5 phases:
+\begin{enumerate}
+\item documentation,
+\item design of the algorithm,
+\item implementation,
+\item tests in simulations and with the real robot,
+\item analysis of the results 
+\end{enumerate}
+The documentation regards reviewing the state of the art in manipulation planning and gathering all the others information required to design properly the algorithm such as objects segmentation, plane detection, grasping and etcetera. Next the algorithm will be designed and then implemented. After the implementation it will be tested in a simulated environment (Chapter \ref{ch:software_design}) and then 
+with the real set up (Chapter \ref{ch:experiments}). Then the results will be analysed in order to have some conclusions about the proposed planning system. 
+
 \section{Problem Approach}
 In this section the approach to solve the planning problem is described. The strategy to solve the problem is inspired by the way humans solve it. A human would use mainly two actions: grasping and pushing. When it is not possible to grasp an object, because other objects hinder the human to put the hands in the proper way to grasp the desired one, he/she interacts with the scene to make the object graspable. However,  humans are characterized by a high dexterity and therefore they have a lot of freedom in the way to grasp objects. Robots, normally, do not have such a dexterity and grasping in cluttered scene could be very hard without moving the objects. 
 
@@ -32,7 +54,7 @@ The robot reasons in an abstraction level by considering only symbolic predicate
 
 We assume the world is perfectly known. As actions are actually non-reliable, the planner replans after the execution of each action.  
 
-To summarize, in this master thesis we are going to solve the problem of clearing a table with cluttered objects by using a task planner. To do so, a perception system is developed in order to segment the objects through a vision system, and from those objects the states are generated and the planner returns the action to execute. The planning system will generate the states after the execution of each action by receiving a new image from the vision sensor and it plans again.
+To summarize, in this master thesis we are going to solve the problem of clearing a table with cluttered objects by using a task planner. To do so, a perception system is developed in order to segment the objects through a vision system, and from those objects the states are generated and the planner returns the action to execute to achieve the goal to clear the table. All this process is iterated after the execution of each action, that is after receiving a image of the scene from the vision sensor the system generates the new states and find the next action to execute and so on until achieving the goal.
 
 \section{Set Up}
 The set up of the environment the robot will work in is presented here. 
