@@ -1,14 +1,38 @@
 \chapter{Conclusions}
 \label{ch:conclusions}
 
-\section{Conclusions}
+In this chapter the conclusions of the work are presented. Then the limitations of the proposed planning system are discussed and some future works to improve it are proposed. 
 
-\section{Limitations}
-The planner here presented has some clear limitations, these are related to the lack of the probability and mainly to the lack of geometric information. 
-How previously said, the pushing action is supposed to push the object far enough from the others ones, this will be true only if the pushing will be performed up to infinite, and this is not the case.. The pushing is performed taking into account the geometry of the manipulated object, without taking care about the surrounding objects geometry and poses. This problem is though to be resolved by replanning, that is, if an object has been pushed but not enough, the planner will return a sequence where the first action is again to push that object. This is actually what the planner does, but since for the most of cases, pushing along directions $1$ and $2$ is feasible, for the planner both directions are feasible to resolve the problem. So what it could happen is that the planner could first return as solution to push a certain object along direction 1, and then, when replanning, to push the object along direction 2. What is here commented is a infinite loop. This happens because the planner has no information between consecutive frames, that is, it consider the problem as a separated one from the previous frame. 
-This fact is a very undesirable one and there are several scenarios that can present a behaviour like that one. The promising part is the combination of the grasping and pushing actions. It has been observed that the majority of times, although for complex scenarios, the solution is mainly based on a proper sequence of grasping action, while the pushing action is an auxiliary action which is rarely used. Taking this into account, and the presented limitation, is very likely that once an object has been pushed, ones of the objects which cannot be grasped before can now be grasped, avoiding such undesired infinite loop.  
+The objectives established have been achieved developing a planning system which is able to solve table clearing tasks with cluttered objects. The contribution of this work is about a designing and developing a planning system which is able to solve a wider variety of problems thanks to the blending off pushing and grasping actions.
+\todo[inline]{Can i say novelty in this context?}
+The novelty is regarding a high level perception algorithm which generates the states required to understand how the objects need to be manipulated. Then a suitable domain description is proposed to solve the task. The states generation and the planning showed to be efficient in solving the task correctly and fast. 
+The geometric constraints due to the inverse kinematic are efficiently solved by the backtracking technique, speeding up the reasoning process. Considering Figure \ref{fig:pipeline}, the planning system is quite efficient although its fastness depends on several other elements of the pipeline such as the inverse kinematic and the low level perception.  
 
+The planning system can be easily adapted to every kind of robotic manipulator and gripper, moreover the way to perform the low level perception (filtering and segmentation) is a choice of the final user.
 
-\textbf{Somewhere talk about the limitation of the segmentation that is we assume it to be perfect because if not the planner will return likely an infeasible plan}
+This work also showed how some complex manipulation problems can be solved by symbolic planners, considering geometrical constraints with backtracking. 
 
-\section{Future Work}
+The planning system has been inspired by the way humans solve the task and the experiments showed the robot can solve the task with a intelligent sequence of actions that we consider near to the ones a human would do.  
+
+Although the system showed to work good it has some limitations which could make it not adapt, at least without further improvements, for a real set up. 
+
+\section*{Limitations}
+The planning system proposed has some clear limitations, these are related to the lack geometrical information during the planning stage. 
+How previously said, the pushing action is supposed to push the object far enough from the others ones, this will be true only if the pushing will be performed up to infinite, and this is not the case. The pushing is performed taking into account the geometry of the manipulated object, without taking care about the surrounding objects geometry and poses. This problem is though to be resolved by replanning, that is, if an object has been pushed but not enough, the planner will return a sequence where the first action is again to push that object. This is actually what the planner does, but since for the most of cases, pushing along directions $1$ and $2$ is feasible, for the planner pushing in both directions can solve the problem. What it could happen is that the planner could first returns as solution to push a certain object along direction 1, and then, when replanning, to push the same object along direction 2. What is here commented is a infinite loop. This happens because the planner has no information between consecutive frames, that is, it consider the problem as a separated one from the previous frame. 
+%This fact is a very undesirable one and there are several scenarios that can present a behaviour like that one. The promising part is the combination of the grasping and pushing actions. It has been observed that the majority of times, although for complex scenarios, the solution is mainly based on a proper sequence of grasping action, while the pushing action is an auxiliary action which is rarely used. Taking this into account, and the presented limitation, once an object has been pushed, ones of the objects which cannot be grasped before can now be grasped, avoiding such undesired infinite loop.  
+A solution could be performing an object matching between consecutive iterations of the system in order to make it know that the actions have to be coherent with the previous ones. 
+
+Moreover the proposed planning system does not take into accounts the objects when it moves. This could likely lead to undesired collisions and the integration of a path planner should be considered in the action execution stage. Moreover, when it grasps an object, it has to get to the bin avoiding collisions with the other objects. Therefore also a path planner should be required after the grasping of an object, considering that the robot is now grasping an object with the end effector.
+
+The biggest limitation is that the planning system relies on a good segmentation. A bad segmentation could not lead to any feasible plan and the parameters should be tune for each particular scene in order to achieve a fairly good segmentation. The planning system considers that the segmentation given as input is perfect and it does not know how to deal in cases the segmentation is bad. This limitation reduces the scope of this work since there are still not very good segmentation in the state of the art that can lead a very good segmentation for cluttered scenes such that makes this planning system really effective. 
+
+The scope of this system moreover is for scenarios with objects which have simple shapes (cylinders or parallelepipeds), this is mainly due to the limitation of the decision regarding the direction along with push an object.  
+
+Concerning a real application for the robot in industrial environments this has not to be taken into account for the moment since the total time to finish the task is very long compared to the time a human would solve the task.
+
+\section*{Future Work}
+AS future work we would like to include the geometrical information in the pushing action, i.e. knowing how much the robot should push the object. To do so, the \ttt{block\_dir} predicate could be computed by translating object along the pushing directions until finding a pose for that object in which the grasping pose relative to that pose is not colliding with any object. In this way the robot will push the object away with the aim to put it in a pose that it can be grasped. For the moment the robot is pushing the object simply in another pose. 
+
+The integration of \textit{MoveIt!}\footnote{Ioan A. Sucan and Sachin Chitta, “MoveIt!”, [Online] Available:\href{http://moveit.ros.org} {\url{http://moveit.ros.org}}} will be also considered in the action execution stage in order to avoid the collisions when the robot reaches the pre pushing and pre grasping poses. 
+
+Next a cost to the actions could be added in order to avoid situations in which the robot can interact with the objects avoiding the collisions for just few millimetres. The noise of the Kinect and on the controllers of the robot could make actually the robot colliding with the other objects. In this manner the robot would tend to execute safer actions. 
