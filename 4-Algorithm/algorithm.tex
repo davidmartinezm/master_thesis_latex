@@ -325,6 +325,8 @@ Pushing is a difficult action to execute when the goal is to move one object alo
 
 %When we push an object all the object's geometry has to be taken into account in order to find a suitable pushing direction. Moreover, humans push objects with a certain initial direction chosen accordingly the object geometry and then adapt the pushing direction accordingly to the error with respect the desired one. This would imply the implementation of a controller which is out the scope of this thesis. 
 
+We considered to work with objects with simple shapes, such as parallelepipeds. 
+A human would push such object mainly accordingly its principal axis and the one orthogonal to its (i.e. the first 2 principal components of Figure \ref{fig:pca2}), he/she also could push it along the diagonal thanks to the several degrees of freedom of the hands. 
 Inspired by this consideration, we decided to consider its first two principal directions as possible directions to push an object. In particular, there are two senses for each direction, so in total we have 4 possible pushing directions per object, as depicted in Figure \ref{fig:directions}.
 
 \begin{figure}
