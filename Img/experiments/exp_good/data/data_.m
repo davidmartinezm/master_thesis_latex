@@ -302,6 +302,7 @@ end
 bar(y_data6./1000,'stacked')
 set(gca,'XTickLabel',{sprintf('%s - %s','1','7'),sprintf('%s - %s','2','8'),sprintf('%s - %s','3','5'),sprintf('%s - %s','4','5'),sprintf('%s - %s','5','6'),sprintf('%s - %s','6','4'),sprintf('%s - %s','7','3'),sprintf('%s - %s','8','2'),sprintf('%s - %s','9','1')});
 xlabel('Iterations - Number of segmented objects')
+ylabel('Time [seconds]')
 legend('Filterting','Segmentation','States generation','Planning','IK','Action Execution')
 %% without action execution
 y_data6 = [];
