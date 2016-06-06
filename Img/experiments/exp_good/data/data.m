@@ -227,7 +227,7 @@ for i=1:size(tmp2,1)
 end
 
 boxplot([tmp(:,IK);tmp1(:,IK);tmp2(:,IK) ]./1000,[names;names1;names2])
-xlabel('INVERSE KINEMATIC')
+xlabel('Inverse Kinematic')
 ylabel('Time [Seconds]')
 title('Time to solve the IK')
 
@@ -300,9 +300,8 @@ for i=1:size(data6_execute,1)
     y_data6 = [y_data6; [data6_execute(i,2:IK) data6_execute(i,ACTION_EXECUTION_TIME)]];
 end
 bar(y_data6./1000,'stacked')
-%title('Time devoted to each step')
-xlabel({'Iterations','Number of segmented objects'})
-ylabel('Time [seconds]')
+set(gca,'XTickLabel',{sprintf('%s - %s','1','7'),sprintf('%s - %s','2','8'),sprintf('%s - %s','3','5'),sprintf('%s - %s','4','5'),sprintf('%s - %s','5','6'),sprintf('%s - %s','6','4'),sprintf('%s - %s','7','3'),sprintf('%s - %s','8','2'),sprintf('%s - %s','9','1')});
+xlabel('Iterations - Number of segmented objects')
 legend('Filterting','Segmentation','States generation','Planning','IK','Action Execution')
 %% without action execution
 y_data6 = [];
@@ -310,10 +309,15 @@ for i=1:size(data6_execute,1)
     y_data6 = [y_data6; [data6_execute(i,2:IK)]];
 end
 bar(y_data6./1000,'stacked')
-set(gca,'XTickLabel',{'1 - 7','2 - 8','3 - 5','4 - 5','5 - 6','6 - 4','7 - 3','8 - 2',{'9 - 1'}})
-
-%set(gca,'XTickLabel',{{'1'},{'2'},{'3'},{'4'},{'5'},{'6'},{'7'},{'8'},{'9'}})
-%title('Time devoted to each step')
+set(gca,'XTickLabel',{sprintf('%s - %s','1','7'),sprintf('%s - %s','2','8'),sprintf('%s - %s','3','5'),sprintf('%s - %s','4','5'),sprintf('%s - %s','5','6'),sprintf('%s - %s','6','4'),sprintf('%s - %s','7','3'),sprintf('%s - %s','8','2'),sprintf('%s - %s','9','1')});
 xlabel('Iterations - Number of segmented objects')
 ylabel('Time [seconds]')
 legend('Filterting','Segmentation','States generation','Planning','IK')
+
+%% Total times for the different runs
+time1 = 0;
+for i=1:size(data1,1)
+    if (data1(i,ACTION) ~= 0)
+        time1 = time1 +  sum(data1(i,2:IK)) 
+    end
+end

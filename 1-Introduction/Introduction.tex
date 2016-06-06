@@ -2,10 +2,9 @@
 \chapter{Introduction}
 \label{ch:introduction}
 
-This chapter introduces the project's motivation, its objectives, the methodology followed, the problem that we are tackling and the experimental set up. 
+This chapter introduces the project's motivation, its objectives, the methodology followed, the problem that we are tackling, the experimental set up and the structure of thesis.
 
-This thesis is structured as follow. %First an introduction to the problem we want to solve is presented in Chapter \ref{ch:introduction}. Then, iThis work is structured as follow. First an introduction to the problem we want to solve is presented in Chapter \ref{ch:introduction}. 
-In Chapter \ref{ch:state_of_the_art} a review of the current state of the art in manipulation planning is done. The planning system developed and the algorithm to generate the states will be explained in Chapters \ref{ch:planning_system} and \ref{ch:implementation} respectively. In Chapter \ref{ch:software_design} the software design will be presented as well the algorithm's structure. Finally  experiments and conclusions about this work are discussed in Chapters \ref{ch:experiments} and \ref{ch:conclusions} respectively.n Chapter \ref{ch:state_of_the_art} a review of the current state of the art in manipulation planning is done. The planning system developed and the algorithm to generate the states will be explained in Chapters \ref{ch:planning_system} and \ref{ch:implementation} respectively. In Chapter \ref{ch:software_design} the software design will be presented as well the algorithm's structure. Finally  experiments and conclusions about this work are discussed in Chapters \ref{ch:experiments} and \ref{ch:conclusions} respectively.
+
 
 \section{Project motivation}
 Robotic manipulation of objects is an increasing field of research which has captured the interest of researches from many years ago. In several industrial environments robots can be easily programmed when the objects are known a priori, i.e. the manipulation is always the same, and robot operations avoid cluttered scenes, but the workspace has to be designed in a manner to provide to the robot a non cluttered scene. However, there are situations in which robots with enhanced intelligence can be useful.
@@ -16,7 +15,7 @@ Robotic manipulation of objects is an increasing field of research which has cap
 
 In this thesis we investigate a simple approach for a complex manipulation problem. Our approach tries to replicate human reasoning during the manipulation of cluttered objects in table clearing tasks. The objective is removing all the objects on a table. 
 
-This master thesis has been developed in the \textbf{Institut de Robòtica i Informàtica Industrial} (IRI) in the  Perception and Manipulation laboratory with the supervision of \textit{Guillem Alenyà Ribas} as director and \textit{David Martínez Martínez} as co-director. 
+This master thesis has been developed in the \textbf{Institut de Robòtica i Informàtica Industrial} (IRI) in the  Perception and Manipulation laboratory with the supervision of \textit{David Martínez Martínez} as director and \textit{Guillem Alenyà Ribas} as co-director. 
 
 
 
@@ -32,7 +31,7 @@ This master thesis has been developed in the \textbf{Institut de Robòtica i Inf
 %With these considerations we think the thesis is well motivated since the work is focused in an important area of research in robotics. 
 
 \section{Objectives}
-The objective of this thesis is designing and implementing an artificial intelligence system which can reason about how to interact with the objects in order to clear a table with cluttered objects. To clear a table means grasp all the objects and removed them by dropping them, for example, in a bin. To do so a robotic manipulator is used in order to interact with the objects. The idea is to design the planning system by human-inspired actions, that is the intelligence system we want to develop tries to solve the task similarly as a human would do.
+The objective of this thesis is designing and implementing an artificial intelligence system which can reason about how to interact with the objects in order to clear a table with cluttered objects. To clear a table means grasp all the objects and removed them by dropping them, for example, in a bin. To do so a robotic manipulator is used in order to interact with the objects. The idea is to design the system by human-inspired actions, that is the intelligence system we want to develop tries to solve the task similarly as a human would do.
 
 \section{Methodology}
 The methodology we will follow for the project is composed of 5 phases:
@@ -162,6 +161,10 @@ To avoid occlusions, we wait until the robot finishes to execute an action and m
 \label{fig:setup}
 \end{figure}
 
+\section{Outline of the Thesis}
+This thesis is structured as follow. %First an introduction to the problem we want to solve is presented in Chapter \ref{ch:introduction}. Then, iThis work is structured as follow. First an introduction to the problem we want to solve is presented in Chapter \ref{ch:introduction}. 
+In Chapter \ref{ch:state_of_the_art} a review of the current state of the art in manipulation planning is done. The planning system developed and the algorithm to generate the states will be explained in Chapters \ref{ch:planning_system} and \ref{ch:implementation} respectively. In Chapter \ref{ch:software_design} the software design will be presented as well the algorithm's structure. Finally  experiments and conclusions about this work are discussed in Chapters \ref{ch:experiments} and \ref{ch:conclusions} respectively. In Chapter \ref{ch:state_of_the_art} a review of the current state of the art in manipulation planning is done. The planning system developed and the algorithm to generate the states will be explained in Chapters \ref{ch:planning_system} and \ref{ch:implementation} respectively. In Chapter \ref{ch:software_design} the software design will be presented as well the algorithm's structure. The experiments performed are discussed in Chapters \ref{ch:experiments}. Before to proceed to the conclusions the budget and the impact of this work is discussed in Chapter \ref{ch:budget}.
+Finally the conclusions about this work are presented in Chapter \ref{ch:conclusions}.	
 
 %Concerning the example of Figure \ref{fig:example_scene} it can be appreciated that the manipulation needed in order to clean all the table with carefulness is quite complex. All the sequence of actions will be retrieved by the planner.
 
