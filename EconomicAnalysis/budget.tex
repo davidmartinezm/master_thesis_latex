@@ -1,15 +1,15 @@
 \chapter{Budget and impact}
 \label{ch:budget}
-This chapter covers the economic, social and environmental analysis of the work. The elements which have an associated costs are identified, and they are hardware, software, human resources or general expenses. Also a discussion about the impact of the work from an economic, social and environmental point of view is done.
+This chapter covers the budget analysis of the work. The elements which have an associated costs are identified, and they are hardware, software, human resources and general expenses. Also a discussion about the impact of the work from an economical, social and environmental point of view is done. 
 
 \section{Budget}
 In this section we present the associated costs of the work for each one of the different factors: hardware, software, human resources and general expenses.
 
 \subsection*{Hardware resources}
-The hardware resources used to develop this work were a personal computer in the laboratory of perception and manipulation, the WAM arm manipulator, the gripper and the Kinect. The objects used they were simply empty boxes intended to be thrown away therefore they has been not considered in the analysis. 
+The hardware resources used to develop this work are a personal computer, the WAM arm manipulator, the gripper and the Kinect. The objects used have a derisory cost so they have been not considered. 
 
 We consider 20 hours of work per week, and 52 weeks per year.
-Regarding the laboratory PC we consider an amortization period of 4 years. The WAM manipulator, due to its high price, is expected to have a higher lifetime and so the amortization period has been chosen to be 10 years. For the gripper we considered an amortization period of 3 years while for the Kinect 4 years.
+Regarding the laboratory PC we consider an amortization period of 4 years. The WAM manipulator, due to its high price, is expected to have a higher lifetime and so the amortization period has been chosen to be 10 years. For the gripper we considered an amortization period of 3 years while for the Kinect 4 years. The gripper has been designed at IRI institute and we estimated a cost of \EUR{300} for it.
 
 In Table \ref{tab:hardwareResources} these associated costs of the hardware are shown. These costs are indirect ones.
 
@@ -24,7 +24,7 @@ In Table \ref{tab:hardwareResources} these associated costs of the hardware are 
     WAM                             & €97,500.00          & 10 years                     & €4.84                   & 20 & €96.8 \\ \hline
     Gripper                        & €300.00              & 3 years                       & €0.0481                   & 20                    & €0.96 \\
      \hline 
-     kinect & \EUR{150.00} & 4 yeras & \EUR{0.036} & 40 & \EUR{1.44} \\
+     Kinect & \EUR{150.00} & 4 yeras & \EUR{0.036} & 40 & \EUR{1.44} \\
      \hline \hline
     Total                           & €98,950     & \multicolumn{3}{l|}{-}                                                         & €149.6               \\ \hline
     \end{tabular}
@@ -35,7 +35,7 @@ In Table \ref{tab:hardwareResources} these associated costs of the hardware are 
 
 
 \subsection*{Software resources}
-The software used to develop the work were all open source software free of charge. The software to control the robot and to compute the inverse kinematic was developed in the laboratory itself. Therefore for a correct analysis we should consider the hours spent by the worker to design such part of the software. But such a software has been used along many projects done in this laboratory through the years, each one with several hours. Therefore, due to the difficulty to estimate such a cost, we neglected it in the analysis.
+The software used to develop the work were all open source software free of charge. The software to control the robot and to compute the inverse kinematic was developed in the laboratory itself. Therefore for a correct analysis we should consider the hours spent by the worker to design such part of the software. But such a software has been used in many projects done in this laboratory through the years, each one with several hours. Therefore, due to the difficulty to estimate such a cost, we neglected it in the analysis.
 \begin{table}[h]
   \centering
   \begin{tabular}{|c|r|c|c|}
@@ -67,11 +67,9 @@ The software used to develop the work were all open source software free of char
 
 \subsubsection*{Human resources}
 \label{sec:hr}
-For seek of completeness we 	hypothesize this work could be done by a private institution and we want to analyse the costs of the project by a human resources point of view.  
-In the developing of this working there is only one worker, who is the author of this thesis. He performs tasks that are typically 
-conducted by individuals with different specialized 
-roles. Because of this, the salary for the developer has been adjusted according 
-to the amount of time he spent impersonating each role.
+Since I am a student which is doing a thesis and I do not have any grant the human resources cost is 0. 
+For seek of completeness we hypothesize this work could be done by a private institution and we want to analyse the costs of the human resources of the project.
+In the developing of this work there are several stages that should be conducted by different specialized roles, such as technical project manager to manage the project, a software engineer to implement the code and a tester to test the implementation. The total number of hours are an approximation of the hours I invested in the project and those have been divided accordingly to the time I spent impersonating each role. 
 
 \begin{savenotes}%this environment is needed in order to put the footnote at the bottom of the page
 \begin{table}[ht]
@@ -93,7 +91,7 @@ to the amount of time he spent impersonating each role.
 \end{savenotes}
 
 \subsection*{General expenses}
-These expenses are relative the use of the laboratory, the energy consumed by the robot and the computer. The consumed energy is a direct and variable cost, while the fixed costs will be the ones regarding the rent of the laboratory. The costs regarding the renting and internet connection have been not considered properly since they are costs of the IRI institute and not of public domain. To include them in the analysis we consider a cost of \EUR{500} per month (the project was developed from March to end of May). To calculate the expenses relative the electricity used we considered the current price in Spain on October 2015 (0.22€/kWh)\footnote{resource \href{http://www.elmundo.es/economia/2015/10/20/5626187fca474195608b45c7.html}{\url{http://www.elmundo.es/economia/2015/10/20/5626187fca474195608b45c7.html}}}.
+These expenses are relative the use of the laboratory, the energy consumed by the robot and the computer. The consumed energy is a direct and variable cost, while the fixed costs will be the ones regarding the rent of the laboratory. The costs regarding the rent(including lights, heating and cooling) and internet connection have been not considered properly since they are costs of the IRI institute and not of public domain. To include them in the analysis we consider a cost of \EUR{200} per month (the project was developed from March to the end of May). To calculate the expenses relative the electricity used we considered the price in Spain on October 2015 (0.22€/kWh)\footnote{resource \href{http://www.elmundo.es/economia/2015/10/20/5626187fca474195608b45c7.html}{\url{http://www.elmundo.es/economia/2015/10/20/5626187fca474195608b45c7.html}}}.
 
 \begin{table}[h]
   \centering
@@ -101,10 +99,12 @@ These expenses are relative the use of the laboratory, the energy consumed by th
     \hline
     \textbf{Resource} & \textbf{Average power} & \textbf{Hours of usage} & \textbf{Price} \\ \hline\hline
     Lab PC            & 250 W                  & 420 h                   & \EUR{23.10} \\ \hline
-    WAM               & 60 W                   & 20 h                    & \EUR{0.26}          \\ \hline\hline
-    \textbf{Total}    & \multicolumn{2}{l|}{}                            & \EUR{23.36}        \\ \hline
+    WAM               & 60 W                   & 20 h                    & \EUR{0.26}          \\ \hline
+    Fixed costs & \multicolumn{2}{l|}{} & \EUR{600}                          
+    \\ \hline \hline
+    Total    & \multicolumn{2}{l|}{}                            & \EUR{623.36}        \\ \hline
   \end{tabular}
-  \caption{Electricity consumption and energy cost. A price of €0.22 per kWh has been assumed.}
+  \caption{General expenses. A price of €0.22 per kWh has been assumed.}
   \label{tab:electricityConsumption}
 \end{table}
 
@@ -112,7 +112,7 @@ These expenses are relative the use of the laboratory, the energy consumed by th
 
 \subsubsection*{Total cost}
 Considering the costs of the hardware, software, human resources and general expenses we obtain the total cost of the project.  We consider also a margin of contingencies of 15\% in order to consider additional costs and the error of the estimations of the costs. 
-The estimated costs, when no data were available were overestimated. 
+
 
 \begin{table}[h]
   \centering
@@ -123,11 +123,11 @@ The estimated costs, when no data were available were overestimated.
         Software    & € 0             \\ \hline
         HR    & € 16,444             \\ \hline
         Variable costs    & €23.36  \\ \hline
-        Fixed costs    & €500.0  \\ \hline  
-        \hline  
-                Subtotal costs    & €17,116.96  \\ \hline  
-                Margin (15\%)    & €2,567.54  \\ \hline  
-Total costs & €19,684.504  \\ \hline  
+        Fixed costs    & €600.0  \\ \hline  
+
+                Subtotal costs    & €17,216.96  \\ \hline  
+                Margin (15\%)    & €2,582.544  \\ \hline  
+Total costs & €19,799.504  \\ \hline  
   \end{tabular}
   \caption{Total costs}
   \label{tab:internetCost}
@@ -136,10 +136,12 @@ Total costs & €19,684.504  \\ \hline
 
 
 \section{Impact}
-\subsection*{Economic impact}
-The work developed in this thesis is not a product to sold and have no direct benefits. This thesis had the aim to investigate a new method in order to contribute with the current state of the art in manipulation planning. The impact of this work is increasing the amount of knowledge and contributions created in the UPC. Regarding the developing of the project inside the UPC the project should not taken into account the human resources of Section \ref{sec:hr} since the project is performed by a student with no grants, therefore the cost of the project is about \EUR{672.96} (overestimated). The budget is therefore low and we think that the project is economic sustainable.
+\subsection*{Economical impact}
+The work developed in this thesis is not a product to be sold and have no direct economic benefits. This thesis had the aim to investigate a method in order to contribute with the current state of the art in manipulation planning. The impact of this work is increasing the amount of knowledge and contributions created in the UPC, this increases the UPC's notoriety and could attract investors. 
 
-The application of a robot to solve manipulation problem, such grasping a specific object in a cluttered environment, in industrial set ups is still far to be applied. The robots, although expensive, can substitute an human operator saving money but the time they take to solve manipulation tasks is much more than one human would take. This consideration is based on the experiment we performed, the task could be easily solved by a human in few seconds while the robots took about 5 minutes. Although the planning system showed to work fine the problems regarding the execution time make this approach not even considerable for a real application in industries.
+The application of a robot to solve manipulation problem, such grasping a specific object in a cluttered environment, in industrial set ups is still not ready to be applied. The robots, although expensive, can substitute an human operator saving money but the time they take to solve manipulation tasks is much more than one human would take. This consideration is based on the experiment we performed, the task could be easily solved by a human in few seconds while the robots took about 5 minutes. Despite this, with further improvements regarding the low level perception and the action execute time, the application of these robots could be profitable.
+
+To analyse the potential impact it could have the application of this work in the future, we introduce the concept of \textit{Industry 4.0}\footnote{\href{http://www.gtai.de/GTAI/Content/EN/Invest/_SharedDocs/Downloads/GTAI/Brochures/Industries/industrie4.0-smart-manufacturing-for-the-future-en.pdf}{\url{http://www.gtai.de/GTAI/Content/EN/Invest/_SharedDocs/Downloads/GTAI/Brochures/Industries/industrie4.0-smart-manufacturing-for-the-future-en.pdf}}}. This term derives from the fact that we stand on the cusp of a fourth industrial revolution in which the factories will be smarter. The principles of this revolution are the ability of machines to communicate with each other,  to create a virtual copy of the physical world, to support humans in tasks that are unpleasant and the ability to make decisions on their own. The proposed planning system is clearly able to enhance the self-decision making step of robots, which directly falls in the concept of \textit{Industry 4.0}. Therefore, in a long term, this work can have a relevant economical impact. 
 
 \subsection*{Environmental impact}
 Considering the directive 2011/92/EU of the European Parliament and of the council of 13 December 2011\footnote{\href{http://eur-lex.europa.eu/LexUriServ/LexUriServ.do?uri=OJ:L:2012:026:0001:0021:En:PDF}{\url{http://eur-lex.europa.eu/LexUriServ/LexUriServ.do?uri=OJ:L:2012:026:0001:0021:En:PDF}}}
