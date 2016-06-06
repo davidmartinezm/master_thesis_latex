@@ -3,10 +3,9 @@
 
 In this chapter the implementation is discussed, presenting how the objects are detected and how the symbolic predicates are obtained. 
 
-\section{Object Localization} 
-\DMcomment{Object detection?}
+\section{Object detection} 
 
-To interact with the objects we have first to detect them. \DMC{More correctly}{To do so}, they need to be segmented since the algorithm is dealing with unknown objects it is not going to recognize an object as a particular one, instead it segments the objects in the scene. 
+To interact with the objects we have first to detect them. To do so, they need to be segmented since the algorithm is dealing with unknown objects it is not going to recognize an object as a particular one, instead it segments the objects in the scene. 
 
 This stage is composed of 3 steps:
 \begin{enumerate}
@@ -69,9 +68,9 @@ In this work the supervoxels are computed with the \textit{Voxel Cloud Connectiv
 
 The algorithm works in 3 main steps:
 \begin{itemize}
-\item Voxelizing the point cloud\DM{.}
-\item Creating an adjacency graph for the voxel-cloud\DM{.}
-\item Clustering together all adjacent voxels which share similar features\DM{.}
+\item Voxelizing the point cloud.
+\item Creating an adjacency graph for the voxel-cloud.
+\item Clustering together all adjacent voxels which share similar features.
 \end{itemize} 
 
 \begin{figure}[tb]
@@ -127,11 +126,11 @@ By tuning properly the parameters of the segmentation algorithm the objects can 
 \hspace{1.5cm}
 \begin{subfigure}[t]{0.2\textwidth}
 \centering
-\includegraphics[width=\textwidth]{Img/ObjectSegmentation/seg2_rgb.png}
+	\includegraphics[width=\textwidth]{Img/ObjectSegmentation/seg3_rgb.png}
 \end{subfigure}
 \begin{subfigure}[t]{0.2\textwidth}
 \centering
-\includegraphics[width=\textwidth]{Img/ObjectSegmentation/seg2.png}
+\includegraphics[width=\textwidth]{Img/ObjectSegmentation/seg3_original2.png}
 \end{subfigure}
 \caption{Example of segmentation results.}\label{fig:seg_results}
 \end{figure}
@@ -179,45 +178,41 @@ A generic point cloud can be seen as a set of observations and the PCA can be di
 
 \paragraph{Projection onto a plane}
 We will see later that the concept of the projections of a point into a plane will be useful. Considering a point $p=(x_p,y_p,z_p)$ and a plane $\mathcal{P}$ defined by the following equation
-\begin{equation}
+\begin{equation*}
 a x + by + cz + d = 0
-\end{equation}
+\end{equation*}
 the projection $p_{\mathcal{P}}$ of point $p$ onto the plane $\mathcal{P}$ is given by the following set of operations:
 
-\DMcomment{Use latex ``begin equation`` for equations. If you don't want the number near the equation, use ''equation*'' instead.}
 \begin{enumerate}
-\item Given the origin point $\mathcal{P}_O=(x_O,y_O,z_O)$ of the plane, which can be calculated by arbitrary $x_O$ and $y_O$ coordinates as
+\item Calculate the origin point $\mathcal{P}_O=(x_O,y_O,z_O)$ of the plane, which can be calculated by arbitrary $x_O$ and $y_O$ coordinates as
 \[
 z_O = \frac{-1}{c}(ax_O + by_O + d),
 \]
-\DMcomment{Connect this sentence with the previous one (use an ``and'' or something}
-calculate the coordinates of $\mathcal{P}_O$ with respect the point $p$
+then calculate the coordinates of $\mathcal{P}_O$ with respect the point $p$
 \[
-\mathcal{\prescript{p}{}P} = p - \mathcal{P}_O,
+\mathcal{\prescript{p}{}P} = p - \mathcal{P}_O.
 \]
-\DMcomment{Finish it with a point and start a new sentence.}
-\item \DMC{t}{T}hen calculate the projection of $\mathcal{\prescript{p}{}P}$ onto the plane normal $\bar{n}=(a,b,c)$
+\item Then calculate the projection of $\mathcal{\prescript{p}{}P}$ onto the plane normal $\bar{n}=(a,b,c)$
 \[
-\lambda_p = \bar{n} \cdot \mathcal{\prescript{p}{}P}, 
+\lambda_p = \bar{n} \cdot \mathcal{\prescript{p}{}P}. 
 \]
 %\item compute the coordinates of the projection onto the plane of point $p$ with respect to the point itself:
 %\[
 %p_P^p = 
 %\]
-\DMcomment{Finish it with a point and start a new sentence.}
-\item \DMC{t}{T}ranslate point $p$ by $\lambda_p$ along the normal of the plane $\bar{n}$
+\item Translate point $p$ by $\lambda_p$ along the normal of the plane $\bar{n}$
 \[
 p_P = p - \lambda_p \bar{n}. 
 \]
-The minus sign is due to the fact that the normal is pointing upward\DM{s}.
+The minus sign is due to the fact that the normal is pointing upwards.
 \end{enumerate}
 
 \paragraph{Rotation Matrices}
-Rotation matrices \DMC{are matrices which}{} express a rotation between two reference frames. Given two frames $\{A\}$ and $\{B\}$, and the rotation matrix $\prescript{A}{B}R$ that defines the rotation of $\{B\}$ relative to $\{A\}$ then a point $\prescript{A}{}P$ with respect frame $\{A\}$ is given by $\prescript{A}{}P=\prescript{A}{B}R\prescript{B}{}P$, where $\prescript{B}{}P$ is the same point relative to frame $\{B\}$. 
+Rotation matrices express a rotation between two reference frames. Given two frames $\{A\}$ and $\{B\}$, and the rotation matrix $\prescript{A}{B}R$ that defines the rotation of $\{B\}$ relative to $\{A\}$ then a point $\prescript{A}{}P$ with respect frame $\{A\}$ is given by $\prescript{A}{}P=\prescript{A}{B}R\prescript{B}{}P$, where $\prescript{B}{}P$ is the same point relative to frame $\{B\}$. 
 
 Having a frame $\{B\}$ defined by axis $\hat{\prescript{A}{}X_B},\hat{\prescript{A}{}Y_B}$ and $\hat{\prescript{A}{}Z_B}$, where $\hat{\prescript{A}{}Y_B}$ is the y axis of frame $\{B\}$ relative to frame $\{A\}$, the rotation matrix between $\{A\}$ and $\{B\}$ is defined as
 \[
-\prescript{B}{A}R = 
+\prescript{A}{B}R = 
 \begin{bmatrix}
 \hat{\prescript{A}{}X_B} \\
 \hat{\prescript{A}{}Y_B} \\
@@ -228,11 +223,11 @@ To transform any object, such as the gripper mesh model, to a pose defined by fr
 \[
 H = 
 \begin{bmatrix}
-\prescript{A}{B}R & \prescript{A}{}B_O \\
+\prescript{B}{A}R & \prescript{A}{}B_O \\
 \bar{0} & 1
 \end{bmatrix}
 \]
-where  $\prescript{A}{B}R={\prescript{A}{B}R}^{\top}$ and $\prescript{A}{}B_O$ is the origin of frame $\{B\}$ relative to $\{A\}$. In this way, having some axis that define our new reference frame, we can transform the gripper model in such a way its closing point is in the origin of the new frame and its orientation is aligned to the one of the new reference frame. 
+where  $\prescript{B}{A}R={\prescript{A}{B}R}^{\top}$ and $\prescript{A}{}B_O$ is the origin of frame $\{B\}$ relative to $\{A\}$. In this way, having some axis that define our new reference frame, we can transform the gripper model in such a way its closing point is in the origin of the new frame and its orientation is aligned to the one of the new reference frame. 
 
 \paragraph{Bounding Box}
 A bounding box is the smallest cubic volume that completely contains an object\footnote{\href{https://en.wikipedia.org/wiki/Bounding_volume}{\url{https://en.wikipedia.org/wiki/Bounding\_volume}}}.
@@ -270,8 +265,8 @@ The collision detection will be used to understand if in a given pose $\bf{q}$ t
 
 In order to relax the collision detection majority of collision libraries, before to use complex algorithm to detect collision between two shapes, they first check if the bounding volumes (e.g. AABB) of the objects intersect, if they don't the objects surely don't collide. If their bounding volumes intersect the objects might collide.
 
-\paragraph{Objects Modelling}
-The Kinect\DMC{, given its pose, is only able to see mainly the top surface of the objects and not all the sides,}{can only see one face (usually the top) of the objects} and therefore we cannot apply directly the convex hull algorithm to the detected surfaces. If we \DMC{would apply}{applied} the convex hull on an object's \DM{observed} surface\DMC{s}{}, we \DMC{will}{would} have likely the situation depicted in Figure \ref{fig:cv_top_collision}, in which the collision detections would not detect any collision when it should. This is because we are \DMC{totally}{} missing the \DMC{rest of information about the geometry of the object since we only know the objects top surfaces}{the surfaces that cannot be seen from the Kinect's point of view}.
+\paragraph{Objects Modeling}
+The Kinect can mainly see one face (usually the top) of the objects and therefore we cannot apply directly the convex hull algorithm to the detected surfaces. If we applied the convex hull on an object's observed surface, we would have likely the situation depicted in Figure \ref{fig:cv_top_collision}, in which the collision detections would not detect any collision when it should. This is because we are missing the surfaces that cannot be seen from the Kinect's point of view.
 
 \begin{figure}[tb]
 \centering
@@ -294,7 +289,7 @@ The Kinect\DMC{, given its pose, is only able to see mainly the top surface of t
 \end{figure}
 
 From the Kinect's point cloud also the table plane is known, so the information we have are: the table plane model and the segmented objects (mainly the top surfaces).
-If an human would be in the same pose of the Kinect, looking at the table, \DMC{it}{he} \DMC{will}{would} imagine that the objects are not floating surfaces, and he/she \DMC{will}{would} deduce the objects shape from the shape of the top surface. The sides of the objects can be deduced by projecting the top surface's edges to the plane and then filling the missing object's sides with points. To do that we have to detect the top surface's edges. A easier method is directly projecting all the points of the surfaces onto the table plane and then apply the convex hull algorithm to the resulting point cloud given by the sum of the top surface and its projection. In this way the missing sides are indirectly retrieved by the convex hull. An example of this method is depicted in Figure \ref{fig:full_convexhull}.
+If an human would be in the same pose of the Kinect, looking at the table, he would imagine that the objects are not floating surfaces, and he/she would deduce the objects shape from the shape of the top surface. The sides of the objects can be deduced by projecting the top surface's edges to the plane and then filling the missing object's sides with points. To do that we have to detect the top surface's edges. A easier method is directly projecting all the points of the surfaces onto the table plane and then apply the convex hull algorithm to the resulting point cloud given by the sum of the top surface and its projection. In this way the missing sides are indirectly retrieved by the convex hull. An example of this method is depicted in Figure \ref{fig:full_convexhull}.
 
 \begin{figure}[tb]
 \centering
@@ -330,9 +325,7 @@ Pushing is a difficult action to execute when the goal is to move one object alo
 
 %When we push an object all the object's geometry has to be taken into account in order to find a suitable pushing direction. Moreover, humans push objects with a certain initial direction chosen accordingly the object geometry and then adapt the pushing direction accordingly to the error with respect the desired one. This would imply the implementation of a controller which is out the scope of this thesis. 
 
-With the aim to manipulate carefully the objects when pushing we considered to work with objects with simple shapes, such as parallelepipeds. 
-A human would push such object mainly accordingly its principal axis and the one orthogonal to its (i.e. the first 2 principal components of Figure \ref{fig:pca2}), he/she also could push it along the diagonal thanks to the dexterity of the hands. 
-Inspired by this consideration, we decided to consider as possible directions to push an object its first two principal directions. In particular, there are two senses for each direction, so in total we have 4 possible pushing directions per object, as depicted in Figure \ref{fig:directions}.
+Inspired by this consideration, we decided to consider its first two principal directions as possible directions to push an object. In particular, there are two senses for each direction, so in total we have 4 possible pushing directions per object, as depicted in Figure \ref{fig:directions}.
 
 \begin{figure}
 \centering
@@ -349,19 +342,24 @@ Inspired by this consideration, we decided to consider as possible directions to
 \caption{Example of pushing directions.}\label{fig:directions}
 \end{figure}
 
+
 Another things to take into account is that the principal directions are not always parallel to the table plane. An object which stands on top of a table will be obviously pushed along a direction parallel to the table. For this aim the first two principal directions are projected on to the table plane. So the pushing directions considered are not the principal directions but their projections. 
 
+%Another thing to take into account is that the principal directions are not always parallel to the table plane. An object which stands on top of a table will be obviously pushed along a direction parallel to the table. As previously described in Section \ref{sec:background_alg} a point can be projected on to the table plane, but a point and a vector (the principal directions are vectors) have the same representation, and therefore we can apply exactly the same equations to obtain the projections of the principal components onto the table plane. So the pushing directions considered are not the principal directions but their projections. 
 
-Next, having some pushing directions along with the robot will push the object, the pose for the the gripper to push that object has to be decided. The pose has been chosen accordingly to the shape of the gripper.\DMcomment{Rewrite this paragraph}
+Next, the pose of the gripper is computed accordingly to its shape, to the shape of the objects and the pushing direction.
+
+%Next, having some pushing directions along with the robot will push the object, the pose for the the gripper to push that object has to be decided. The pose has been chosen accordingly to the shape of the gripper.\DMcomment{Rewrite this paragraph}
 
 In Figure \ref{fig:gripper_side}
-is possible observing the profile of the gripper mounted to the base of the gripper, highlighted by the blue color. Such base has a circular shape and the gripper's \DMC{deep}{depth} \DMcomment{width?} is less then \DMcomment{than?} the one of\DMcomment{in?} the base. It is undesirable pushing an object with a circular, or spherical, shape for the end effector because there is more uncertainty on the resulting path of the manipulated object. The gripper has no a circular shape and it is symmetric, this make it suitable to push an object with a certain stability (i.e. make the object follow the desired path) during the action. 
+%is possible observing the profile of the gripper mounted to the base of the gripper, highlighted by the blue color. Such base has a circular shape and the gripper's deep is less then the one of the base. It is undesirable pushing an object with a circular, or spherical, shape for the end effector because there is more uncertainty on the resulting path of the manipulated object. The gripper has no a circular shape and it is symmetric, this make it suitable to push an object with a certain stability (i.e. make the object follow the desired path) during the action. 
+is possible observing the profile of the gripper mounted to the base of the gripper, highlighted by the blue color. Such base has a circular shape and the gripper's depth is less than the one of the base. It is undesirable pushing an object with a circular, or spherical, shape for the end effector because there is more uncertainty on the resulting path of the manipulated object. The gripper has no a circular shape and it is all symmetric, this make it suitable to push an object with a certain stability (i.e. make the object follow the desired path) during the action. Since we want a pushing action as accurate as possible, we don't want that the gripper's base touches the manipulated object. 
 
 \begin{figure}[tb]
 \begin{subfigure}[t]{0.25\textwidth}
 \centering
 \includegraphics[width=2.5cm]{Img/set_up/gripper_side2.png}
-\caption{\DMC{Gripper's profile view gripper's base.}{The gripper and its base.}}\label{fig:gripper_side}
+\caption{The gripper and its base.}\label{fig:gripper_side}
 \end{subfigure}
 \begin{subfigure}[t]{0.7\textwidth}
 \centering
@@ -371,9 +369,13 @@ is possible observing the profile of the gripper mounted to the base of the grip
 \caption{}
 \end{figure}
 
-Due to the limited opening width of the gripper (7 centimetres) the object the robot is going to manipulate have small width. This means that when pushing along the principal axis, the object's width is likely small. Such a situation is depicted in Figure \ref{fig:pushing_way1}. Pushing in such a way the gripper will likely push also the black juice box. Therefore when pushing along the principal axis the pose is chosen to be the one in Figure \ref{fig:pushing_way2}. Of course is more stable a pushing pose like the one in Figure \ref{fig:pushing_way1}, since the contacts point (the fingers) are more distant. For this reason that pose is used only when pushing the objects along a direction 3 and 4.
 
-Due to the limited opening width of the gripper (8 centimetres) the object\DM{s} the robot \DMC{is going to}{can} manipulate \DMC{have small width}{are thin}. This means that when pushing along the principal axis, the object's width is likely small\DMC{. Such a situation is depicted in }{(}Figure \ref{fig:pushing_way1}\DM{)}. Pushing in such a way the gripper will likely push also the black juice box. Therefore when pushing along the principal axis\DM{,} the pose \DMC{is chosen to be}{used is} the one in Figure \ref{fig:pushing_way2}. \DMC{Of course is more stable a pushing pose like the one in Figure \ref{fig:pushing_way1},}{This position is more stable} since the contacts point (the fingers) are more distant. For this reason that pose is used only when pushing the objects along a direction 3 and 4.
+%Due to the limited opening width of the gripper (7 centimetres) the object the robot is going to manipulate have small width. This means that when pushing along the principal axis, the object's width is likely small. Such a situation is depicted in Figure \ref{fig:pushing_way1}. Pushing in such a way the gripper will likely push also the black juice box. Therefore when pushing along the principal axis the pose is chosen to be the one in Figure \ref{fig:pushing_way2}. Of course is more stable a pushing pose like the one in Figure \ref{fig:pushing_way1}, since the contacts point (the fingers) are more distant. For this reason that pose is used only when pushing the objects along a direction 3 and 4.
+
+Knowing also the height of the objects retrieved by its OBB, it is possible having a pose for the gripper is such a way that the gripper's base does not touch the object. The gripper's pose, relative to the object, is computed in manner to locate the red point of Figure \ref{fig:gripper_side} to be at the same height of the object. In this way the fingers will fully touch the object during the pushing action. Moreover, to make easy for the robot reaching the pushing pose, it was defined to be a certain distance from the object (in our experiment it was set to 5cm). It would be difficult to reach a pose of Figure \ref{fig:pushing_pose} without colliding with the object.  
+
+Due to the limited opening width of the gripper (7 centimetres) the objects the robot can manipulate are thin. This means that when pushing along the principal axis, the object's width is likely small(Figure \ref{fig:pushing_way1}). Pushing in such a way the gripper will likely push also the black juice box. Therefore when pushing along the principal axis, the pose used is the one in Figure \ref{fig:pushing_way2}. The pose of Figure \ref{fig:pushing_way1} is more stable since the contacts point (the fingers) are more distant between themselves. For this reason this pose is used only when pushing the objects along a direction 3 and 4.
+
 
 \begin{figure}[tb]
 \centering
@@ -387,7 +389,7 @@ Due to the limited opening width of the gripper (8 centimetres) the object\DM{s}
 \includegraphics[width=3cm]{Img/pushing/pushing222.png}
 \caption{}\label{fig:pushing_way2}
 \end{subfigure}
-\caption{\textbf{Possible pushing poses for push an object along its principal axis} - In Figure \ref{fig:pushing_way1} the closing direction of the gripper is orthogonal \DM{to} the pushing direction, and for the case depicted in the figure the gripper will likely push also the black juice box. In Figure \ref{fig:pushing_way2} the closing direction of the gripper is parallel to the pushing direction.}\label{fig:pushing_way}
+\caption{\textbf{Possible pushing poses for push an object along its principal axis} - In Figure \ref{fig:pushing_way1} the closing direction of the gripper is orthogonal to the pushing direction, and for the case depicted in the figure the gripper will likely push also the black juice box. In Figure \ref{fig:pushing_way2} the closing direction of the gripper is parallel to the pushing direction.}\label{fig:pushing_way}
 \end{figure}
 
 Having the projections of the principal components, the table normal and the desired coordinates for the gripper's closing point it is possible defining a rotation and translation matrices. To push along direction 1 those matrices are:
@@ -406,15 +408,19 @@ c_x \\ c_y \\ c_z
 \end{bmatrix}
 \label{eq:transform}
 \end{equation}
-where $dir1_X$ refers to the x coordinate of the vector that defines the direction 1, $n$ is the table normal and $c$ is the desired tool central point. 
+where $dir1_X$ refers to the x coordinate of the vector that defines the direction 1, $n$ is the table normal and $c$ is the desired tool closing point\footnote{The gripper's closing point is finger's contact point. (Although in this case the fingers do not touch themselves)}. 
 % The rotation matrix $R_{dir3}$ for pushing along direction 3 would be the same of $R_{dir1}$. 
 
-As previously said, the planner considers to push the objects at infinity, \DM{but} in the reality the robot has to push the objects for a finite length. Since the planner has no geometric information, the pushing length is chosen accordingly the dimension of the AABB relative to the pushing direction. \DMcomment{explain better this last part.} For instance, if the robot is going to push the object \ttt{o1} along direction 1\DM{,} the length $l$ of the pushing action is $l=k \cdot AABB_{\mathtt{o1}}(length)$, where $k$ is a gain factor (1 in our experiments) called \textit{pushing step}. This is a limitation since the robot will push an object for a length which is function of the manipulated object and not to surrounding ones. \DMcomment{Say that improving this will be one of the topics for future work}
 
-To retrieve the path we consider the total length $l$ and we discretize it by $n$ points having in this way $n+2$ poses ($+2$ because of the pushing pose and the final pose). For each pose the inverse kinematic is \DMC{done}{calculated}. In this way we obtain a discrete path. 
+%As previously said, the planner considers to push the objects at infinity, in the reality the robot has to push the objects for a finite length. Since the planner has no geometric information, the pushing length is chosen accordingly the dimension of the AABB relative to the pushing direction. For instance, if the robot is going to push the object \ttt{o1} along direction 1 the length $l$ of the pushing action is $l=k \cdot AABB_{\mathtt{o1}}(length)$, where $k$ is a gain factor (1 in our experiments) called \textit{pushing step}. This is a limitation since the robot will push an object for a length which is function of the manipulated object and not to surrounding ones. 
 
-When the robot approaches the pushing pose it could be that it collides with other objects. It would be suitable to use \textit{MoveIt!}\footnote{Ioan A. Sucan and Sachin Chitta, “MoveIt!”, [Online] Available:\href{http://moveit.ros.org} {\url{http://moveit.ros.org}}} which can build an octomap representation of the scene and find a path avoiding collisions with the scene. The integration of \textit{MoveIt!} will be a future work. To avoid the collisions we considered a pre-pushing pose which has the same pose of the pushing pose but translated, accordingly to the table's normal, $10$ centimetres from the pushing pose. This pre-pushing pose is easier to reach without collisions. 
-After the execution of the pushing action the robot goes to its \textit{home} pose (depicted in Figure \ref{fig:setup_}) in order not to stay inside the Kinect's view. When it goes to home it might happen that it collides with some objects, so also for the final pose we considered another one translated, accordingly the table normal, $10$ centimetres from the last pose. 
+As previously said, the planner considers to push the objects at infinity, but in reality the robot has to push the objects for a finite length. Since the planner has no geometric information, it does not know how much it has to push in order to singulate the object, or to make it graspable. For this reason the pushing length is chosen accordingly the dimension of the OBB relative to the pushing direction. For instance, if the robot is going to push the object \ttt{o1} along direction 1} the length $l$ of the pushing action is $l=k \cdot OBB_{\mathtt{o1}}(length\_object)$, where $k$ is a gain factor (1 in our experiments) called \textit{pushing step}. This is a big limitation since the robot will push an object for a length which is function of the manipulated object and not of the surrounding ones. The improvement of this limitation will be one of the topics for future works.
+
+
+To retrieve the path we consider the total length $l$ and we discretize it by $n$ points having in this way $n+2$ poses ($+2$ because of the pushing pose and the final pose). For each pose the inverse kinematic is calculated. In this way we obtain a discrete path. 
+
+When the robot approaches the pushing pose it could be that it collides with other objects. It would be suitable to use \textit{MoveIt!}\footnote{Ioan A. Sucan and Sachin Chitta, “MoveIt!”, [Online] Available:\href{http://moveit.ros.org} {\url{http://moveit.ros.org}}} which can build an octomap representation of the scene and find a path avoiding collisions with the scene. The integration of \textit{MoveIt!} will be a future work. To avoid the collisions we considered a pre-pushing pose which has the same pose of the pushing pose but translated, accordingly to the table's normal, $20$ centimetres from the pushing pose. This pre-pushing pose is easier to reach without collisions. 
+After the execution of the pushing action the robot goes to its \textit{home} pose (depicted in Figure \ref{fig:setup_}) in order not to stay inside the Kinect's view. When it goes to home it might happen that it collides with some objects, so also for the final pose we considered another one translated, accordingly the table normal, $20$ centimetres from the last pose. 
 In this way the pushing trajectory is defined by a total of $n+4$ poses. 
 
 
@@ -431,26 +437,27 @@ In this way the pushing trajectory is defined by a total of $n+4$ poses.
 %\todo[inline]{Review of grasping techniques}
 %\textbf{ROS object\_manipulator}\\
 
-There exist an advanced state of the art regarding grasping. Despite this all the techniques of grasping are \DMC{very}{usually} computationally expensive. Many of them rely on the identification of the shape of the objects and then a set of pre-built grasping poses is returned\citep{brook2011collaborative}. Other techniques rely on the identification of local features which can state if a grasping pose is feasible or not. Two goods grasping planning algorithms of this kind, which deal with novel objects, are AGILE \citep{AGILE} and HAF \citep{haf}, despite this, they are not so robust and they are computationally expensive and not suitable for this thesis \citep{covallero}. In order to have a fast planning algorithm we considered a very simple approach to grasp the objects, which is suitable only with the kind of objects we are going to interact with. Despite this, the planner presented by this thesis can be directly integrated with several grasping algorithms. 
+There exist an advanced state of the art regarding grasping. Despite this, all the techniques of grasping are usually computationally expensive. Many of them rely on the identification of the shape of the objects and then a set of pre-built grasping poses is returned\citep{brook2011collaborative}. Other techniques rely on the identification of local features which can state if a grasping pose is feasible or not. Two goods grasping planning algorithms of this kind, which deal with novel objects, are AGILE \citep{AGILE} and HAF \citep{haf}, despite this, they are not so robust and they are computationally expensive and not suitable for this thesis \citep{covallero}. In order to have a fast planning algorithm we considered a very simple approach to grasp the objects, which is suitable only with the kind of objects we are going to interact with. Despite this, the planner presented by this thesis can be directly integrated with several grasping algorithms. 
 
 The idea is to grasp the object in manner that the gripper's closing direction\footnote{The gripper's closing direction is the direction along with the fingers move when grasping.} is orthogonal the principal axis of the object. The approaching direction\footnote{The gripper's approaching direction is the direction along with the gripper approaches the grasping pose.} of the gripper is given by the third principal component of the object. Then the gripper's closing point coordinates are given by the centroid, of the object's top surface, translated along the approaching direction by the half of the gripper's fingers height.
 In this manner a single grasping pose is obtained for each object. 
 
 To grasp the object also the robot needs a pre grasping pose, if not the gripper would collide with object attempting to reach the grasping pose, moving it away, and the grasp would fail. The pre grasping pose is simply defined by the grasping pose translated along its approaching direction by $10$ centimetres.
+Once the object has been grasped it is easy that it collides with other ones, therefore a post grasping pone is defined by translating the grasping pose for $20$ centimetres along the table's normal.
 
 On the whole the grasping action is composed of the following set of actions: 
 \begin{enumerate}
-\item Reaching the pre grasping pose
-\item Opening gripper
-\item Reaching grasping pose
-\item Closing gripper
-\item Reaching pre grasping pose again\DMC{: this is done in order to avoid collisions between the grasped object and the other ones}{(done to avoid collisions).}
-\item Going to the dropping pose: the object will be dropped into a bin
+\item Reaching the pre grasping pose.
+\item Opening gripper.
+\item Reaching grasping pose.
+\item Closing gripper.
+\item Reaching the post grasping pose again.
+\item Going to the dropping pose: the object will be dropped into a bin.
 \end{enumerate}
-\DMcomment{Points after each one}
+
 
 \section{States generation}
-In Chapter \ref{ch:planning_system}  the predicates used \DMC{are}{were} described, in this section their computation is presented in detail. 
+In Chapter \ref{ch:planning_system}  the predicates used were described, in this section their computation is presented in detail. 
 
 \subsection{Predicate: \texttt{block\_grasp}}
 The \ttt{(block\_grasp o1 o0)} predicate refers to the fact that object \ttt{o1} blocks \ttt{o0} to be grasped. The computation is this predicate is straightforward: the mesh model of the opened gripper is transformed to the grasping pose of object \ttt{o0}, and checked if it collides with the other objects. In figure \ref{fig:block_grasp} such procedure is shown and in Algorithm \ref{alg:block_grasp} the pseudo algorithm is described in detail. 
@@ -485,7 +492,9 @@ The \ttt{(block\_grasp o1 o0)} predicate refers to the fact that object \ttt{o1}
 \end{algorithmic}
 \end{algorithm}   
  
-Notice that this method \DMC{implies}{requires} to check for collision between the gripper and objects that might be very far from the interested object, i.e. there is no need to compute the collision detection.  Despite this, as explained in Section \ref{sec:background_alg}, the majority of collision detection algorithms first check if the bounding boxes of the objects intersect. This is a computationally cheap operation, and only if they intersect the computationally expensive algorithm are used to check for collision. This makes the Algorithm \ref{alg:block_grasp} efficient and computationally not expensive. It has been observed that, in average, to compute this predicate the time is about $10$ milliseconds per object and the complexity to compute this state is $\mathcal{O}(n^2)$, where $n$ is the number of objects.
+%Notice that this method implies to check for collision between the gripper and objects that might be very far from the interested object, i.e. there is no need to compute the collision detection.  Despite this, as explained in Section \ref{sec:background_alg}, the majority of collision detection algorithms first check if the bounding boxes of the objects intersect. This is a computationally cheap operation, and only if they intersect the computationally expensive algorithm are used to check for collision. This makes the Algorithm \ref{alg:block_grasp} efficient and computationally not expensive. It has been observed that, in average, to compute this predicate the time is about $10$ milliseconds per object and the complexity to compute this state is $\mathcal{O}(n^2)$, where $n$ is the number of objects.
+
+Notice that this method requires to check for collision between the gripper and objects that might be very far from the interested object, i.e. there is no need to compute the collision detection.  Despite this, as explained in Section \ref{sec:background_alg}, the majority of collision detection algorithms first check if the bounding boxes of the objects intersect. This is a computationally cheap operation, and only if they intersect the computationally expensive algorithm are used to check for collision. This makes the Algorithm \ref{alg:block_grasp} efficient and computationally not expensive. It has been observed that, in average, to compute this predicate the time is about $10$ milliseconds per object. 
  
 \subsection{Predicate: \texttt{on}}
 The \ttt{(on o0 o1)} predicate means that object \ttt{o0} is on top of object \ttt{o1}. With the convex hull of the objects is easy to understand if two objects are one on top of the other one by checking for collision, but in this way we do not know who is above and who is below. To do this their surface projections onto the table plane are used. 
@@ -494,7 +503,7 @@ Istanbul Technical University, published some interesting researches suitable to
  3D recognition and segmentation results to create and maintain a consistent world model involving attributes of the objects and spatial relations among them. Their researched focused on modelling the world for manipulation planning tasks. They do not consider scene like the one of this thesis but simpler ones such as  a pile of cubes above each other. What can be directly used from their work is the computation of the \ttt{on} predicate. The \textit{on} relation for a pair of objects is determined by checking whether their projections onto the table plane overlap. This predicate was not a relevant part of their work and they did not provide too much information about its computation. Therefore our implementation for the \ttt{on} predicate is based on their idea with some modifications. 
  
 Our idea is based on the fact that an object which stands on top of another one occludes some parts of the object below. In the other side, the one below does no occlude any part of the top object. 
-Let's consider the scene in Figure \ref{fig:on_predicate_original}, the object \ttt{o0} occludes a portion of object \ttt{o1}. The projections ${\sc P_{0}}$ and ${\sc P_{1}}$ onto the table plane of \ttt{o0} and \ttt{o1} are respectively the red and green ones in Figure \ref{fig:on_1}. This means that the convex hull ${\sc C_{P_{1}}}$ of the projection $P_{1}$ of \ttt{o1} intersects with the projection ${\sc P_{0}}$ of \ttt{o0}, while the projection ${\sc P_{1}}$ of \ttt{o1} does not interesct with the convex hull ${\sc C_{P_{0}}}$ of the projection of \ttt{o0} (Figures \ref{fig:on_2} and \ref{fig:on_3}). 
+Let's consider the scene in Figure \ref{fig:on_predicate_original}, the object \ttt{o0} occludes a portion of object \ttt{o1}. The projections ${\sc P_{0}}$ and ${\sc P_{1}}$ onto the table plane of \ttt{o0} and \ttt{o1} are respectively the red and green ones in Figure \ref{fig:on_1}. The convex hull ${\sc C_{P_{1}}}$ of the projection $P_{1}$ of \ttt{o1} intersects with the projection ${\sc P_{0}}$ of \ttt{o0}, while the projection ${\sc P_{1}}$ of \ttt{o1} does not interesct with the convex hull ${\sc C_{P_{0}}}$ of the projection of \ttt{o0} (Figures \ref{fig:on_2} and \ref{fig:on_3}). 
 
 
 \begin{figure}[tb]
@@ -522,7 +531,7 @@ Let's consider the scene in Figure \ref{fig:on_predicate_original}, the object \
 \caption{Visualization of the computation of the \ttt{on} predicate. Figure \ref{fig:on_1} shows the real image, Figure \ref{fig:on_1} shows the projections of the objects onto the table plan while Figures \ref{fig:on_2} and \ref{fig:on_3} represent the two steps strategy to compute the \ttt{on} predicate.}\label{fig:on_predicate}
 \end{figure}
 
-Although this method works fine to compute the \ttt{on} predicate it has the limitation that its scope is only for objects for a rectangular shape.
+Although this method works fine to compute the \ttt{on} predicate it has the limitation that its scope is only for objects for a rectangular shape, or similar shapes.
 
 It is important to take into account also that actually the edges of the occluded parts of the below object, once projected, could be at the same position, of some projected edges of the top object. This could be dangerous for the computation of this predicate. Therefore a threshold is added. Focusing the attention on Figure \ref{fig:on_2} it can be appreciated that the intersection ${\sc C_{P_{1}}} \cap {\sc P_{0}}$ includes several points, while, in case the edges projections relative to the occluded and occluding part have similar coordinates, the intersection ${\sc C_{P_{0}}} \cap {\sc P_{1}}$ would include just few points. Therefore the \ttt{(on o0 o1)} predicate is update accordingly to the following formula:
 \begin{equation}
@@ -581,7 +590,7 @@ We decided to use a discrete strategy, that is we consider several poses between
 \includegraphics[width=5cm]{Img/block_dir/pushing55.png}
 \caption{Evaluating the \ttt{(block\_dir1 * o0)} predicate}\label{fig:block_dir_original}
 \end{subfigure}
-\caption{Visualization of the computation of \ttt{block\_dir$_i$} predicates. "Evualuating the \ttt{(block\_dir1 * o0)}" means that the algorithm is evaluating for all the objects, except \ttt{o0}, if they collide with \ttt{o0} when pushed along direction 1.}\label{fig:block_dir}
+\caption{Visualization of the computation of \ttt{block\_dir$_i$} predicates. "Evualuating the \ttt{(block\_dir1 * o0)} predicate" means that the algorithm is evaluating for all the objects, except \ttt{o0}, if they collide with \ttt{o0} when pushed along direction 1.}\label{fig:block_dir}
 \end{figure}
 
 Considering the kind of objects we are going to interact with, the discrete path  is computed by translating the object along the pushing direction by a length equal to the OBB dimension associated to that direction, until reaching the final pose. Note that no collision detection is done for the object at its initial pose, therefore the total number of poses considered for the pushing path are $n_{poses} = \ceil*{\frac{k \cdot AABB_{dimension}}{AABB_{dimension}}} = \ceil*{k}$, where $k$ is the pushing step defined in Section \ref{subsec:pushing}.
@@ -591,7 +600,7 @@ To push an object along a certain direction the robot needs to put its end effec
 In Figure \ref{fig:block_dir} is shown graphically the procedure to compute the predicate. 
 
 
-Note that also the gripper during the pushing action will move, so ideally the collision checking should be done exactly as done for the object. We decided to neglect this and check only for the initial pushing pose in order to relax the planner and not to make it too much conservative. This means that during the pushing action the robot might actually move more than one object. Despite this relaxing strategy the algorithm showed to work perfectly and cases in which the gripper moved more than one object were really rare.
+Note that also the gripper during the pushing action will move, so ideally the collision checking should be done exactly as done for the object. We decided to neglect this and check only for the initial pushing pose in order to relax the planner and not to make it too much conservative. This means that during the pushing action the robot might actually move more than one object. Despite this relaxing strategy the algorithm showed to work fine and cases in which the gripper moved more than one object were really rare.
 
 \begin{algorithm}[h]
 \caption{Computation of \texttt{block\_dir} predicates. \\

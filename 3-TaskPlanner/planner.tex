@@ -8,13 +8,14 @@ To choose the proper planner for the task we evaluated three main categories of 
 \item hierarchical planners,
 \item probabilistic planners.
 \end{enumerate}
+
 \textbf{Classical planners} are characterized by environments which are fully observable, deterministic, finite and static (changes happen only when the agent acts) and discrete (in time, actions, objects...) \citep{artificialIntelligence}.  A very well known classic planner is the Fast Downward planner \cite{helmert2006fast}.
 
 
 \textbf{Hierarchical planning}, also called \textit{Hierarchical Task Network}(HTN), works in a similar way to how it is believed that human planning 
 works \citep{marthi2007angelic}. It is based on a reduction of the problem. The planner recursively decomposes tasks into subtasks, stopping when it reaches primitive tasks that can be performed directly by planning operators. This kind of planner needs to have a set of methods, where each method is a schema for decomposing a particular kind of task into a set of subtasks. For this kind of planning technique a well known planner is SHOP \citep{shop}.
 
-\textbf{Probabilistic planning} is a planning technique which considers that the environment is not deterministic but probabilistic. So the actions have a probability to obtain a certain state, and given an initial and goal, the planner finds the solution path with the highest reward, which depends also on the probability. Probabilist problems are usually formalized as Markov Decision Processes (MDP).
+\textbf{Probabilistic planning} is a planning technique which considers that the environment is not deterministic but probabilistic. So the actions have a probability to obtain a certain state, and given an initial state and a goal state, the planner finds the solution path with the highest reward, which depends also on the probability. Probabilistic problems are usually formalized as Markov Decision Processes (MDP).
 %A probabilistic problem is generally formulated as a $6$-tuple $\Pi=\langle S, s_o, G, O, T, A \rangle$ %\cite{little2007probabilistic}, where:
 %\begin{itemize}
 %item $S$ is a finite set of states;
@@ -37,6 +38,8 @@ The problem involves a big amount of uncertainty due to the interaction of the r
 
 Martinez et al. \citep{martinez2015planning} faced the problem of cleaning a surface entirely by probabilistic symbolic planning. The problem they solved was characterized by a strong uncertainty, and a unexpected effect of an action would require to replan and therefore to slow down the system.
 Another way to face the problem of probability is replanning after each executed action \cite{kaelbling2012unifying}, or whenever the current state deviates from the expected one, generating a new plan from the current state to the goal. In this case the actions are considered deterministic, and only the first action is executed before replanning again. 
+%Martinez et al. \citep{martinez2015planning} faced the problem of cleaning a surface entirely by probabilistic symbolic planning. The problem they \DMC{wanted to solve}{solved} was characterized by a strong \DMC{probability factor}{uncertainty,} and a \DMC{wrong}{unexpected} effect of \DMC{the}{an} action would \DMC{have lead}{require} to replan\DM{,} and therefore to slow down the system.
+%Another way to face the problem of probability is replanning after each executed action \cite{kaelbling2012unifying}, or whenever the current state deviates from the expected one, generating a new plan from the current state to the goal. \DMC{The plan's}{In this case the} actions are considered deterministic, \DMC{and the only useful action is actually the first one of the plan, after its execution the system}{and only the first action is executed before replanning again.} replans again. 
 
 Little et al. discussed in \cite{little2007probabilistic} the problem of when is more useful the probabilistic planning with respect a simple replanning system. 
 %They defined the concept of \textit{Probabilistic Interesting Problem} with the following definition:
@@ -85,7 +88,7 @@ In this work we do not specify specific costs for the actions, so the planner re
 \subsection{Predicates}
 The \textit{Fast Downward} planner needs the problem to be formulated in \textit{Problem Domain Description Language} (PDDL) \citep{pddl}. In this section the symbolic predicates that have been considered in order to solve the problem are described.
 
-The task this thesis faces is a common task done by humans, who think in order to find a feasible sequence of actions. Such a sequence is normally composed of actions that avoid the collision between the manipulated objects and the other ones, whenever possible. To do this we, as humans, think on what is going to happen if we manipulate an object in a certain way. The design of the problem has been inspired by such a reasoning way and symbolic predicates are added so that the planner can reason about collisions and geometrical constraints.
+The task this thesis faces is a common task done by humans, who think in order to find a feasible sequence of actions. Such a sequence is normally composed of actions that avoid collision between the manipulated objects and the other ones, whenever possible. To do this we, as humans, think on what is going to happen if we manipulate an object in a certain way. The design of the problem has been inspired by such a reasoning way and symbolic predicates are added so that the planner can reason about collisions and geometrical constraints.
 
 As described in the introduction, the system will be able to perform two types of actions: \textbf{pushing} and \textbf{grasping}.
 Grasping action is a necessary action in order to grasp an object and drop it into a bin, while the pushing action is an auxiliary action which has the aim to move an object in a pose that do not obstacle the solution of the problem. 
@@ -100,7 +103,7 @@ The symbolic predicates are designed accordingly to the available actions trying
 Answering these questions the following predicates are defined:
 
 \begin{itemize}
-\item \textbf{removed}: \ttt{(removed o1)} means that object \ttt{o1} has been grasped and dropped into the bin. The goal is reached when all the object have been removed. 
+\item \textbf{removed}: \ttt{(removed o1)} means that object \ttt{o1} has been grasped and removed from the table. The goal is reached when all the objects have been removed. 
 \item \textbf{on}:\ttt{(on o1 o2)} means that object \ttt{o1} stands on top of object \ttt{o2}. This predicate is defined since we don't want to interact with an object that has objects on top of itself. If we would grasp it, the object above would likely fall corrupting in this way the scene. That behaviour is undesired since a human would not grasp the bottom object without first grabbing the one on the top. Similarly for the pushing action, when an object with objects on top of itself is pushed, they could fall or collide with other objects. Vice versa if it was on top of other objects.
 \item \textbf{block\_grasp}: \ttt{(block\_grasp o1 o2)} means that object \ttt{o1} obstacles  object \ttt{o2} to be grasped. 
 Once we are sure that an object has no objects on top of it we have to check if it can be grasped, that is if the gripper will collide with object \ttt{o2} attempting to grasp the desired one. With this predicate the planner knows that the robot has first to interact with those objects before to grasp the desired one.
@@ -116,7 +119,7 @@ In this section the actions preconditions and effects are described.
 The \textbf{preconditions} to grasp a certain object are:
 \begin{itemize}
 \item no object stands on top of it,
-\item no object collides with the gripper attempting to grab the desired object,
+\item no object collides with the gripper attempting to grasp the desired object,
 \item the inverse kinematic has solution.
 \end{itemize}
 The \textbf{effects} of the grasping action are:
@@ -198,11 +201,11 @@ A situation in which the backtracking is useful is shown in Figure \ref{fig:back
 \begin{enumerate}
 \item It first gets the following plan: \texttt{(grasp o2)}, \texttt{(push\_dir1 o0)}, \texttt{(grasp o1)}, \texttt{(grasp o0)},
 
-\item It solves the inverse kinematic for the \texttt{(grasp o2)} action, but it finds no solution and adds the predicate \ttt{(ik\_unfeasible\_grasp o2)}, 
+\item It solves the inverse kinematic for the \texttt{(grasp o2)} action, but it finds no solution and adds to the states the predicate \ttt{(ik\_unfeasible\_grasp o2)}, 
 
 \item It replans and gets the following plan: \texttt{(push\_dir1 o2)}, \texttt{(grasp o2)}, \texttt{(push\_dir1 o0)}, \texttt{(grasp o1)}, \texttt{(grasp o0)},
 
-\item  It solves the inverse kinematic for the \texttt{(push\_dir1 o2)} action  but it finds no solution, so the predicate \ttt{(ik\_unfeasible\_dir1 o2)} is added,
+\item  It solves the inverse kinematic for the \texttt{(push\_dir1 o2)} action  but it finds no solution, so the predicate \ttt{(ik\_unfeasible\_dir1 o2)} is added to the states,
 
 \item It continues until there exists no solution for the planning problem.
 \end{enumerate}
@@ -236,7 +239,7 @@ In order to provide a graphical scheme to the reader the perception and planning
 \caption{Perception and planning pipeline}\label{fig:pipeline}
 \end{figure}
 
-\section{PDDL}
+\paragraph{Actions PDDL syntax}
 For clarity purposes, the PDDL syntax of the described actions is shown here. 
 For the \textit{grasping} action its PDDL syntax is shown in listing \ref{graspPDDL}.
 

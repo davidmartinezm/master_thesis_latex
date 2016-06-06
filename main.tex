@@ -1,5 +1,4 @@
-
-\documentclass[11pt,parskip=full]{report}
+\documentclass[11pt,parskip=full,twoside]{report}
 \usepackage[Bjornstrup]{fncychap}
 \usepackage{pkgAndStyle}
 
@@ -8,10 +7,11 @@
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage{amssymb}
+\usepackage{booktabs}
 \usepackage{mathtools}
 \usepackage{graphicx,wrapfig,lipsum}
 % the wrapfig can easily put images at a side of the text
-
+\usepackage{etseib}
 \usepackage{fancyhdr}
 \usepackage{hyperref}
 \usepackage{subcaption}
@@ -22,6 +22,7 @@
 \usepackage{xr}	
 \usepackage{listings}
 \usepackage{stackengine} % to write text below the images without number
+\usepackage[bottom]{footmisc}
 \usepackage{color}
 \usepackage{mathtools}
 \usepackage[normalem]{ulem}
@@ -36,10 +37,25 @@
 \author{Nicola Covallero}
 \title{Master Thesis}
 \date{\today}
+
+\usepackage{etseib}
+\tfmTitle{Task planning for table clearing of cluttered objects}
+\tfmAuthor{Nicola Covallero}{Master Degree in Automatic Control and Robotics}
+
+
 \begin{document}
 \include{title}
 
-%\maketitle
+%etseib template
+%\maketitle % Print the title
+%\logoupc
+\thispagestyle{empty}
+\pagenumbering{Roman}
+\newpage
+
+\blank
+\pautes
+
 
 
 
@@ -50,12 +66,13 @@ Manipulation planning is a field of study with increasing interest, it combines 
 In this thesis we present a planning system for clearing a table with cluttered objects, which reasons at a symbolic level and reasons about geometric constraints through backtracking.
 We show that the planning system developed is able to handle efficiently the task.
 
-The main contribution of this thesis is a planning system able to solve a wider variety of scenarios for clearing a table with cluttered objects. Grasping actions alone are not enough, and pushing actions may be needed to move an object to a pose in which it can be grasped. The planner presented here can reason about sequences of pushing and grasping actions that allow a robot to grasp an object that was not initially graspable.
+The main contribution of this thesis is a planning system able to solve a wider variety of scenarios for clearing a table with cluttered objects. Grasping actions alone are not enough, and pushing actions may be needed to move an object to a pose in which it can be grasped. The planning system presented here can reason about sequences of pushing and grasping actions that allow a robot to grasp an object that was not initially graspable.
 
-This work shows that some geometric problems can be efficiently handled by reasoning at an abstract level through symbolic predicates when such predicates are chosen correctly. The advantage of this system is a reduction in execution time and it is also easier to implement. 
-
+This work shows that some geometric problems can be efficiently handled by reasoning at an abstract level through symbolic predicates when such predicates are chosen correctly. The advantage of this system is a reduction in execution time and it is also easy to implement. 
+\blank
 \tableofcontents
-\pagebreak
+\blank
+\pagenumbering{arabic}
 
 \include{1-Introduction/Introduction}
 \include{2-StateOfTheArt/review}
@@ -63,12 +80,17 @@ This work shows that some geometric problems can be efficiently handled by reaso
 \include{4-Algorithm/algorithm}
 \include{5-Implementation/implementation}
 \include{6-Experiments/experiments}
+\include{Environmental_Impact/environmental_impact}
 \include{7-Conclusions/conclusions}
 
-
+\blank
+\section*{Aknowledgments}
+\blank
 
 %%%%%% BIBLIOGRAPHY %%%%%%%%%%%%%%%%%%%%%
+\newpage
 \bibliographystyle{plain}
+%\bibliographystyle{acm}
 \bibliography{./Bibliography/bibliography}
 
 \end{document}

@@ -1,0 +1,45 @@
+--exp0
+plan: (push_dir3 o0) (push_dir1 o3) (grasp o5) (grasp o0) (grasp o3) (push_dir1 o2) (grasp o4) (grasp o1) (grasp o2) 
+labels: n_objects filtering_time[ms] seg_time[ms] predicates_time[ms] planning_time[ms] IK[ms] on_predicates[ms] block_predicates[ms] block_grasp_predicates[ms] objects_collisions[ms] ee_collisions[ms] average_objects_collision[ms] average_ee_collision[ms] action_execution_time[ms] time_from_start[ms] action ik_feasible time_to_save_pcl 
+data: 6 1811 601 1273 554 4043 47 771 78 442 294 14.7333 9.8 21068 42760 push_dir3-o0 1 1688 
+(push_dir3 o0) (push_dir1 o3) (grasp o5) (grasp o0) (grasp o3) (push_dir1 o2) (grasp o4) (grasp o1) (grasp o2) 
+data: 7 2503 678 1388 541 3712 62 852 111 527 295 12.5476 7.02381 0 53839 grasp-o6 0 2111 
+(grasp o6) (push_dir1 o3) (push_dir3 o4) (push_dir2 o1) (grasp o5) (grasp o2) (grasp o4) (grasp o3) (grasp o0) (grasp o1) 
+data: 7 2143 678 1388 555 4050 62 852 111 527 295 12.5476 7.02381 15053 81665 push_dir1-o3 1 1622 
+(push_dir1 o3) (push_dir3 o4) (push_dir2 o1) (grasp o6) (grasp o4) (grasp o3) (grasp o1) (grasp o2) (grasp o5) (grasp o0) 
+data: 7 2595 462 1455 475 3097 27 888 53 558 313 13.2857 7.45238 0 91824 grasp-o5 0 1482 
+(grasp o5) (grasp o6) (push_dir1 o3) (push_dir3 o2) (push_dir2 o1) (grasp o4) (grasp o3) (grasp o2) (grasp o1) (grasp o0) 
+data: 7 1809 462 1455 528 2443 27 888 53 558 313 13.2857 7.45238 28054 124347 grasp-o6 1 1731 
+(grasp o6) (push_dir1 o3) (push_dir3 o2) (push_dir2 o1) (grasp o3) (grasp o2) (grasp o1) (push_dir2 o0) (grasp o0) (grasp o5) (grasp o4) 
+data: 5 2730 488 745 350 3530 20 381 42 223 142 11.15 7.1 0 134233 grasp-o4 0 1965 
+(grasp o4) (push_dir1 o1) (push_dir3 o0) (push_dir1 o3) (grasp o3) (grasp o1) (grasp o0) (grasp o2) 
+data: 5 1964 488 745 508 4070 20 381 42 223 142 11.15 7.1 20062 166869 push_dir1-o1 1 1850 
+(push_dir1 o1) (push_dir3 o0) (grasp o1) (push_dir1 o2) (grasp o0) (grasp o2) (grasp o4) (grasp o3) 
+data: 5 2422 503 906 403 3330 27 457 43 261 178 13.05 8.9 0 176915 grasp-o3 0 2005 
+(grasp o3) (grasp o4) (push_dir3 o0) (push_dir1 o2) (grasp o2) (grasp o0) (grasp o1) 
+data: 5 1937 503 906 345 2690 27 457 43 261 178 13.05 8.9 29050 211018 grasp-o4 1 1872 
+(grasp o4) (push_dir3 o0) (grasp o0) (push_dir1 o1) (grasp o1) (grasp o3) (grasp o2) 
+data: 4 2532 484 639 412 3280 19 265 26 172 78 14.3333 6.5 0 220749 grasp-o1 0 2294 
+(grasp o1) (push_dir3 o3) (grasp o3) (push_dir1 o0) (grasp o0) (grasp o2) 
+data: 4 2034 484 639 367 4096 19 265 26 172 78 14.3333 6.5 25057 261588 push_dir3-o3 1 1826 
+(push_dir3 o3) (push_dir1 o2) (grasp o2) (grasp o3) (grasp o1) (grasp o0) 
+data: 4 2858 688 540 361 3345 15 235 16 152 80 12.6667 6.66667 0 271432 grasp-o3 0 2476 
+(grasp o3) (push_dir3 o2) (grasp o2) (grasp o0) (grasp o1) 
+data: 4 2264 688 540 432 4037 15 235 16 152 80 12.6667 6.66667 17048 301455 push_dir1-o1 1 1905 
+(push_dir1 o1) (grasp o1) (grasp o3) (grasp o2) (grasp o0) 
+data: 4 2238 457 580 336 0 21 275 21 164 104 13.6667 8.66667 0 307788 no_plan 1 1947 
+
+data: 4 2513 399 607 455 0 18 257 25 133 97 11.0833 8.08333 0 314240 no_plan 1 1949 
+
+data: 4 2000 473 492 459 0 13 216 16 135 71 11.25 5.91667 0 320659 no_plan 1 1477 
+
+data: 4 2047 483 474 364 0 23 177 22 107 60 8.91667 5 0 326496 no_plan 1 1757 
+
+data: 4 2221 524 739 389 2561 16 295 20 191 94 15.9167 7.83333 29054 364580 grasp-o1 1 1117 
+(grasp o1) (grasp o3) (grasp o0) (grasp o2) 
+data: 3 1957 479 463 358 2416 20 148 22 93 52 15.5 8.66667 35049 407515 grasp-o0 1 1854 
+(grasp o0) (grasp o1) (grasp o2) 
+data: 2 2036 465 258 281 2476 4 39 2 24 13 12 6.5 31056 446951 grasp-o0 1 2140 
+(grasp o0) (grasp o1) 
+data: 1 2352 387 266 331 2382 1 0 0 0 0 -nan -nan 30042 485534 grasp-o0 1 1771 
+(grasp o0) 
