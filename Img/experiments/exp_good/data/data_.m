@@ -253,7 +253,7 @@ xlabel('Actions')
 ylabel('Time [seconds]')
 title('Time to execute the action')
 
-%% All the plannin system
+%% All the planning system
 tmp = [];
 for i=1:length(data)
     if (data(i,ACTION) ~= 0)
