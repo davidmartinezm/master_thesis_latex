@@ -13,9 +13,11 @@ Robotic manipulation of objects is an increasing field of research which has cap
  “A robot for picking purposes must possess a lot of skills: The selected item must be identified, handled and deposited correctly and safely. This requires a certain level of visual, tactile and haptic perceptive skills and great handling capabilities.”
 \end{displayquote}
 
-In this thesis we investigate a simple approach for a complex manipulation problem. Our approach tries to replicate human reasoning during the manipulation of cluttered objects in table clearing tasks. The objective is removing all the objects on a table. 
+In this thesis we investigate an approach to enhance the self-decision making step of a robot for table clearing tasks with cluttered objects.
 
-This master thesis has been developed in the \textbf{Institut de Robòtica i Informàtica Industrial} (IRI) in the  Perception and Manipulation laboratory with the supervision of \textit{David Martínez Martínez} as director and \textit{Guillem Alenyà Ribas} as co-director. 
+%In this thesis we investigate a simple approach for a complex manipulation problem. Our approach tries to replicate human reasoning during the manipulation of cluttered objects in table clearing tasks. The objective is removing all the objects on a table. 
+
+ 
 
 
 
@@ -42,8 +44,8 @@ The methodology we will follow for the project is composed of 5 phases:
 \item tests in simulations and with the real robot,
 \item analysis of the results. 
 \end{enumerate}
-The documentation regards reviewing the state of the art in manipulation planning and gathering all the others information required to design properly the algorithm such as objects segmentation, plane detection, grasping and etcetera. Next the algorithm will be designed and then implemented. After the implementation it will be tested in a simulated environment (Chapter \ref{ch:software_design}) and then 
-with the real set up (Chapter \ref{ch:experiments}). Then the results will be analysed in order to have some conclusions about the proposed planning system. 
+The documentation regards reviewing the state of the art in manipulation planning and gathering all the others information required to design properly the algorithm such as objects segmentation, plane detection, grasping. Next the algorithm will be designed, identifying a way to tackle the problem with planning, and then implemented. After the implementation it will be tested in a simulated environment (Chapter \ref{ch:software_design}) and then 
+with the real set up (Chapter \ref{ch:experiments}). Finally the results will be analysed in order to have some conclusions about the proposed planning system. 
 
 \section{Problem Approach}
 In this section the approach to solve the planning problem is described. The strategy to solve the problem is inspired by the way humans solve it. A human would use mainly two actions: grasping and pushing. When it is not possible to grasp an object, because other objects hinder the human to put the hands in the proper way to grasp the desired one, he/she interacts with the scene to make the object graspable. However,  humans are characterized by a high dexterity and therefore they have a lot of freedom in the way to grasp objects. Robots, normally, do not have such a dexterity and grasping in cluttered scene could be very hard without moving the objects. 
@@ -60,7 +62,7 @@ The robot reasons in an abstraction level by considering only symbolic predicate
 
 We assume the world is perfectly known. As actions are actually non-reliable, the planner replans after the execution of each action.  
 
-To summarize, in this master thesis we are going to solve the problem of clearing a table with cluttered objects by using a task planner. To do so, a perception system is developed in order to segment the objects through a vision system (Kinect), and from those objects the states are generated and the planner returns the action to execute to achieve the goal to clear the table. All this process is iterated after the execution of each action, that is after receiving a image of the scene from the vision sensor the system generates the new states and find the next action to execute and so on until achieving the goal. The main contribution of this thesis is a high level perception system to generate the states and a description of the problem which allow to solve the task planning symbolically.
+To solve the problem a perception system is developed in order to segment the objects through a vision system (Kinect), and from those segmented objects the states are generated. Those states allow the planner to know how to interact with the objects. Then the planner returns the action to execute and it is checked if feasible, otherwise it replans. All this process is iterated after the execution of each action. The contributions of this thesis are the tackling of some geometrical restrictions, related to how to interact with the objects, within symbolic planning and the blending of pushing and grasping actions that allow to solve a wider variety of scenarios. 
 
 \section{Set Up}
 The set up of the environment the robot will work in is presented here. 

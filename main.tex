@@ -24,6 +24,7 @@
 \usepackage{stackengine} % to write text below the images without number
 \usepackage[bottom]{footmisc}
 \usepackage{color}
+\usepackage{footnote}
 \usepackage{mathtools}
 \usepackage[normalem]{ulem}
 \DeclarePairedDelimiter\ceil{\lceil}{\rceil} %for the ceil operator
@@ -33,6 +34,8 @@
 \newcommand{\DMcomment}[1]{{\color{blue}(DM: #1)}}
 \newcommand{\DM}[1]{\textcolor{red}{(#1)}}
 \newcommand{\DMC}[2]{\textcolor{red}{\sout{#1} (#2)}}
+
+\newcommand{\N}[2]{\textcolor{green}{\sout{#1} (MY PROPOSAL: #2)}}
 
 \author{Nicola Covallero}
 \title{Master Thesis}
@@ -63,12 +66,15 @@
 \abstract{
 Manipulation planning is a field of study with increasing interest, it combines manipulation skills and an artificial intelligence system that is able to find the optimal sequence of actions in order to solve manipulation problems. It is a complex problem since involves a mixture of symbolic planning and geometric planning. To complete the task the sequence of actions has to satisfy a set of geometrical restrictions.
 
-In this thesis we present a planning system for clearing a table with cluttered objects, which reasons at a symbolic level and reasons about geometric constraints through backtracking.
-We show that the planning system developed is able to handle efficiently the task.
+In this thesis we present a planning system for clearing a table with cluttered objects, 
+\N{ which reason at a symbolic level and reasons about geometric constraints through backtracking.
+We show that the planning system developed is able to handle efficiently the task.}{ which tackles some geometrical restrictions within symbolic planning and reasons about other geometrical constraints through backtracking.}
 
 The main contribution of this thesis is a planning system able to solve a wider variety of scenarios for clearing a table with cluttered objects. Grasping actions alone are not enough, and pushing actions may be needed to move an object to a pose in which it can be grasped. The planning system presented here can reason about sequences of pushing and grasping actions that allow a robot to grasp an object that was not initially graspable.
 
 This work shows that some geometric problems can be efficiently handled by reasoning at an abstract level through symbolic predicates when such predicates are chosen correctly. The advantage of this system is a reduction in execution time and it is also easy to implement. 
+
+This master thesis has been developed in the \textbf{Institut de Robòtica i Informàtica Industrial} (IRI) in the  Perception and Manipulation laboratory with the supervision of \textit{David Martínez Martínez} as director and \textit{Guillem Alenyà Ribas} as co-director.
 \blank
 \tableofcontents
 \blank
@@ -80,7 +86,8 @@ This work shows that some geometric problems can be efficiently handled by reaso
 \include{4-Algorithm/algorithm}
 \include{5-Implementation/implementation}
 \include{6-Experiments/experiments}
-\include{Environmental_Impact/environmental_impact}
+%\include{Environmental_Impact/environmental_impact}
+\include{EconomicAnalysis/budget}
 \include{7-Conclusions/conclusions}
 
 \blank
