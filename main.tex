@@ -14,6 +14,7 @@
 \usepackage{etseib}
 \usepackage{fancyhdr}
 \usepackage{hyperref}
+\usepackage[final]{pdfpages} %to include pdf
 \usepackage{subcaption}
 \usepackage{comment}
 \usepackage{csquotes} %quotes
@@ -47,7 +48,11 @@
 
 
 \begin{document}
-\include{title}
+%\include{title}
+\begin{figure}
+ \centering 
+ \includepdf[pages=-]{portada.pdf}
+\end{figure}
 
 %etseib template
 %\maketitle % Print the title
