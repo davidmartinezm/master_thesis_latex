@@ -35,6 +35,8 @@ Moreover, we introduce also the concept of \textit{Industry 4.0}\footnote{\href{
 \section{Objectives}
 The objective of this thesis is designing and implementing an artificial intelligence system which can reason about how to interact with the objects in order to clear a table with cluttered objects. To clear a table means grasp all the objects and removed them by dropping them, for example, in a bin. To do so a robotic manipulator is used in order to interact with the objects. The idea is to design the system by human-inspired actions, that is the intelligence system we want to develop tries to solve the task similarly as a human would do.
 
+\DMcomment{Can you add a new section here that is called contributions? In that section you would point you contributions very briefly (an itemize with at most 1-2 lines for each.)}
+
 \section{Methodology}
 The methodology we will follow for the project is composed of 5 phases:
 \begin{enumerate}
@@ -58,6 +60,7 @@ For simplicity we only consider actions that interact with a single object.% \DM
 
 The robot's decision maker uses a planning system that returns a sequence of actions that achieve the goal of clearing the table. 
 The robot reasons in an abstraction level by considering only symbolic predicates with limited geometrical information. Then the plan is checked to see if it is feasible, and if it isn't, backtracking is done.
+\DMcomment{Say a little more about the geometrical constraints (related to the perception system). It is an important part but gets too little space here in comparison with the paragraphs that you use to talk about grasp/push actions.}
 %The robot reasons in an abstraction level by considering only symbolic predicates which are obtained by hand-built mapping functions making the reasoning step simpler. It is important noting that this problem should includes relevant geometric information which are very useful for the planner, such as how much to push an object, in what direction and the inverse kinematic of the robot. This geometric information is translated into symbolic literals, although these are not able to catch all the geometric information. Then the plan is checked to see if it is feasible, and if it isn't, backtracking is done. \DMcomment{This paragraph is too complicated. Just say that the robot reasons in a symbolic level (planning) with limited geometrical information. Then the plan is checked to see if it is feasible, and if it isn't, backtracking is done.}
 
 We assume the world is perfectly known. As actions are actually non-reliable, the planner replans after the execution of each action.  
